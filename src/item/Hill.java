@@ -14,7 +14,8 @@ public class Hill extends Item {
 		s.makeSpace(">> CALL: " + id + ": Ant.collisionWithAnt(" + s.ants.indexOf(ant) + ": Ant, " + String.valueOf(b) + ")");
 
 		s.stack.add(6);
-		s.ants.get(5).rest();
+		Ant ant1 = s.ants.get(5);
+		ant1.rest();
 		s.stack.remove(s.stack.size() - 1);
 
 		s.depth--;

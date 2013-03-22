@@ -1,10 +1,12 @@
 package program;
 
+import item.Hill;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
+
+import land.Land;
 
 public class Main {
 
@@ -51,18 +53,27 @@ public class Main {
 				}
 				if (nr == null)
 					break;
-
+				Land land = null;
 				switch (nr) {
 				case 1:
 					System.out.println(seqNames[0]);
 					s.stack.add(1);
-					s.land.get(0).init();
+					land = s.land.get(0);
+					land.init();
+					s.stack.remove(s.stack.size()-1);
+					break;
+				case 2:
+					System.out.println(seqNames[1]);
+					s.stack.add(1);
+					land = s.land.get(0);
+					land.putItems();
 					s.stack.remove(s.stack.size()-1);
 					break;
 				case 8:
 					System.out.println(seqNames[7]);
 					s.stack.add(1);
-					s.hill.get(0).collisionWithAnt(s.ants.get(3), false);
+					Hill hill = s.hill.get(0);
+					hill.collisionWithAnt(s.ants.get(3), false);
 					s.stack.remove(s.stack.size()-1);
 					break;
 				default:
