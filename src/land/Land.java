@@ -1,4 +1,6 @@
 package land;
+import item.Item;
+
 import java.util.List;
 
 import program.Singleton;
@@ -17,8 +19,10 @@ public class Land {
 		Integer id = s.stack.get(s.stack.size()-1);
 		
 		s.makeSpace(">> CALL: " + id + ": Land.loadLand()");
-		s.depth--;
+		
 		// Ide jön a kód
+		
+		s.depth--;
 		s.makeSpace("<< RETURN: " + id + ": Land.loadLand()");
 		s.depth--;
 		
@@ -34,8 +38,16 @@ public class Land {
 		Integer id = s.stack.get(s.stack.size()-1);
 		
 		s.makeSpace(">> CALL: " + id + ": Land.putItems()");
-		s.depth--;
+		
 		// Ide jön a kód
+		s.stack.add(8);
+		Item item = s.items.get(7);
+		s.stack.add(6);
+		Field field = s.fields.get(5);
+		
+		field.addItem(item);
+		
+		s.depth--;
 		s.makeSpace("<< RETURN: " + id + ": Land.putItems()");
 		s.depth--;
 	}
@@ -50,8 +62,9 @@ public class Land {
 		Integer id = s.stack.get(s.stack.size()-1);
 		
 		s.makeSpace(">> CALL: " + id + ": Land.move()");
-		s.depth--;
+		
 		// Ide jön a kód
+		s.depth--;
 		s.makeSpace("<< RETURN: " + id + ": Land.move()");
 		s.depth--;
 	}
@@ -99,7 +112,6 @@ public class Land {
 		move();
 		
 		s.depth--;
-		
 		s.makeSpace("<< RETURN: " + id + ": Land.init()");
 		s.depth--;
 	}

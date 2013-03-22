@@ -3,6 +3,7 @@ package program;
 import item.Antlion;
 import item.Food;
 import item.Hill;
+import item.Item;
 import item.Spray;
 import item.Tentacle;
 
@@ -36,6 +37,7 @@ public class Singleton {
 	public List<AntSmell> antSmells;
 	public List<FoodSmell> foodSmells;
 	public List<Hill> hill;
+	public List<Item> items;
 
 	public static Singleton Instance() {
 		if (instance == null)
@@ -65,6 +67,7 @@ public class Singleton {
 		antSmells = new ArrayList<AntSmell>();
 		foodSmells = new ArrayList<FoodSmell>();
 		hill = new ArrayList<Hill>();
+		items = new ArrayList<Item>();
 
 		land.add(new Land());
 		hill.add(new Hill());
@@ -81,6 +84,10 @@ public class Singleton {
 			foods.add(new Food());
 			antSmells.add(new AntSmell());
 			foodSmells.add(new FoodSmell());
+			if (i<10)
+				items.add(new Ant());
+			else
+				items.add(new Echidna());
 		}
 	}
 }

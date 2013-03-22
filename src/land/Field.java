@@ -5,6 +5,7 @@ import item.Item;
 import java.util.List;
 import java.util.Map;
 
+import movable.Ant;
 import program.Singleton;
 import smell.Smell;
 
@@ -20,7 +21,21 @@ public class Field {
 	 * @return 
 	 */
 	public void addItem(Item item) {
-		throw new UnsupportedOperationException();
+		Singleton s = Singleton.Instance();
+		
+		Integer id = s.stack.get(s.stack.size()-1);
+		
+		s.makeSpace(">> CALL: " + id + ": Field.addItem("+s.ants.indexOf(item) +")");
+		
+//		// Ide jön a kód
+//		Item item = s.ants.get(7);
+//		Field field = s.fields.get(5);
+//		
+//		field.addItem(item);
+//		
+		s.depth--;
+		s.makeSpace("<< RETURN: " + id + ": Field.addItem()");
+		s.depth--;
 	}
 
 	/**
