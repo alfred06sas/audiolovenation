@@ -24,7 +24,7 @@ public class Field {
 		Singleton s = Singleton.Instance();
 		Integer id = s.stack.get(s.stack.size()-1);
 		
-		s.makeSpace(">> CALL: " + id + ": Field.addItem("+s.items.indexOf(item)+")");
+		s.makeSpace(">> CALL: " + id + ": Field.addItem("+s.items.indexOf(item)+": Item)");
 		
 		// Ide jön a kód
 		s.stack.add(s.items.indexOf(item));
@@ -34,7 +34,7 @@ public class Field {
 		s.stack.remove(s.stack.size()-1);
 		
 		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": Field.addItem("+s.items.indexOf(item)+")");
+		s.makeSpace("<< RETURN: " + id + ": Field.addItem("+s.items.indexOf(item)+": Item)");
 		s.depth--;
 	}
 
@@ -65,10 +65,10 @@ public class Field {
 
 		Integer id = s.stack.get(s.stack.size()-1);
 		
-		s.makeSpace(">> CALL: " + id + ": Field.getNeighbour()");
+		s.makeSpace(">> CALL: " + id + ": Field.getNeighbours()");
 		
 		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": Field.getNeighbour()");
+		s.makeSpace("<< RETURN: " + id + ": Field.getNeighbours()");
 		s.depth--;
 		
 		return null;
@@ -109,10 +109,10 @@ public class Field {
 		Singleton s = Singleton.Instance();		
 		Integer id = s.stack.get(s.stack.size()-1);
 		
-		s.makeSpace(">> CALL: " + id + ": Field.addSmell("+ s.foodSmells.indexOf(smell)+")");
+		s.makeSpace(">> CALL: " + id + ": Field.addSmell("+ s.foodSmells.indexOf(smell)+": FoodSmell)");
 
 		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": Field.addSmell("+ s.foodSmells.indexOf(smell)+")");
+		s.makeSpace("<< RETURN: " + id + ": Field.addSmell("+ s.foodSmells.indexOf(smell)+": FoodSmell)");
 		s.depth--;
 	}
 

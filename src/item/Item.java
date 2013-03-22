@@ -28,13 +28,13 @@ public class Item {
 		Singleton s = Singleton.Instance();		
 		Integer id = s.stack.get(s.stack.size()-1);
 		
-		s.makeSpace(">> CALL: " + id + ": Item.setActualField("+ s.fields.indexOf(field)+")");
+		s.makeSpace(">> CALL: " + id + ": Item.setActualField("+ s.fields.indexOf(field)+": Field)");
 		
 		// Ide jön a kód
-		
+
 		
 		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": Item.setActualField("+s.fields.indexOf(field)+")");
+		s.makeSpace("<< RETURN: " + id + ": Item.setActualField("+s.fields.indexOf(field)+": Field)");
 		s.depth--;
 	}
 
