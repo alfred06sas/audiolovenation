@@ -1,6 +1,7 @@
 package program;
 
 import item.Hill;
+import item.Spray;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -17,15 +18,15 @@ public class Main {
 				"AnttoFood", "Anttohill", "AnttoBlockage", "AnttoSpray", "EchidnaMove", "EchidnatoAnt", "SpraytoAnt", "UseCaseSpray",
 				"MoveLand", "UseCaseSmell" };
 		// 1. Init
-		// 2. AddItemsToFields: Land, Field, Item
+		// 2. AddItemsToFields: Land, Field, Item -------------------------------------------------> KÉSZ
 		// 3. AntMove: Land, Field, Ant, Smell, item, tentacle, AntSmell, SingletonContainer
 		// 4. ScanAntMove: Ant, Field, AntSmell, Smell, Item, Tentacle
 		// 5. AntToAntlion: Ant, Antlion, Field, SC
 		// 6. AntToEchidna: Ant, Echidna, SC
 		// 7. AnttoFood: Ant, Food, Smell, Field
-		// 8. AnttoHill: Ant, Hill -----------> KÉSZ
-		// 9. AnttoBlockage: Ant, Blockage, tentacle-----------> KÉSZ
-		// 10. AnttoSpray: Ant, Spray
+		// 8. AnttoHill: Ant, Hill -----------------------------------------------------------------> KÉSZ
+		// 9. AnttoBlockage: Ant, Blockage, tentacle -----------------------------------------------> KÉSZ
+		// 10. AnttoSpray: Ant, Spray --------------------------------------------------------------> KÉSZ
 		// 11. EchidnaMove: Land, Echidna, Item, Field
 		// 12. EchidnatoAnt: Echidna, Ant, Field, SC
 		// 13. SpraytoAnt: Spray, Ant
@@ -39,6 +40,7 @@ public class Main {
 		Land land = null;
 		Hill hill = null;
 		Blockage blockage = null;
+		Spray spray = null;
 		try {
 			while (true) {
 				for (int i = 0; i < seqNames.length; i++)
@@ -91,6 +93,20 @@ public class Main {
 					s.stack.add(1);
 					blockage = s.blockages.get(2);
 					blockage.collisionWithAnt(s.ants.get(15), true);
+					s.stack.remove(s.stack.size()-1);
+					break;
+				case 10:
+					System.out.println(seqNames[9]);
+					s.stack.add(10);
+					spray = s.sprays.get(9);
+					spray.collisionWithAnt(s.ants.get(16), false);
+					s.stack.remove(s.stack.size()-1);
+					
+					System.out.println("----------------------------");
+					
+					s.stack.add(10);
+					spray = s.sprays.get(9);
+					spray.collisionWithAnt(s.ants.get(16), true);
 					s.stack.remove(s.stack.size()-1);
 					break;
 				default:
