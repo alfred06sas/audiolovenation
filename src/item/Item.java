@@ -1,5 +1,6 @@
 package item;
 
+import program.Singleton;
 import land.Field;
 import movable.Ant;
 import movable.Echidna;
@@ -23,6 +24,18 @@ public class Item {
 	 * @return 
 	 */
 	public void setActualField(Field field) {
+		
+		Singleton s = Singleton.Instance();		
+		Integer id = s.stack.get(s.stack.size()-1);
+		
+		s.makeSpace(">> CALL: " + id + ": Item.setActualField("+ s.fields.indexOf(field)+")");
+		
+		// Ide jön a kód
+		
+		
+		s.depth--;
+		s.makeSpace("<< RETURN: " + id + ": Item.setActualField("+s.fields.indexOf(field)+")");
+		s.depth--;
 	}
 
 	/**

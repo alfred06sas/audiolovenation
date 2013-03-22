@@ -5,7 +5,6 @@ import item.Item;
 import java.util.List;
 import java.util.Map;
 
-import movable.Ant;
 import program.Singleton;
 import smell.Smell;
 
@@ -25,16 +24,17 @@ public class Field {
 		
 		Integer id = s.stack.get(s.stack.size()-1);
 		
-		s.makeSpace(">> CALL: " + id + ": Field.addItem("+s.ants.indexOf(item) +")");
+		s.makeSpace(">> CALL: " + id + ": Field.addItem("+s.items.indexOf(item)+")");
 		
-//		// Ide jön a kód
-//		Item item = s.ants.get(7);
-//		Field field = s.fields.get(5);
-//		
-//		field.addItem(item);
-//		
+		// Ide jön a kód
+		s.stack.add(s.items.indexOf(item));
+		
+		item.setActualField(s.fields.get(id));
+		
+		s.stack.remove(s.stack.size()-1);
+		
 		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": Field.addItem()");
+		s.makeSpace("<< RETURN: " + id + ": Field.addItem("+s.items.indexOf(item)+")");
 		s.depth--;
 	}
 
