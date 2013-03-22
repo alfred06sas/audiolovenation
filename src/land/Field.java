@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import program.Singleton;
+import smell.FoodSmell;
 import smell.Smell;
 
 public class Field {
@@ -21,7 +22,7 @@ public class Field {
 	 */
 	public void addItem(Item item) {
 		Singleton s = Singleton.Instance();
-		
+		item = new Food();
 		Integer id = s.stack.get(s.stack.size()-1);
 		
 		s.makeSpace(">> CALL: " + id + ": Field.addItem("+s.items.indexOf(item)+")");
@@ -94,8 +95,15 @@ public class Field {
 	 * @param Smell
 	 * @return 
 	 */
-	public void addSmell(int Smell) {
-		throw new UnsupportedOperationException();
+	public void addSmell(Smell smell) {
+		Singleton s = Singleton.Instance();		
+		Integer id = s.stack.get(s.stack.size()-1);
+		
+		s.makeSpace(">> CALL: " + id + ": Item.setActualField("+ s.foodSmells.indexOf(smell)+")");
+
+		s.depth--;
+		s.makeSpace("<< RETURN: " + id + ": Item.setActualField("+ s.foodSmells.indexOf(smell)+")");
+		s.depth--;
 	}
 
 	/**
