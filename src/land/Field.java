@@ -60,7 +60,18 @@ public class Field {
 	 * @return 
 	 */
 	public Map<Dir, Field> getNeighbours() {
-		throw new UnsupportedOperationException();
+		
+		Singleton s = Singleton.Instance();
+
+		Integer id = s.stack.get(s.stack.size()-1);
+		
+		s.makeSpace(">> CALL: " + id + ": Field.getNeighbour()");
+		
+		s.depth--;
+		s.makeSpace("<< RETURN: " + id + ": Field.getNeighbour()");
+		s.depth--;
+		
+		return null;
 	}
 
 	/**
@@ -98,10 +109,10 @@ public class Field {
 		Singleton s = Singleton.Instance();		
 		Integer id = s.stack.get(s.stack.size()-1);
 		
-		s.makeSpace(">> CALL: " + id + ": Item.setActualField("+ s.foodSmells.indexOf(smell)+")");
+		s.makeSpace(">> CALL: " + id + ": Field.addSmell("+ s.foodSmells.indexOf(smell)+")");
 
 		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": Item.setActualField("+ s.foodSmells.indexOf(smell)+")");
+		s.makeSpace("<< RETURN: " + id + ": Field.addSmell("+ s.foodSmells.indexOf(smell)+")");
 		s.depth--;
 	}
 

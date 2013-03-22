@@ -34,10 +34,12 @@ public class Food extends Item {
 		s.makeSpace(">> CALL: " + id + ": Item.setActualField("+ s.fields.indexOf(field)+")");
 		
 		// Ide jön a kód
+		s.stack.add(s.fields.indexOf(field));
 		field.addSmell(s.foodSmells.get(9));
-
+		
+		
 		field.getNeighbours();
-	
+		s.stack.remove(s.stack.size()-1);
 		
 		s.depth--;
 		s.makeSpace("<< RETURN: " + id + ": Item.setActualField("+s.fields.indexOf(field)+")");
