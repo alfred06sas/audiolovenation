@@ -40,7 +40,7 @@ public class Land {
 		s.makeSpace(">> CALL: " + id + ": Land.putItems()");
 		
 		// Ide jön a kód
-		Item item = s.items.get(7);
+		Item item = s.items.get(15);
 		
 		s.stack.add(6);
 		Field field = s.fields.get(5);

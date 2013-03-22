@@ -22,7 +22,6 @@ public class Field {
 	 */
 	public void addItem(Item item) {
 		Singleton s = Singleton.Instance();
-		item = new Food();
 		Integer id = s.stack.get(s.stack.size()-1);
 		
 		s.makeSpace(">> CALL: " + id + ": Field.addItem("+s.items.indexOf(item)+")");

@@ -81,11 +81,14 @@ public class Singleton {
 			foods.add(new Food());
 			antSmells.add(new AntSmell());
 			foodSmells.add(new FoodSmell());
-			if (i % 2 == 1) {
+			if (i < 5) {
 				items.add(new Ant());
 				blockages.add(new Puddle());
-			} else {
+			} else if (i<10){
 				items.add(new Echidna());
+				blockages.add(new Gravel());
+			} else {
+				items.add(new Food());
 				blockages.add(new Gravel());
 			}
 
