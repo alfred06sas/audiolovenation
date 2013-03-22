@@ -10,7 +10,24 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		String[] seqNames = new String[] { "AnttoAnt", "Init" };
+		String[] seqNames = new String[] { "Init", "AddItemsToFields", "AntMove", "ScanAntMove", "AntToAntlion", "AntToEchidna",
+				"AnttoFood", "Anttohill", "AnttoBlockage", "AnttoSpray", "EchidnaMove", "EchidnatoAnt", "SpraytoAnt", "UseCaseSpray",
+				"MoveLand", "UseCaseSmell" };
+		// AddItemsToFields: Land, Field, Item
+		// AntMove: Land, Field, Ant, Smell, item, tentacle, AntSmell, SingletonContainer
+		// ScanAntMove: Ant, Field, AntSmell, Smell, Item, Tentacle
+		// AntToAntlion: Ant, Antlion, Field, SC
+		// AntToEchidna: Ant, Echidna, SC
+		// AnttoFood: Ant, Food, Smell, Field
+		// AnttoHill: Ant, Hill
+		// AnttoBlockage: Ant, Blockage, tentacle
+		// AnttoSpray: Ant, Spray
+		// EchidnaMove: Land, Echidna, Item, Field
+		// EchidnatoAnt: Echidna, Ant, Field, SC
+		// SpraytoAnt: Spray, Ant
+		// useCaseSpray: Actor, Field, Spray, Item, SC
+		// MoveLand: Land, Movable, Volatile, SC
+		// UseCaseSmell: Actor, Field, Smell, SC
 		Singleton s = Singleton.Instance();
 		s.initItems();
 
@@ -36,12 +53,6 @@ public class Main {
 
 				switch (nr) {
 				case 1:
-					System.out.println(seqNames[0] + ":");
-					s.stack.add(5);
-					s.ants.get(5).collisionWithAnt(s.ants.get(4), true);
-					
-					break;
-				case 2:
 					System.out.println(seqNames[1]);
 					s.stack.add(1);
 					s.land.get(0).init();
