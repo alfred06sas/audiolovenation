@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import land.Land;
+import blockage.Blockage;
 
 public class Main {
 
@@ -22,8 +23,8 @@ public class Main {
 		// 5. AntToAntlion: Ant, Antlion, Field, SC
 		// 6. AntToEchidna: Ant, Echidna, SC
 		// 7. AnttoFood: Ant, Food, Smell, Field
-		// 8. AnttoHill: Ant, Hill -----------> kész
-		// 9. AnttoBlockage: Ant, Blockage, tentacle
+		// 8. AnttoHill: Ant, Hill -----------> KÉSZ
+		// 9. AnttoBlockage: Ant, Blockage, tentacle-----------> KÉSZ
 		// 10. AnttoSpray: Ant, Spray
 		// 11. EchidnaMove: Land, Echidna, Item, Field
 		// 12. EchidnatoAnt: Echidna, Ant, Field, SC
@@ -35,7 +36,9 @@ public class Main {
 		s.initItems();
 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
+		Land land = null;
+		Hill hill = null;
+		Blockage blockage = null;
 		try {
 			while (true) {
 				for (int i = 0; i < seqNames.length; i++)
@@ -53,7 +56,7 @@ public class Main {
 				}
 				if (nr == null)
 					break;
-				Land land = null;
+				
 				switch (nr) {
 				case 1:
 					System.out.println(seqNames[0]);
@@ -72,8 +75,22 @@ public class Main {
 				case 8:
 					System.out.println(seqNames[7]);
 					s.stack.add(1);
-					Hill hill = s.hill.get(0);
+					hill = s.hill.get(0);
 					hill.collisionWithAnt(s.ants.get(3), false);
+					s.stack.remove(s.stack.size()-1);
+					break;
+				case 9:
+					System.out.println(seqNames[8]);
+					s.stack.add(1);
+					blockage = s.blockages.get(2);
+					blockage.collisionWithAnt(s.ants.get(15), false);
+					s.stack.remove(s.stack.size()-1);
+					
+					System.out.println("----------------------------");
+					
+					s.stack.add(1);
+					blockage = s.blockages.get(2);
+					blockage.collisionWithAnt(s.ants.get(15), true);
 					s.stack.remove(s.stack.size()-1);
 					break;
 				default:

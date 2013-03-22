@@ -2,6 +2,8 @@ package item;
 
 import java.util.Map;
 
+import program.Singleton;
+
 import land.Dir;
 import land.Field;
 
@@ -15,6 +17,7 @@ public class Tentacle {
 	 * @return 
 	 */
 	public void setPossibleNeighbours(Map<Dir, Field> neighbours) {
+		
 	}
 
 	/**
@@ -23,6 +26,17 @@ public class Tentacle {
 	 * @return 
 	 */
 	public void removePossibleNeighbour(Field neighbour) {
+		Singleton s = Singleton.Instance();
+
+		Integer id = s.stack.get(s.stack.size() - 1);
+
+		s.makeSpace(">> CALL: " + id + ": Tentacle.removePossibleNeighbour(" + 
+				s.fields.indexOf(neighbour) + ": Field)");
+
+		s.depth--;
+		s.makeSpace("<< RETURN: " + id + ": Tentacle.removePossibleNeighbour(" + 
+				s.fields.indexOf(neighbour) + ": Field)");
+		s.depth--;
 	}
 
 	/**
