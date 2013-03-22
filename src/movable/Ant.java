@@ -35,6 +35,15 @@ public class Ant extends Item implements Movable {
 	 * @return 
 	 */
 	public void rest() {
+		Singleton s = Singleton.Instance();
+
+		Integer id = s.stack.get(s.stack.size()-1);
+		
+		s.makeSpace(">> CALL: " + id + ": Ant.rest()");
+		s.depth--;
+		
+		s.makeSpace("<< RETURN: " + id + ": Ant.rest()");
+		s.depth--;
 	}
 
 	/**
