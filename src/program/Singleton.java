@@ -16,11 +16,12 @@ import movable.Ant;
 import movable.Echidna;
 import smell.AntSmell;
 import smell.FoodSmell;
+import blockage.Blockage;
 import blockage.Gravel;
 import blockage.Puddle;
 
 public class Singleton {
-	
+
 	private static Singleton instance = null;
 	public List<Integer> stack = new ArrayList<Integer>();
 	public int depth = 0;
@@ -31,8 +32,7 @@ public class Singleton {
 	public List<Echidna> echidnas;
 	public List<Antlion> antlions;
 	public List<Spray> sprays;
-	public List<Puddle> puddles;
-	public List<Gravel> gravels;
+	public List<Blockage> blockages;
 	public List<Food> foods;
 	public List<AntSmell> antSmells;
 	public List<FoodSmell> foodSmells;
@@ -61,8 +61,7 @@ public class Singleton {
 		echidnas = new ArrayList<Echidna>();
 		antlions = new ArrayList<Antlion>();
 		sprays = new ArrayList<Spray>();
-		puddles = new ArrayList<Puddle>();
-		gravels = new ArrayList<Gravel>();
+		blockages = new ArrayList<Blockage>();
 		foods = new ArrayList<Food>();
 		antSmells = new ArrayList<AntSmell>();
 		foodSmells = new ArrayList<FoodSmell>();
@@ -71,7 +70,7 @@ public class Singleton {
 
 		land.add(new Land());
 		hill.add(new Hill());
-		
+
 		for (int i = 0; i < 20; i++) {
 			ants.add(new Ant());
 			fields.add(new Field());
@@ -79,15 +78,17 @@ public class Singleton {
 			echidnas.add(new Echidna());
 			antlions.add(new Antlion());
 			sprays.add(new Spray());
-			puddles.add(new Puddle());
-			gravels.add(new Gravel());
 			foods.add(new Food());
 			antSmells.add(new AntSmell());
 			foodSmells.add(new FoodSmell());
-			if (i<10)
+			if (i % 2 == 1) {
 				items.add(new Ant());
-			else
+				blockages.add(new Puddle());
+			} else {
 				items.add(new Echidna());
+				blockages.add(new Gravel());
+			}
+
 		}
 	}
 }

@@ -1,9 +1,10 @@
 package movable;
 
-import program.Singleton;
 import item.Item;
 import item.Tentacle;
 import land.Dir;
+import land.Field;
+import program.Singleton;
 
 public class Ant extends Item implements Movable {
 
@@ -183,12 +184,31 @@ public class Ant extends Item implements Movable {
 
 		Integer id = s.stack.get(s.stack.size() - 1);
 
-		s.makeSpace(">> CALL: " + id + ": Ant.collisionWithSpray("
-				+ strength + ": Integer)");
+		s.makeSpace(">> CALL: " + id + ": Ant.collisionWithSpray(" + strength
+				+ ": Integer)");
 
 		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": Ant.collisionWithSpray("
-				+ strength + ": Integer)");
+		s.makeSpace("<< RETURN: " + id + ": Ant.collisionWithSpray(" + strength
+				+ ": Integer)");
+		s.depth--;
+	}
+
+	public void canNotGo(Field field) {
+		Singleton s = Singleton.Instance();
+
+		Integer id = s.stack.get(s.stack.size() - 1);
+
+		s.makeSpace(">> CALL: " + id + ": Ant.canNotGo("
+				+ s.fields.indexOf(field) + ": Field)");
+
+		s.stack.add(17);
+		Tentacle tentacle = s.tentacles.get(16);
+		tentacle.removePossibleNeighbour(field);
+		s.stack.remove(s.stack.size() - 1);
+
+		s.depth--;
+		s.makeSpace("<< RETURN: " + id + ": Ant.canNotGo("
+				+ s.fields.indexOf(field) + ": Field)");
 		s.depth--;
 	}
 }
