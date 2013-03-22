@@ -18,7 +18,7 @@ import blockage.Gravel;
 import blockage.Puddle;
 
 public class Singleton {
-// mukodj!!!!!
+// mukodj!!!!!te allat
 	private static Singleton instance = null;
 	public List<Integer> stack = new ArrayList<Integer>();
 	public int depth = 0;
