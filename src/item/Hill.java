@@ -3,6 +3,7 @@ package item;
 import program.Singleton;
 import land.Dir;
 import movable.Ant;
+import movable.Echidna;
 
 public class Hill extends Item {
 	@Override
@@ -20,6 +21,20 @@ public class Hill extends Item {
 
 		s.depth--;
 		s.makeSpace("<< RETURN: " + id + ": Ant.collisionWithAnt(" + s.ants.indexOf(ant) + ": Ant, " + String.valueOf(b) + ")");
+		s.depth--;
+	}
+	@Override
+	public void collisionWithEchidna(Echidna echidna) {
+		Singleton s = Singleton.Instance();
+
+		Integer id = s.stack.get(s.stack.size() - 1);
+
+		s.makeSpace(">> CALL: " + id + ": Hill.collisionWithEchidna("
+				+ s.echidnas.indexOf(echidna) + ": Echidna)");
+
+		s.depth--;
+		s.makeSpace("<< RETURN: " + id + ": Hill.collisionWithEchidna("
+				+ s.echidnas.indexOf(echidna) + ": Echidna)");
 		s.depth--;
 	}
 }

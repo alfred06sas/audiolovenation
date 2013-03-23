@@ -38,7 +38,16 @@ public class SingletonContainer {
 	 * @return 
 	 */
 	public static SingletonContainer getInstance() {
-		return null;
+		Singleton s = Singleton.Instance();
+
+		Integer id = s.stack.get(s.stack.size() - 1);
+
+		s.makeSpace(">> CALL: " + id + ": SingletonContainer.getInstance()");
+
+		s.depth--;
+		s.makeSpace("<< RETURN: " + id + ": SingletonContainer.getInstance()");
+		s.depth--;
+		return new SingletonContainer();
 	}
 
 	/**
@@ -71,6 +80,17 @@ public class SingletonContainer {
 	 * @return 
 	 */
 	public void removeMovable(Movable movable) {
+		Singleton s = Singleton.Instance();
+
+		Integer id = s.stack.get(s.stack.size() - 1);
+
+		s.makeSpace(">> CALL: " + id + ": SingletonContainer.removeMovable(" + s.items.indexOf(movable)
+				+ ": Movable)");
+
+		s.depth--;
+		s.makeSpace("<< RETURN: " + id + ": SingletonContainer.removeMovable(" + s.items.indexOf(movable)
+				+ ": Movable)");
+		s.depth--;
 	}
 
 	/**

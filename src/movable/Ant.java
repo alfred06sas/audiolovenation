@@ -5,6 +5,7 @@ import item.Tentacle;
 import land.Dir;
 import land.Field;
 import program.Singleton;
+import program.SingletonContainer;
 
 public class Ant extends Item implements Movable {
 
@@ -91,7 +92,20 @@ public class Ant extends Item implements Movable {
 		Integer id = s.stack.get(s.stack.size() - 1);
 
 		s.makeSpace(">> CALL: " + id + ": Ant.kill()");
-
+		
+		s.stack.add(17);
+		Field field = s.fields.get(16);
+		field.removeItem(s.ants.get(id));
+		
+		
+		s.stack.remove(s.stack.size() - 1);
+		
+		s.stack.add(1);
+		SingletonContainer sc = s.singletonContainer.get(0).getInstance();
+		
+		sc.removeMovable(s.ants.get(id));
+		s.stack.remove(s.stack.size()-1);
+		
 		s.depth--;
 		s.makeSpace("<< RETURN: " + id + ": Ant.kill()");
 		s.depth--;

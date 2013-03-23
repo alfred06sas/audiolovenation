@@ -1,5 +1,6 @@
 package program;
 
+import item.Antlion;
 import item.Hill;
 import item.Spray;
 
@@ -8,6 +9,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import land.Land;
+import movable.Ant;
 import blockage.Blockage;
 
 public class Main {
@@ -18,10 +20,10 @@ public class Main {
 				"AnttoFood", "Anttohill", "AnttoBlockage", "AnttoSpray", "EchidnaMove", "EchidnatoAnt", "SpraytoAnt", "UseCaseSpray",
 				"MoveLand", "UseCaseSmell" };
 		// 1. Init
-		// 2. AddItemsToFields: Land, Field, Item -------------------------------------------------> KÉSZ
+		// 2. AddItemsToFields: Land, Field, Item --------------------------------------------------> KÉSZ
 		// 3. AntMove: Land, Field, Ant, Smell, item, tentacle, AntSmell, SingletonContainer
 		// 4. ScanAntMove: Ant, Field, AntSmell, Smell, Item, Tentacle
-		// 5. AntToAntlion: Ant, Antlion, Field, SC
+		// 5. AntToAntlion: Ant, Antlion, Field, SC ------------------------------------------------> KÉSZ
 		// 6. AntToEchidna: Ant, Echidna, SC
 		// 7. AnttoFood: Ant, Food, Smell, Field
 		// 8. AnttoHill: Ant, Hill -----------------------------------------------------------------> KÉSZ
@@ -41,6 +43,8 @@ public class Main {
 		Hill hill = null;
 		Blockage blockage = null;
 		Spray spray = null;
+		Antlion antlion = null;
+		
 		try {
 			while (true) {
 				for (int i = 0; i < seqNames.length; i++)
@@ -72,6 +76,20 @@ public class Main {
 					s.stack.add(1);
 					land = s.land.get(0);
 					land.putItems();
+					s.stack.remove(s.stack.size()-1);
+					break;
+				case 5:
+					System.out.println(seqNames[4]);
+					s.stack.add(1);
+					antlion = s.antlions.get(2);
+					antlion.collisionWithAnt((Ant)s.items.get(3), false);
+					s.stack.remove(s.stack.size()-1);
+					
+					System.out.println("----------------------------");
+					
+					s.stack.add(1);
+					antlion = s.antlions.get(2);
+					antlion.collisionWithAnt((Ant)s.items.get(3), true);
 					s.stack.remove(s.stack.size()-1);
 					break;
 				case 8:

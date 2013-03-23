@@ -4,6 +4,7 @@ package item;
 import java.util.List;
 
 import land.Field;
+import movable.Echidna;
 import program.Singleton;
 import smell.FoodSmell;
 
@@ -59,6 +60,20 @@ public class Food extends Item {
 		
 		s.depth--;
 		s.makeSpace("<< RETURN: " + id + ": Item.setActualField("+s.fields.indexOf(field)+": Field)");
+		s.depth--;
+	}
+	@Override
+	public void collisionWithEchidna(Echidna echidna) {
+		Singleton s = Singleton.Instance();
+
+		Integer id = s.stack.get(s.stack.size() - 1);
+
+		s.makeSpace(">> CALL: " + id + ": Food.collisionWithEchidna("
+				+ s.echidnas.indexOf(echidna) + ": Echidna)");
+
+		s.depth--;
+		s.makeSpace("<< RETURN: " + id + ": Food.collisionWithEchidna("
+				+ s.echidnas.indexOf(echidna) + ": Echidna)");
 		s.depth--;
 	}
 

@@ -52,7 +52,15 @@ public class Field {
 	 * @return 
 	 */
 	public void removeItem(Item item) {
-		throw new UnsupportedOperationException();
+		Singleton s = Singleton.Instance();
+
+		Integer id = s.stack.get(s.stack.size()-1);
+		
+		s.makeSpace(">> CALL: " + id + ": Field.removeItem(" + s.items.indexOf(item) + ": Item)");
+		
+		s.depth--;
+		s.makeSpace("<< RETURN: " + id + ": Field.removeItem(" + s.items.indexOf(item) + ": Item)");
+		s.depth--;
 	}
 
 	/**

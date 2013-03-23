@@ -38,6 +38,7 @@ public class Singleton {
 	public List<FoodSmell> foodSmells;
 	public List<Hill> hill;
 	public List<Item> items;
+	public List<SingletonContainer> singletonContainer;
 
 	public static Singleton Instance() {
 		if (instance == null)
@@ -67,25 +68,29 @@ public class Singleton {
 		foodSmells = new ArrayList<FoodSmell>();
 		hill = new ArrayList<Hill>();
 		items = new ArrayList<Item>();
+		singletonContainer = new ArrayList<SingletonContainer>();
 
 		land.add(new Land());
 		hill.add(new Hill());
+		singletonContainer.add(new SingletonContainer());
 
 		for (int i = 0; i < 20; i++) {
-			ants.add(new Ant());
+			Ant ant = new Ant();
+			ants.add(ant);
 			fields.add(new Field());
 			tentacles.add(new Tentacle());
-			echidnas.add(new Echidna());
+			Echidna echidna = new Echidna();
+			echidnas.add(echidna);
 			antlions.add(new Antlion());
 			sprays.add(new Spray());
 			foods.add(new Food());
 			antSmells.add(new AntSmell());
 			foodSmells.add(new FoodSmell());
 			if (i < 5) {
-				items.add(new Ant());
+				items.add(ant);
 				blockages.add(new Puddle());
 			} else if (i<10){
-				items.add(new Echidna());
+				items.add(echidna);
 				blockages.add(new Gravel());
 			} else {
 				items.add(new Food());

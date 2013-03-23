@@ -2,6 +2,7 @@ package item;
 
 import program.Singleton;
 import movable.Ant;
+import movable.Echidna;
 
 public class Spray extends Item implements Volatile {
 
@@ -30,6 +31,20 @@ public class Spray extends Item implements Volatile {
 		s.depth--;
 		s.makeSpace("<< RETURN: " + id + ": Spray.collisionWithAnt("
 				+ s.ants.indexOf(ant) + ": Ant, " + String.valueOf(b) + ")");
+		s.depth--;
+	}
+	@Override
+	public void collisionWithEchidna(Echidna echidna) {
+		Singleton s = Singleton.Instance();
+
+		Integer id = s.stack.get(s.stack.size() - 1);
+
+		s.makeSpace(">> CALL: " + id + ": Spray.collisionWithEchidna("
+				+ s.echidnas.indexOf(echidna) + ": Echidna)");
+
+		s.depth--;
+		s.makeSpace("<< RETURN: " + id + ": Spray.collisionWithEchidna("
+				+ s.echidnas.indexOf(echidna) + ": Echidna)");
 		s.depth--;
 	}
 }
