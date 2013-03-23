@@ -57,14 +57,14 @@ public class AntSmell extends Smell implements Volatile {
 
 		Integer id = s.stack.get(s.stack.size() - 1);
 		
-		s.makeSpace(">> CALL: " + id + ": AntSmell.smellIt(" + s.tentacles.indexOf(tentacle) + ")");
+		s.makeSpace(">> CALL: " + id + ": AntSmell.smellIt(" + s.tentacles.indexOf(tentacle) + ": Tentacle)");
 
-		s.stack.add(id);
-		tentacle.increaseAntSmell(8);
+		s.stack.add(s.tentacles.indexOf(tentacle));
+		tentacle.increaseAntSmell(14);
 		s.stack.remove(s.stack.size()-1);
 		
 		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": AntSmell.smellIt(" + s.tentacles.indexOf(tentacle) + ")");
+		s.makeSpace("<< RETURN: " + id + ": AntSmell.smellIt(" + s.tentacles.indexOf(tentacle) + ": Tentacle)");
 		s.depth--;
 	}
 }

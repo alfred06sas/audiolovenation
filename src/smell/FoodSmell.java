@@ -44,9 +44,9 @@ public class FoodSmell extends Smell {
 		Integer id = s.stack.get(s.stack.size() - 1);
 		
 		s.makeSpace(">> CALL: " + id + ": FoodSmell.smellIt(" + s.tentacles.indexOf(tentacle) + ")");
-
-		s.stack.add(id);
-		tentacle.increaseFoodSmell(8);
+		
+		s.stack.add(s.tentacles.indexOf(tentacle));
+		tentacle.increaseFoodSmell(4);
 		s.stack.remove(s.stack.size()-1);
 		
 		s.depth--;
