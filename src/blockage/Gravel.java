@@ -40,4 +40,5 @@ public class Gravel extends Blockage {
 				+ s.echidnas.indexOf(echidna) + ": Echidna)");
 		s.depth--;
 	}
+	
 }
