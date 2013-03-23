@@ -117,10 +117,10 @@ public class Field {
 		Singleton s = Singleton.Instance();		
 		Integer id = s.stack.get(s.stack.size()-1);
 		
-		s.makeSpace(">> CALL: " + id + ": Field.addSmell("+ s.foodSmells.indexOf(smell)+": FoodSmell)");
+		s.makeSpace(">> CALL: " + id + ": Field.addSmell("+ s.foodSmells.indexOf(smell)+": Smell)");
 
 		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": Field.addSmell("+ s.foodSmells.indexOf(smell)+": FoodSmell)");
+		s.makeSpace("<< RETURN: " + id + ": Field.addSmell("+ s.foodSmells.indexOf(smell)+": Smell)");
 		s.depth--;
 	}
 
@@ -129,8 +129,15 @@ public class Field {
 	 * @param Smell
 	 * @return 
 	 */
-	public void removeSmell(int Smell) {
-		throw new UnsupportedOperationException();
+	public void removeSmell(Smell smell) {
+		Singleton s = Singleton.Instance();		
+		Integer id = s.stack.get(s.stack.size()-1);
+		
+		s.makeSpace(">> CALL: " + id + ": Field.removeSmell("+ s.foodSmells.indexOf(smell)+": FoodSmell)");
+
+		s.depth--;
+		s.makeSpace("<< RETURN: " + id + ": Field.addSmell("+ s.foodSmells.indexOf(smell)+": FoodSmell)");
+		s.depth--;
 	}
 
 }
