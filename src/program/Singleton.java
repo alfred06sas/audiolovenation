@@ -4,7 +4,7 @@ import item.Antlion;
 import item.Food;
 import item.Hill;
 import item.Item;
-import item.Spray;
+import blockage.Spray;
 import item.Tentacle;
 
 import java.util.ArrayList;
