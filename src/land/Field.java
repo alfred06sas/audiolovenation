@@ -136,7 +136,7 @@ public class Field {
 		s.makeSpace(">> CALL: " + id + ": Field.removeSmell("+ s.foodSmells.indexOf(smell)+": FoodSmell)");
 
 		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": Field.addSmell("+ s.foodSmells.indexOf(smell)+": FoodSmell)");
+		s.makeSpace("<< RETURN: " + id + ": Field.removeSmell("+ s.foodSmells.indexOf(smell)+": FoodSmell)");
 		s.depth--;
 	}
 

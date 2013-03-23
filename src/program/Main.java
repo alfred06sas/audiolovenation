@@ -1,6 +1,7 @@
 package program;
 
 import item.Antlion;
+import item.Food;
 import item.Hill;
 import item.Spray;
 
@@ -25,7 +26,7 @@ public class Main {
 		// 4. ScanAntMove: Ant, Field, AntSmell, Smell, Item, Tentacle
 		// 5. AntToAntlion: Ant, Antlion, Field, SC ------------------------------------------------> KÉSZ
 		// 6. AntToEchidna: Ant, Echidna, SC
-		// 7. AnttoFood: Ant, Food, Smell, Field
+		// 7. AnttoFood: Ant, Food, Smell, Field ---------------------------------------------------> KÉSZ
 		// 8. AnttoHill: Ant, Hill -----------------------------------------------------------------> KÉSZ
 		// 9. AnttoBlockage: Ant, Blockage, tentacle -----------------------------------------------> KÉSZ
 		// 10. AnttoSpray: Ant, Spray --------------------------------------------------------------> KÉSZ
@@ -35,6 +36,7 @@ public class Main {
 		// 14. useCaseSpray: Actor, Field, Spray, Item, SC
 		// 15. MoveLand: Land, Movable, Volatile, SC -----------------------------------------------> KÉSZ
 		// 16. UseCaseSmell: Actor, Field, Smell, SC
+		
 		Singleton s = Singleton.Instance();
 		s.initItems();
 
@@ -44,6 +46,7 @@ public class Main {
 		Blockage blockage = null;
 		Spray spray = null;
 		Antlion antlion = null;
+		Food food = null;
 		
 		try {
 			while (true) {
@@ -90,6 +93,20 @@ public class Main {
 					s.stack.add(1);
 					antlion = s.antlions.get(2);
 					antlion.collisionWithAnt((Ant)s.items.get(3), true);
+					s.stack.remove(s.stack.size()-1);
+					break;
+				case 7:
+					System.out.println(seqNames[6]);
+					s.stack.add(20);
+					food = s.foods.get(19);
+					food.collisionWithAnt((Ant)s.items.get(4), false);
+					s.stack.remove(s.stack.size()-1);
+					
+					System.out.println("----------------------------");
+					
+					s.stack.add(20);
+					food = s.foods.get(19);
+					food.collisionWithAnt((Ant)s.items.get(4), true);
 					s.stack.remove(s.stack.size()-1);
 					break;
 				case 8:

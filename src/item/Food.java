@@ -21,14 +21,15 @@ public class Food extends Item {
 		Singleton s = Singleton.Instance();
 		Integer id = s.stack.get(s.stack.size() - 1);
 
-		s.makeSpace(">> CALL: " + id + ": Item.deleteSmell()");
+		s.makeSpace(">> CALL: " + id + ": Food.deleteSmell()");
 
 		s.stack.add(19);
 		Smell foodsmell = (FoodSmell) s.foodSmells.get(18);
+		foodsmell.removeMyself();
 		s.stack.remove(s.stack.size() - 1);
 
 		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": Item.deleteSmell()");
+		s.makeSpace("<< RETURN: " + id + ": Food.deleteSmell()");
 		s.depth--;
 	}
 
