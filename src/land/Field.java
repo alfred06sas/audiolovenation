@@ -1,6 +1,7 @@
 package land;
 
 import item.Item;
+import item.Spray;
 
 import java.util.List;
 import java.util.Map;
@@ -28,7 +29,6 @@ public class Field {
 		s.makeSpace(">> CALL: " + id + ": Field.addItem("
 				+ s.items.indexOf(item) + ": Item)");
 
-		// Ide jön a kód
 		s.stack.add(s.items.indexOf(item));
 
 		item.setActualField(s.fields.get(id));
@@ -195,8 +195,8 @@ public class Field {
 		s.makeSpace("<< RETURN: " + id + ": Field.removeAntSmells()");
 		s.depth--;
 	}
-	
-	public void onClick(){
+
+	public void onClick() {
 		Singleton s = Singleton.Instance();
 		Integer id = s.stack.get(s.stack.size() - 1);
 
@@ -206,7 +206,13 @@ public class Field {
 		SingletonContainer sc = s.singletonContainer.get(0).getInstance();
 		s.singletonContainer.get(0).getVolatiles();
 		s.stack.remove(s.stack.size() - 1);
-		
+
+		s.stack.add(id);
+		Field field = s.fields.get(id - 1);
+		Spray spray = (Spray) s.items.get(16);
+		field.addItem(spray);
+		s.stack.remove(s.stack.size() - 1);
+
 		s.depth--;
 		s.makeSpace("<< RETURN: " + id + ": Field.onClick()");
 		s.depth--;

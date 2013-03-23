@@ -21,7 +21,7 @@ public class Main {
 		String[] seqNames = new String[] { "Init", "AddItemsToFields", "AntMove", "ScanAntMove", "AntToAntlion", "AntToEchidna",
 				"AnttoFood", "Anttohill", "AnttoBlockage", "AnttoSpray", "EchidnaMove", "EchidnatoAnt", "SpraytoAnt", "UseCaseSpray",
 				"MoveLand", "UseCaseSmell" };
-		// 1. Init
+		// 1. Init ---------------------------------------------------------------------------------> KÉSZ
 		// 2. AddItemsToFields: Land, Field, Item --------------------------------------------------> KÉSZ
 		// 3. AntMove: Land, Field, Ant, Smell, item, tentacle, AntSmell, SingletonContainer
 		// 4. ScanAntMove: Ant, Field, AntSmell, Smell, Item, Tentacle
@@ -34,7 +34,7 @@ public class Main {
 		// 11. EchidnaMove: Land, Echidna, Item, Field
 		// 12. EchidnatoAnt: Echidna, Ant, Field, SC
 		// 13. SpraytoAnt: Spray, Ant --------------------------------------------------------------> KÉSZ
-		// 14. useCaseSpray: Actor, Field, Spray, Item, SC
+		// 14. useCaseSpray: Actor, Field, Spray, Item, SC -----------------------------------------> KÉSZ
 		// 15. MoveLand: Land, Movable, Volatile, SC -----------------------------------------------> KÉSZ
 		// 16. UseCaseSmell: Actor, Field, Smell, SC -----------------------------------------------> KÉSZ
 		
@@ -143,6 +143,13 @@ public class Main {
 					s.stack.add(10);
 					spray = s.sprays.get(9);
 					spray.collisionWithAnt(s.ants.get(16), true);
+					s.stack.remove(s.stack.size()-1);
+					break;
+				case 14:
+					System.out.println(seqNames[13]);
+					s.stack.add(11);
+					field = s.fields.get(10);
+					field.onClick();
 					s.stack.remove(s.stack.size()-1);
 					break;
 				case 15:

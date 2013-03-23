@@ -85,7 +85,8 @@ public class Singleton {
 			Echidna echidna = new Echidna();
 			echidnas.add(echidna);
 			antlions.add(new Antlion());
-			sprays.add(new Spray());
+			Spray spray = new Spray();
+			sprays.add(spray);
 			foods.add(new Food());
 			AntSmell antSmell = new AntSmell();
 			antSmells.add(antSmell);
@@ -95,12 +96,16 @@ public class Singleton {
 				items.add(ant);
 				blockages.add(new Puddle());
 				smells.add(antSmell);
-			} else if (i<10){
+			} else if (i < 10) {
 				items.add(echidna);
 				blockages.add(new Puddle());
 				smells.add(antSmell);
-			} else {
+			} else if (i < 15) {
 				items.add(new Food());
+				blockages.add(new Gravel());
+				smells.add(foodSmell);
+			} else {
+				items.add(spray);
 				blockages.add(new Gravel());
 				smells.add(foodSmell);
 			}
