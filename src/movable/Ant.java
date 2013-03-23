@@ -96,13 +96,10 @@ public class Ant extends Item implements Movable {
 		s.stack.add(17);
 		Field field = s.fields.get(16);
 		field.removeItem(s.ants.get(id));
-		
-		
 		s.stack.remove(s.stack.size() - 1);
 		
 		s.stack.add(1);
 		SingletonContainer sc = s.singletonContainer.get(0).getInstance();
-		
 		sc.removeMovable(s.ants.get(id));
 		s.stack.remove(s.stack.size()-1);
 		

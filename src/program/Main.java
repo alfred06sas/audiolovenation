@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import land.Field;
 import land.Land;
 import movable.Ant;
 import blockage.Blockage;
@@ -35,7 +36,7 @@ public class Main {
 		// 13. SpraytoAnt: Spray, Ant --------------------------------------------------------------> KÉSZ
 		// 14. useCaseSpray: Actor, Field, Spray, Item, SC
 		// 15. MoveLand: Land, Movable, Volatile, SC -----------------------------------------------> KÉSZ
-		// 16. UseCaseSmell: Actor, Field, Smell, SC
+		// 16. UseCaseSmell: Actor, Field, Smell, SC -----------------------------------------------> KÉSZ
 		
 		Singleton s = Singleton.Instance();
 		s.initItems();
@@ -47,6 +48,7 @@ public class Main {
 		Spray spray = null;
 		Antlion antlion = null;
 		Food food = null;
+		Field field = null;
 		
 		try {
 			while (true) {
@@ -59,8 +61,7 @@ public class Main {
 				try {
 					nr = Integer.valueOf(br.readLine());
 				} catch (NumberFormatException nfe) {
-					System.out.println("Adj meg egy számot!");
-					System.out.println("-----------------------------");
+					System.err.println("Adj meg egy számot 1 és 16 között! Próbáld újra!");
 					continue;
 				}
 				if (nr == null)
@@ -149,6 +150,20 @@ public class Main {
 					s.stack.add(1);
 					land = s.land.get(0);
 					land.move();
+					s.stack.remove(s.stack.size()-1);
+					break;
+				case 16:
+					System.out.println("Melyik mezõn szeretnéd használni a spray-t? (1-20)");
+					try {
+						nr = Integer.valueOf(br.readLine());
+					} catch (NumberFormatException nfe) {
+						System.err.println("Adj meg egy számot 1 és 20 között! Próbáld újra!");
+						continue;
+					}
+					System.out.println(seqNames[15]);
+					s.stack.add(nr);
+					field = s.fields.get(nr-1);
+					field.removeAntSmells();
 					s.stack.remove(s.stack.size()-1);
 					break;
 				default:
