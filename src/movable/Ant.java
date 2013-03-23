@@ -182,6 +182,9 @@ public class Ant extends Item implements Movable {
 
 		s.makeSpace(">> CALL: " + id + ": Ant.collisionWithEchidna("
 				+ s.echidnas.indexOf(echidna) + ": Echidna)");
+		
+		
+		
 
 		s.depth--;
 		s.makeSpace("<< RETURN: " + id + ": Ant.collisionWithEchidna("

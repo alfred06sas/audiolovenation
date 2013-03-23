@@ -11,19 +11,19 @@ public class Echidna extends Item implements Movable {
 
 	/**
 	 * 
-	 * @return 
+	 * @return
 	 */
 	public void decreaseHunger() {
 	}
 
 	@Override
 	public void step() {
-		
+
 	}
 
 	@Override
 	public void setAlive() {
-		
+
 	}
 
 	/**
@@ -40,13 +40,22 @@ public class Echidna extends Item implements Movable {
 
 		s.makeSpace(">> CALL: " + id + ": Echidna.collisionWithAnt("
 				+ s.ants.indexOf(ant) + ": Ant, " + String.valueOf(b) + ")");
-		s.depth--;
 
-		ant.kill();
-		
+		if (b == true) {
+			s.stack.add(s.items.indexOf(ant));
+			ant.kill();
+			s.stack.remove(s.stack.size() - 1);
+
+			s.stack.add(id);
+			Echidna echidna = (Echidna) s.items.get(id - 1);
+			echidna.decreaseHunger();
+			s.stack.remove(s.stack.size() - 1);
+		}
+		s.depth--;
 		s.makeSpace("<< RETURN: " + id + ": Echidna.collisionWithAnt("
 				+ s.ants.indexOf(ant) + ": Ant, " + String.valueOf(b) + ")");
+
 		s.depth--;
 	}
-	
+
 }

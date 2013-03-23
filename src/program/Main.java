@@ -12,6 +12,7 @@ import java.io.InputStreamReader;
 import land.Field;
 import land.Land;
 import movable.Ant;
+import movable.Echidna;
 import blockage.Blockage;
 
 public class Main {
@@ -26,7 +27,7 @@ public class Main {
 		// 3. AntMove: Land, Field, Ant, Smell, item, tentacle, AntSmell, SingletonContainer
 		// 4. ScanAntMove: Ant, Field, AntSmell, Smell, Item, Tentacle
 		// 5. AntToAntlion: Ant, Antlion, Field, SC ------------------------------------------------> KÉSZ
-		// 6. AntToEchidna: Ant, Echidna, SC
+		// 6. AntToEchidna: Ant, Echidna, SC -------------------------------------------------------> KÉSZ
 		// 7. AnttoFood: Ant, Food, Smell, Field ---------------------------------------------------> KÉSZ
 		// 8. AnttoHill: Ant, Hill -----------------------------------------------------------------> KÉSZ
 		// 9. AnttoBlockage: Ant, Blockage, tentacle -----------------------------------------------> KÉSZ
@@ -49,6 +50,7 @@ public class Main {
 		Antlion antlion = null;
 		Food food = null;
 		Field field = null;
+		Echidna echidna = null;
 		
 		try {
 			while (true) {
@@ -94,6 +96,20 @@ public class Main {
 					s.stack.add(1);
 					antlion = s.antlions.get(2);
 					antlion.collisionWithAnt((Ant)s.items.get(3), true);
+					s.stack.remove(s.stack.size()-1);
+					break;
+				case 6:
+					System.out.println(seqNames[5]);
+					s.stack.add(7);
+					echidna = (Echidna) s.items.get(6);
+					echidna.collisionWithAnt((Ant)s.items.get(3), false);
+					s.stack.remove(s.stack.size()-1);
+					
+					System.out.println("----------------------------");
+					
+					s.stack.add(7);
+					echidna = (Echidna) s.items.get(6);
+					echidna.collisionWithAnt((Ant)s.items.get(3), true);
 					s.stack.remove(s.stack.size()-1);
 					break;
 				case 7:
