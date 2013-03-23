@@ -1,7 +1,7 @@
 package item;
 
-import program.Singleton;
 import movable.Ant;
+import program.Singleton;
 
 public class Spray extends Item implements Volatile {
 
@@ -32,4 +32,24 @@ public class Spray extends Item implements Volatile {
 				+ s.ants.indexOf(ant) + ": Ant, " + String.valueOf(b) + ")");
 		s.depth--;
 	}
+	
+	
+	public void collisionWithSpray(Integer strength) {
+		Singleton s = Singleton.Instance();
+
+		Integer id = s.stack.get(s.stack.size() - 1);
+
+		s.makeSpace(">> CALL: " + id + ": Spray.collisionWithSpray("+strength+": Integer)");
+		
+		s.stack.add(6);
+		s.ants.get(5).looseHP(10);
+		s.stack.remove(s.stack.size() - 1);
+
+
+		s.depth--;
+		s.makeSpace("<< RETURN: " + id + ": Spray.collisionWithSpray("+strength+": Integer)");
+		s.depth--;
+	}
+	
+	
 }
