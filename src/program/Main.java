@@ -22,7 +22,7 @@ public class Main {
 
 		String[] seqNames = new String[] { "Init", "AddItemsToFields",
 				"AntMove - EchidnaMove", "ScanAntMove", "AntToAntlion",
-				"AntToEchidna", "AnttoFood", "Anttohill", "AnttoBlockage",
+				"AntToEchidna", "AnttoFood", "AnttoHill", "AnttoBlockage",
 				"AnttoSpray", "EchidnatoAnt", "UseCaseSpray", "MoveLand",
 				"UseCaseSmell" };
 
