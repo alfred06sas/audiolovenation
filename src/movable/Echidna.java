@@ -39,7 +39,7 @@ public class Echidna extends Item implements Movable {
 		Integer id = s.stack.get(s.stack.size() - 1);
 
 		s.makeSpace(">> CALL: " + id + ": Echidna.collisionWithAnt("
-				+ s.ants.indexOf(ant) + ": Ant, " + String.valueOf(b) + ")");
+				+ s.ants.indexOf(ant) + ": Ant, " + String.valueOf(b) + ": boolean)");
 
 		if (b == true) {
 			s.stack.add(s.items.indexOf(ant));
@@ -53,7 +53,7 @@ public class Echidna extends Item implements Movable {
 		}
 		s.depth--;
 		s.makeSpace("<< RETURN: " + id + ": Echidna.collisionWithAnt("
-				+ s.ants.indexOf(ant) + ": Ant, " + String.valueOf(b) + ")");
+				+ s.ants.indexOf(ant) + ": Ant, " + String.valueOf(b) + ": boolean)");
 
 		s.depth--;
 	}

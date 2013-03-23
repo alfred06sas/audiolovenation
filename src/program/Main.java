@@ -51,6 +51,7 @@ public class Main {
 		Food food = null;
 		Field field = null;
 		Echidna echidna = null;
+		Ant ant = null;
 		
 		try {
 			while (true) {
@@ -159,6 +160,17 @@ public class Main {
 					s.stack.add(10);
 					spray = s.sprays.get(9);
 					spray.collisionWithAnt(s.ants.get(16), true);
+					s.stack.remove(s.stack.size()-1);
+					break;
+				case 12:
+					System.out.println(seqNames[11]);
+					s.stack.add(3);
+					ant = (Ant) s.items.get(2);
+					echidna = (Echidna)s.items.get(8);
+					ant.collisionWithEchidna(echidna);
+					
+					echidna.decreaseHunger();
+					
 					s.stack.remove(s.stack.size()-1);
 					break;
 				case 14:
