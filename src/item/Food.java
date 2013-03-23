@@ -17,6 +17,17 @@ public class Food extends Item {
 	 * @return 
 	 */
 	public void deleteSmell() {
+		Singleton s = Singleton.Instance();		
+		Integer id = s.stack.get(s.stack.size()-1);
+		
+		s.makeSpace(">> CALL: " + id + ": Item.deleteSmell()");
+		
+		// Ide jön a kód
+
+		
+		s.depth--;
+		s.makeSpace("<< RETURN: " + id + ": Item.deleteSmell()");
+		s.depth--;
 	}
 
 	/**
@@ -62,6 +73,8 @@ public class Food extends Item {
 		s.makeSpace("<< RETURN: " + id + ": Item.setActualField("+s.fields.indexOf(field)+": Field)");
 		s.depth--;
 	}
+	
+	
 	@Override
 	public void collisionWithEchidna(Echidna echidna) {
 		Singleton s = Singleton.Instance();

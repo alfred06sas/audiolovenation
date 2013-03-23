@@ -6,6 +6,8 @@ import movable.Ant;
 import movable.Echidna;
 
 public class Hill extends Item {
+	
+	
 	@Override
 	public void collisionWithAnt(Ant ant, boolean b) {
 		Singleton s = Singleton.Instance();
@@ -23,6 +25,9 @@ public class Hill extends Item {
 		s.makeSpace("<< RETURN: " + id + ": Ant.collisionWithAnt(" + s.ants.indexOf(ant) + ": Ant, " + String.valueOf(b) + ")");
 		s.depth--;
 	}
+	
+	
+	
 	@Override
 	public void collisionWithEchidna(Echidna echidna) {
 		Singleton s = Singleton.Instance();

@@ -6,6 +6,8 @@ import movable.Echidna;
 import program.Singleton;
 
 public class Antlion extends Item {
+	
+	
 	@Override
 	public void collisionWithAnt(Ant ant, boolean b) {
 		Singleton s = Singleton.Instance();
@@ -25,6 +27,8 @@ public class Antlion extends Item {
 				+ s.ants.indexOf(ant) + ": Ant, " + String.valueOf(b) + ": boolean)");
 		s.depth--;
 	}
+	
+	
 	@Override
 	public void collisionWithEchidna(Echidna echidna) {
 		Singleton s = Singleton.Instance();
@@ -39,6 +43,7 @@ public class Antlion extends Item {
 				+ s.echidnas.indexOf(echidna) + ": Echidna)");
 		s.depth--;
 	}
+	
 	
 	@Override
 	public void collisionWithSpray(Integer strength) {
