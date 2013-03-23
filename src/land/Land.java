@@ -1,9 +1,12 @@
 package land;
 import item.Item;
+import item.Spray;
 
 import java.util.List;
 
+import movable.Ant;
 import program.Singleton;
+import program.SingletonContainer;
 
 public class Land {
 
@@ -65,6 +68,27 @@ public class Land {
 		Integer id = s.stack.get(s.stack.size()-1);
 		
 		s.makeSpace(">> CALL: " + id + ": Land.move()");
+		
+		s.stack.add(1);
+		SingletonContainer sc = s.singletonContainer.get(0).getInstance();
+		
+		sc.getMovables();
+		s.stack.remove(s.stack.size()-1);
+		
+		
+		s.stack.add(2);
+		Ant ant = (Ant)s.items.get(1);
+		ant.step();
+		s.stack.remove(s.stack.size()-1);
+		
+		s.stack.add(1);
+		sc.getVolatiles();
+		s.stack.remove(s.stack.size()-1);
+		
+		s.stack.add(2);
+		Spray spray = s.sprays.get(1);
+		spray.decrease();
+		s.stack.remove(s.stack.size()-1);
 		
 		// Ide jön a kód
 		s.depth--;

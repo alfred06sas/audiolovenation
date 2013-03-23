@@ -33,7 +33,7 @@ public class Main {
 		// 12. EchidnatoAnt: Echidna, Ant, Field, SC
 		// 13. SpraytoAnt: Spray, Ant --------------------------------------------------------------> KÉSZ
 		// 14. useCaseSpray: Actor, Field, Spray, Item, SC
-		// 15. MoveLand: Land, Movable, Volatile, SC
+		// 15. MoveLand: Land, Movable, Volatile, SC -----------------------------------------------> KÉSZ
 		// 16. UseCaseSmell: Actor, Field, Smell, SC
 		Singleton s = Singleton.Instance();
 		s.initItems();
@@ -125,6 +125,13 @@ public class Main {
 					s.stack.add(10);
 					spray = s.sprays.get(9);
 					spray.collisionWithAnt(s.ants.get(16), true);
+					s.stack.remove(s.stack.size()-1);
+					break;
+				case 15:
+					System.out.println(seqNames[14]);
+					s.stack.add(1);
+					land = s.land.get(0);
+					land.move();
 					s.stack.remove(s.stack.size()-1);
 					break;
 				default:
