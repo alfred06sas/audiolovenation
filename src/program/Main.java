@@ -33,7 +33,7 @@ public class Main {
 		// 9. AnttoBlockage: Ant, Blockage, tentacle -----------------------------------------------> KÉSZ
 		// 10. AnttoSpray: Ant, Spray --------------------------------------------------------------> KÉSZ
 		// 11. EchidnaMove: Land, Echidna, Item, Field
-		// 12. EchidnatoAnt: Echidna, Ant, Field, SC
+		// 12. EchidnatoAnt: Echidna, Ant, Field, SC -----------------------------------------------> KÉSZ
 		// 13. SpraytoAnt: Spray, Ant --------------------------------------------------------------> KÉSZ
 		// 14. useCaseSpray: Actor, Field, Spray, Item, SC -----------------------------------------> KÉSZ
 		// 15. MoveLand: Land, Movable, Volatile, SC -----------------------------------------------> KÉSZ
@@ -167,10 +167,7 @@ public class Main {
 					s.stack.add(3);
 					ant = (Ant) s.items.get(2);
 					echidna = (Echidna)s.items.get(8);
-					ant.collisionWithEchidna(echidna);
-					
-					echidna.decreaseHunger();
-					
+					ant.collisionWithEchidna(echidna);					
 					s.stack.remove(s.stack.size()-1);
 					break;
 				case 14:
