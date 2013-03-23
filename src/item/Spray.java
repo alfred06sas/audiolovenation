@@ -1,7 +1,5 @@
-package blockage;
+package item;
 
-import item.Item;
-import item.Volatile;
 import movable.Ant;
 import movable.Echidna;
 import program.Singleton;

@@ -2,7 +2,7 @@ package program;
 
 import item.Antlion;
 import item.Hill;
-import blockage.Spray;
+import item.Spray;
 
 import java.io.BufferedReader;
 import java.io.IOException;
