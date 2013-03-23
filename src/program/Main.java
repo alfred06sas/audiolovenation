@@ -31,7 +31,7 @@ public class Main {
 		// 10. AnttoSpray: Ant, Spray --------------------------------------------------------------> KÉSZ
 		// 11. EchidnaMove: Land, Echidna, Item, Field
 		// 12. EchidnatoAnt: Echidna, Ant, Field, SC
-		// 13. SpraytoAnt: Spray, Ant
+		// 13. SpraytoAnt: Spray, Ant --------------------------------------------------------------> KÉSZ
 		// 14. useCaseSpray: Actor, Field, Spray, Item, SC
 		// 15. MoveLand: Land, Movable, Volatile, SC
 		// 16. UseCaseSmell: Actor, Field, Smell, SC
