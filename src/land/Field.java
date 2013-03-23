@@ -162,11 +162,11 @@ public class Field {
 		Integer id = s.stack.get(s.stack.size() - 1);
 
 		s.makeSpace(">> CALL: " + id + ": Field.removeSmell("
-				+ s.foodSmells.indexOf(smell) + ": FoodSmell)");
+				+ s.smells.indexOf(smell) + ": Smell)");
 
 		s.depth--;
 		s.makeSpace("<< RETURN: " + id + ": Field.removeSmell("
-				+ s.foodSmells.indexOf(smell) + ": FoodSmell)");
+				+ s.smells.indexOf(smell) + ": Smell)");
 		s.depth--;
 	}
 
@@ -186,8 +186,8 @@ public class Field {
 		sc.decreaseAntSmellSpray(5);
 		s.stack.remove(s.stack.size() - 1);
 
-		s.stack.add(11);
-		AntSmell antSmell = s.antSmells.get(10);
+		s.stack.add(3);
+		AntSmell antSmell = s.antSmells.get(2);
 		antSmell.removeMyself();
 		s.stack.remove(s.stack.size() - 1);
 

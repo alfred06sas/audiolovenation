@@ -17,7 +17,7 @@ public class AntSmell extends Smell implements Volatile {
 		s.stack.add(11);
 		Field field = s.fields.get(10);
 		
-		field.removeSmell(s.antSmells.get(id));
+		field.removeSmell(s.smells.get(id));
 		
 		s.depth--;
 		s.makeSpace("<< RETURN: " + id + ": AntSmell.removeMyself()");

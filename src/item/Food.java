@@ -24,7 +24,7 @@ public class Food extends Item {
 		s.makeSpace(">> CALL: " + id + ": Food.deleteSmell()");
 
 		s.stack.add(19);
-		Smell foodsmell = (FoodSmell) s.foodSmells.get(18);
+		Smell foodsmell = (FoodSmell) s.smells.get(18);
 		foodsmell.removeMyself();
 		s.stack.remove(s.stack.size() - 1);
 

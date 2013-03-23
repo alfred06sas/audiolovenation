@@ -153,16 +153,9 @@ public class Main {
 					s.stack.remove(s.stack.size()-1);
 					break;
 				case 16:
-					System.out.println("Melyik mezõn szeretnéd használni a spray-t? (1-20)");
-					try {
-						nr = Integer.valueOf(br.readLine());
-					} catch (NumberFormatException nfe) {
-						System.err.println("Adj meg egy számot 1 és 20 között! Próbáld újra!");
-						continue;
-					}
 					System.out.println(seqNames[15]);
-					s.stack.add(nr);
-					field = s.fields.get(nr-1);
+					s.stack.add(11);
+					field = s.fields.get(10);
 					field.removeAntSmells();
 					s.stack.remove(s.stack.size()-1);
 					break;

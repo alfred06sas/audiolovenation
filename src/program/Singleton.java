@@ -16,6 +16,7 @@ import movable.Ant;
 import movable.Echidna;
 import smell.AntSmell;
 import smell.FoodSmell;
+import smell.Smell;
 import blockage.Blockage;
 import blockage.Gravel;
 import blockage.Puddle;
@@ -38,6 +39,7 @@ public class Singleton {
 	public List<FoodSmell> foodSmells;
 	public List<Hill> hill;
 	public List<Item> items;
+	public List<Smell> smells;
 	public List<SingletonContainer> singletonContainer;
 
 	public static Singleton Instance() {
@@ -68,6 +70,7 @@ public class Singleton {
 		foodSmells = new ArrayList<FoodSmell>();
 		hill = new ArrayList<Hill>();
 		items = new ArrayList<Item>();
+		smells = new ArrayList<Smell>();
 		singletonContainer = new ArrayList<SingletonContainer>();
 
 		land.add(new Land());
@@ -84,17 +87,22 @@ public class Singleton {
 			antlions.add(new Antlion());
 			sprays.add(new Spray());
 			foods.add(new Food());
-			antSmells.add(new AntSmell());
-			foodSmells.add(new FoodSmell());
+			AntSmell antSmell = new AntSmell();
+			antSmells.add(antSmell);
+			FoodSmell foodSmell = new FoodSmell();
+			foodSmells.add(foodSmell);
 			if (i < 5) {
 				items.add(ant);
 				blockages.add(new Puddle());
+				smells.add(antSmell);
 			} else if (i<10){
 				items.add(echidna);
-				blockages.add(new Gravel());
+				blockages.add(new Puddle());
+				smells.add(antSmell);
 			} else {
 				items.add(new Food());
 				blockages.add(new Gravel());
+				smells.add(foodSmell);
 			}
 
 		}
