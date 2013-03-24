@@ -23,13 +23,11 @@ public class Tentacle {
 
 		Integer id = s.stack.get(s.stack.size() - 1);
 
-//		s.makeSpace(">> CALL: " + id + ": Tentacle.setPossibleNeighbours(" + 
-//				s.fields.indexOf(neighbour) + ": Field)");
-//
-//		s.depth--;
-//		s.makeSpace("<< RETURN: " + id + ": Tentacle.setPossibleNeighbours(" + 
-//				s.fields.indexOf(neighbour) + ": Field)");
-//		s.depth--;
+		s.makeSpace(">> CALL: " + id + ": Tentacle.setPossibleNeighbours(Map<Dir, Field>)");
+
+		s.depth--;
+		s.makeSpace("<< RETURN: " + id + ": Tentacle.setPossibleNeighbours((Map<Dir, Field>)");
+		s.depth--;
 	}
 
 	/**

@@ -3,10 +3,10 @@ package program;
 import item.Volatile;
 
 import java.util.List;
-import java.util.Map;
 
 import land.Land;
 import movable.Movable;
+import smell.Smell;
 
 public class SingletonContainer {
 
@@ -20,24 +20,26 @@ public class SingletonContainer {
 	/**
 	 * 
 	 * @param Volatile
-	 * @return 
+	 * @return
 	 */
-	public void addVolatile(int Volatile) {
+	public void addVolatile(Volatile volatile_) {
 		Singleton s = Singleton.Instance();
 
 		Integer id = s.stack.get(s.stack.size() - 1);
 
-		s.makeSpace(">> CALL: " + id + ": SingletonContainer.addVolatile()");
+		s.makeSpace(">> CALL: " + id + ": SingletonContainer.addVolatile("
+				+ s.smells.indexOf((Smell) volatile_) + ": Volatile)");
 
 		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": SingletonContainer.addVolatile()");
+		s.makeSpace("<< RETURN: " + id + ": SingletonContainer.addVolatile("
+				+ s.smells.indexOf((Smell) volatile_) + ": Volatile)");
 		s.depth--;
 	}
 
 	/**
 	 * 
 	 * @param Movable
-	 * @return 
+	 * @return
 	 */
 	public void addMovable(Movable movable) {
 		Singleton s = Singleton.Instance();
@@ -53,7 +55,7 @@ public class SingletonContainer {
 
 	/**
 	 * 
-	 * @return 
+	 * @return
 	 */
 	public static SingletonContainer getInstance() {
 		Singleton s = Singleton.Instance();
@@ -63,24 +65,26 @@ public class SingletonContainer {
 		s.makeSpace(">> CALL: " + id + ": SingletonContainer.getInstance()");
 
 		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": SingletonContainer.getInstance(): SingletonContainer");
+		s.makeSpace("<< RETURN: " + id
+				+ ": SingletonContainer.getInstance(): SingletonContainer");
 		s.depth--;
 		return new SingletonContainer();
 	}
 
 	/**
 	 * 
-	 * @return 
+	 * @return
 	 */
 	public List<Movable> getMovables() {
 		Singleton s = Singleton.Instance();
 
 		Integer id = s.stack.get(s.stack.size() - 1);
-		
+
 		s.makeSpace(">> CALL: " + id + ": SingletonContainer.getMovables()");
 
 		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": SingletonContainer.getMovables(): List<Movable>");
+		s.makeSpace("<< RETURN: " + id
+				+ ": SingletonContainer.getMovables(): List<Movable>");
 		s.depth--;
 
 		return null;
@@ -88,17 +92,18 @@ public class SingletonContainer {
 
 	/**
 	 * 
-	 * @return 
+	 * @return
 	 */
 	public List<Volatile> getVolatiles() {
 		Singleton s = Singleton.Instance();
 
 		Integer id = s.stack.get(s.stack.size() - 1);
-		
+
 		s.makeSpace(">> CALL: " + id + ": SingletonContainer.getVolatiles()");
 
 		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": SingletonContainer.getVolatiles(): List<Volatile>");
+		s.makeSpace("<< RETURN: " + id
+				+ ": SingletonContainer.getVolatiles(): List<Volatile>");
 		s.depth--;
 
 		return null;
@@ -107,7 +112,7 @@ public class SingletonContainer {
 	/**
 	 * 
 	 * @param Volatile
-	 * @return 
+	 * @return
 	 */
 	public void removeVolatile(Volatile volatile_) {
 	}
@@ -115,53 +120,61 @@ public class SingletonContainer {
 	/**
 	 * 
 	 * @param Movable
-	 * @return 
+	 * @return
 	 */
 	public void removeMovable(Movable movable) {
 		Singleton s = Singleton.Instance();
 
 		Integer id = s.stack.get(s.stack.size() - 1);
 
-		s.makeSpace(">> CALL: " + id + ": SingletonContainer.removeMovable(" + s.items.indexOf(movable)
-				+ ": Movable)");
+		s.makeSpace(">> CALL: " + id + ": SingletonContainer.removeMovable("
+				+ s.items.indexOf(movable) + ": Movable)");
 
 		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": SingletonContainer.removeMovable(" + s.items.indexOf(movable)
-				+ ": Movable)");
+		s.makeSpace("<< RETURN: " + id + ": SingletonContainer.removeMovable("
+				+ s.items.indexOf(movable) + ": Movable)");
 		s.depth--;
 	}
 
 	/**
 	 * 
 	 * @param Integer
-	 * @return 
+	 * @return
 	 */
 	public void decreaseAntKillerSpray(Integer strength) {
 		Singleton s = Singleton.Instance();
 
 		Integer id = s.stack.get(s.stack.size() - 1);
 
-		s.makeSpace(">> CALL: " + id + ": SingletonContainer.decreaseAntKillerSpray(" + strength + ": Integer)");
+		s.makeSpace(">> CALL: " + id
+				+ ": SingletonContainer.decreaseAntKillerSpray(" + strength
+				+ ": Integer)");
 
 		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": SingletonContainer.decreaseAntKillerSpray(" + strength + ": Integer)");
+		s.makeSpace("<< RETURN: " + id
+				+ ": SingletonContainer.decreaseAntKillerSpray(" + strength
+				+ ": Integer)");
 		s.depth--;
 	}
 
 	/**
 	 * 
 	 * @param Integer
-	 * @return 
+	 * @return
 	 */
 	public void decreaseAntSmellSpray(Integer strength) {
 		Singleton s = Singleton.Instance();
 
 		Integer id = s.stack.get(s.stack.size() - 1);
 
-		s.makeSpace(">> CALL: " + id + ": SingletonContainer.decreaseAntSmellSpray(" + strength + ": Integer)");
+		s.makeSpace(">> CALL: " + id
+				+ ": SingletonContainer.decreaseAntSmellSpray(" + strength
+				+ ": Integer)");
 
 		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": SingletonContainer.decreaseAntSmellSpray(" + strength + ": Integer)");
+		s.makeSpace("<< RETURN: " + id
+				+ ": SingletonContainer.decreaseAntSmellSpray(" + strength
+				+ ": Integer)");
 		s.depth--;
 	}
 

@@ -2,10 +2,17 @@ package movable;
 
 import item.Item;
 import item.Tentacle;
+import item.Volatile;
+
+import java.util.Map;
+import java.util.TreeMap;
+
 import land.Dir;
 import land.Field;
 import program.Singleton;
 import program.SingletonContainer;
+import smell.AntSmell;
+import smell.Smell;
 
 public class Ant extends Item implements Movable {
 
@@ -23,13 +30,15 @@ public class Ant extends Item implements Movable {
 
 		Integer id = s.stack.get(s.stack.size() - 1);
 
-		s.makeSpace(">> CALL: " + id + ": Ant.setActualField()");
+		s.makeSpace(">> CALL: " + id + ": Ant.setActualField("
+				+ s.fields.indexOf(field) + ": Field)");
 
 		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": Ant.setActualField()");
+		s.makeSpace("<< RETURN: " + id + ": Ant.setActualField("
+				+ s.fields.indexOf(field) + ": Field)");
 		s.depth--;
 	}
-	
+
 	/**
 	 * 
 	 * @param Integer
@@ -148,9 +157,71 @@ public class Ant extends Item implements Movable {
 
 		s.makeSpace(">> CALL: " + id + ": Ant.step()");
 
+		s.stack.add(12);
+		Field prevField = s.fields.get(11);
+		prevField.getNeighbours();
+		s.stack.remove(s.stack.size() - 1);
+
+		s.stack.add(9);
+		Tentacle tentacle = s.tentacles.get(8);
+		Map<Dir, Field> map = new TreeMap<Dir, Field>();
+		map.put(Dir.DOWN, prevField);
+		tentacle.setPossibleNeighbours(map);
+		s.stack.remove(s.stack.size() - 1);
+
+		s.stack.add(11);
+		Field nextField = s.fields.get(10);
+		nextField.getItems();
+		s.stack.remove(s.stack.size() - 1);
+
+		s.stack.add(5);
+		Ant ant = (Ant) s.items.get(id);
+		Ant ant2 = (Ant) s.items.get(4);
+		ant2.collisionWithAnt(ant, false);
+		s.stack.remove(s.stack.size() - 1);
+
+		s.stack.add(9);
+		Map<Dir, Field> map2 = tentacle.scan(true);
+		s.stack.remove(s.stack.size() - 1);
+
+		if (map2 != null) {
+			s.stack.add(12);
+			Smell smell = (AntSmell) s.smells.get(4);
+			prevField.addSmell(smell);
+			s.stack.remove(s.stack.size() - 1);
+
+			s.stack.add(1);
+			SingletonContainer sc = s.singletonContainer.get(0);
+			Volatile smell2 = (AntSmell) s.smells.get(4);
+			sc.addVolatile(smell2);
+			s.stack.remove(s.stack.size() - 1);
+
+			s.stack.add(12);
+			prevField.removeItem(ant);
+			s.stack.remove(s.stack.size() - 1);
+
+			s.stack.add(2);
+			ant.setActualField(nextField);
+			s.stack.remove(s.stack.size() - 1);
+
+			s.stack.add(11);
+			nextField.addItem(ant);
+			s.stack.remove(s.stack.size() - 1);
+		} else {
+			s.stack.add(5);
+			ant.reverseDir();
+			s.stack.remove(s.stack.size() - 1);
+		}
+
+		s.stack.add(8);
+		Echidna echidna = (Echidna) s.items.get(7);
+		echidna.collisionWithAnt(ant, true);
+		s.stack.remove(s.stack.size() - 1);
+
 		s.depth--;
 		s.makeSpace("<< RETURN: " + id + ": Ant.step()");
 		s.depth--;
+
 	}
 
 	@Override
@@ -195,9 +266,9 @@ public class Ant extends Item implements Movable {
 
 		s.makeSpace(">> CALL: " + id + ": Ant.collisionWithEchidna("
 				+ s.echidnas.indexOf(echidna) + ": Echidna)");
-		
+
 		s.stack.add(s.items.indexOf(echidna));
-		Ant ant = (Ant) s.items.get(id-1);
+		Ant ant = (Ant) s.items.get(id - 1);
 		echidna.collisionWithAnt(ant, true);
 		s.stack.remove(s.stack.size() - 1);
 

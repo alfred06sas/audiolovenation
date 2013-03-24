@@ -25,8 +25,8 @@ public class Main {
 				"MoveLand", "UseCaseSmell" };
 		// 1. Init ---------------------------------------------------------------------------------> KÉSZ
 		// 2. AddItemsToFields: Land, Field, Item --------------------------------------------------> KÉSZ
-		// 3. AntMove: Land, Field, Ant, Smell, item, tentacle, AntSmell, SingletonContainer ------->
-		// 4. ScanAntMove: Ant, Field, AntSmell, Smell, Item, Tentacle -----------------------------> 
+		// 3. AntMove: Land, Field, Ant, Smell, item, tentacle, AntSmell, SingletonContainer -------> KÉSZ
+		// 4. ScanAntMove: Ant, Field, AntSmell, Smell, Item, Tentacle -----------------------------> KÉSZ
 		// 5. AntToAntlion: Ant, Antlion, Field, SC ------------------------------------------------> KÉSZ
 		// 6. AntToEchidna: Ant, Echidna, SC -------------------------------------------------------> KÉSZ
 		// 7. AnttoFood: Ant, Food, Smell, Field ---------------------------------------------------> KÉSZ
@@ -85,6 +85,13 @@ public class Main {
 					s.stack.add(1);
 					land = s.land.get(0);
 					land.putItems();
+					s.stack.remove(s.stack.size()-1);
+					break;
+				case 3:
+					System.out.println(seqNames[2]);
+					s.stack.add(1);
+					land = s.land.get(0);
+					land.move();
 					s.stack.remove(s.stack.size()-1);
 					break;
 				case 4:

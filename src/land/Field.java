@@ -144,11 +144,11 @@ public class Field {
 		Integer id = s.stack.get(s.stack.size() - 1);
 
 		s.makeSpace(">> CALL: " + id + ": Field.addSmell("
-				+ s.foodSmells.indexOf(smell) + ": Smell)");
+				+ s.smells.indexOf(smell) + ": Smell)");
 
 		s.depth--;
 		s.makeSpace("<< RETURN: " + id + ": Field.addSmell("
-				+ s.foodSmells.indexOf(smell) + ": Smell)");
+				+ s.smells.indexOf(smell) + ": Smell)");
 		s.depth--;
 	}
 
