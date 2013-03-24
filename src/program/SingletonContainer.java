@@ -23,6 +23,15 @@ public class SingletonContainer {
 	 * @return 
 	 */
 	public void addVolatile(int Volatile) {
+		Singleton s = Singleton.Instance();
+
+		Integer id = s.stack.get(s.stack.size() - 1);
+
+		s.makeSpace(">> CALL: " + id + ": SingletonContainer.addVolatile()");
+
+		s.depth--;
+		s.makeSpace("<< RETURN: " + id + ": SingletonContainer.addVolatile()");
+		s.depth--;
 	}
 
 	/**
@@ -31,6 +40,15 @@ public class SingletonContainer {
 	 * @return 
 	 */
 	public void addMovable(Movable movable) {
+		Singleton s = Singleton.Instance();
+
+		Integer id = s.stack.get(s.stack.size() - 1);
+
+		s.makeSpace(">> CALL: " + id + ": SingletonContainer.addMovable()");
+
+		s.depth--;
+		s.makeSpace("<< RETURN: " + id + ": SingletonContainer.addMovable()");
+		s.depth--;
 	}
 
 	/**

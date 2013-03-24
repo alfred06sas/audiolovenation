@@ -1,5 +1,6 @@
 package movable;
 
+import land.Field;
 import program.Singleton;
 import item.Item;
 
@@ -9,6 +10,19 @@ public class Echidna extends Item implements Movable {
 	private Integer wait;
 	private Integer hunger;
 
+	@Override
+	public void setActualField(Field field) {
+		Singleton s = Singleton.Instance();
+
+		Integer id = s.stack.get(s.stack.size() - 1);
+
+		s.makeSpace(">> CALL: " + id + ": Echidna.setActualField()");
+
+		s.depth--;
+		s.makeSpace("<< RETURN: " + id + ": Echidna.setActualField()");
+		s.depth--;
+	}
+	
 	/**
 	 * 
 	 * @return

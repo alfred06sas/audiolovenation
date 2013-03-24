@@ -17,6 +17,19 @@ public class Ant extends Item implements Movable {
 	private Integer HP;
 	private Dir dir;
 
+	@Override
+	public void setActualField(Field field) {
+		Singleton s = Singleton.Instance();
+
+		Integer id = s.stack.get(s.stack.size() - 1);
+
+		s.makeSpace(">> CALL: " + id + ": Ant.setActualField()");
+
+		s.depth--;
+		s.makeSpace("<< RETURN: " + id + ": Ant.setActualField()");
+		s.depth--;
+	}
+	
 	/**
 	 * 
 	 * @param Integer
