@@ -1,5 +1,5 @@
 package smell;
-
+                                                                                                                                                                                                
 import land.Field;
 import program.Singleton;
 
@@ -23,4 +23,16 @@ public class FoodSmell extends Smell {
 		s.depth--;
 	}
 	
+	@Override
+	public void decreaseSmell() {
+		Singleton s = Singleton.Instance();
+
+		Integer id = s.stack.get(s.stack.size() - 1);
+		
+		s.makeSpace(">> CALL: " + id + ": AntSmell.decreaseSmell()");
+
+		s.depth--;
+		s.makeSpace("<< RETURN: " + id + ": AntSmell.decreaseSmell()");
+		s.depth--;
+	}
 }

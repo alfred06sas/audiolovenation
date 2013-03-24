@@ -119,6 +119,15 @@ public class SingletonContainer {
 	 * @return 
 	 */
 	public void decreaseAntKillerSpray(Integer strength) {
+		Singleton s = Singleton.Instance();
+
+		Integer id = s.stack.get(s.stack.size() - 1);
+
+		s.makeSpace(">> CALL: " + id + ": SingletonContainer.decreaseAntKillerSpray(" + strength + ")");
+
+		s.depth--;
+		s.makeSpace("<< RETURN: " + id + ": SingletonContainer.decreaseAntKillerSpray(" + strength + ")");
+		s.depth--;
 	}
 
 	/**
@@ -127,6 +136,15 @@ public class SingletonContainer {
 	 * @return 
 	 */
 	public void decreaseAntSmellSpray(Integer strength) {
+		Singleton s = Singleton.Instance();
+
+		Integer id = s.stack.get(s.stack.size() - 1);
+
+		s.makeSpace(">> CALL: " + id + ": SingletonContainer.decreaseAntSmellSpray(" + strength + ")");
+
+		s.depth--;
+		s.makeSpace("<< RETURN: " + id + ": SingletonContainer.decreaseAntSmellSpray(" + strength + ")");
+		s.depth--;
 	}
 
 }
