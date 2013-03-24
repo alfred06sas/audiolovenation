@@ -26,6 +26,19 @@ public class Echidna extends Item implements Movable {
 	}
 
 	@Override
+	public void collisionWithEchidna(Echidna echidna) {
+		Singleton s = Singleton.Instance();
+
+		Integer id = s.stack.get(s.stack.size() - 1);
+
+		s.makeSpace(">> CALL: " + id + ": Echidna.collisionWithEchidna()");
+
+		s.depth--;
+		s.makeSpace("<< RETURN: " + id + ": Echidna.collisionWithEchidna()");
+		s.depth--;
+	}
+
+	@Override
 	public void step() {
 
 	}
