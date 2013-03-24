@@ -123,10 +123,10 @@ public class SingletonContainer {
 
 		Integer id = s.stack.get(s.stack.size() - 1);
 
-		s.makeSpace(">> CALL: " + id + ": SingletonContainer.decreaseAntKillerSpray(" + strength + ")");
+		s.makeSpace(">> CALL: " + id + ": SingletonContainer.decreaseAntKillerSpray(" + strength + ": Integer)");
 
 		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": SingletonContainer.decreaseAntKillerSpray(" + strength + ")");
+		s.makeSpace("<< RETURN: " + id + ": SingletonContainer.decreaseAntKillerSpray(" + strength + ": Integer)");
 		s.depth--;
 	}
 
@@ -140,10 +140,10 @@ public class SingletonContainer {
 
 		Integer id = s.stack.get(s.stack.size() - 1);
 
-		s.makeSpace(">> CALL: " + id + ": SingletonContainer.decreaseAntSmellSpray(" + strength + ")");
+		s.makeSpace(">> CALL: " + id + ": SingletonContainer.decreaseAntSmellSpray(" + strength + ": Integer)");
 
 		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": SingletonContainer.decreaseAntSmellSpray(" + strength + ")");
+		s.makeSpace("<< RETURN: " + id + ": SingletonContainer.decreaseAntSmellSpray(" + strength + ": Integer)");
 		s.depth--;
 	}
 
