@@ -55,6 +55,16 @@ public class SingletonContainer {
 	 * @return 
 	 */
 	public List<Movable> getMovables() {
+		Singleton s = Singleton.Instance();
+
+		Integer id = s.stack.get(s.stack.size() - 1);
+		
+		s.makeSpace(">> CALL: " + id + ": SingletonContainer.getMovables()");
+
+		s.depth--;
+		s.makeSpace("<< RETURN: " + id + ": SingletonContainer.getMovables(): List<Movable>");
+		s.depth--;
+
 		return null;
 	}
 
@@ -63,6 +73,16 @@ public class SingletonContainer {
 	 * @return 
 	 */
 	public List<Volatile> getVolatiles() {
+		Singleton s = Singleton.Instance();
+
+		Integer id = s.stack.get(s.stack.size() - 1);
+		
+		s.makeSpace(">> CALL: " + id + ": SingletonContainer.getVolatiles()");
+
+		s.depth--;
+		s.makeSpace("<< RETURN: " + id + ": SingletonContainer.getVolatiles(): List<Movable>");
+		s.depth--;
+
 		return null;
 	}
 
