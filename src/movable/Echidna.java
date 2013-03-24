@@ -14,6 +14,15 @@ public class Echidna extends Item implements Movable {
 	 * @return
 	 */
 	public void decreaseHunger() {
+		Singleton s = Singleton.Instance();
+
+		Integer id = s.stack.get(s.stack.size() - 1);
+
+		s.makeSpace(">> CALL: " + id + ": Echidna.decreaseHunger()");
+
+		s.depth--;
+		s.makeSpace("<< RETURN: " + id + ": Echidna.decreaseHunger()");
+		s.depth--;
 	}
 
 	@Override
