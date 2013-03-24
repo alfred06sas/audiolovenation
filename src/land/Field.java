@@ -183,7 +183,7 @@ public class Field {
 
 		s.stack.add(1);
 		SingletonContainer sc = s.singletonContainer.get(0).getInstance();
-		sc.decreaseAntSmellSpray(5);
+		s.singletonContainer.get(0).decreaseAntSmellSpray(5);
 		s.stack.remove(s.stack.size() - 1);
 
 		s.stack.add(3);
@@ -193,6 +193,22 @@ public class Field {
 
 		s.depth--;
 		s.makeSpace("<< RETURN: " + id + ": Field.removeAntSmells()");
+		s.depth--;
+	}
+	
+	public void onClick(){
+		Singleton s = Singleton.Instance();
+		Integer id = s.stack.get(s.stack.size() - 1);
+
+		s.makeSpace(">> CALL: " + id + ": Field.onClick()");
+
+		s.stack.add(1);
+		SingletonContainer sc = s.singletonContainer.get(0).getInstance();
+		s.singletonContainer.get(0).getVolatiles();
+		s.stack.remove(s.stack.size() - 1);
+		
+		s.depth--;
+		s.makeSpace("<< RETURN: " + id + ": Field.onClick()");
 		s.depth--;
 	}
 
