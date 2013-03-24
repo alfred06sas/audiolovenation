@@ -2,6 +2,7 @@ package smell;
 
 import land.Field;
 import program.Singleton;
+import item.Tentacle;
 import item.Volatile;
 
 public class AntSmell extends Smell implements Volatile {
@@ -47,6 +48,23 @@ public class AntSmell extends Smell implements Volatile {
 
 		s.depth--;
 		s.makeSpace("<< RETURN: " + id + ": AntSmell.decreaseSmell()");
+		s.depth--;
+	}
+	
+	@Override
+	public void smellIt(Tentacle tentacle) {
+		Singleton s = Singleton.Instance();
+
+		Integer id = s.stack.get(s.stack.size() - 1);
+		
+		s.makeSpace(">> CALL: " + id + ": AntSmell.smellIt(" + s.tentacles.indexOf(tentacle) + ")");
+
+		s.stack.add(id);
+		tentacle.increaseAntSmell(8);
+		s.stack.remove(s.stack.size()-1);
+		
+		s.depth--;
+		s.makeSpace("<< RETURN: " + id + ": AntSmell.smellIt(" + s.tentacles.indexOf(tentacle) + ")");
 		s.depth--;
 	}
 }

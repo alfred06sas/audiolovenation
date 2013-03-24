@@ -1,5 +1,6 @@
 package smell;
                                                                                                                                                                                                 
+import item.Tentacle;
 import land.Field;
 import program.Singleton;
 
@@ -33,6 +34,23 @@ public class FoodSmell extends Smell {
 
 		s.depth--;
 		s.makeSpace("<< RETURN: " + id + ": AntSmell.decreaseSmell()");
+		s.depth--;
+	}
+	
+	@Override
+	public void smellIt(Tentacle tentacle) {
+		Singleton s = Singleton.Instance();
+
+		Integer id = s.stack.get(s.stack.size() - 1);
+		
+		s.makeSpace(">> CALL: " + id + ": FoodSmell.smellIt(" + s.tentacles.indexOf(tentacle) + ")");
+
+		s.stack.add(id);
+		tentacle.increaseFoodSmell(8);
+		s.stack.remove(s.stack.size()-1);
+		
+		s.depth--;
+		s.makeSpace("<< RETURN: " + id + ": FoodSmell.smellIt(" + s.tentacles.indexOf(tentacle) + ")");
 		s.depth--;
 	}
 }
