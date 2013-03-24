@@ -10,7 +10,15 @@ public class Spray extends Item implements Volatile {
 
 	@Override
 	public void decrease() {
-         
+		Singleton s = Singleton.Instance();
+
+		Integer id = s.stack.get(s.stack.size() - 1);
+		
+		s.makeSpace(">> CALL: " + id + ": Spray.decrease()");
+
+		s.depth--;
+		s.makeSpace("<< RETURN: " + id + ": Spray.decrease()");
+		s.depth--;
 	}
 
 	@Override

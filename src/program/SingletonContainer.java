@@ -45,7 +45,7 @@ public class SingletonContainer {
 		s.makeSpace(">> CALL: " + id + ": SingletonContainer.getInstance()");
 
 		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": SingletonContainer.getInstance()");
+		s.makeSpace("<< RETURN: " + id + ": SingletonContainer.getInstance(): SingletonContainer");
 		s.depth--;
 		return new SingletonContainer();
 	}
@@ -62,7 +62,7 @@ public class SingletonContainer {
 		s.makeSpace(">> CALL: " + id + ": SingletonContainer.getMovables()");
 
 		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": SingletonContainer.getMovables(): List<Movable>");
+		s.makeSpace("<< RETURN: " + id + ": SingletonContainer.getMovables(): Movable");
 		s.depth--;
 
 		return null;
@@ -80,7 +80,7 @@ public class SingletonContainer {
 		s.makeSpace(">> CALL: " + id + ": SingletonContainer.getVolatiles()");
 
 		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": SingletonContainer.getVolatiles(): List<Movable>");
+		s.makeSpace("<< RETURN: " + id + ": SingletonContainer.getVolatiles(): Volatile");
 		s.depth--;
 
 		return null;
