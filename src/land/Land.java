@@ -5,6 +5,7 @@ import item.Spray;
 import java.util.List;
 
 import movable.Ant;
+import movable.Echidna;
 import program.Singleton;
 import program.SingletonContainer;
 
@@ -79,6 +80,11 @@ public class Land {
 		s.stack.add(2);
 		Ant ant = (Ant)s.items.get(1);
 		ant.step();
+		s.stack.remove(s.stack.size()-1);
+		
+		s.stack.add(6);
+		Echidna echinda = (Echidna)s.items.get(5);
+		echinda.step();
 		s.stack.remove(s.stack.size()-1);
 		
 		s.stack.add(1);
