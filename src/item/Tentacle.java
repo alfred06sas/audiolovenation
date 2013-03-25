@@ -13,8 +13,8 @@ import smell.FoodSmell;
  * 
  * @author audiolovenation
  * 
- *         A hangya ennek segítségével vizsgálja meg a környezõ mezõit és hoz
- *         döntést, hogy merre lépjen
+ *         A hangya csáp tulajdonságait valósítja meg. A szomszédos mezõk
+ *         szagnyomai alapján eldönti, hogy a hangya merre lépjen.
  */
 public class Tentacle {
 

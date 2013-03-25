@@ -8,7 +8,9 @@ import program.Singleton;
  * 
  * @author audiolovenation
  * 
- *         Minden, a mezõkön megjelenõ elem ebbõl az osztályból száramzik le
+ *         A hangya megölésére szolgáló sprayt valósítja meg. Használatakor a
+ *         használt mezõn és annak a szomszédjain (itt már kisebb mértékben hat
+ *         csak) hat.
  */
 public class Spray extends Item implements Volatile {
 

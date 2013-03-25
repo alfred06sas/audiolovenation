@@ -21,6 +21,11 @@ import blockage.Blockage;
 import blockage.Gravel;
 import blockage.Puddle;
 
+/**
+ * 
+ * @author audiolovenation
+ * 
+ */
 public class Singleton {
 
 	private static Singleton instance = null;

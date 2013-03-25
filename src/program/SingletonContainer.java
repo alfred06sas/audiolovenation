@@ -8,6 +8,18 @@ import land.Land;
 import movable.Movable;
 import smell.Smell;
 
+/**
+ * 
+ * @author audiolovenation
+ * 
+ *         A getIstance() metodusa ugyan azt az objektumot adja vissza. A
+ *         Volatile és a Movable interfészeket megvalósító osztályok tárolására.
+ *         A pálya végzi a léptetést és az illékony anyagok csökkentését is.
+ *         Erre a megoldásra azért volt szükség, hogy a pálya számára elérhetõek
+ *         legyenek ezek a listák, ugyanakkor mind a Volatile és a Movable is
+ *         hozzá tudjon adni elemeket a saját listájához. Így nem kellett
+ *         mindenki számára láthatóvá tenni az egész pályát (Land osztály).
+ */
 public class SingletonContainer {
 
 	private Land container;

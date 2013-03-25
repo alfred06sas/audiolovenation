@@ -4,12 +4,14 @@ import program.Singleton;
 import land.Dir;
 import movable.Ant;
 import movable.Echidna;
+
 /**
  * 
  * @author audiolovenation
  * 
- *			A hangyák a hangyabolyból indulnek el ételt keresni, 
- *			majd ha találtak azt ide hozzák vissza
+ *         A létrejött hangyák kiindulási pontja (boly), ahonnan a hangyák
+ *         indulnak ételt szerezni. Ha egy hangya talált ételt, akkor ezt ide
+ *         próbálja visszajuttatni. û Ha sikerül, a hangya vissza megy a bolyba(inaktív állapotba kerül).
  */
 public class Hill extends Item {
 

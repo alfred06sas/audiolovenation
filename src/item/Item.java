@@ -4,11 +4,13 @@ import program.Singleton;
 import land.Field;
 import movable.Ant;
 import movable.Echidna;
+
 /**
  * 
  * @author audiolovenation
  * 
- *			Minden, a mezõkön megjelenõ elem ebbõl az osztályból száramzik le
+ *         A pálya egyes mezõin megtalálható objektumok (hangya, hangyászsün,
+ *         hangyalesõ, akadály, spray, étel, boly).
  */
 public class Item {
 
@@ -23,16 +25,17 @@ public class Item {
 	 *            van-e étel a hangyánál vagy nincs
 	 */
 	public void collisionWithAnt(Ant ant, boolean b) {
-		Singleton s = Singleton.Instance();		
-		Integer id = s.stack.get(s.stack.size()-1);
-		
-		s.makeSpace(">> CALL: " + id + ": Item.collisionWithAnt("+s.ants.indexOf(ant)+": Ant"+ b +": boolean)");
-		
+		Singleton s = Singleton.Instance();
+		Integer id = s.stack.get(s.stack.size() - 1);
+
+		s.makeSpace(">> CALL: " + id + ": Item.collisionWithAnt("
+				+ s.ants.indexOf(ant) + ": Ant" + b + ": boolean)");
+
 		// Ide jön a kód
 
-		
 		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": Item.collisionWithAnt("+s.ants.indexOf(ant)+": Ant"+ b +": boolean)");
+		s.makeSpace("<< RETURN: " + id + ": Item.collisionWithAnt("
+				+ s.ants.indexOf(ant) + ": Ant" + b + ": boolean)");
 		s.depth--;
 	}
 
@@ -43,17 +46,18 @@ public class Item {
 	 *            a mezõ, amihez beállítjuk az ételszagot.
 	 */
 	public void setActualField(Field field) {
-		
-		Singleton s = Singleton.Instance();		
-		Integer id = s.stack.get(s.stack.size()-1);
-		
-		s.makeSpace(">> CALL: " + id + ": Item.setActualField("+ s.fields.indexOf(field)+": Field)");
-		
+
+		Singleton s = Singleton.Instance();
+		Integer id = s.stack.get(s.stack.size() - 1);
+
+		s.makeSpace(">> CALL: " + id + ": Item.setActualField("
+				+ s.fields.indexOf(field) + ": Field)");
+
 		// Ide jön a kód
 
-		
 		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": Item.setActualField("+s.fields.indexOf(field)+": Field)");
+		s.makeSpace("<< RETURN: " + id + ": Item.setActualField("
+				+ s.fields.indexOf(field) + ": Field)");
 		s.depth--;
 	}
 
@@ -64,14 +68,13 @@ public class Item {
 	 *            a hangyászsün ami ütközik a bollyal
 	 */
 	public void collisionWithEchidna(Echidna echidna) {
-		Singleton s = Singleton.Instance();		
-		Integer id = s.stack.get(s.stack.size()-1);
-		
+		Singleton s = Singleton.Instance();
+		Integer id = s.stack.get(s.stack.size() - 1);
+
 		s.makeSpace(">> CALL: " + id + ": Item.collisionWithEchidna()");
-		
+
 		// Ide jön a kód
 
-		
 		s.depth--;
 		s.makeSpace("<< RETURN: " + id + ": Item.collisionWithEchidna()");
 		s.depth--;

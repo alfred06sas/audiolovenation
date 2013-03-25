@@ -8,12 +8,14 @@ import movable.Echidna;
 import program.Singleton;
 import smell.FoodSmell;
 import smell.Smell;
+
 /**
  * 
  * @author audiolovenation
  * 
- *			Bizonyos mezõkön ételek vannak elhelyezve, 
- *			amiknek a szaga befolyásolja a ahngyák mozgásának az irányát
+ *         Az egyes mezõkön lévõ ételeket tárolja. Ezeket szeretnék a hangyák a
+ *         bolyba juttatni. Van egy szag tulajdonsága, ami a környezõ mezõkre is
+ *         hat. Ez a hangyák mozgását befolyásolja.
  */
 public class Food extends Item {
 

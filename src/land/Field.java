@@ -11,6 +11,15 @@ import program.SingletonContainer;
 import smell.AntSmell;
 import smell.Smell;
 
+/**
+ * 
+ * @author audiolovenation
+ * 
+ *         A pálya mezõkbõl épül fel, melyeken elemek (hangya, hangyászsün,
+ *         hangyalesõ, akadály, spray, étel, boly) és szagok helyezkednek el.
+ *         Ismeri a szomszédait, és azok irányát.
+ * 
+ */
 public class Field {
 
 	private List<Item> items;
@@ -18,9 +27,10 @@ public class Field {
 	private List<Smell> smells;
 
 	/**
+	 * Egy elem hozzárendellése a mezõhöz
 	 * 
 	 * @param Item
-	 * @return
+	 *            azon elem amelyet el akarunk helyezni a mezõn
 	 */
 	public void addItem(Item item) {
 		Singleton s = Singleton.Instance();
@@ -42,6 +52,7 @@ public class Field {
 	}
 
 	/**
+	 * A mezõn lévõ elemek lekérdezésére szolgál.
 	 * 
 	 * @return
 	 */
@@ -59,6 +70,7 @@ public class Field {
 	}
 
 	/**
+	 * Egy elem eltüntetése a mezõrõl.
 	 * 
 	 * @param Item
 	 * @return
@@ -78,6 +90,7 @@ public class Field {
 	}
 
 	/**
+	 * A mezõ szomszédainak a legkérdezése
 	 * 
 	 * @return
 	 */
@@ -98,10 +111,12 @@ public class Field {
 	}
 
 	/**
+	 * Egy mezõ felvétele az aktuális mezõ szomszédjának.
 	 * 
 	 * @param Dir
+	 *            az aktuális mezõhöz visznyított iránya
 	 * @param Field
-	 * @return
+	 *            az a mezõ amit felveszünk szomszédnak
 	 */
 	public void addNeighbour(Dir dir, Field field) {
 		Singleton s = Singleton.Instance();
@@ -118,8 +133,8 @@ public class Field {
 	}
 
 	/**
+	 * A mezõn lévõ szagok lekérdezése, ez lehet étel és hangyaszag.
 	 * 
-	 * @return
 	 */
 	public List<Smell> getSmells() {
 		Singleton s = Singleton.Instance();
@@ -135,9 +150,10 @@ public class Field {
 	}
 
 	/**
+	 * Egy szag felvétele a mezõre, ez lehet étel vagy hangyaszag.
 	 * 
 	 * @param Smell
-	 * @return
+	 *            a mezõre felveendõ szag
 	 */
 	public void addSmell(Smell smell) {
 		Singleton s = Singleton.Instance();
@@ -153,8 +169,10 @@ public class Field {
 	}
 
 	/**
+	 * Szag eltávolítása mezõrõl.
 	 * 
 	 * @param Smell
+	 *            az eltávolítandó szag
 	 * @return
 	 */
 	public void removeSmell(Smell smell) {
@@ -171,9 +189,10 @@ public class Field {
 	}
 
 	/**
+	 * Hangyaszag eltüntetése a mezõrõl.
 	 * 
 	 * @param Smell
-	 * @return
+	 *            az eltüntetendõ szag
 	 */
 	public void removeAntSmells() {
 		Singleton s = Singleton.Instance();
@@ -196,6 +215,11 @@ public class Field {
 		s.depth--;
 	}
 
+	/**
+	 * Ha egy mezõre kattintunk az egérrel, ez az esemény hívódik meg, ennek
+	 * hatására egy hangyaszagírtó-spray elem kerül a mezõre.
+	 * 
+	 */
 	public void onClick() {
 		Singleton s = Singleton.Instance();
 		Integer id = s.stack.get(s.stack.size() - 1);

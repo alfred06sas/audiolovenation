@@ -9,8 +9,8 @@ import program.Singleton;
  * 
  * @author audiolovenation
  * 
- *         A hangyászsün néha feltûnik és amíg éhes megeszi az összes útjába
- *         kerülõ hangyát, majd ha jól lakott továbbáll.
+ *         Az erre az elemre lépõ hangya detektálja, hogy mivel találkozott, és
+ *         elpusztul. A hangyászsünnel nem foglalkozik.
  */
 public class Antlion extends Item {
 	/**

@@ -3,6 +3,14 @@ package smell;
 import item.Tentacle;
 import land.Field;
 
+/**
+ * 
+ * @author audiolovenation
+ * 
+ *         Különbözõ szagok megvalósítására használjuk (hangyaszag, ételszag
+ *         vagy hangyaölõ spray). Ezeket mezõkhöz rendeljük hozzá .
+ * 
+ */
 public class Smell {
 
 	private Field actualField;
@@ -10,14 +18,14 @@ public class Smell {
 
 	/**
 	 * 
-	 * @return 
+	 * @return
 	 */
 	public void decreaseSmell() {
 	}
 
 	/**
 	 * 
-	 * @return 
+	 * @return
 	 */
 	public void IncreaseSmell() {
 	}
@@ -25,14 +33,14 @@ public class Smell {
 	/**
 	 * 
 	 * @param Field
-	 * @return 
+	 * @return
 	 */
 	public void setActualField(Field field) {
 	}
 
 	/**
 	 * 
-	 * @return 
+	 * @return
 	 */
 	public void removeMyself() {
 	}
@@ -40,14 +48,14 @@ public class Smell {
 	/**
 	 * 
 	 * @param Tentacle
-	 * @return 
+	 * @return
 	 */
 	public void smellIt(Tentacle tentacle) {
 	}
 
 	/**
 	 * 
-	 * @return 
+	 * @return
 	 */
 	public void antSmellSpray() {
 	}
