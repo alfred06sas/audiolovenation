@@ -15,6 +15,10 @@ import item.Volatile;
  */
 public class AntSmell extends Smell implements Volatile {
 
+	/**
+	 * Szag eltávolítása.
+	 * 
+	 */
 	@Override
 	public void removeMyself() {
 		Singleton s = Singleton.Instance();
@@ -33,6 +37,10 @@ public class AntSmell extends Smell implements Volatile {
 		s.depth--;
 	}
 
+	/**
+	 * Szag csökkentése.
+	 * 
+	 */
 	@Override
 	public void decrease() {
 		Singleton s = Singleton.Instance();
@@ -46,6 +54,10 @@ public class AntSmell extends Smell implements Volatile {
 		s.depth--;
 	}
 
+	/**
+	 * Szag csökkentése.
+	 * 
+	 */
 	@Override
 	public void decreaseSmell() {
 		Singleton s = Singleton.Instance();
@@ -59,6 +71,13 @@ public class AntSmell extends Smell implements Volatile {
 		s.depth--;
 	}
 
+	/**
+	 * A csápnak adja meg a hangyaszag erõsségét.
+	 * 
+	 * @param tentacle
+	 *            a csáp, aminak a szag erõsségét át kell adni
+	 * 
+	 */
 	@Override
 	public void smellIt(Tentacle tentacle) {
 		Singleton s = Singleton.Instance();

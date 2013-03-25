@@ -16,6 +16,13 @@ import movable.Ant;
 import movable.Echidna;
 import blockage.Blockage;
 
+/**
+ * 
+ * @author audiolovenation
+ * 
+ *         Main
+ * 
+ */
 public class Main {
 
 	public static void main(String[] args) {
@@ -46,6 +53,7 @@ public class Main {
 				for (int i = 0; i < seqNames.length; i++)
 					System.out.println(i + 1 + ". " + seqNames[i]);
 
+				/* Lefuttatandó szekvencia sorszámának bekérése */
 				System.out.println();
 				System.out.println("Which sequence do you want to run?");
 				Integer nr;
@@ -61,6 +69,7 @@ public class Main {
 
 				switch (nr) {
 				case 1:
+					/** Init szekvencia lefuttatása */
 					System.out.println(seqNames[0]);
 					s.stack.add(1);
 					land = s.land.get(0);
@@ -68,6 +77,7 @@ public class Main {
 					s.stack.remove(s.stack.size() - 1);
 					break;
 				case 2:
+					/** AddItemsToFields szekvencia lefuttatása */
 					System.out.println(seqNames[1]);
 					s.stack.add(1);
 					land = s.land.get(0);
@@ -75,6 +85,7 @@ public class Main {
 					s.stack.remove(s.stack.size() - 1);
 					break;
 				case 3:
+					/** AntMove - EchidnaMove szekvencia lefuttatása */
 					System.out.println(seqNames[2]);
 					s.stack.add(1);
 					land = s.land.get(0);
@@ -82,6 +93,7 @@ public class Main {
 					s.stack.remove(s.stack.size() - 1);
 					break;
 				case 4:
+					/** ScanAntMove szekvencia lefuttatása */
 					System.out.println(seqNames[3]);
 					s.stack.add(2);
 					tentacle = s.tentacles.get(7);
@@ -89,6 +101,7 @@ public class Main {
 					s.stack.remove(s.stack.size() - 1);
 					break;
 				case 5:
+					/** AntToAntlion szekvencia lefuttatása */
 					System.out.println(seqNames[4]);
 					s.stack.add(1);
 					antlion = s.antlions.get(2);
@@ -103,6 +116,7 @@ public class Main {
 					s.stack.remove(s.stack.size() - 1);
 					break;
 				case 6:
+					/** AntToEchidna szekvencia lefuttatása */
 					System.out.println(seqNames[5]);
 					s.stack.add(7);
 					echidna = (Echidna) s.items.get(6);
@@ -117,6 +131,7 @@ public class Main {
 					s.stack.remove(s.stack.size() - 1);
 					break;
 				case 7:
+					/** AnttoFood szekvencia lefuttatása */
 					System.out.println(seqNames[6]);
 					s.stack.add(20);
 					food = s.foods.get(19);
@@ -131,6 +146,7 @@ public class Main {
 					s.stack.remove(s.stack.size() - 1);
 					break;
 				case 8:
+					/** AnttoHill szekvencia lefuttatása */
 					System.out.println(seqNames[7]);
 					s.stack.add(1);
 					hill = s.hill.get(0);
@@ -138,6 +154,7 @@ public class Main {
 					s.stack.remove(s.stack.size() - 1);
 					break;
 				case 9:
+					/** AnttoBlockage szekvencia lefuttatása */
 					System.out.println(seqNames[8]);
 					s.stack.add(1);
 					blockage = s.blockages.get(2);
@@ -152,6 +169,7 @@ public class Main {
 					s.stack.remove(s.stack.size() - 1);
 					break;
 				case 10:
+					/** AnttoSpray szekvencia lefuttatása */
 					System.out.println(seqNames[9]);
 					s.stack.add(10);
 					spray = s.sprays.get(9);
@@ -166,6 +184,7 @@ public class Main {
 					s.stack.remove(s.stack.size() - 1);
 					break;
 				case 11:
+					/** EchidnatoAnt szekvencia lefuttatása */
 					System.out.println(seqNames[10]);
 					s.stack.add(3);
 					ant = (Ant) s.items.get(2);
@@ -174,6 +193,7 @@ public class Main {
 					s.stack.remove(s.stack.size() - 1);
 					break;
 				case 12:
+					/** UseCaseSpray szekvencia lefuttatása */
 					System.out.println(seqNames[11]);
 					s.stack.add(11);
 					field = s.fields.get(10);
@@ -181,6 +201,7 @@ public class Main {
 					s.stack.remove(s.stack.size() - 1);
 					break;
 				case 13:
+					/** MoveLand szekvencia lefuttatása */
 					System.out.println(seqNames[12]);
 					s.stack.add(1);
 					land = s.land.get(0);
@@ -188,6 +209,7 @@ public class Main {
 					s.stack.remove(s.stack.size() - 1);
 					break;
 				case 14:
+					/** UseCaseSmell szekvencia lefuttatása */
 					System.out.println(seqNames[13]);
 					s.stack.add(11);
 					field = s.fields.get(10);
@@ -195,6 +217,7 @@ public class Main {
 					s.stack.remove(s.stack.size() - 1);
 					break;
 				default:
+					/** Hibás bemenet lekezelése */
 					System.out.println("Hibas kód!");
 					break;
 				}

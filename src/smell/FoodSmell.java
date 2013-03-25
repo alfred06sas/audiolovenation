@@ -13,6 +13,10 @@ import program.Singleton;
  */
 public class FoodSmell extends Smell {
 
+	/**
+	 * Szag eltávolítása.
+	 * 
+	 */
 	@Override
 	public void removeMyself() {
 		Singleton s = Singleton.Instance();
@@ -31,6 +35,10 @@ public class FoodSmell extends Smell {
 		s.depth--;
 	}
 
+	/**
+	 * Szag csökkentése.
+	 * 
+	 */
 	@Override
 	public void decreaseSmell() {
 		Singleton s = Singleton.Instance();
@@ -44,6 +52,13 @@ public class FoodSmell extends Smell {
 		s.depth--;
 	}
 
+	/**
+	 * A csápnak adja meg a étel szagának erõsségét.
+	 * 
+	 * @param tentacle
+	 *            a csáp, aminak a szag erõsségét át kell adni
+	 * 
+	 */
 	@Override
 	public void smellIt(Tentacle tentacle) {
 		Singleton s = Singleton.Instance();

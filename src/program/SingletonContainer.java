@@ -31,8 +31,10 @@ public class SingletonContainer {
 
 	/**
 	 * 
+	 * Az illékony elemek hozzáadása az õket tároló listába.
+	 * 
 	 * @param Volatile
-	 * @return
+	 *            a hozzáadandó elem
 	 */
 	public void addVolatile(Volatile volatile_) {
 		Singleton s = Singleton.Instance();
@@ -50,8 +52,10 @@ public class SingletonContainer {
 
 	/**
 	 * 
+	 * Az mozgó elemek hozzáadása az õket tároló listába.
+	 * 
 	 * @param Movable
-	 * @return
+	 *            a hozzáadandó elem
 	 */
 	public void addMovable(Movable movable) {
 		Singleton s = Singleton.Instance();
@@ -67,7 +71,9 @@ public class SingletonContainer {
 
 	/**
 	 * 
-	 * @return
+	 * A SingletonContainer referenciájának lekérése.
+	 * 
+	 * @return a SingletonContainerre mutató referencia
 	 */
 	public static SingletonContainer getInstance() {
 		Singleton s = Singleton.Instance();
@@ -84,6 +90,8 @@ public class SingletonContainer {
 	}
 
 	/**
+	 * 
+	 * Mozgásra képes elemek lekérdezése.
 	 * 
 	 * @return
 	 */
@@ -104,6 +112,8 @@ public class SingletonContainer {
 
 	/**
 	 * 
+	 * Illéákony elemek lekérdezése.
+	 * 
 	 * @return
 	 */
 	public List<Volatile> getVolatiles() {
@@ -123,16 +133,20 @@ public class SingletonContainer {
 
 	/**
 	 * 
+	 * Egy illékony elem kitörlése az azokat tároló listából.
+	 * 
 	 * @param Volatile
-	 * @return
+	 *            a kitörlendõ elem
 	 */
 	public void removeVolatile(Volatile volatile_) {
 	}
 
 	/**
 	 * 
+	 * Egy mozgó elem kitörlése az azokat tároló listából.
+	 * 
 	 * @param Movable
-	 * @return
+	 *            a kitörlendõ elem
 	 */
 	public void removeMovable(Movable movable) {
 		Singleton s = Singleton.Instance();
@@ -150,8 +164,10 @@ public class SingletonContainer {
 
 	/**
 	 * 
+	 * A hangyaírtó-spray erejének csökkentsése.
+	 * 
 	 * @param Integer
-	 * @return
+	 *            a csökkentés mrétéke
 	 */
 	public void decreaseAntKillerSpray(Integer strength) {
 		Singleton s = Singleton.Instance();
@@ -171,8 +187,10 @@ public class SingletonContainer {
 
 	/**
 	 * 
+	 * A hangyaszagírtó-spray erejének csökkentsése.
+	 * 
 	 * @param Integer
-	 * @return
+	 *            a csökkentés mrétéke
 	 */
 	public void decreaseAntSmellSpray(Integer strength) {
 		Singleton s = Singleton.Instance();

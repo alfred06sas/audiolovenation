@@ -25,6 +25,9 @@ import blockage.Puddle;
  * 
  * @author audiolovenation
  * 
+ *         Mindent eltárolunk listákban, hogy a teszteléskor hozzájuk tudjunk
+ *         férni.
+ * 
  */
 public class Singleton {
 

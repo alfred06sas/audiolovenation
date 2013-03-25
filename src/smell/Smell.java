@@ -18,44 +18,53 @@ public class Smell {
 
 	/**
 	 * 
-	 * @return
+	 * Szag csökkentése.
+	 * 
 	 */
 	public void decreaseSmell() {
 	}
 
 	/**
 	 * 
-	 * @return
+	 * Szag növelése.
+	 * 
 	 */
 	public void IncreaseSmell() {
 	}
 
 	/**
 	 * 
-	 * @param Field
-	 * @return
+	 * Egy szag beállítása egy mezõre.
+	 * 
+	 * @param field
+	 *            a mezõ, ahova be kell álíltani
+	 * 
 	 */
 	public void setActualField(Field field) {
 	}
 
 	/**
 	 * 
-	 * @return
+	 * Szag eltávolítása.
+	 * 
 	 */
 	public void removeMyself() {
 	}
 
 	/**
+	 * A csápnak adja meg a szag erõsségét.
 	 * 
-	 * @param Tentacle
-	 * @return
+	 * @param tentacle
+	 *            a csáp, aminak a szag erõsségét át kell adni
+	 * 
 	 */
 	public void smellIt(Tentacle tentacle) {
 	}
 
 	/**
 	 * 
-	 * @return
+	 * Hangyaszag-semlegesítõ spray használata.
+	 * 
 	 */
 	public void antSmellSpray() {
 	}
