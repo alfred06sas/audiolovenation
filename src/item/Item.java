@@ -4,16 +4,23 @@ import program.Singleton;
 import land.Field;
 import movable.Ant;
 import movable.Echidna;
-
+/**
+ * 
+ * @author audiolovenation
+ * 
+ *			Minden, a mezõkön megjelenõ elem ebbõl az osztályból száramzik le
+ */
 public class Item {
 
 	private Field actualField;
 
 	/**
+	 * Hangyával való ütközés.
 	 * 
 	 * @param Ant
-	 * @param Boolean
-	 * @return 
+	 *            a hangya ami ütközik a bollyal
+	 * @param b
+	 *            van-e étel a hangyánál vagy nincs
 	 */
 	public void collisionWithAnt(Ant ant, boolean b) {
 		Singleton s = Singleton.Instance();		
@@ -30,9 +37,10 @@ public class Item {
 	}
 
 	/**
+	 * Item beállítása egy mezõhöz.
 	 * 
 	 * @param Field
-	 * @return 
+	 *            a mezõ, amihez beállítjuk az ételszagot.
 	 */
 	public void setActualField(Field field) {
 		
@@ -50,9 +58,10 @@ public class Item {
 	}
 
 	/**
+	 * Hangyászsünnel való ütközés.
 	 * 
 	 * @param Echidna
-	 * @return 
+	 *            a hangyászsün ami ütközik a bollyal
 	 */
 	public void collisionWithEchidna(Echidna echidna) {
 		Singleton s = Singleton.Instance();		
@@ -69,9 +78,10 @@ public class Item {
 	}
 
 	/**
+	 * Spray-vel való ütközés.
 	 * 
-	 * @param Integer
-	 * @return 
+	 * @param strength
+	 *            a spray erõssége
 	 */
 	public void collisionWithSpray(Integer strength) {
 	}

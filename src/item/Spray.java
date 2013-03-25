@@ -4,16 +4,26 @@ import movable.Ant;
 import movable.Echidna;
 import program.Singleton;
 
+/**
+ * 
+ * @author audiolovenation
+ * 
+ *         Minden, a mezõkön megjelenõ elem ebbõl az osztályból száramzik le
+ */
 public class Spray extends Item implements Volatile {
 
 	private Integer strength;
 
+	/**
+	 * Spray erõsségének a csökkentése
+	 * 
+	 */
 	@Override
 	public void decrease() {
 		Singleton s = Singleton.Instance();
 
 		Integer id = s.stack.get(s.stack.size() - 1);
-		
+
 		s.makeSpace(">> CALL: " + id + ": Spray.decrease()");
 
 		s.depth--;
@@ -21,6 +31,14 @@ public class Spray extends Item implements Volatile {
 		s.depth--;
 	}
 
+	/**
+	 * Hangyával való ütközés. Nem csinál semmit, csak visszatér.
+	 * 
+	 * @param Ant
+	 *            a hangya amivel ütközik
+	 * @param b
+	 *            ütközés elõtt: false, ütközés után: true
+	 */
 	@Override
 	public void collisionWithAnt(Ant ant, boolean b) {
 		Singleton s = Singleton.Instance();
@@ -42,6 +60,12 @@ public class Spray extends Item implements Volatile {
 		s.depth--;
 	}
 
+	/**
+	 * Hangyászsünnel való ütközés. Nem csinál semmit, csak visszatér.
+	 * 
+	 * @param Echidna
+	 *            a hangyászsün amivel ütközik
+	 */
 	@Override
 	public void collisionWithEchidna(Echidna echidna) {
 		Singleton s = Singleton.Instance();
@@ -57,6 +81,12 @@ public class Spray extends Item implements Volatile {
 		s.depth--;
 	}
 
+	/**
+	 * Spray-vel való ütközés. Nem csinál semmit, csak visszatér.
+	 * 
+	 * @param Echidna
+	 *            a hangyászsün amivel ütközik
+	 */
 	public void collisionWithSpray(Integer strength) {
 		Singleton s = Singleton.Instance();
 

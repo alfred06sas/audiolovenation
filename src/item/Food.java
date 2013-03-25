@@ -8,14 +8,19 @@ import movable.Echidna;
 import program.Singleton;
 import smell.FoodSmell;
 import smell.Smell;
-
+/**
+ * 
+ * @author audiolovenation
+ * 
+ *			Bizonyos mezõkön ételek vannak elhelyezve, 
+ *			amiknek a szaga befolyásolja a ahngyák mozgásának az irányát
+ */
 public class Food extends Item {
 
 	private List<FoodSmell> foodSmells;
 
 	/**
-	 * 
-	 * @return
+	 * Az étel szagának eltüntetése egy mezõrõl.
 	 */
 	public void deleteSmell() {
 		Singleton s = Singleton.Instance();
@@ -34,9 +39,10 @@ public class Food extends Item {
 	}
 
 	/**
+	 * Ételszag hozzáadása egy mezõhöz.
 	 * 
 	 * @param FoodSmell
-	 * @return
+	 *            a mezõhöz hozzáadandó ételszag
 	 */
 	public void addFoodSmell(FoodSmell foodSmell) {
 
@@ -54,6 +60,12 @@ public class Food extends Item {
 		s.depth--;
 	}
 
+	/**
+	 * Ételszag beállítása egy mezõhöz.
+	 * 
+	 * @param Field
+	 *            a mezõ, amihez beállítjuk az ételszagot.
+	 */
 	public void setActualField(Field field) {
 
 		Singleton s = Singleton.Instance();
@@ -79,6 +91,12 @@ public class Food extends Item {
 		s.depth--;
 	}
 
+	/**
+	 * Hangyászsünnel való ütközés. Nem csinál semmit, csak visszatér.
+	 * 
+	 * @param Echidna
+	 *            a hangyászsün amivel ütközik
+	 */
 	@Override
 	public void collisionWithEchidna(Echidna echidna) {
 		Singleton s = Singleton.Instance();
@@ -94,6 +112,14 @@ public class Food extends Item {
 		s.depth--;
 	}
 
+	/**
+	 * Hangyával való ütközés. Nem csinál semmit, csak visszatér.
+	 * 
+	 * @param Ant
+	 *            a hangya amivel ütközik
+	 * @param b
+	 *            ütközés elõtt: false, ütközés után: true
+	 */
 	@Override
 	public void collisionWithAnt(Ant ant, boolean b) {
 		Singleton s = Singleton.Instance();
