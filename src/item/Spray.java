@@ -52,6 +52,7 @@ public class Spray extends Item implements Volatile {
 
 		if (b == true) {
 			s.stack.add(s.ants.indexOf(ant));
+			//Hangya életerejének csökkentése
 			ant.looseHP(5);
 			s.stack.remove(s.stack.size() - 1);
 		}
@@ -98,6 +99,7 @@ public class Spray extends Item implements Volatile {
 				+ ": Integer)");
 
 		s.stack.add(6);
+		//Hangya életerejének csökkentése
 		s.ants.get(5).looseHP(10);
 		s.stack.remove(s.stack.size() - 1);
 

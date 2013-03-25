@@ -20,7 +20,7 @@ public class Antlion extends Item {
 	 * @param ant
 	 *            a hangya referenciája. amivel ütközött
 	 * @param b
-	 *            ütközés elõtt: false, ütközés után: true
+	 *            lépés elõtt: false, lépés után: true
 	 */
 	@Override
 	public void collisionWithAnt(Ant ant, boolean b) {
@@ -31,6 +31,7 @@ public class Antlion extends Item {
 		s.makeSpace(">> CALL: " + id + ": Antlion.collisionWithAnt("
 				+ s.ants.indexOf(ant) + ": Ant, " + String.valueOf(b)
 				+ ": boolean)");
+		// ha már lépett a hangya
 		if (b == true) {
 			s.stack.add(s.ants.indexOf(ant));
 			ant.kill();

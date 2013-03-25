@@ -34,6 +34,7 @@ public class Hill extends Item {
 
 		s.stack.add(6);
 		Ant ant1 = s.ants.get(5);
+		//A hangyabolyba visszaérõ hangya inaktív állapotba kerül
 		ant1.rest();
 		s.stack.remove(s.stack.size() - 1);
 

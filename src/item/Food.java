@@ -54,8 +54,6 @@ public class Food extends Item {
 		s.makeSpace(">> CALL: " + id + ": Item.setActualField("
 				+ s.foodSmells.indexOf(foodSmell) + ": FoodSmell)");
 
-		// Ide jön a kód
-
 		s.depth--;
 		s.makeSpace("<< RETURN: " + id + ": Item.setActualField("
 				+ s.foodSmells.indexOf(foodSmell) + ": FoodSmell)");
@@ -76,7 +74,6 @@ public class Food extends Item {
 		s.makeSpace(">> CALL: " + id + ": Item.setActualField("
 				+ s.fields.indexOf(field) + ": Field)");
 
-		// Ide jön a kód
 		s.stack.add(s.fields.indexOf(field));
 		field.addSmell(s.foodSmells.get(9));
 
@@ -120,7 +117,7 @@ public class Food extends Item {
 	 * @param Ant
 	 *            a hangya amivel ütközik
 	 * @param b
-	 *            ütközés elõtt: false, ütközés után: true
+	 *            lépés elõtt: false, lépés után: true
 	 */
 	@Override
 	public void collisionWithAnt(Ant ant, boolean b) {
@@ -132,11 +129,12 @@ public class Food extends Item {
 				+ s.ants.indexOf(ant) + ": Ant, " + String.valueOf(b)
 				+ ": boolean)");
 
+		// Ha a hangya oylan mezõre lépett ahol étel van akkor felveszi
 		if (b == true) {
 			s.stack.add(s.ants.indexOf(ant));
 			ant.pickUpFood();
 			s.stack.remove(s.stack.size() - 1);
-
+			// Ételszag kitörlése a mezõrõl, ahonnan elviszi a hagnya az ételt
 			s.stack.add(id);
 			deleteSmell();
 			s.stack.remove(s.stack.size() - 1);

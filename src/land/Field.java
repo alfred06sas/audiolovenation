@@ -205,6 +205,7 @@ public class Field {
 		s.singletonContainer.get(0).decreaseAntSmellSpray(5);
 		s.stack.remove(s.stack.size() - 1);
 
+		//Szag eltüntetése
 		s.stack.add(3);
 		AntSmell antSmell = s.antSmells.get(2);
 		antSmell.removeMyself();

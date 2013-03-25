@@ -35,8 +35,6 @@ public class Land {
 
 		s.makeSpace(">> CALL: " + id + ": Land.loadLand()");
 
-		// Ide jön a kód
-
 		s.depth--;
 		s.makeSpace("<< RETURN: " + id + ": Land.loadLand()");
 		s.depth--;
@@ -55,7 +53,6 @@ public class Land {
 
 		s.makeSpace(">> CALL: " + id + ": Land.putItems()");
 
-		// Ide jön a kód
 		Item item = s.items.get(15);
 
 		s.stack.add(6);
@@ -89,11 +86,13 @@ public class Land {
 		sc.getMovables();
 		s.stack.remove(s.stack.size() - 1);
 
+		//Hangya léptetése
 		s.stack.add(2);
 		Ant ant = (Ant) s.items.get(1);
 		ant.step();
 		s.stack.remove(s.stack.size() - 1);
 
+		//Hangyászsün léptetése
 		s.stack.add(6);
 		Echidna echinda = (Echidna) s.items.get(5);
 		echinda.step();
@@ -108,7 +107,6 @@ public class Land {
 		spray.decrease();
 		s.stack.remove(s.stack.size() - 1);
 
-		// Ide jön a kód
 		s.depth--;
 		s.makeSpace("<< RETURN: " + id + ": Land.move()");
 		s.depth--;
@@ -146,7 +144,6 @@ public class Land {
 
 		s.makeSpace(">> CALL: " + id + ": Land.init()");
 
-		/* ide jön a kód */
 		// palya betöltése
 		loadLand();
 		// palya felépítése

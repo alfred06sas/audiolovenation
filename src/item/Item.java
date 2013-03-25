@@ -31,8 +31,6 @@ public class Item {
 		s.makeSpace(">> CALL: " + id + ": Item.collisionWithAnt("
 				+ s.ants.indexOf(ant) + ": Ant" + b + ": boolean)");
 
-		// Ide jön a kód
-
 		s.depth--;
 		s.makeSpace("<< RETURN: " + id + ": Item.collisionWithAnt("
 				+ s.ants.indexOf(ant) + ": Ant" + b + ": boolean)");
@@ -53,8 +51,6 @@ public class Item {
 		s.makeSpace(">> CALL: " + id + ": Item.setActualField("
 				+ s.fields.indexOf(field) + ": Field)");
 
-		// Ide jön a kód
-
 		s.depth--;
 		s.makeSpace("<< RETURN: " + id + ": Item.setActualField("
 				+ s.fields.indexOf(field) + ": Field)");
@@ -72,8 +68,6 @@ public class Item {
 		Integer id = s.stack.get(s.stack.size() - 1);
 
 		s.makeSpace(">> CALL: " + id + ": Item.collisionWithEchidna()");
-
-		// Ide jön a kód
 
 		s.depth--;
 		s.makeSpace("<< RETURN: " + id + ": Item.collisionWithEchidna()");

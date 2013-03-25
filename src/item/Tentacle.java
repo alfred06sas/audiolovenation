@@ -119,12 +119,14 @@ public class Tentacle {
 		field.getSmells();
 		s.stack.remove(s.stack.size() - 1);
 
+		//Hangyaszag lekérése
 		s.stack.add(8);
 		AntSmell antSmell = (AntSmell) s.smells.get(7);
 		Tentacle tentacle = s.tentacles.get(id);
 		antSmell.smellIt(tentacle);
 		s.stack.remove(s.stack.size() - 1);
 
+		//Ételszag lekérése
 		s.stack.add(8);
 		FoodSmell foodSmell = (FoodSmell) s.smells.get(16);
 		foodSmell.smellIt(tentacle);
