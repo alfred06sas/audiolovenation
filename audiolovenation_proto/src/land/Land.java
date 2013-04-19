@@ -1,7 +1,6 @@
 package land;
 
 import item.Item;
-import item.Spray;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;

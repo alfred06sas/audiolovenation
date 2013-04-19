@@ -4,7 +4,6 @@ import item.Antlion;
 import item.Food;
 import item.Hill;
 import item.Item;
-import item.Spray;
 import item.Tentacle;
 
 import java.util.ArrayList;
@@ -14,6 +13,7 @@ import java.util.List;
 
 import land.Field;
 import land.Land;
+import land.Spray;
 import movable.Ant;
 import movable.Echidna;
 import smell.AntSmell;
