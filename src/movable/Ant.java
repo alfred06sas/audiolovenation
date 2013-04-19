@@ -23,7 +23,6 @@ import smell.Smell;
  * @author audiolovenation
  * 
  */
-// all a faszom mint  a gerely
 public class Ant extends Item implements Movable {
 	/**
 	 * Csáp objektum. Ez végzi a továbbhaladási irányok beállítását.
