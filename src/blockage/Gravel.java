@@ -7,65 +7,47 @@ import program.Singleton;
 
 /**
  * 
- * Egy akadály (kavics). Ha a hangya ilyen mezõre akar lépni, kénytelen másik
- * útvonalat választani. A hangyászsün figyelmen kivül hagyja.
+ * Egy akadï¿½ly (kavics). Ha a hangya ilyen mezï¿½re akar lï¿½pni, kï¿½nytelen mï¿½sik
+ * ï¿½tvonalat vï¿½lasztani. A hangyï¿½szsï¿½n figyelmen kivï¿½l hagyja.
  * 
  * @author audiolovenation
  * 
  */
 public class Gravel extends Blockage {
 	/**
-	 * Hangyával való ütközés. Lépés után (b == true) nem csinál semmit, mivel
-	 * ez az eset nem lehetséges: a hangya nem léphet akadályra. Lépés elõtt (b
-	 * == false) jelzi a hangyának h az õt tartalmazó mezõre nem léphet.
+	 * Hangyï¿½val valï¿½ ï¿½tkï¿½zï¿½s. Lï¿½pï¿½s utï¿½n (b == true) nem csinï¿½l semmit, mivel
+	 * ez az eset nem lehetsï¿½ges: a hangya nem lï¿½phet akadï¿½lyra. Lï¿½pï¿½s elï¿½tt (b
+	 * == false) jelzi a hangyï¿½nak h az ï¿½t tartalmazï¿½ mezï¿½re nem lï¿½phet.
 	 * 
 	 * @param ant
-	 *            a hangya referenciája. amivel ütközött
+	 *            a hangya referenciï¿½ja. amivel ï¿½tkï¿½zï¿½tt
 	 * @param b
-	 *            lépés elõtt: false, lépés után: true
+	 *            lï¿½pï¿½s elï¿½tt: false, lï¿½pï¿½s utï¿½n: true
 	 */
 	@Override
 	public void collisionWithAnt(Ant ant, boolean b) {
 		Singleton s = Singleton.Instance();
 
-		Integer id = s.stack.get(s.stack.size() - 1);
-
-		s.makeSpace(">> CALL: " + id + ": Gravel.collisionWithAnt("
-				+ s.ants.indexOf(ant) + ": Ant, " + String.valueOf(b)
-				+ ": boolean)");
 		if (b == false) {
-			s.stack.add(s.ants.indexOf(ant));
-			Field field = s.fields.get(14);
+			
+			Field field = new Field();
 			ant.canNotGo(field);
-			s.stack.remove(s.stack.size() - 1);
+			
 		}
 
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": Gravel.collisionWithAnt("
-				+ s.ants.indexOf(ant) + ": Ant, " + String.valueOf(b)
-				+ ": boolean)");
-		s.depth--;
 	}
 
 	/**
-	 * Hangyászsünnel való ütközés. Nem csinál semmit, csak visszatér.
+	 * Hangyï¿½szsï¿½nnel valï¿½ ï¿½tkï¿½zï¿½s. Nem csinï¿½l semmit, csak visszatï¿½r.
 	 * 
 	 * @param echidna
-	 *            az a hangyászsün. amivel ütközött
+	 *            az a hangyï¿½szsï¿½n. amivel ï¿½tkï¿½zï¿½tt
 	 */
 	@Override
 	public void collisionWithEchidna(Echidna echidna) {
 		Singleton s = Singleton.Instance();
 
-		Integer id = s.stack.get(s.stack.size() - 1);
-
-		s.makeSpace(">> CALL: " + id + ": Gravel.collisionWithEchidna("
-				+ s.echidnas.indexOf(echidna) + ": Echidna)");
-
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": Gravel.collisionWithEchidna("
-				+ s.echidnas.indexOf(echidna) + ": Echidna)");
-		s.depth--;
+		
 	}
 
 }

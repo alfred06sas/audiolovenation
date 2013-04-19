@@ -8,73 +8,50 @@ import program.Singleton;
  * 
  * @author audiolovenation
  * 
- *         Az étel szag tulajdonságait valósítja meg.
+ *         Az ï¿½tel szag tulajdonsï¿½gait valï¿½sï¿½tja meg.
  * 
  */
 public class FoodSmell extends Smell {
 
 	/**
-	 * Szag eltávolítása.
+	 * Szag eltï¿½volï¿½tï¿½sa.
 	 * 
 	 */
 	@Override
 	public void removeMyself() {
 		Singleton s = Singleton.Instance();
 
-		Integer id = s.stack.get(s.stack.size() - 1);
+		
+		Field field = new Field();
 
-		s.makeSpace(">> CALL: " + id + ": FoodSmell.removeMyself()");
+		field.removeSmell(new FoodSmell());
 
-		s.stack.add(14);
-		Field field = s.fields.get(13);
-
-		field.removeSmell(s.foodSmells.get(id));
-
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": FoodSmell.removeMyself()");
-		s.depth--;
 	}
 
 	/**
-	 * Szag csökkentése.
+	 * Szag csï¿½kkentï¿½se.
 	 * 
 	 */
 	@Override
 	public void decreaseSmell() {
 		Singleton s = Singleton.Instance();
 
-		Integer id = s.stack.get(s.stack.size() - 1);
-
-		s.makeSpace(">> CALL: " + id + ": AntSmell.decreaseSmell()");
-
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": AntSmell.decreaseSmell()");
-		s.depth--;
+	
 	}
 
 	/**
-	 * A csápnak adja meg a étel szagának erõsségét.
+	 * A csï¿½pnak adja meg a ï¿½tel szagï¿½nak erï¿½ssï¿½gï¿½t.
 	 * 
 	 * @param tentacle
-	 *            a csáp, aminak a szag erõsségét át kell adni
+	 *            a csï¿½p, aminak a szag erï¿½ssï¿½gï¿½t ï¿½t kell adni
 	 * 
 	 */
 	@Override
 	public void smellIt(Tentacle tentacle) {
 		Singleton s = Singleton.Instance();
 
-		Integer id = s.stack.get(s.stack.size() - 1);
-
-		s.makeSpace(">> CALL: " + id + ": FoodSmell.smellIt("
-				+ s.tentacles.indexOf(tentacle) + ")");
-
-		s.stack.add(s.tentacles.indexOf(tentacle));
+		
 		tentacle.increaseFoodSmell(4);
-		s.stack.remove(s.stack.size() - 1);
-
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": FoodSmell.smellIt("
-				+ s.tentacles.indexOf(tentacle) + ")");
-		s.depth--;
+		
 	}
 }

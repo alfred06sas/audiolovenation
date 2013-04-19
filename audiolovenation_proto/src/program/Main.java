@@ -103,15 +103,15 @@ public class Main {
 						case 2:
 							break loop;
 						default:
-							/** Hibás bemenet lekezelése */
-							System.out.println("Hibas kód!");
+							/** Hibas bemenet lekezelese */
+							System.out.println("Hibas kod!");
 							break;
 						}
 					}
 					break;
 				default:
-					/** Hibás bemenet lekezelése */
-					System.out.println("Hibas kód!");
+					/** Hibás bemenet lekezelese */
+					System.out.println("Hibas kod!");
 					break;
 				}
 

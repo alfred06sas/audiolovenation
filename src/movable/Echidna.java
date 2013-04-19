@@ -1,26 +1,20 @@
 package movable;
 
-import java.util.Map;
-import java.util.TreeMap;
+import item.Item;
 
-import land.Dir;
+import java.util.HashMap;
+
 import land.Field;
 import program.Singleton;
-import program.SingletonContainer;
-import smell.AntSmell;
-import smell.Smell;
-import item.Item;
-import item.Tentacle;
-import item.Volatile;
 
 /**
  * 
- * A hangyászsün viselkedését valósítja meg. A pálya inicializálásánál elõre
- * meghatározott számút hozunk létre belõle, melyek nem mindig vannak jelen
- * (inaktívak). Megadott idõközönként jelennek meg (aktivizálódnak). Van egy
- * éhség tulajdonsága, aminek függvényében bizonyos mennyiségû, az útjába kerülõ
- * hangyát elfogyaszt, majd eltûnik. Amennyiben más elemmel találkozik, akkor
- * nem történik semmi, halad tovább.
+ * A hangyï¿½szsï¿½n viselkedï¿½sï¿½t valï¿½sï¿½tja meg. A pï¿½lya inicializï¿½lï¿½sï¿½nï¿½l elï¿½re
+ * meghatï¿½rozott szï¿½mï¿½t hozunk lï¿½tre belï¿½le, melyek nem mindig vannak jelen
+ * (inaktï¿½vak). Megadott idï¿½kï¿½zï¿½nkï¿½nt jelennek meg (aktivizï¿½lï¿½dnak). Van egy
+ * ï¿½hsï¿½g tulajdonsï¿½ga, aminek fï¿½ggvï¿½nyï¿½ben bizonyos mennyisï¿½gï¿½, az ï¿½tjï¿½ba kerï¿½lï¿½
+ * hangyï¿½t elfogyaszt, majd eltï¿½nik. Amennyiben mï¿½s elemmel talï¿½lkozik, akkor
+ * nem tï¿½rtï¿½nik semmi, halad tovï¿½bb.
  * 
  * @author audiolovenation
  * 
@@ -28,56 +22,42 @@ import item.Volatile;
 public class Echidna extends Item implements Movable {
 
 	/**
-	 * Aktív/inaktív állapot jelzése
+	 * Aktï¿½v/inaktï¿½v ï¿½llapot jelzï¿½se
 	 */
 	private boolean isActive = false;
 	/**
-	 * Inaktív állapotból hátramaradó körök száma
+	 * Inaktï¿½v ï¿½llapotbï¿½l hï¿½tramaradï¿½ kï¿½rï¿½k szï¿½ma
 	 */
 	private Integer wait;
 	/**
-	 * Éhség mértéke. Ha 0, akkor inaktív állapotba kerül meghatározott körre.
+	 * ï¿½hsï¿½g mï¿½rtï¿½ke. Ha 0, akkor inaktï¿½v ï¿½llapotba kerï¿½l meghatï¿½rozott kï¿½rre.
 	 */
 	private Integer hunger;
 
 	/**
-	 * Aktuális mezõ beállítása.
+	 * Aktuï¿½lis mezï¿½ beï¿½llï¿½tï¿½sa.
 	 * 
 	 * @param field
-	 *            a beállítandó mezõ
+	 *            a beï¿½llï¿½tandï¿½ mezï¿½
 	 */
 	@Override
 	public void setActualField(Field field) {
 		Singleton s = Singleton.Instance();
 
-		Integer id = s.stack.get(s.stack.size() - 1);
-
-		s.makeSpace(">> CALL: " + id + ": Echidna.setActualField("
-				+ s.fields.indexOf(field) + ": Field)");
-
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": Echidna.setActualField("
-				+ s.fields.indexOf(field) + ": Field)");
-		s.depth--;
+		
 	}
 
 	/**
-	 * Éhség (hunger attribútum) csökkentése meghatározott értékkel.
+	 * ï¿½hsï¿½g (hunger attribï¿½tum) csï¿½kkentï¿½se meghatï¿½rozott ï¿½rtï¿½kkel.
 	 */
 	public void decreaseHunger() {
 		Singleton s = Singleton.Instance();
 
-		Integer id = s.stack.get(s.stack.size() - 1);
-
-		s.makeSpace(">> CALL: " + id + ": Echidna.decreaseHunger()");
-
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": Echidna.decreaseHunger()");
-		s.depth--;
+		
 	}
 
 	/**
-	 * Életre keltés (wait == 0)
+	 * ï¿½letre keltï¿½s (wait == 0)
 	 */
 	@Override
 	public void setAlive() {
@@ -85,105 +65,83 @@ public class Echidna extends Item implements Movable {
 	}
 
 	/**
-	 * - Hangyászsünel való ütközés. Nem történik semmmi.
+	 * - Hangyï¿½szsï¿½nel valï¿½ ï¿½tkï¿½zï¿½s. Nem tï¿½rtï¿½nik semmmi.
 	 * 
 	 * @param echidna
-	 *            referencia a hangyászsünre, amivel ütközik
+	 *            referencia a hangyï¿½szsï¿½nre, amivel ï¿½tkï¿½zik
 	 */
 	@Override
 	public void collisionWithEchidna(Echidna echidna) {
 		Singleton s = Singleton.Instance();
 
-		Integer id = s.stack.get(s.stack.size() - 1);
-
-		s.makeSpace(">> CALL: " + id + ": Echidna.collisionWithEchidna("
-				+ s.items.indexOf(echidna) + ": Echidna)");
-
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": Echidna.collisionWithEchidna("
-				+ s.items.indexOf(echidna) + ": Echidna)");
-		s.depth--;
+		
 	}
 
 	/**
-	 * A hangyászsün léptetése.
+	 * A hangyï¿½szsï¿½n lï¿½ptetï¿½se.
 	 */
 	@Override
 	public void step() {
 		Singleton s = Singleton.Instance();
 
-		Integer id = s.stack.get(s.stack.size() - 1);
+		
+		Echidna echidna = new Echidna();
 
-		s.makeSpace(">> CALL: " + id + ": Echidna.step()");
-
-		Echidna echidna = (Echidna) s.items.get(id);
-
-		/* A szomszédok lekérdezése */
-		s.stack.add(12);
-		Field prevField = s.fields.get(11);
+		/* A szomszï¿½dok lekï¿½rdezï¿½se */
+		Field prevField = new Field();
 		prevField.getNeighbours();
-		s.stack.remove(s.stack.size() - 1);
-
-		/* A hangyászsün törlése a mezõrõl */
-		s.stack.add(12);
+	
+		/* A hangyï¿½szsï¿½n tï¿½rlï¿½se a mezï¿½rï¿½l */
 		prevField.removeItem(echidna);
-		s.stack.remove(s.stack.size() - 1);
-
-		/* Hangyászsün átlép a kövezkezõ mezõre */
-		s.stack.add(11);
-		Field nextField = s.fields.get(10);
+	
+		/* Hangyï¿½szsï¿½n ï¿½tlï¿½p a kï¿½vezkezï¿½ mezï¿½re */
+		Field nextField = new Field();
 		nextField.addItem(echidna);
 		nextField.getItems();
-		s.stack.remove(s.stack.size() - 1);
-
-		/* Az ott levõ elemekkel való ütközés */
-		s.stack.add(10);
-		Echidna echidna2 = (Echidna) s.items.get(9);
+		
+		/* Az ott levï¿½ elemekkel valï¿½ ï¿½tkï¿½zï¿½s */
+		Echidna echidna2 = new Echidna();
 		echidna2.collisionWithEchidna(echidna);
-		s.stack.remove(s.stack.size() - 1);
-
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": Echidna.step()");
-		s.depth--;
-
+		
 	}
 
 	/**
-	 * Hangyával való ütközés. A hangya megölése. Lépés elõtt nem csinál semmit.
+	 * Hangyï¿½val valï¿½ ï¿½tkï¿½zï¿½s. A hangya megï¿½lï¿½se. Lï¿½pï¿½s elï¿½tt nem csinï¿½l semmit.
 	 * 
 	 * @param ant
-	 *            a hangya referenciája. amivel ütközött
+	 *            a hangya referenciï¿½ja. amivel ï¿½tkï¿½zï¿½tt
 	 * @param b
-	 *            ütközés elõtt: false, ütközés után: true -
+	 *            ï¿½tkï¿½zï¿½s elï¿½tt: false, ï¿½tkï¿½zï¿½s utï¿½n: true -
 	 */
 	@Override
 	public void collisionWithAnt(Ant ant, boolean b) {
 		Singleton s = Singleton.Instance();
 
-		Integer id = s.stack.get(s.stack.size() - 1);
-
-		s.makeSpace(">> CALL: " + id + ": Echidna.collisionWithAnt("
-				+ s.ants.indexOf(ant) + ": Ant, " + String.valueOf(b)
-				+ ": boolean)");
-
-		/* Lépés után */
+		/* Lï¿½pï¿½s utï¿½n */
 		if (b == true) {
-			/* Hangya megölése */
-			s.stack.add(s.items.indexOf(ant));
+			/* Hangya megï¿½lï¿½se */
 			ant.kill();
-			s.stack.remove(s.stack.size() - 1);
-
-			/* Éhség csökkentése */
-			s.stack.add(id);
-			Echidna echidna = (Echidna) s.items.get(id - 1);
+		
+			/* ï¿½hsï¿½g csï¿½kkentï¿½se */
+			Echidna echidna = new Echidna();
 			echidna.decreaseHunger();
-			s.stack.remove(s.stack.size() - 1);
 		}
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": Echidna.collisionWithAnt("
-				+ s.ants.indexOf(ant) + ": Ant, " + String.valueOf(b)
-				+ ": boolean)");
-
-		s.depth--;
+	
+	}
+	
+	@Override
+	public HashMap<String, String> getStates() {
+		HashMap<String, String> states = new HashMap<String, String>();
+		
+		if (wait > 0)
+			states.put("STATE", "WAIT");
+		else {
+			if (hunger > 0)
+				states.put("STATE", "HUNGRY");
+			else
+				states.put("STATE", "NOT_HUNGRY");
+		}
+		
+		return states;
 	}
 }

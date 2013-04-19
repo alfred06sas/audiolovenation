@@ -13,12 +13,12 @@ import smell.Smell;
  * @author audiolovenation
  * 
  *         A getIstance() metodusa ugyan azt az objektumot adja vissza. A
- *         Volatile és a Movable interfészeket megvalósító osztályok tárolására.
- *         A pálya végzi a léptetést és az illékony anyagok csökkentését is.
- *         Erre a megoldásra azért volt szükség, hogy a pálya számára elérhetõek
- *         legyenek ezek a listák, ugyanakkor mind a Volatile és a Movable is
- *         hozzá tudjon adni elemeket a saját listájához. Így nem kellett
- *         mindenki számára láthatóvá tenni az egész pályát (Land osztály).
+ *         Volatile ï¿½s a Movable interfï¿½szeket megvalï¿½sï¿½tï¿½ osztï¿½lyok tï¿½rolï¿½sï¿½ra.
+ *         A pï¿½lya vï¿½gzi a lï¿½ptetï¿½st ï¿½s az illï¿½kony anyagok csï¿½kkentï¿½sï¿½t is.
+ *         Erre a megoldï¿½sra azï¿½rt volt szï¿½ksï¿½g, hogy a pï¿½lya szï¿½mï¿½ra elï¿½rhetï¿½ek
+ *         legyenek ezek a listï¿½k, ugyanakkor mind a Volatile ï¿½s a Movable is
+ *         hozzï¿½ tudjon adni elemeket a sajï¿½t listï¿½jï¿½hoz. ï¿½gy nem kellett
+ *         mindenki szï¿½mï¿½ra lï¿½thatï¿½vï¿½ tenni az egï¿½sz pï¿½lyï¿½t (Land osztï¿½ly).
  */
 public class SingletonContainer {
 
@@ -31,181 +31,117 @@ public class SingletonContainer {
 
 	/**
 	 * 
-	 * Az illékony elemek hozzáadása az õket tároló listába.
+	 * Az illï¿½kony elemek hozzï¿½adï¿½sa az ï¿½ket tï¿½rolï¿½ listï¿½ba.
 	 * 
 	 * @param Volatile
-	 *            a hozzáadandó elem
+	 *            a hozzï¿½adandï¿½ elem
 	 */
 	public void addVolatile(Volatile volatile_) {
 		Singleton s = Singleton.Instance();
 
-		Integer id = s.stack.get(s.stack.size() - 1);
-
-		s.makeSpace(">> CALL: " + id + ": SingletonContainer.addVolatile("
-				+ s.smells.indexOf((Smell) volatile_) + ": Volatile)");
-
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": SingletonContainer.addVolatile("
-				+ s.smells.indexOf((Smell) volatile_) + ": Volatile)");
-		s.depth--;
+	
 	}
 
 	/**
 	 * 
-	 * Az mozgó elemek hozzáadása az õket tároló listába.
+	 * Az mozgï¿½ elemek hozzï¿½adï¿½sa az ï¿½ket tï¿½rolï¿½ listï¿½ba.
 	 * 
 	 * @param Movable
-	 *            a hozzáadandó elem
+	 *            a hozzï¿½adandï¿½ elem
 	 */
 	public void addMovable(Movable movable) {
 		Singleton s = Singleton.Instance();
 
-		Integer id = s.stack.get(s.stack.size() - 1);
-
-		s.makeSpace(">> CALL: " + id + ": SingletonContainer.addMovable()");
-
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": SingletonContainer.addMovable()");
-		s.depth--;
+		
 	}
 
 	/**
 	 * 
-	 * A SingletonContainer referenciájának lekérése.
+	 * A SingletonContainer referenciï¿½jï¿½nak lekï¿½rï¿½se.
 	 * 
-	 * @return a SingletonContainerre mutató referencia
+	 * @return a SingletonContainerre mutatï¿½ referencia
 	 */
 	public static SingletonContainer getInstance() {
 		Singleton s = Singleton.Instance();
 
-		Integer id = s.stack.get(s.stack.size() - 1);
-
-		s.makeSpace(">> CALL: " + id + ": SingletonContainer.getInstance()");
-
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id
-				+ ": SingletonContainer.getInstance(): SingletonContainer");
-		s.depth--;
+	
 		return new SingletonContainer();
 	}
 
 	/**
 	 * 
-	 * Mozgásra képes elemek lekérdezése.
+	 * Mozgï¿½sra kï¿½pes elemek lekï¿½rdezï¿½se.
 	 * 
 	 * @return
 	 */
 	public List<Movable> getMovables() {
 		Singleton s = Singleton.Instance();
 
-		Integer id = s.stack.get(s.stack.size() - 1);
-
-		s.makeSpace(">> CALL: " + id + ": SingletonContainer.getMovables()");
-
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id
-				+ ": SingletonContainer.getMovables(): List<Movable>");
-		s.depth--;
+	
 
 		return null;
 	}
 
 	/**
 	 * 
-	 * Illéákony elemek lekérdezése.
+	 * Illï¿½ï¿½kony elemek lekï¿½rdezï¿½se.
 	 * 
 	 * @return
 	 */
 	public List<Volatile> getVolatiles() {
 		Singleton s = Singleton.Instance();
 
-		Integer id = s.stack.get(s.stack.size() - 1);
-
-		s.makeSpace(">> CALL: " + id + ": SingletonContainer.getVolatiles()");
-
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id
-				+ ": SingletonContainer.getVolatiles(): List<Volatile>");
-		s.depth--;
 
 		return null;
 	}
 
 	/**
 	 * 
-	 * Egy illékony elem kitörlése az azokat tároló listából.
+	 * Egy illï¿½kony elem kitï¿½rlï¿½se az azokat tï¿½rolï¿½ listï¿½bï¿½l.
 	 * 
 	 * @param Volatile
-	 *            a kitörlendõ elem
+	 *            a kitï¿½rlendï¿½ elem
 	 */
 	public void removeVolatile(Volatile volatile_) {
 	}
 
 	/**
 	 * 
-	 * Egy mozgó elem kitörlése az azokat tároló listából.
+	 * Egy mozgï¿½ elem kitï¿½rlï¿½se az azokat tï¿½rolï¿½ listï¿½bï¿½l.
 	 * 
 	 * @param Movable
-	 *            a kitörlendõ elem
+	 *            a kitï¿½rlendï¿½ elem
 	 */
 	public void removeMovable(Movable movable) {
 		Singleton s = Singleton.Instance();
 
-		Integer id = s.stack.get(s.stack.size() - 1);
-
-		s.makeSpace(">> CALL: " + id + ": SingletonContainer.removeMovable("
-				+ s.items.indexOf(movable) + ": Movable)");
-
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": SingletonContainer.removeMovable("
-				+ s.items.indexOf(movable) + ": Movable)");
-		s.depth--;
+		
 	}
 
 	/**
 	 * 
-	 * A hangyaírtó-spray erejének csökkentsése.
+	 * A hangyaï¿½rtï¿½-spray erejï¿½nek csï¿½kkentsï¿½se.
 	 * 
 	 * @param Integer
-	 *            a csökkentés mrétéke
+	 *            a csï¿½kkentï¿½s mrï¿½tï¿½ke
 	 */
 	public void decreaseAntKillerSpray(Integer strength) {
 		Singleton s = Singleton.Instance();
 
-		Integer id = s.stack.get(s.stack.size() - 1);
-
-		s.makeSpace(">> CALL: " + id
-				+ ": SingletonContainer.decreaseAntKillerSpray(" + strength
-				+ ": Integer)");
-
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id
-				+ ": SingletonContainer.decreaseAntKillerSpray(" + strength
-				+ ": Integer)");
-		s.depth--;
+		
 	}
 
 	/**
 	 * 
-	 * A hangyaszagírtó-spray erejének csökkentsése.
+	 * A hangyaszagï¿½rtï¿½-spray erejï¿½nek csï¿½kkentsï¿½se.
 	 * 
 	 * @param Integer
-	 *            a csökkentés mrétéke
+	 *            a csï¿½kkentï¿½s mrï¿½tï¿½ke
 	 */
 	public void decreaseAntSmellSpray(Integer strength) {
 		Singleton s = Singleton.Instance();
 
-		Integer id = s.stack.get(s.stack.size() - 1);
-
-		s.makeSpace(">> CALL: " + id
-				+ ": SingletonContainer.decreaseAntSmellSpray(" + strength
-				+ ": Integer)");
-
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id
-				+ ": SingletonContainer.decreaseAntSmellSpray(" + strength
-				+ ": Integer)");
-		s.depth--;
+		
 	}
 
 }

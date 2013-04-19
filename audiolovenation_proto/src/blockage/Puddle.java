@@ -7,22 +7,22 @@ import program.Singleton;
 
 /**
  * 
- * Egy akadï¿½ly (tï¿½csa), ha a hangya egy ilyen mezï¿½re akar lï¿½pni, akkor kï¿½nytelen
- * mï¿½sik ï¿½tvonalat vï¿½lasztani.
+ * Egy akadaly (tocsa), ha a hangya egy ilyen mezore akar lepni, akkor kenytelen
+ * masik utvonalat valasztani.
  * 
  * @author audiolovenation
  * 
  */
 public class Puddle extends Blockage {
 	/**
-	 * Hangyï¿½val valï¿½ ï¿½tkï¿½zï¿½s. Lï¿½pï¿½s utï¿½n (b == true) nem csinï¿½l semmit, mivel
-	 * ez az eset nem lehetsï¿½ges: a hangya nem lï¿½phet akadï¿½lyra. Lï¿½pï¿½s elï¿½tt (b
-	 * == false) jelzi a hangyï¿½nak h az ï¿½t tartalmazï¿½ mezï¿½re nem lï¿½phet.
+	 * Hangyaval valo utkozes. Lepes utan (b == true) nem csinal semmit, mivel
+	 * ez az eset nem lehetseges: a hangya nem lephet akadalyra. Lepes elott (b
+	 * == false) jelzi a hangyanak h az ot tartalmazo mezore nem lephet.
 	 * 
 	 * @param ant
-	 *            a hangya referenciï¿½ja. amivel ï¿½tkï¿½zï¿½tt
+	 *            a hangya referenciája. amivel utkozott
 	 * @param b
-	 *            ï¿½tkï¿½zï¿½s elï¿½tt: false, ï¿½tkï¿½zï¿½s utï¿½n: true
+	 *            lepes elott: false, lepes utan: true
 	 */
 	@Override
 	public void collisionWithAnt(Ant ant, boolean b) {
@@ -37,10 +37,10 @@ public class Puddle extends Blockage {
 	}
 
 	/**
-	 * Hangyï¿½szsï¿½nnel valï¿½ ï¿½tkï¿½zï¿½s. Nem csinï¿½l semmit, csak visszatï¿½r.
+	 * Hangyaszsunnel valo utkozes. Nem csinal semmit, csak visszater.
 	 * 
 	 * @param echidna
-	 *            az a hangyï¿½szsï¿½n. amivel ï¿½tkï¿½zï¿½tt
+	 *            az a hangyaszsun. amivel utkozott
 	 */
 	@Override
 	public void collisionWithEchidna(Echidna echidna) {

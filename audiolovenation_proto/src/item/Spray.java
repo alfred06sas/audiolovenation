@@ -1,4 +1,4 @@
-package land;
+package item;
 
 import item.Item;
 import item.Volatile;

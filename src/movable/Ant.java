@@ -4,6 +4,7 @@ import item.Item;
 import item.Tentacle;
 import item.Volatile;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -16,8 +17,8 @@ import smell.Smell;
 
 /**
  * 
- * A hangya feladata mezõrõl mezõre lépni. Mozgása irányát az étel, és más
- * hangyák által hagyott szagnyom befolyásolja. Végül, ha ételhez ér, vissza
+ * A hangya feladata mezï¿½rï¿½l mezï¿½re lï¿½pni. Mozgï¿½sa irï¿½nyï¿½t az ï¿½tel, ï¿½s mï¿½s
+ * hangyï¿½k ï¿½ltal hagyott szagnyom befolyï¿½solja. Vï¿½gï¿½l, ha ï¿½telhez ï¿½r, vissza
  * kell azt vinnie a bolyba.
  * 
  * @author audiolovenation
@@ -25,7 +26,7 @@ import smell.Smell;
  */
 public class Ant extends Item implements Movable {
 	/**
-	 * Csáp objektum. Ez végzi a továbbhaladási irányok beállítását.
+	 * Csï¿½p objektum. Ez vï¿½gzi a tovï¿½bbhaladï¿½si irï¿½nyok beï¿½llï¿½tï¿½sï¿½t.
 	 */
 	private Tentacle tentacle;
 	/**
@@ -33,385 +34,271 @@ public class Ant extends Item implements Movable {
 	 */
 	private boolean isKilled = false;
 	/**
-	 * A hangya aktív-e (a pályán tartózkodik-e).
+	 * A hangya aktï¿½v-e (a pï¿½lyï¿½n tartï¿½zkodik-e).
 	 */
 	private boolean isActive = false;
 	/**
-	 * Inaktív állapotban a maradék várakozási körök.
+	 * Inaktï¿½v ï¿½llapotban a maradï¿½k vï¿½rakozï¿½si kï¿½rï¿½k.
 	 */
 	private Integer wait;
 	/**
-	 * Van-e a hangyánál étel.
+	 * Van-e a hangyï¿½nï¿½l ï¿½tel.
 	 */
 	private boolean haveFood = false;
 	/**
-	 * Életerõ, amelyet a spray, a hangyalesõ és a hangyászsün módosíthat. Ha 0,
-	 * akkor a hangya átlép inaktív állapotba és a kör végén meghal.
+	 * ï¿½leterï¿½, amelyet a spray, a hangyalesï¿½ ï¿½s a hangyï¿½szsï¿½n mï¿½dosï¿½that. Ha 0,
+	 * akkor a hangya ï¿½tlï¿½p inaktï¿½v ï¿½llapotba ï¿½s a kï¿½r vï¿½gï¿½n meghal.
 	 */
 	private Integer HP;
 	/**
-	 * A továbbhaladási irány. Default: UP.
+	 * A tovï¿½bbhaladï¿½si irï¿½ny. Default: UP.
 	 */
 	private Dir dir;
 
 	/**
-	 * Aktuális mezõ beállítása.
+	 * AktuÃ¡lis mezï¿½ beï¿½llï¿½tï¿½sa.
 	 * 
 	 * @param field
-	 *            a beállítandó mezõ
+	 *            a beï¿½llï¿½tandï¿½ mezï¿½
 	 */
 	@Override
 	public void setActualField(Field field) {
 		Singleton s = Singleton.Instance();
 
-		Integer id = s.stack.get(s.stack.size() - 1);
-
-		s.makeSpace(">> CALL: " + id + ": Ant.setActualField("
-				+ s.fields.indexOf(field) + ": Field)");
-
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": Ant.setActualField("
-				+ s.fields.indexOf(field) + ": Field)");
-		s.depth--;
 	}
 
 	/**
-	 * Életerõ lecsökkentése a megadott értékkel.
+	 * ï¿½leterï¿½ lecsï¿½kkentï¿½se a megadott ï¿½rtï¿½kkel.
 	 * 
 	 * @param hp
-	 *            a csökkentés mértéke
+	 *            a csï¿½kkentï¿½s mï¿½rtï¿½ke
 	 */
 	public void looseHP(Integer hp) {
 		Singleton s = Singleton.Instance();
 
-		Integer id = s.stack.get(s.stack.size() - 1);
-
-		s.makeSpace(">> CALL: " + id + ": Ant.looseHP(" + hp + ": Integer)");
-
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": Ant.looseHP(" + hp + ": Integer)");
-		s.depth--;
+		
 	}
 
 	/**
-	 * A hangya ételt vesz fel. Állapotát átállítja (haveFood = true).
+	 * A hangya ï¿½telt vesz fel. ï¿½llapotï¿½t ï¿½tï¿½llï¿½tja (haveFood = true).
 	 */
 	public void pickUpFood() {
 		Singleton s = Singleton.Instance();
 
-		Integer id = s.stack.get(s.stack.size() - 1);
-
-		s.makeSpace(">> CALL: " + id + ": Ant.pickupFood()");
-
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": Ant.pickUpFood()");
-		s.depth--;
+		
 	}
 
 	/**
-	 * Pihenteti a hangyát egy adott ideig [amíg el nem indul (újra) a
-	 * bolyból)].
+	 * Pihenteti a hangyï¿½t egy adott ideig [amï¿½g el nem indul (ï¿½jra) a
+	 * bolybï¿½l)].
 	 */
 	public void rest() {
 		Singleton s = Singleton.Instance();
 
-		Integer id = s.stack.get(s.stack.size() - 1);
-
-		s.makeSpace(">> CALL: " + id + ": Ant.rest()");
-		s.depth--;
-
-		s.makeSpace("<< RETURN: " + id + ": Ant.rest()");
-		s.depth--;
+		
 	}
 
 	/**
-	 * A hangya irányának megfordítása.
+	 * A hangya irï¿½nyï¿½nak megfordï¿½tï¿½sa.
 	 */
 	public void reverseDir() {
 		Singleton s = Singleton.Instance();
 
-		Integer id = s.stack.get(s.stack.size() - 1);
-
-		s.makeSpace(">> CALL: " + id + ": Ant.reverseDir()");
-
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": Ant.reverseDir()");
-		s.depth--;
+		
 	}
 
 	/**
-	 * A hangya megölése. Törli magát a mezõrõl és a SingletonContainer-ben levõ
-	 * movables listából is.
+	 * A hangya megï¿½lï¿½se. Tï¿½rli magï¿½t a mezï¿½rï¿½l ï¿½s a SingletonContainer-ben levï¿½
+	 * movables listï¿½bï¿½l is.
 	 */
 	public void kill() {
 		Singleton s = Singleton.Instance();
 
-		Integer id = s.stack.get(s.stack.size() - 1);
-
-		s.makeSpace(">> CALL: " + id + ": Ant.kill()");
-
-		/* Hangya törlése az õt tartalmazó mezõrõl */
-		s.stack.add(17);
-		Field field = s.fields.get(16);
-		field.removeItem(s.ants.get(id));
-		s.stack.remove(s.stack.size() - 1);
-
-		/* Hangya törlése a SingletonContainer movables listájából */
-		s.stack.add(1);
-		SingletonContainer sc = s.singletonContainer.get(0).getInstance();
-		sc.removeMovable(s.ants.get(id));
-		s.stack.remove(s.stack.size() - 1);
-
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": Ant.kill()");
-		s.depth--;
+		
+		/* Hangya tï¿½rlï¿½se az ï¿½t tartalmazï¿½ mezï¿½rï¿½l */
+		Field field = new Field();
+		field.removeItem(new Ant());
+		
+		/* Hangya tï¿½rlï¿½se a SingletonContainer movables listï¿½jï¿½bï¿½l */
+		SingletonContainer sc = new SingletonContainer().getInstance();
+		sc.removeMovable(new Ant());
+		
 	}
 
 	/**
-	 * Haladási irány beállítása.
+	 * Haladï¿½si irï¿½ny beï¿½llï¿½tï¿½sa.
 	 * 
 	 * @param dir
-	 *            a beállítandó haladási irány
+	 *            a beï¿½llï¿½tandï¿½ haladï¿½si irï¿½ny
 	 */
 	public void setDir(Dir dir) {
 		Singleton s = Singleton.Instance();
 
-		Integer id = s.stack.get(s.stack.size() - 1);
-
-		s.makeSpace(">> CALL: " + id + ": Ant.setDir(" + dir.toString()
-				+ ": Dir)");
-
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": Ant.setDir(" + dir.toString()
-				+ ": Dir)");
-		s.depth--;
+	
 	}
 
 	/**
-	 * A hangya léptetése. Lekérdezi az õt tartalmazó mezõ szomszédait, majd
-	 * ezekbõl a lehetséges továbbhaladási irányban levõket továbbadja a
-	 * csápjának. A csáp ezek után megvizsgálja, hogy hova léphet, majd ahol
-	 * akadály van, kiszedi a lehetséges mezõk listájából. Ha mindenhol akadály
-	 * van, akkor megfordul (marad ugyanazon a mezõn), ha megtalálta a
-	 * legmegfelelõbbet, akkor rálép, majd ütközik az ottani item-ekkel.
+	 * A hangya lï¿½ptetï¿½se. Lekï¿½rdezi az ï¿½t tartalmazï¿½ mezï¿½ szomszï¿½dait, majd
+	 * ezekbï¿½l a lehetsï¿½ges tovï¿½bbhaladï¿½si irï¿½nyban levï¿½ket tovï¿½bbadja a
+	 * csï¿½pjï¿½nak. A csï¿½p ezek utï¿½n megvizsgï¿½lja, hogy hova lï¿½phet, majd ahol
+	 * akadï¿½ly van, kiszedi a lehetsï¿½ges mezï¿½k listï¿½jï¿½bï¿½l. Ha mindenhol akadï¿½ly
+	 * van, akkor megfordul (marad ugyanazon a mezï¿½n), ha megtalï¿½lta a
+	 * legmegfelelï¿½bbet, akkor rï¿½lï¿½p, majd ï¿½tkï¿½zik az ottani item-ekkel.
 	 */
 	@Override
 	public void step() {
 		Singleton s = Singleton.Instance();
 
-		Integer id = s.stack.get(s.stack.size() - 1);
-
-		s.makeSpace(">> CALL: " + id + ": Ant.step()");
-
-		/* A szomszédok lekérdezése */
-		s.stack.add(12);
-		Field prevField = s.fields.get(11);
+		
+		/* A szomszï¿½dok lekï¿½rdezï¿½se */
+		Field prevField = new Field();
 		prevField.getNeighbours();
-		s.stack.remove(s.stack.size() - 1);
-
-		/* A lehetséges szomszédok beállítása */
-		s.stack.add(9);
-		Tentacle tentacle = s.tentacles.get(8);
+	
+		/* A lehetsï¿½ges szomszï¿½dok beï¿½llï¿½tï¿½sa */
+		Tentacle tentacle = new Tentacle();
 		Map<Dir, Field> map = new TreeMap<Dir, Field>();
 		map.put(Dir.DOWN, prevField);
 		tentacle.setPossibleNeighbours(map);
-		s.stack.remove(s.stack.size() - 1);
-
-		/* A lehetséges szomszédok item-einek egy ciklusban való lekérdezése */
-		s.stack.add(11);
-		Field nextField = s.fields.get(10);
+	
+		/* A lehetsï¿½ges szomszï¿½dok item-einek egy ciklusban valï¿½ lekï¿½rdezï¿½se */
+		Field nextField = new Field();
 		nextField.getItems();
-		s.stack.remove(s.stack.size() - 1);
-
+		
 		/*
-		 * Az elemekkel való ütköztetés még lépés elõtt, hogy kiderüljön, hol
-		 * található akadály
+		 * Az elemekkel valï¿½ ï¿½tkï¿½ztetï¿½s mï¿½g lï¿½pï¿½s elï¿½tt, hogy kiderï¿½ljï¿½n, hol
+		 * talï¿½lhatï¿½ akadï¿½ly
 		 */
-		s.stack.add(5);
-		Ant ant = (Ant) s.items.get(id);
-		Ant ant2 = (Ant) s.items.get(4);
+		Ant ant = new Ant();
+		Ant ant2 = new Ant();
 		ant2.collisionWithAnt(ant, false);
-		s.stack.remove(s.stack.size() - 1);
 
 		/*
-		 * A csáp scan metódusának meghívása, amely kiválasztja a következõ
-		 * mezõt.
+		 * A csï¿½p scan metï¿½dusï¿½nak meghï¿½vï¿½sa, amely kivï¿½lasztja a kï¿½vetkezï¿½
+		 * mezï¿½t.
 		 */
-		s.stack.add(9);
 		Map<Dir, Field> map2 = tentacle.scan(true);
-		s.stack.remove(s.stack.size() - 1);
-
-		/* Ha van olyan mezõ, ahol nincs akadály */
+	
+		/* Ha van olyan mezï¿½, ahol nincs akadï¿½ly */
 		if (map2 != null) {
-			/* Hangyaszag hagyása az elõzõ mezõn */
-			s.stack.add(12);
-			Smell smell = (AntSmell) s.smells.get(4);
+			/* Hangyaszag hagyï¿½sa az elï¿½zï¿½ mezï¿½n */
+			Smell smell = new AntSmell();
 			prevField.addSmell(smell);
-			s.stack.remove(s.stack.size() - 1);
-
-			/* Hangyaszag hozzáadása a SingletonContainer volatiles listájához */
-			s.stack.add(1);
-			SingletonContainer sc = s.singletonContainer.get(0);
-			Volatile smell2 = (AntSmell) s.smells.get(4);
+			
+			/* Hangyaszag hozzï¿½adï¿½sa a SingletonContainer volatiles listï¿½jï¿½hoz */
+			SingletonContainer sc = new SingletonContainer().getInstance();
+			Volatile smell2 = new AntSmell();
 			sc.addVolatile(smell2);
-			s.stack.remove(s.stack.size() - 1);
-
-			/* Elõzõ mezõrõl eltávolítja saját magát */
-			s.stack.add(12);
+			
+			/* Elï¿½zï¿½ mezï¿½rï¿½l eltï¿½volï¿½tja sajï¿½t magï¿½t */
 			prevField.removeItem(ant);
-			s.stack.remove(s.stack.size() - 1);
-
-			/* Következõ mezõ beállítása */
-			s.stack.add(2);
+		
+			/* Kï¿½vetkezï¿½ mezï¿½ beï¿½llï¿½tï¿½sa */
 			ant.setActualField(nextField);
-			s.stack.remove(s.stack.size() - 1);
-
-			/* Következõ mezõbe való beregisztrálás */
-			s.stack.add(11);
+		
+			/* Kï¿½vetkezï¿½ mezï¿½be valï¿½ beregisztrï¿½lï¿½s */
 			nextField.addItem(ant);
-			s.stack.remove(s.stack.size() - 1);
 			/* Ha nem tud sehova se menni */
 		} else {
-			/* Irány megfordítása */
-			s.stack.add(5);
+			/* Irï¿½ny megfordï¿½tï¿½sa */
 			ant.reverseDir();
-			s.stack.remove(s.stack.size() - 1);
 		}
-		/* lépés utáni ütköztetés */
-		s.stack.add(8);
-		Echidna echidna = (Echidna) s.items.get(7);
+		/* lï¿½pï¿½s utï¿½ni ï¿½tkï¿½ztetï¿½s */
+		Echidna echidna = new Echidna();
 		echidna.collisionWithAnt(ant, true);
-		s.stack.remove(s.stack.size() - 1);
-
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": Ant.step()");
-		s.depth--;
 
 	}
 
 	/**
-	 * Hangya állapotának inaktívról aktívra állítása (wait == 0)
+	 * Hangya ï¿½llapotï¿½nak inaktï¿½vrï¿½l aktï¿½vra ï¿½llï¿½tï¿½sa (wait == 0)
 	 */
 	@Override
 	public void setAlive() {
 		Singleton s = Singleton.Instance();
 
-		Integer id = s.stack.get(s.stack.size() - 1);
-
-		s.makeSpace(">> CALL: " + id + ": Ant.setAlive()");
-
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": Ant.setAlive()");
-		s.depth--;
 	}
 
 	/**
-	 * Hangyával való ütközés. Nem csinál semmit, csak visszatér.
+	 * Hangyï¿½val valï¿½ ï¿½tkï¿½zï¿½s. Nem csinï¿½l semmit, csak visszatï¿½r.
 	 * 
 	 * @param ant
-	 *            a hangya referenciája. amivel ütközött
+	 *            a hangya referenciï¿½ja. amivel ï¿½tkï¿½zï¿½tt
 	 * @param b
-	 *            ütközés elõtt: false, ütközés után: true -
+	 *            ï¿½tkï¿½zï¿½s elï¿½tt: false, ï¿½tkï¿½zï¿½s utï¿½n: true -
 	 */
 	@Override
 	public void collisionWithAnt(Ant ant, boolean b) {
 		Singleton s = Singleton.Instance();
 
-		Integer id = s.stack.get(s.stack.size() - 1);
-
-		s.makeSpace(">> CALL: " + id + ": Ant.collisionWithAnt("
-				+ s.ants.indexOf(ant) + ": Ant, " + String.valueOf(b) + ")");
-		s.depth--;
-
-		s.makeSpace("<< RETURN: " + id + ": Ant.collisionWithAnt("
-				+ s.ants.indexOf(ant) + ": Ant, " + String.valueOf(b) + ")");
-		s.depth--;
 	}
 
 	/**
-	 * - Hangyászsünel való ütközés. A hangya meghal.
+	 * - Hangyï¿½szsï¿½nel valï¿½ ï¿½tkï¿½zï¿½s. A hangya meghal.
 	 * 
 	 * @param echidna
-	 *            referencia a hangyászsünre, amivel ütközik
+	 *            referencia a hangyï¿½szsï¿½nre, amivel ï¿½tkï¿½zik
 	 */
 	@Override
 	public void collisionWithEchidna(Echidna echidna) {
 		Singleton s = Singleton.Instance();
 
-		Integer id = s.stack.get(s.stack.size() - 1);
-
-		s.makeSpace(">> CALL: " + id + ": Ant.collisionWithEchidna("
-				+ s.echidnas.indexOf(echidna) + ": Echidna)");
-
 		/*
-		 * A hangya szól a hangyászsünnek, hogy hangyával ütközött, amely ennek
-		 * hatására megöli
+		 * A hangya szï¿½l a hangyï¿½szsï¿½nnek, hogy hangyï¿½val ï¿½tkï¿½zï¿½tt, amely ennek
+		 * hatï¿½sï¿½ra megï¿½li
 		 */
-		s.stack.add(s.items.indexOf(echidna));
-		Ant ant = (Ant) s.items.get(id - 1);
+		Ant ant = new Ant();
 		echidna.collisionWithAnt(ant, true);
-		s.stack.remove(s.stack.size() - 1);
-
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": Ant.collisionWithEchidna("
-				+ s.echidnas.indexOf(echidna) + ": Echidna)");
-		s.depth--;
+		
 	}
 
 	/**
-	 * Spray-vel való ütközés. A hangya vagy meghal, vagy életerõt veszít
+	 * Spray-vel valï¿½ ï¿½tkï¿½zï¿½s. A hangya vagy meghal, vagy ï¿½leterï¿½t veszï¿½t
 	 * 
 	 * @param strength
-	 *            a hangya életereje ennyivel fog csökkenni
+	 *            a hangya ï¿½letereje ennyivel fog csï¿½kkenni
 	 */
 	@Override
 	public void collisionWithSpray(Integer strength) {
 		Singleton s = Singleton.Instance();
 
-		Integer id = s.stack.get(s.stack.size() - 1);
-
-		s.makeSpace(">> CALL: " + id + ": Ant.collisionWithSpray(" + strength
-				+ ": Integer)");
-
-		/* A hangya looseHP metódusának meghívása */
-		s.stack.add(id);
-		Ant ant = s.ants.get(id);
+		/* A hangya looseHP metï¿½dusï¿½nak meghï¿½vï¿½sa */
+		Ant ant = new Ant();
 		ant.looseHP(6);
-		s.stack.remove(s.stack.size() - 1);
-
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": Ant.collisionWithSpray(" + strength
-				+ ": Integer)");
-		s.depth--;
+		
 	}
 
 	/**
-	 * Akadállyal való ütközés esetén az akadály ezzel a metódussal jelzi a
-	 * hangyának, hogy az õt tartalmazó mezõre nem léphet. Ezt a mezõt a csáp
-	 * kiveszi a lehetséges szomszédok közül. Mindig lépés elõtt hívódik meg,
-	 * mivel az nem fordulhat elõ. hogy a hangya olyan mezõre lép, ahol akadály
+	 * Akadï¿½llyal valï¿½ ï¿½tkï¿½zï¿½s esetï¿½n az akadï¿½ly ezzel a metï¿½dussal jelzi a
+	 * hangyï¿½nak, hogy az ï¿½t tartalmazï¿½ mezï¿½re nem lï¿½phet. Ezt a mezï¿½t a csï¿½p
+	 * kiveszi a lehetsï¿½ges szomszï¿½dok kï¿½zï¿½l. Mindig lï¿½pï¿½s elï¿½tt hï¿½vï¿½dik meg,
+	 * mivel az nem fordulhat elï¿½. hogy a hangya olyan mezï¿½re lï¿½p, ahol akadï¿½ly
 	 * van.
 	 * 
 	 * @param field
-	 *            az a mezõ, ahova nem léphet a hangya
+	 *            az a mezï¿½, ahova nem lï¿½phet a hangya
 	 */
 	public void canNotGo(Field field) {
 		Singleton s = Singleton.Instance();
-
-		Integer id = s.stack.get(s.stack.size() - 1);
-
-		s.makeSpace(">> CALL: " + id + ": Ant.canNotGo("
-				+ s.fields.indexOf(field) + ": Field)");
-
-		/* A paraméterként megadott mezõ kivétele a lehetséges mezõk listájából */
-		s.stack.add(17);
-		Tentacle tentacle = s.tentacles.get(16);
+	/* A paramï¿½terkï¿½nt megadott mezï¿½ kivï¿½tele a lehetsï¿½ges mezï¿½k listï¿½jï¿½bï¿½l */
+		Tentacle tentacle = new Tentacle();
 		tentacle.removePossibleNeighbour(field);
-		s.stack.remove(s.stack.size() - 1);
-
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": Ant.canNotGo("
-				+ s.fields.indexOf(field) + ": Field)");
-		s.depth--;
+		
+	}
+	
+	@Override
+	public HashMap<String, String> getStates() {
+		HashMap<String, String> states = new HashMap<String, String>();
+		
+		if (isKilled)
+			states.put("STATE", "KILLED");
+		else if (wait > 0)
+			states.put("STATE", "WAIT");
+		else {
+			if (haveFood)
+				states.put("STATE", "HAVE_FOOD");
+			else
+				states.put("STATE", "DONT_HAVE_FOOD");
+		}
+		
+		return states;
 	}
 }

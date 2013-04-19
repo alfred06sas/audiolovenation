@@ -1,0 +1,12 @@
+diff --git a/defaultname/audiolovenation/src/program/Tentacle.java b/defaultname/audiolovenation/src/program/Tentacle.java
+index d26ef35..cb181bf 100644
+--- a/defaultname/audiolovenation/src/program/Tentacle.java
++++ b/defaultname/audiolovenation/src/program/Tentacle.java
+@@ -1,7 +1,5 @@
+ package program;
+ 
+-import java.util.Map;
+-
+ public class Tentacle {
+ 
+ 	private Map<Dir, Field> possibleField;
