@@ -80,27 +80,24 @@ public class Tentacle {
 		}
 	}
 
+	public Map<Dir, Field> getPossibleNeighbours(){
+		return possibleFields;
+	}
+	
 	/**
 	 * Azon szomszedok kivetele a lehetsegesek kozul, amelyeken akadaly van
 	 * 
 	 * @param Field
 	 *            a vizsgalt szomszedos mezo
 	 */
-	public void removePossibleNeighbour() {
+	public void removePossibleNeighbour(Field field) {
 		List<Dir> dirs=new ArrayList<Dir>();
-		for (Dir key : possibleFields.keySet()) {
-			List<Item> items = possibleFields.get(key).getItems();
-			for (Item item:items){
-				try{
-					Blockage block=(Blockage)item;
-					dirs.add(key);
-				}
-				catch(ClassCastException e){}
-			}
+
+		for (Dir key : possibleFields.keySet()){
+			if (possibleFields.get(key).equals(field))
+				possibleFields.remove(key);
 		}
-		for (Dir dir : dirs){
-			possibleFields.remove(dir);
-		}
+		
 	}
 
 //	/**
