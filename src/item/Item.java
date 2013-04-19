@@ -51,6 +51,11 @@ public class Item {
 	 * @param Echidna
 	 *            a hangyaszsun ami utkozik a bollyal
 	 */
+	
+	public Field getActualField(){
+		return actualField;
+	}
+	
 	public void collisionWithEchidna(Echidna echidna) {
 		Singleton s = Singleton.Instance();
 		

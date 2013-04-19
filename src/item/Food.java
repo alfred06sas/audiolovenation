@@ -1,13 +1,14 @@
 package item;
 
 import java.util.List;
+import java.util.Map;
 
+import land.Dir;
 import land.Field;
 import movable.Ant;
 import movable.Echidna;
 import program.Singleton;
 import smell.FoodSmell;
-import smell.Smell;
 
 /**
  * 
@@ -19,45 +20,42 @@ import smell.Smell;
  */
 public class Food extends Item {
 
+	/** 0. eleme az actualis FoodSmell
+	 *  1..6ig a kornyezo mezok FoodSmellje
+	 * 
+	 */
 	private List<FoodSmell> foodSmells;
 
 	/**
 	 * Az etel szaganak eltuntetese egy mezorol.
 	 */
 	public void deleteSmell() {
-		Singleton s = Singleton.Instance();
-		
-		Smell foodsmell = new FoodSmell();
-		foodsmell.removeMyself();
+		for(FoodSmell f :foodSmells)
+			f.removeMyself(getActualField());
 	}
 
 	/**
-	 * Etelszag hozzaadasa egy mezohoz.
+	 * Etelszag hozzaadasa a mezohoz, es szomszedaihoz.
 	 * 
 	 * @param FoodSmell
 	 *            a mezohoz hozzaadando etelszag
 	 */
 	public void addFoodSmell(FoodSmell foodSmell) {
-		Singleton s = Singleton.Instance();
+		getActualField().addSmell(foodSmells.get(0));
+		Map<Dir, Field> neg=getActualField().getNeighbours();
+		for (int i=1;i<=6;i++){
+			neg.get(i).addSmell(foodSmells.get(i));
+		}
 	}
 
 	/**
-	 * Etelszag beallitasa egy mezohoz.
+	 * Etelszag beallitasa egy adott mezore.
 	 * 
 	 * @param Field
 	 *            a mezo, amihez beallitjuk az etelszagot.
 	 */
 	public void setActualField(Field field) {
-
-		Singleton s = Singleton.Instance();
-		
-		field.addSmell(new FoodSmell());
-
-		field.getNeighbours();
-		
-		addFoodSmell(new FoodSmell());
-
-		field.addSmell(new FoodSmell());
+		super.setActualField(field);
 	}
 
 	/**
@@ -68,7 +66,6 @@ public class Food extends Item {
 	 */
 	@Override
 	public void collisionWithEchidna(Echidna echidna) {
-		Singleton s = Singleton.Instance();
 	}
 
 	/**
@@ -81,9 +78,7 @@ public class Food extends Item {
 	 */
 	@Override
 	public void collisionWithAnt(Ant ant, boolean b) {
-		Singleton s = Singleton.Instance();
-
-		// Ha a hangya oylan mezore lepett ahol etel van akkor felveszi
+			// Ha a hangya oylan mezore lepett ahol etel van akkor felveszi
 		if (b == true) {
 			ant.pickUpFood();
 			// Etelszag kitorlese a mezorol, ahonnan elviszi a hagnya az etelt

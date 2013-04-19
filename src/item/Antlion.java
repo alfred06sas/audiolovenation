@@ -24,13 +24,9 @@ public class Antlion extends Item {
 	 */
 	@Override
 	public void collisionWithAnt(Ant ant, boolean b) {
-		Singleton s = Singleton.Instance();
-
 		// ha mar lepett a hangya
 		if (b == true) {
-			
 			ant.kill();
-			
 		}
 	}
 
@@ -42,8 +38,6 @@ public class Antlion extends Item {
 	 */
 	@Override
 	public void collisionWithEchidna(Echidna echidna) {
-		Singleton s = Singleton.Instance();
-
 	}
 
 	/**
@@ -54,7 +48,5 @@ public class Antlion extends Item {
 	 */
 	@Override
 	public void collisionWithSpray(Integer strength) {
-		Singleton s = Singleton.Instance();
-
 	}
 }
