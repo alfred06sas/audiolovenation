@@ -11,7 +11,7 @@ import program.Singleton;
  * 
  * @author audiolovenation
  * 
- *         A pAlya egyes mezoin megtalalhato objektumok (hangya, hangyaszsun,
+ *         A palya egyes mezoin megtalalhato objektumok (hangya, hangyaszsun,
  *         hangyaleso, akadaly, spray, etel, boly).
  */
 public class Item {
