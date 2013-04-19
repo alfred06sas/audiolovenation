@@ -107,10 +107,10 @@ public class SingletonContainer {
 
 	/**
 	 * 
-	 * Egy mozg� elem kit�rl�se az azokat t�rol� list�b�l.
+	 * Egy mozgo elem kitorlese az azokat tarola listabol.
 	 * 
 	 * @param Movable
-	 *            a kit�rlend� elem
+	 *            a kiterlendo elem
 	 */
 	public void removeMovable(Movable movable) {
 		Singleton s = Singleton.Instance();
