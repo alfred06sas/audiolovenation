@@ -17,8 +17,8 @@ import smell.Smell;
 
 /**
  * 
- * A hangya feladata mez�r�l mez�re l�pni. Mozg�sa ir�ny�t az �tel, �s m�s
- * hangy�k �ltal hagyott szagnyom befoly�solja. V�g�l, ha �telhez �r, vissza
+ * A hangya feladata mezorol mezore lepni. Mozgasa iranyat az etel, es mas hangyak altal
+ * hagyott szagnyom befolyasolja. Vegul, ha etelhez er, vissza
  * kell azt vinnie a bolyba.
  * 
  * @author audiolovenation
@@ -26,7 +26,7 @@ import smell.Smell;
  */
 public class Ant extends Item implements Movable {
 	/**
-	 * Cs�p objektum. Ez v�gzi a tov�bbhalad�si ir�nyok be�ll�t�s�t.
+	 * Csap objektum. Ez vegzi a tovabbhaladasi iranyok beallitasat.
 	 */
 	private Tentacle tentacle;
 	/**
@@ -34,32 +34,32 @@ public class Ant extends Item implements Movable {
 	 */
 	private boolean isKilled = false;
 	/**
-	 * A hangya akt�v-e (a p�ly�n tart�zkodik-e).
+	 * A hangya aktiv-e (a palyan tartozkodik-e).
 	 */
 	private boolean isActive = false;
 	/**
-	 * Inakt�v �llapotban a marad�k v�rakoz�si k�r�k.
+	 * Inaktiv allapotban a maradek varakozasi korok.
 	 */
 	private Integer wait;
 	/**
-	 * Van-e a hangy�n�l �tel.
+	 * Van-e a hangyanal etel.
 	 */
 	private boolean haveFood = false;
 	/**
-	 * �leter�, amelyet a spray, a hangyales� �s a hangy�szs�n m�dos�that. Ha 0,
-	 * akkor a hangya �tl�p inakt�v �llapotba �s a k�r v�g�n meghal.
+	 * Eletero, amelyet a spray, a hangyaleso es a hangyaszsun modosithat. Ha 0,
+	 * akkor a hangya atlep inaktiv allapotba es a kor vegen meghal.
 	 */
 	private Integer HP;
 	/**
-	 * A tov�bbhalad�si ir�ny. Default: UP.
+	 * A tovabbhaladasi irany. Default: UP.
 	 */
 	private Dir dir;
 
 	/**
-	 * Aktuális mez� be�ll�t�sa.
+	 * Aktualis mezo beallitasa.
 	 * 
 	 * @param field
-	 *            a be�ll�tand� mez�
+	 *            a beallitando mezo
 	 */
 	@Override
 	public void setActualField(Field field) {
@@ -68,10 +68,10 @@ public class Ant extends Item implements Movable {
 	}
 
 	/**
-	 * �leter� lecs�kkent�se a megadott �rt�kkel.
+	 * Eletero lecsokkentese a megadott ertekkel.
 	 * 
 	 * @param hp
-	 *            a cs�kkent�s m�rt�ke
+	 *            a csokkentes merteke
 	 */
 	public void looseHP(Integer hp) {
 		Singleton s = Singleton.Instance();
@@ -80,7 +80,7 @@ public class Ant extends Item implements Movable {
 	}
 
 	/**
-	 * A hangya �telt vesz fel. �llapot�t �t�ll�tja (haveFood = true).
+	 * A hangya etelt vesz fel. Allapotat atallitja (haveFood = true).
 	 */
 	public void pickUpFood() {
 		Singleton s = Singleton.Instance();
@@ -89,8 +89,8 @@ public class Ant extends Item implements Movable {
 	}
 
 	/**
-	 * Pihenteti a hangy�t egy adott ideig [am�g el nem indul (�jra) a
-	 * bolyb�l)].
+	 * Pihenteti a hangyat egy adott ideig [amig el nem indul (ujra) a
+	 * bolybol)].
 	 */
 	public void rest() {
 		Singleton s = Singleton.Instance();
@@ -99,7 +99,7 @@ public class Ant extends Item implements Movable {
 	}
 
 	/**
-	 * A hangya ir�ny�nak megford�t�sa.
+	 * A hangya iranyanak megforditasa.
 	 */
 	public void reverseDir() {
 		Singleton s = Singleton.Instance();
@@ -108,28 +108,28 @@ public class Ant extends Item implements Movable {
 	}
 
 	/**
-	 * A hangya meg�l�se. T�rli mag�t a mez�r�l �s a SingletonContainer-ben lev�
-	 * movables list�b�l is.
+	 * A hangya megolese. Torli magat a mezorol es a SingletonContainer-ben levo
+	 * movables listabol is.
 	 */
 	public void kill() {
 		Singleton s = Singleton.Instance();
 
 		
-		/* Hangya t�rl�se az �t tartalmaz� mez�r�l */
+		/* Hangya torlese az ot tartalmazo mezorol */
 		Field field = new Field();
 		field.removeItem(new Ant());
 		
-		/* Hangya t�rl�se a SingletonContainer movables list�j�b�l */
+		/* Hangya torlese a SingletonContainer movables listajabol */
 		SingletonContainer sc = new SingletonContainer().getInstance();
 		sc.removeMovable(new Ant());
 		
 	}
 
 	/**
-	 * Halad�si ir�ny be�ll�t�sa.
+	 * Haladasi irany beallitasa.
 	 * 
 	 * @param dir
-	 *            a be�ll�tand� halad�si ir�ny
+	 *            a beallitando haladasi irany
 	 */
 	public void setDir(Dir dir) {
 		Singleton s = Singleton.Instance();
@@ -138,78 +138,77 @@ public class Ant extends Item implements Movable {
 	}
 
 	/**
-	 * A hangya l�ptet�se. Lek�rdezi az �t tartalmaz� mez� szomsz�dait, majd
-	 * ezekb�l a lehets�ges tov�bbhalad�si ir�nyban lev�ket tov�bbadja a
-	 * cs�pj�nak. A cs�p ezek ut�n megvizsg�lja, hogy hova l�phet, majd ahol
-	 * akad�ly van, kiszedi a lehets�ges mez�k list�j�b�l. Ha mindenhol akad�ly
-	 * van, akkor megfordul (marad ugyanazon a mez�n), ha megtal�lta a
-	 * legmegfelel�bbet, akkor r�l�p, majd �tk�zik az ottani item-ekkel.
+	 * A hangya leptetese. Lekerdezi az ot tartalmazo mezo szomszedait, majd
+	 * ezekbol a lehetseges tovabbhaladasi iranyban levoket tovabbadja a
+	 * csapjanak. A csap ezek utan megvizsgalja, hogy hova lephet, majd ahol
+	 * akadaly van, kiszedi a lehetseges mezok listajabol. Ha mindenhol akadaly
+	 * van, akkor megfordul (marad ugyanazon a mezon), ha megtalalta a
+	 * legmegfelelobbet, akkor ralep, majd utkozik az ottani item-ekkel.
 	 */
 	@Override
 	public void step() {
 		Singleton s = Singleton.Instance();
 
 		
-		/* A szomsz�dok lek�rdez�se */
+		/* A szomszedok lekerdezese. */
 		Field prevField = new Field();
 		prevField.getNeighbours();
 	
-		/* A lehets�ges szomsz�dok be�ll�t�sa */
+		/* A lehetseges szomszedok beallitasa. */
 		Tentacle tentacle = new Tentacle();
 		Map<Dir, Field> map = new TreeMap<Dir, Field>();
 		map.put(Dir.DOWN, prevField);
 		tentacle.setPossibleNeighbours(map);
 	
-		/* A lehets�ges szomsz�dok item-einek egy ciklusban val� lek�rdez�se */
+		/* A lehetseges szomszedok item-einek egy ciklusban valo lekerdezese. */
 		Field nextField = new Field();
 		nextField.getItems();
 		
 		/*
-		 * Az elemekkel val� �tk�ztet�s m�g l�p�s el�tt, hogy kider�lj�n, hol
-		 * tal�lhat� akad�ly
+		 * Az elemekkel valo utkoztetes meg lepes elott, hogy kideruljon, hol
+		 * talalhato akadaly.
 		 */
 		Ant ant = new Ant();
 		Ant ant2 = new Ant();
 		ant2.collisionWithAnt(ant, false);
 
 		/*
-		 * A cs�p scan met�dus�nak megh�v�sa, amely kiv�lasztja a k�vetkez�
-		 * mez�t.
+		 * A csap scan metodusanak meghivasa, amely kivalasztja a kovetkezo mezot.
 		 */
 		Map<Dir, Field> map2 = tentacle.scan(true);
 	
-		/* Ha van olyan mez�, ahol nincs akad�ly */
+		/* Ha van olyan mezo, ahol nincs akadaly. */
 		if (map2 != null) {
-			/* Hangyaszag hagy�sa az el�z� mez�n */
+			/* Hangyaszag hagyasa az elozo mezon. */
 			Smell smell = new AntSmell();
 			prevField.addSmell(smell);
 			
-			/* Hangyaszag hozz�ad�sa a SingletonContainer volatiles list�j�hoz */
+			/* Hangyaszag hozzaadasa a SingletonContainer volatiles listajahoz. */
 			SingletonContainer sc = new SingletonContainer().getInstance();
 			Volatile smell2 = new AntSmell();
 			sc.addVolatile(smell2);
 			
-			/* El�z� mez�r�l elt�vol�tja saj�t mag�t */
+			/* Elozo mezorol eltavolitja sajat magat. */
 			prevField.removeItem(ant);
 		
-			/* K�vetkez� mez� be�ll�t�sa */
+			/* Kovetkezo mezo beallitasa. */
 			ant.setActualField(nextField);
 		
-			/* K�vetkez� mez�be val� beregisztr�l�s */
+			/* Kovetkezo mezobe valo beregisztralas. */
 			nextField.addItem(ant);
-			/* Ha nem tud sehova se menni */
+			/* Ha nem tud sehova se menni. */
 		} else {
-			/* Ir�ny megford�t�sa */
+			/* Irany megforditasa. */
 			ant.reverseDir();
 		}
-		/* l�p�s ut�ni �tk�ztet�s */
+		/* Lepes utani utkoztetes. */
 		Echidna echidna = new Echidna();
 		echidna.collisionWithAnt(ant, true);
 
 	}
 
 	/**
-	 * Hangya �llapot�nak inakt�vr�l akt�vra �ll�t�sa (wait == 0)
+	 * Hangya allapotanak inaktivrol aktivra allitasa. (wait == 0)
 	 */
 	@Override
 	public void setAlive() {
@@ -218,12 +217,12 @@ public class Ant extends Item implements Movable {
 	}
 
 	/**
-	 * Hangy�val val� �tk�z�s. Nem csin�l semmit, csak visszat�r.
+	 * Hangyaval valo utkoztetes. Nem csinal semmit, csak visszater.
 	 * 
 	 * @param ant
-	 *            a hangya referenci�ja. amivel �tk�z�tt
+	 *            a hangya referenciaja, amivel utkozott
 	 * @param b
-	 *            �tk�z�s el�tt: false, �tk�z�s ut�n: true -
+	 *            utkozes elott: false, utkozes utan: true
 	 */
 	@Override
 	public void collisionWithAnt(Ant ant, boolean b) {
@@ -232,18 +231,18 @@ public class Ant extends Item implements Movable {
 	}
 
 	/**
-	 * - Hangy�szs�nel val� �tk�z�s. A hangya meghal.
+	 * - Hangyaszsunnel valo utkozes. A hangya meghal.
 	 * 
 	 * @param echidna
-	 *            referencia a hangy�szs�nre, amivel �tk�zik
+	 *            referencia a hangyaszsunre, amivel utkozik
 	 */
 	@Override
 	public void collisionWithEchidna(Echidna echidna) {
 		Singleton s = Singleton.Instance();
 
 		/*
-		 * A hangya sz�l a hangy�szs�nnek, hogy hangy�val �tk�z�tt, amely ennek
-		 * hat�s�ra meg�li
+		 * A hangya szol a hangyaszsunnek, hogy hangyaval utkozott, amely ennek
+		 * hatasara megoli.
 		 */
 		Ant ant = new Ant();
 		echidna.collisionWithAnt(ant, true);
@@ -251,34 +250,34 @@ public class Ant extends Item implements Movable {
 	}
 
 	/**
-	 * Spray-vel val� �tk�z�s. A hangya vagy meghal, vagy �leter�t vesz�t
+	 * Spray-vel valo utkozes. A hangya vagy meghal, vagy eleterot veszit.
 	 * 
 	 * @param strength
-	 *            a hangya �letereje ennyivel fog cs�kkenni
+	 *            a hangya eletereje ennyivel fog csokkenni
 	 */
 	@Override
 	public void collisionWithSpray(Integer strength) {
 		Singleton s = Singleton.Instance();
 
-		/* A hangya looseHP met�dus�nak megh�v�sa */
+		/* A hangya looseHP metodusanak meghivasa. */
 		Ant ant = new Ant();
 		ant.looseHP(6);
 		
 	}
 
 	/**
-	 * Akad�llyal val� �tk�z�s eset�n az akad�ly ezzel a met�dussal jelzi a
-	 * hangy�nak, hogy az �t tartalmaz� mez�re nem l�phet. Ezt a mez�t a cs�p
-	 * kiveszi a lehets�ges szomsz�dok k�z�l. Mindig l�p�s el�tt h�v�dik meg,
-	 * mivel az nem fordulhat el�. hogy a hangya olyan mez�re l�p, ahol akad�ly
+	 * Akadallyal valo utkozes eseten az akadaly ezzel a metodussal jelzi a
+	 * hangyanak, hogy az ot tartalmazo mezore nem lephet. Ezt a mezot a csap
+	 * kiveszi a lehetseges szomszedok kozul. Mindig lepes elott hivodik meg,
+	 * mivel az nem fordulhat elo, hogy a hangya olyan mezore lep, ahol akadaly
 	 * van.
 	 * 
 	 * @param field
-	 *            az a mez�, ahova nem l�phet a hangya
+	 *            az a mezo, ahova nem lephet a hangya
 	 */
 	public void canNotGo(Field field) {
 		Singleton s = Singleton.Instance();
-	/* A param�terk�nt megadott mez� kiv�tele a lehets�ges mez�k list�j�b�l */
+	/* A parameterkent megadott mezo kivetele a lehetseges mezok listajabol. */
 		Tentacle tentacle = new Tentacle();
 		tentacle.removePossibleNeighbour(field);
 		
