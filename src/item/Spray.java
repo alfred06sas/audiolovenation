@@ -24,8 +24,7 @@ public class Spray extends Item implements Volatile {
 	 */
 	@Override
 	public void decrease() {
-		Singleton s = Singleton.Instance();
-
+		--strength;
 	}
 
 	/**
@@ -38,13 +37,10 @@ public class Spray extends Item implements Volatile {
 	 */
 	@Override
 	public void collisionWithAnt(Ant ant, boolean b) {
-		Singleton s = Singleton.Instance();
-
 		if (b == true) {
 			//Hangya eleterejenek csokkentese
 			ant.looseHP(5);
 		}
-
 	}
 
 	/**
@@ -55,7 +51,6 @@ public class Spray extends Item implements Volatile {
 	 */
 	@Override
 	public void collisionWithEchidna(Echidna echidna) {
-		Singleton s = Singleton.Instance();
 	}
 
 	/**
@@ -65,8 +60,6 @@ public class Spray extends Item implements Volatile {
 	 *            erosseg
 	 */
 	public void collisionWithSpray(Integer strength) {
-		Singleton s = Singleton.Instance();
-		
 	}
 
 }

@@ -21,15 +21,12 @@ public class Hill extends Item {
 	 * @param Ant
 	 *            a hangya ami utkozik a bollyal
 	 * @param b
-	 *            utkozes elott: false, utkozes utan: true
+	 *            lepes elott: false, lepes utan: true
 	 */
 	@Override
 	public void collisionWithAnt(Ant ant, boolean b) {
-		Singleton s = Singleton.Instance();
-
-		Ant ant1 = new Ant();
 		//A hangyabolyba visszaero hangya inaktiv allapotba kerul
-		ant1.rest();
+		ant.rest();
 		
 	}
 
@@ -41,8 +38,5 @@ public class Hill extends Item {
 	 */
 	@Override
 	public void collisionWithEchidna(Echidna echidna) {
-		Singleton s = Singleton.Instance();
-
-		
 	}
 }

@@ -29,8 +29,6 @@ public class Item {
 	 *            van-e etel a hangyanal vagy nincs
 	 */
 	public void collisionWithAnt(Ant ant, boolean b) {
-		Singleton s = Singleton.Instance();
-		
 	}
 
 	/**
@@ -40,9 +38,7 @@ public class Item {
 	 *            a mezo, amihez beallitjuk az etelszagot.
 	 */
 	public void setActualField(Field field) {
-
-		Singleton s = Singleton.Instance();
-		
+		actualField=field;
 	}
 
 	/**
@@ -57,8 +53,6 @@ public class Item {
 	}
 	
 	public void collisionWithEchidna(Echidna echidna) {
-		Singleton s = Singleton.Instance();
-		
 	}
 
 	/**
