@@ -7,7 +7,9 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import movable.Ant;
 import movable.Echidna;
@@ -26,8 +28,16 @@ import program.SingletonContainer;
  *         
  */
 public class Land {
+	
+	int columnNumber = 10;
+	int rowNumber = 10;
 
-	private List<Field> fields;
+	private List<Field> fields=new ArrayList<Field>();
+
+	public Land(){
+		 fields=new ArrayList<Field>();
+	}
+	
 
 	/**
 	 * A palya osszeallitasa.
@@ -35,7 +45,27 @@ public class Land {
 	 */
 	public void loadLand() {
 		Singleton s = Singleton.Instance();
-
+		
+		
+		
+		for(int k=0;k<rowNumber;k++){
+			for (int j=0;j<columnNumber;j++){
+				fields.add(new Field());
+				if (((k % 2 == 0) && (j % 2 == 0)) || ((k % 2 == 1) && (j % 2 == 1)))
+					try{
+						
+						try{
+							fields.get(k*columnNumber+j).setId(k+"_"+j);
+						}
+						catch(IndexOutOfBoundsException e){
+							System.out.println(fields.size()+": "+k+": "+j);
+						}
+					}
+					catch(NullPointerException e){
+					System.out.println(k+" "+j);
+				}
+			}
+		}
 	}
 
 	/**
@@ -85,10 +115,39 @@ public class Land {
 	 */
 	public void buildLand() {
 		Singleton s = Singleton.Instance();
-
 		// Field.addNeighbour hivasok
 		new Field().addNeighbour(Dir.DOWN, new Field());
-
+		
+		for(int k=0;k<rowNumber;k++){
+			for (int j=0;j<columnNumber;j++){
+				if (((k % 2 == 0) && (j % 2 == 0)) || ((k % 2 == 1) && (j % 2 == 1))){
+					
+					//UP neighbour
+					fields.get(k*columnNumber+j).addNeighbour(Dir.DOWN, fields.get(((k+2) % rowNumber)*columnNumber+j));
+					
+					//DOWN neighbour
+					fields.get(k*columnNumber+j).addNeighbour(Dir.UP, fields.get(((rowNumber+k-2) % rowNumber)*columnNumber+j));
+					
+					//Right_bottom neighbour
+					fields.get(k*columnNumber+j).addNeighbour(Dir.RIGHT_BOTTOM, fields.get((((k+1) % rowNumber)*columnNumber)+((j+1) % columnNumber)));
+					
+					//Right_top neighbour
+					fields.get(k*columnNumber+j).addNeighbour(Dir.LEFT_BOTTOM, fields.get((((k+1) % rowNumber)*columnNumber)+((columnNumber+j-1) % columnNumber)));
+					
+					//Left_bottom neighbour
+					fields.get(k*columnNumber+j).addNeighbour(Dir.RIGHT_TOP, fields.get((((rowNumber+k-1) % rowNumber)*columnNumber)+((j+1) % columnNumber)));
+					
+					//Left_top neighbour
+					fields.get(k*columnNumber+j).addNeighbour(Dir.LEFT_TOP, fields.get((((rowNumber+k-1) % rowNumber)*columnNumber)+((columnNumber+j-1) % columnNumber)));
+					
+					Map<Dir, Field> neighbours=fields.get(k*columnNumber+j).getNeighbours();
+					
+					
+					System.out.println(fields.get(k*columnNumber+j).getId()+": "+neighbours.toString());
+				}
+			}
+		}
+		
 	}
 
 	/**

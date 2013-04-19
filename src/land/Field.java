@@ -3,6 +3,7 @@ package land;
 import item.Item;
 import item.Spray;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -27,6 +28,11 @@ public class Field {
 	private Map<Dir, Field> neighbours;
 	private List<Smell> smells;
 
+	public Field(){
+		id=new String();
+		neighbours=new HashMap<Dir, Field>();
+	}
+	
 	/**
 	 * Egy elem hozzarendelese a mezohoz
 	 * 
@@ -74,7 +80,7 @@ public class Field {
 		Singleton s = Singleton.Instance();
 
 		
-		return null;
+		return neighbours;
 	}
 
 	/**
@@ -87,8 +93,8 @@ public class Field {
 	 */
 	public void addNeighbour(Dir dir, Field field) {
 		Singleton s = Singleton.Instance();
-
-	
+		
+		neighbours.put(dir, field);
 	}
 
 	/**
@@ -158,7 +164,15 @@ public class Field {
 		
 	}
 	
+	public void setId(String s){
+		id=s;
+	}
+	
 	public String getId(){
+		return id;
+	}
+	
+	public String toString(){
 		return id;
 	}
 
