@@ -61,7 +61,7 @@ public class Singleton {
 	// hozzaadva ezzel Id-jet es allapotait a az osztalyhoz
 	void addItem(Item i){
 		if(states.get(i.getId())==null){			// TODO Elemeknek Id es fieldnek
-			printError("Id duplikáció!");
+			printError("Id duplikacio!");
 		}
 		else{
 			states.put(i.getId(), i.getStates());			// TODO getId, getStates elemeknek

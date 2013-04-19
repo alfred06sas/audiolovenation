@@ -29,8 +29,8 @@ import program.SingletonContainer;
  */
 public class Land {
 	
-	int columnNumber = 10;
-	int rowNumber = 10;
+	int columnNumber;
+	int rowNumber;
 
 	private List<Field> fields=new ArrayList<Field>();
 
@@ -43,10 +43,11 @@ public class Land {
 	 * A palya osszeallitasa.
 	 * 
 	 */
-	public void loadLand() {
+	public void loadLand(int row, int column) {
 		Singleton s = Singleton.Instance();
 		
-		
+		rowNumber = row;
+		columnNumber = column;		
 		
 		for(int k=0;k<rowNumber;k++){
 			for (int j=0;j<columnNumber;j++){
@@ -113,9 +114,13 @@ public class Land {
 	 * 
 	 * @return
 	 */
-	public void buildLand() {
+	public void buildLand(int row, int column) {
 		Singleton s = Singleton.Instance();
 		// Field.addNeighbour hivasok
+
+		rowNumber = row;
+		columnNumber = column;		
+		
 		new Field().addNeighbour(Dir.DOWN, new Field());
 		
 		for(int k=0;k<rowNumber;k++){
@@ -154,13 +159,13 @@ public class Land {
 	 * 
 	 * @return
 	 */
-	public void init() {
+	public void init(int row, int column) {
 		Singleton s = Singleton.Instance();
 
 		// palya betoltese
-		loadLand();
+		loadLand(row,column);
 		// palya felepitese
-		buildLand();
+		buildLand(row,column);
 		// elemek palyara helyezese
 		putItems();
 		// leptetes
@@ -169,7 +174,7 @@ public class Land {
 
 	public void loadTestCase(String inputFileName, String outputFileName) throws FileNotFoundException {
 		BufferedReader br = new BufferedReader(new FileReader(inputFileName));
-
+		System.out.println("Teszt");
 		try {
 			while (true) {
 				String line = br.readLine();
@@ -180,9 +185,11 @@ public class Land {
 				if (sline[0].equals("create_land") && sline[1].equals("-r")
 						&& sline[3].equals("-c") && sline.length == 5) {
 					System.out.println(line);
+					loadLand(Integer.parseInt(sline[2]),Integer.parseInt(sline[4]));
+					buildLand(Integer.parseInt(sline[2]),Integer.parseInt(sline[4]));
 				} else if (sline[0].equals("put_item") && sline[1].equals("-t")
 						&& sline[3].equals("-iid") && sline[5].equals("-fid")
-						&& sline.length == 7) {
+						&& sline.length == 7){
 					System.out.println(line);
 				} else if (sline[0].equals("put_smell")
 						&& sline[1].equals("-t") && sline[3].equals("-sid")
