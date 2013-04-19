@@ -9,12 +9,12 @@ import program.Singleton;
 
 /**
  * 
- * A hangy�szs�n viselked�s�t val�s�tja meg. A p�lya inicializ�l�s�n�l el�re
- * meghat�rozott sz�m�t hozunk l�tre bel�le, melyek nem mindig vannak jelen
- * (inakt�vak). Megadott id�k�z�nk�nt jelennek meg (aktiviz�l�dnak). Van egy
- * �hs�g tulajdons�ga, aminek f�ggv�ny�ben bizonyos mennyis�g�, az �tj�ba ker�l�
- * hangy�t elfogyaszt, majd elt�nik. Amennyiben m�s elemmel tal�lkozik, akkor
- * nem t�rt�nik semmi, halad tov�bb.
+ * A hangyaszsun viselkedusut valositja meg. A palya inicializalasanal elore
+ * meghatarozott szamot hozunk letre belole, melyek nem mindig vannak jelen
+ * (inaktavak). Megadott idokozonkent jelennek meg (aktivizalodnak). Van egy
+ * ehseg tulajdonsaga, aminek fuggvenyeben bizonyos mennyisegu, az utjaba kerulu
+ * hangyat elfogyaszt, majd eltunik. Amennyiben mas elemmel talalkozik, akkor
+ * nem tortenik semmi, halad tovabb.
  * 
  * @author audiolovenation
  * 
