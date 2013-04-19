@@ -174,7 +174,6 @@ public class Land {
 
 	public void loadTestCase(String inputFileName, String outputFileName) throws FileNotFoundException {
 		BufferedReader br = new BufferedReader(new FileReader(inputFileName));
-		System.out.println("Teszt");
 		try {
 			while (true) {
 				String line = br.readLine();

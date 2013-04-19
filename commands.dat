@@ -1,6 +1,1 @@
-create_land -r 2 -c 5
-put_item -t Ant -iid a1 -fid f1
-put_smell -t <típus> -sid <szag_id> -s <szag_erõsség> -fid <mezõ_id>
-set -t <típus> -mid <mozgo_id> -d <irány> -s <állapot>
-use_spray -t <típus> -fid <mezõ_id>
-step_round -rn <körök_száma>
+create_land -r 10 -c 10

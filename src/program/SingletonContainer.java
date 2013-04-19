@@ -30,6 +30,14 @@ public class SingletonContainer {
 	private Integer antKillerSpray;
 	private Integer antSmellSpray;
 
+//	public SingletonContainer(){
+//		Land container = new Land();
+//		List<Movable> movables = new ArrayList<Movable>();
+//		List<Volatile> volatiles = new ArrayList<Volatile>();
+//		SingletonContainer instance = null;
+//		Integer antKillerSpray = 0;
+//		Integer antSmellSpray = 0;
+//	}
 	/**
 	 * 
 	 * Az illekony elemek hozzaadasa az oket taroa listaba.
