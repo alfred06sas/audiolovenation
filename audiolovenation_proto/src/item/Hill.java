@@ -9,35 +9,35 @@ import movable.Echidna;
  * 
  * @author audiolovenation
  * 
- *         A l�trej�tt hangy�k kiindul�si pontja (boly), ahonnan a hangy�k
- *         indulnak �telt szerezni. Ha egy hangya tal�lt �telt, akkor ezt ide
- *         pr�b�lja visszajuttatni. � Ha siker�l, a hangya vissza megy a bolyba(inakt�v �llapotba ker�l).
+ *         A letrejott hangyak kiindulasi pontja (boly), ahonnan a hangyak
+ *         indulnak etelt szerezni. Ha egy hangya talalt etelt, akkor ezt ide
+ *         probalja visszajuttatni. Ha sikerul, a hangya vissza megy a bolyba(inaktiv allapotba kerul).
  */
 public class Hill extends Item {
 
 	/**
-	 * Hangy�val val� �tk�z�s.
+	 * Hangyaval valo utkozes.
 	 * 
 	 * @param Ant
-	 *            a hangya ami �tk�zik a bollyal
+	 *            a hangya ami utkozik a bollyal
 	 * @param b
-	 *            �tk�z�s el�tt: false, �tk�z�s ut�n: true
+	 *            utkozes elott: false, utkozes utan: true
 	 */
 	@Override
 	public void collisionWithAnt(Ant ant, boolean b) {
 		Singleton s = Singleton.Instance();
 
 		Ant ant1 = new Ant();
-		//A hangyabolyba vissza�r� hangya inakt�v �llapotba ker�l
+		//A hangyabolyba visszaero hangya inaktiv allapotba kerul
 		ant1.rest();
 		
 	}
 
 	/**
-	 * Hangy�szs�nnel val� �tk�z�s.
+	 * Hangyaszsunnel valo utkozes.
 	 * 
 	 * @param Echidna
-	 *            a hangy�szs�n ami �tk�zik a bollyal
+	 *            a hangyaszun ami utkozik a bollyal
 	 */
 	@Override
 	public void collisionWithEchidna(Echidna echidna) {

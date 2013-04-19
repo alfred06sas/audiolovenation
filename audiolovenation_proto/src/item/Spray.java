@@ -19,7 +19,7 @@ public class Spray extends Item implements Volatile {
 	private Integer strength;
 
 	/**
-	 * Spray er�ss�g�nek a cs�kkent�se
+	 * Spray erossegenek a csokkentese
 	 * 
 	 */
 	@Override
@@ -29,29 +29,29 @@ public class Spray extends Item implements Volatile {
 	}
 
 	/**
-	 * Hangy�val val� �tk�z�s. Nem csin�l semmit, csak visszat�r.
+	 * Hangyaval valo utkozes. Nem csinal semmit, csak visszater.
 	 * 
 	 * @param Ant
-	 *            a hangya amivel �tk�zik
+	 *            a hangya amivel utkozik
 	 * @param b
-	 *            �tk�z�s el�tt: false, �tk�z�s ut�n: true
+	 *            utkozes elott: false, utkozes utan: true
 	 */
 	@Override
 	public void collisionWithAnt(Ant ant, boolean b) {
 		Singleton s = Singleton.Instance();
 
 		if (b == true) {
-			//Hangya �leterej�nek cs�kkent�se
+			//Hangya eleterejenek csokkentese
 			ant.looseHP(5);
 		}
 
 	}
 
 	/**
-	 * Hangy�szs�nnel val� �tk�z�s. Nem csin�l semmit, csak visszat�r.
+	 * Hangyaszsunnel valo utkozes. Nem csinil semmit, csak visszater.
 	 * 
 	 * @param Echidna
-	 *            a hangy�szs�n amivel �tk�zik
+	 *            a hangyaszsun amivel utkozik
 	 */
 	@Override
 	public void collisionWithEchidna(Echidna echidna) {
@@ -59,10 +59,10 @@ public class Spray extends Item implements Volatile {
 	}
 
 	/**
-	 * Spray-vel val� �tk�z�s. Nem csin�l semmit, csak visszat�r.
+	 * Spray-vel valo utkozes. Nem csinal semmit, csak visszater.
 	 * 
 	 * @param strength
-	 *            erősség
+	 *            erosseg
 	 */
 	public void collisionWithSpray(Integer strength) {
 		Singleton s = Singleton.Instance();

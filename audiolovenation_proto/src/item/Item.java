@@ -11,8 +11,8 @@ import program.Singleton;
  * 
  * @author audiolovenation
  * 
- *         A p�lya egyes mez�in megtal�lhat� objektumok (hangya, hangy�szs�n,
- *         hangyales�, akad�ly, spray, �tel, boly).
+ *         A pAlya egyes mezoin megtalalhato objektumok (hangya, hangyaszsun,
+ *         hangyaleso, akadaly, spray, etel, boly).
  */
 public class Item {
 
@@ -21,12 +21,12 @@ public class Item {
 	private Field actualField;
 
 	/**
-	 * Hangy�val val� �tk�z�s.
+	 * Hangyaval valo utkozes.
 	 * 
 	 * @param Ant
-	 *            a hangya ami �tk�zik a bollyal
+	 *            a hangya ami utkozik a bollyal
 	 * @param b
-	 *            van-e �tel a hangy�n�l vagy nincs
+	 *            van-e etel a hangyanal vagy nincs
 	 */
 	public void collisionWithAnt(Ant ant, boolean b) {
 		Singleton s = Singleton.Instance();
@@ -34,10 +34,10 @@ public class Item {
 	}
 
 	/**
-	 * Item be�ll�t�sa egy mez�h�z.
+	 * Item beallitasa egy mezohoz.
 	 * 
 	 * @param Field
-	 *            a mez�, amihez be�ll�tjuk az �telszagot.
+	 *            a mezo, amihez beallitjuk az etelszagot.
 	 */
 	public void setActualField(Field field) {
 
@@ -46,10 +46,10 @@ public class Item {
 	}
 
 	/**
-	 * Hangy�szs�nnel val� �tk�z�s.
+	 * Hangyaszsunnel valo utkozes.
 	 * 
 	 * @param Echidna
-	 *            a hangy�szs�n ami �tk�zik a bollyal
+	 *            a hangyaszsun ami utkozik a bollyal
 	 */
 	public void collisionWithEchidna(Echidna echidna) {
 		Singleton s = Singleton.Instance();
@@ -57,10 +57,10 @@ public class Item {
 	}
 
 	/**
-	 * Spray-vel val� �tk�z�s.
+	 * Spray-vel valo utkozes.
 	 * 
 	 * @param strength
-	 *            a spray er�ss�ge
+	 *            a spray erossege
 	 */
 	public void collisionWithSpray(Integer strength) {
 	}
