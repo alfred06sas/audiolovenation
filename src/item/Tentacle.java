@@ -13,129 +13,82 @@ import smell.FoodSmell;
  * 
  * @author audiolovenation
  * 
- *         A hangya csáp tulajdonságait valósítja meg. A szomszédos mezõk
- *         szagnyomai alapján eldönti, hogy a hangya merre lépjen.
+ *         A hangya csï¿½p tulajdonsï¿½gait valï¿½sï¿½tja meg. A szomszï¿½dos mezï¿½k
+ *         szagnyomai alapjï¿½n eldï¿½nti, hogy a hangya merre lï¿½pjen.
  */
 public class Tentacle {
 
 	private Map<Dir, Field> possibleFields;
 
 	/**
-	 * Azon szomszédokat keressük, amelyekre léphetünk a hangyával
+	 * Azon szomszï¿½dokat keressï¿½k, amelyekre lï¿½phetï¿½nk a hangyï¿½val
 	 * 
 	 * @param Map
-	 *            az aktuális mezõ összes szomszédja
+	 *            az aktuï¿½lis mezï¿½ ï¿½sszes szomszï¿½dja
 	 */
 	public void setPossibleNeighbours(Map<Dir, Field> neighbours) {
 		Singleton s = Singleton.Instance();
 
-		Integer id = s.stack.get(s.stack.size() - 1);
-
-		s.makeSpace(">> CALL: " + id
-				+ ": Tentacle.setPossibleNeighbours(Map<Dir, Field>)");
-
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id
-				+ ": Tentacle.setPossibleNeighbours((Map<Dir, Field>)");
-		s.depth--;
+		
 	}
 
 	/**
-	 * Azon szomszédok kivétele a lehetségesek közül, amelyeken akadály van
+	 * Azon szomszï¿½dok kivï¿½tele a lehetsï¿½gesek kï¿½zï¿½l, amelyeken akadï¿½ly van
 	 * 
 	 * @param Field
-	 *            a vizsgált szomszédos mezõ
+	 *            a vizsgï¿½lt szomszï¿½dos mezï¿½
 	 */
 	public void removePossibleNeighbour(Field neighbour) {
 		Singleton s = Singleton.Instance();
 
-		Integer id = s.stack.get(s.stack.size() - 1);
-
-		s.makeSpace(">> CALL: " + id + ": Tentacle.removePossibleNeighbour("
-				+ s.fields.indexOf(neighbour) + ": Field)");
-
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": Tentacle.removePossibleNeighbour("
-				+ s.fields.indexOf(neighbour) + ": Field)");
-		s.depth--;
+		
 	}
 
 	/**
-	 * Ételtelszag növelése
+	 * ï¿½teltelszag nï¿½velï¿½se
 	 * 
 	 * @param strength
-	 *            a növelés mértéke
+	 *            a nï¿½velï¿½s mï¿½rtï¿½ke
 	 */
 	public void increaseFoodSmell(Integer strength) {
 		Singleton s = Singleton.Instance();
 
-		Integer id = s.stack.get(s.stack.size() - 1);
-
-		s.makeSpace(">> CALL: " + id + ": Tentacle.increaseFoodSmell("
-				+ strength + ": Integer)");
-
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": Tentacle.increaseFoodSmell("
-				+ strength + ": Integer)");
-		s.depth--;
+		
 	}
 
 	/**
-	 * Hangyaszag növelése
+	 * Hangyaszag nï¿½velï¿½se
 	 * 
 	 * @param strength
-	 *            a növelés mértéke
+	 *            a nï¿½velï¿½s mï¿½rtï¿½ke
 	 */
 	public void increaseAntSmell(Integer strength) {
 		Singleton s = Singleton.Instance();
 
-		Integer id = s.stack.get(s.stack.size() - 1);
-
-		s.makeSpace(">> CALL: " + id + ": Tentacle.increaseAntSmell("
-				+ strength + ": Integer)");
-
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": Tentacle.increaseAntSmell("
-				+ strength + ": Integer)");
-		s.depth--;
+		
 	}
 
 	/**
-	 * "Tapogatás"
+	 * "Tapogatï¿½s"
 	 * 
 	 * @param haveFood
-	 *            van-e a hangyánál étel
+	 *            van-e a hangyï¿½nï¿½l ï¿½tel
 	 */
 	public Map<Dir, Field> scan(boolean haveFood) {
 		Singleton s = Singleton.Instance();
 
-		Integer id = s.stack.get(s.stack.size() - 1);
-
-		s.makeSpace(">> CALL: " + id + ": Tentacle.scan("
-				+ String.valueOf(haveFood) + ": Boolean)");
-
-		s.stack.add(11);
-		Field field = s.fields.get(11);
+		
+		Field field = null;
 		field.getSmells();
-		s.stack.remove(s.stack.size() - 1);
 
-		//Hangyaszag lekérése
-		s.stack.add(8);
-		AntSmell antSmell = (AntSmell) s.smells.get(7);
-		Tentacle tentacle = s.tentacles.get(id);
+		//Hangyaszag lekÃ©rÃ©se
+		AntSmell antSmell = null;
+		Tentacle tentacle = null;
 		antSmell.smellIt(tentacle);
-		s.stack.remove(s.stack.size() - 1);
-
-		//Ételszag lekérése
-		s.stack.add(8);
-		FoodSmell foodSmell = (FoodSmell) s.smells.get(16);
+		
+		//Ã‰telszag lekÃ©rÃ©se
+		FoodSmell foodSmell = null;
 		foodSmell.smellIt(tentacle);
-		s.stack.remove(s.stack.size() - 1);
-
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": Tentacle.scan("
-				+ String.valueOf(haveFood) + ": Boolean): Map<Dir, Field>");
-		s.depth--;
 
 		return new TreeMap<Dir, Field>();
 	}

@@ -1,0 +1,16 @@
+eclipse.preferences.version=1
+encoding//src/blockage/Gravel.java=UTF-8
+encoding//src/blockage/Puddle.java=UTF-8
+encoding//src/item/Antlion.java=UTF-8
+encoding//src/item/Food.java=UTF-8
+encoding//src/item/Hill.java=UTF-8
+encoding//src/item/Item.java=UTF-8
+encoding//src/item/Spray.java=UTF-8
+encoding//src/item/Tentacle.java=UTF-8
+encoding//src/land/Field.java=UTF-8
+encoding//src/land/Land.java=UTF-8
+encoding//src/movable/Ant.java=UTF-8
+encoding//src/movable/Echidna.java=UTF-8
+encoding//src/program/SingletonContainer.java=UTF-8
+encoding//src/smell/AntSmell.java=UTF-8
+encoding//src/smell/FoodSmell.java=UTF-8

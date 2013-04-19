@@ -1,5 +1,7 @@
 package item;
 
+import item.Item;
+import item.Volatile;
 import movable.Ant;
 import movable.Echidna;
 import program.Singleton;
@@ -8,8 +10,8 @@ import program.Singleton;
  * 
  * @author audiolovenation
  * 
- *         A hangya megölésére szolgáló sprayt valósítja meg. Használatakor a
- *         használt mezõn és annak a szomszédjain (itt már kisebb mértékben hat
+ *         A hangya megï¿½lï¿½sï¿½re szolgï¿½lï¿½ sprayt valï¿½sï¿½tja meg. Hasznï¿½latakor a
+ *         hasznï¿½lt mezï¿½n ï¿½s annak a szomszï¿½djain (itt mï¿½r kisebb mï¿½rtï¿½kben hat
  *         csak) hat.
  */
 public class Spray extends Item implements Volatile {
@@ -17,96 +19,54 @@ public class Spray extends Item implements Volatile {
 	private Integer strength;
 
 	/**
-	 * Spray erõsségének a csökkentése
+	 * Spray erï¿½ssï¿½gï¿½nek a csï¿½kkentï¿½se
 	 * 
 	 */
 	@Override
 	public void decrease() {
 		Singleton s = Singleton.Instance();
 
-		Integer id = s.stack.get(s.stack.size() - 1);
-
-		s.makeSpace(">> CALL: " + id + ": Spray.decrease()");
-
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": Spray.decrease()");
-		s.depth--;
 	}
 
 	/**
-	 * Hangyával való ütközés. Nem csinál semmit, csak visszatér.
+	 * Hangyï¿½val valï¿½ ï¿½tkï¿½zï¿½s. Nem csinï¿½l semmit, csak visszatï¿½r.
 	 * 
 	 * @param Ant
-	 *            a hangya amivel ütközik
+	 *            a hangya amivel ï¿½tkï¿½zik
 	 * @param b
-	 *            ütközés elõtt: false, ütközés után: true
+	 *            ï¿½tkï¿½zï¿½s elï¿½tt: false, ï¿½tkï¿½zï¿½s utï¿½n: true
 	 */
 	@Override
 	public void collisionWithAnt(Ant ant, boolean b) {
 		Singleton s = Singleton.Instance();
 
-		Integer id = s.stack.get(s.stack.size() - 1);
-
-		s.makeSpace(">> CALL: " + id + ": Spray.collisionWithAnt("
-				+ s.ants.indexOf(ant) + ": Ant, " + String.valueOf(b) + ")");
-
 		if (b == true) {
-			s.stack.add(s.ants.indexOf(ant));
-			//Hangya életerejének csökkentése
+			//Hangya ï¿½leterejï¿½nek csï¿½kkentï¿½se
 			ant.looseHP(5);
-			s.stack.remove(s.stack.size() - 1);
 		}
 
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": Spray.collisionWithAnt("
-				+ s.ants.indexOf(ant) + ": Ant, " + String.valueOf(b) + ")");
-		s.depth--;
 	}
 
 	/**
-	 * Hangyászsünnel való ütközés. Nem csinál semmit, csak visszatér.
+	 * Hangyï¿½szsï¿½nnel valï¿½ ï¿½tkï¿½zï¿½s. Nem csinï¿½l semmit, csak visszatï¿½r.
 	 * 
 	 * @param Echidna
-	 *            a hangyászsün amivel ütközik
+	 *            a hangyï¿½szsï¿½n amivel ï¿½tkï¿½zik
 	 */
 	@Override
 	public void collisionWithEchidna(Echidna echidna) {
 		Singleton s = Singleton.Instance();
-
-		Integer id = s.stack.get(s.stack.size() - 1);
-
-		s.makeSpace(">> CALL: " + id + ": Spray.collisionWithEchidna("
-				+ s.echidnas.indexOf(echidna) + ": Echidna)");
-
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": Spray.collisionWithEchidna("
-				+ s.echidnas.indexOf(echidna) + ": Echidna)");
-		s.depth--;
 	}
 
 	/**
-	 * Spray-vel való ütközés. Nem csinál semmit, csak visszatér.
+	 * Spray-vel valï¿½ ï¿½tkï¿½zï¿½s. Nem csinï¿½l semmit, csak visszatï¿½r.
 	 * 
-	 * @param Echidna
-	 *            a hangyászsün amivel ütközik
+	 * @param strength
+	 *            erÅ‘ssÃ©g
 	 */
 	public void collisionWithSpray(Integer strength) {
 		Singleton s = Singleton.Instance();
-
-		Integer id = s.stack.get(s.stack.size() - 1);
-
-		s.makeSpace(">> CALL: " + id + ": Spray.collisionWithSpray(" + strength
-				+ ": Integer)");
-
-		s.stack.add(6);
-		//Hangya életerejének csökkentése
-		s.ants.get(5).looseHP(10);
-		s.stack.remove(s.stack.size() - 1);
-
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": Spray.collisionWithSpray("
-				+ strength + ": Integer)");
-		s.depth--;
+		
 	}
 
 }

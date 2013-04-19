@@ -9,81 +9,52 @@ import program.Singleton;
  * 
  * @author audiolovenation
  * 
- *         Az erre az elemre lépõ hangya detektálja, hogy mivel találkozott, és
- *         elpusztul. A hangyászsünnel nem foglalkozik.
+ *         Az erre az elemre lï¿½pï¿½ hangya detektï¿½lja, hogy mivel talï¿½lkozott, ï¿½s
+ *         elpusztul. A hangyï¿½szsï¿½nnel nem foglalkozik.
  */
 public class Antlion extends Item {
 	/**
-	 * Hangyával való ütközés. Ha éhes megeszi a hangyát.
+	 * Hangyï¿½val valï¿½ ï¿½tkï¿½zï¿½s. Ha ï¿½hes megeszi a hangyï¿½t.
 	 * 
 	 * 
 	 * @param ant
-	 *            a hangya referenciája. amivel ütközött
+	 *            a hangya referenciï¿½ja. amivel ï¿½tkï¿½zï¿½tt
 	 * @param b
-	 *            lépés elõtt: false, lépés után: true
+	 *            lï¿½pï¿½s elï¿½tt: false, lï¿½pï¿½s utï¿½n: true
 	 */
 	@Override
 	public void collisionWithAnt(Ant ant, boolean b) {
 		Singleton s = Singleton.Instance();
 
-		Integer id = s.stack.get(s.stack.size() - 1);
-
-		s.makeSpace(">> CALL: " + id + ": Antlion.collisionWithAnt("
-				+ s.ants.indexOf(ant) + ": Ant, " + String.valueOf(b)
-				+ ": boolean)");
-		// ha már lépett a hangya
+		// ha mï¿½r lï¿½pett a hangya
 		if (b == true) {
-			s.stack.add(s.ants.indexOf(ant));
+			
 			ant.kill();
-			s.stack.remove(s.stack.size() - 1);
+			
 		}
-
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": Antlion.collisionWithAnt("
-				+ s.ants.indexOf(ant) + ": Ant, " + String.valueOf(b)
-				+ ": boolean)");
-		s.depth--;
 	}
 
 	/**
-	 * Hangyászsünnel való ütközés. Nem csinál semmit, csak visszatér.
+	 * Hangyï¿½szsï¿½nnel valï¿½ ï¿½tkï¿½zï¿½s. Nem csinï¿½l semmit, csak visszatï¿½r.
 	 * 
 	 * @param echidna
-	 *            az a hangyászsün. amivel ütközött
+	 *            az a hangyï¿½szsï¿½n. amivel ï¿½tkï¿½zï¿½tt
 	 */
 	@Override
 	public void collisionWithEchidna(Echidna echidna) {
 		Singleton s = Singleton.Instance();
 
-		Integer id = s.stack.get(s.stack.size() - 1);
-
-		s.makeSpace(">> CALL: " + id + ": Antlion.collisionWithEchidna("
-				+ s.echidnas.indexOf(echidna) + ": Echidna)");
-
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": Antlion.collisionWithEchidna("
-				+ s.echidnas.indexOf(echidna) + ": Echidna)");
-		s.depth--;
 	}
 
 	/**
-	 * Hangyászsünnel való ütközés. Nem csinál semmit, csak visszatér.
+	 * Hangyï¿½szsï¿½nnel valï¿½ ï¿½tkï¿½zï¿½s. Nem csinï¿½l semmit, csak visszatï¿½r.
 	 * 
 	 * @param strength
-	 *            a Spray erõssége
+	 *            a Spray erï¿½ssï¿½ge
 	 */
 	@Override
 	public void collisionWithSpray(Integer strength) {
 		Singleton s = Singleton.Instance();
 
-		Integer id = s.stack.get(s.stack.size() - 1);
-
-		s.makeSpace(">> CALL: " + id + ": Antlion.collisionWithSpray("
-				+ strength + ": Integer)");
-
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": Antlion.collisionWithSpray("
-				+ strength + ": Integer)");
-		s.depth--;
 	}
 }

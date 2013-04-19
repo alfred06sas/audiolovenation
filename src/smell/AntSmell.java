@@ -9,91 +9,60 @@ import item.Volatile;
  * 
  * @author audiolovenation
  * 
- *         A hangyaszag tulajdonságait valósítja meg. A hangya ezt hagyja maga
- *         után. Idõvel elillan.
+ *         A hangyaszag tulajdonsï¿½gait valï¿½sï¿½tja meg. A hangya ezt hagyja maga
+ *         utï¿½n. Idï¿½vel elillan.
  * 
  */
 public class AntSmell extends Smell implements Volatile {
 
 	/**
-	 * Szag eltávolítása.
+	 * Szag eltï¿½volï¿½tï¿½sa.
 	 * 
 	 */
 	@Override
 	public void removeMyself() {
 		Singleton s = Singleton.Instance();
 
-		Integer id = s.stack.get(s.stack.size() - 1);
+		Field field = new Field();
 
-		s.makeSpace(">> CALL: " + id + ": AntSmell.removeMyself()");
+		field.removeSmell(new Smell());
 
-		s.stack.add(11);
-		Field field = s.fields.get(10);
-
-		field.removeSmell(s.smells.get(id));
-
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": AntSmell.removeMyself()");
-		s.depth--;
+		
 	}
 
 	/**
-	 * Szag csökkentése.
+	 * Szag csï¿½kkentï¿½se.
 	 * 
 	 */
 	@Override
 	public void decrease() {
 		Singleton s = Singleton.Instance();
 
-		Integer id = s.stack.get(s.stack.size() - 1);
-
-		s.makeSpace(">> CALL: " + id + ": AntSmell.decrease()");
-
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": AntSmell.decrease()");
-		s.depth--;
 	}
 
 	/**
-	 * Szag csökkentése.
+	 * Szag csï¿½kkentï¿½se.
 	 * 
 	 */
 	@Override
 	public void decreaseSmell() {
 		Singleton s = Singleton.Instance();
 
-		Integer id = s.stack.get(s.stack.size() - 1);
-
-		s.makeSpace(">> CALL: " + id + ": AntSmell.decreaseSmell()");
-
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": AntSmell.decreaseSmell()");
-		s.depth--;
+	
 	}
 
 	/**
-	 * A csápnak adja meg a hangyaszag erõsségét.
+	 * A csï¿½pnak adja meg a hangyaszag erï¿½ssï¿½gï¿½t.
 	 * 
 	 * @param tentacle
-	 *            a csáp, aminak a szag erõsségét át kell adni
+	 *            a csï¿½p, aminak a szag erï¿½ssï¿½gï¿½t ï¿½t kell adni
 	 * 
 	 */
 	@Override
 	public void smellIt(Tentacle tentacle) {
 		Singleton s = Singleton.Instance();
 
-		Integer id = s.stack.get(s.stack.size() - 1);
-
-		s.makeSpace(">> CALL: " + id + ": AntSmell.smellIt("
-				+ s.tentacles.indexOf(tentacle) + ": Tentacle)");
-
-		s.stack.add(s.tentacles.indexOf(tentacle));
 		tentacle.increaseAntSmell(14);
-		s.stack.remove(s.stack.size() - 1);
-
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": AntSmell.smellIt("
-				+ s.tentacles.indexOf(tentacle) + ": Tentacle)");
-		s.depth--;
+		
 	}
 }

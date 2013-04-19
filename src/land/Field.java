@@ -1,7 +1,6 @@
 package land;
 
 import item.Item;
-import item.Spray;
 
 import java.util.List;
 import java.util.Map;
@@ -15,62 +14,45 @@ import smell.Smell;
  * 
  * @author audiolovenation
  * 
- *         A pálya mezõkbõl épül fel, melyeken elemek (hangya, hangyászsün,
- *         hangyalesõ, akadály, spray, étel, boly) és szagok helyezkednek el.
- *         Ismeri a szomszédait, és azok irányát.
+ *         A pï¿½lya mezï¿½kbï¿½l ï¿½pï¿½l fel, melyeken elemek (hangya, hangyï¿½szsï¿½n,
+ *         hangyalesï¿½, akadï¿½ly, spray, ï¿½tel, boly) ï¿½s szagok helyezkednek el.
+ *         Ismeri a szomszï¿½dait, ï¿½s azok irï¿½nyï¿½t.
  * 
  */
 public class Field {
 
+	private String id;
 	private List<Item> items;
 	private Map<Dir, Field> neighbours;
 	private List<Smell> smells;
 
 	/**
-	 * Egy elem hozzárendellése a mezõhöz
+	 * Egy elem hozzï¿½rendellï¿½se a mezï¿½hï¿½z
 	 * 
 	 * @param Item
-	 *            azon elem amelyet el akarunk helyezni a mezõn
+	 *            azon elem amelyet el akarunk helyezni a mezï¿½n
 	 */
 	public void addItem(Item item) {
 		Singleton s = Singleton.Instance();
-		Integer id = s.stack.get(s.stack.size() - 1);
+		
+		item.setActualField(new Field());
 
-		s.makeSpace(">> CALL: " + id + ": Field.addItem("
-				+ s.items.indexOf(item) + ": Item)");
-
-		s.stack.add(s.items.indexOf(item));
-
-		item.setActualField(s.fields.get(id));
-
-		s.stack.remove(s.stack.size() - 1);
-
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": Field.addItem("
-				+ s.items.indexOf(item) + ": Item)");
-		s.depth--;
 	}
 
 	/**
-	 * A mezõn lévõ elemek lekérdezésére szolgál.
+	 * A mezï¿½n lï¿½vï¿½ elemek lekï¿½rdezï¿½sï¿½re szolgï¿½l.
 	 * 
 	 * @return
 	 */
 	public List<Item> getItems() {
 		Singleton s = Singleton.Instance();
 
-		Integer id = s.stack.get(s.stack.size() - 1);
-
-		s.makeSpace(">> CALL: " + id + ": Field.getItems()");
-
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": Field.getItems(): List<Item>");
-		s.depth--;
+		
 		return null;
 	}
 
 	/**
-	 * Egy elem eltüntetése a mezõrõl.
+	 * Egy elem eltï¿½ntetï¿½se a mezï¿½rï¿½l.
 	 * 
 	 * @param Item
 	 * @return
@@ -78,19 +60,11 @@ public class Field {
 	public void removeItem(Item item) {
 		Singleton s = Singleton.Instance();
 
-		Integer id = s.stack.get(s.stack.size() - 1);
-
-		s.makeSpace(">> CALL: " + id + ": Field.removeItem("
-				+ s.items.indexOf(item) + ": Item)");
-
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": Field.removeItem("
-				+ s.items.indexOf(item) + ": Item)");
-		s.depth--;
+		
 	}
 
 	/**
-	 * A mezõ szomszédainak a legkérdezése
+	 * A mezï¿½ szomszï¿½dainak a legkï¿½rdezï¿½se
 	 * 
 	 * @return
 	 */
@@ -98,149 +72,93 @@ public class Field {
 
 		Singleton s = Singleton.Instance();
 
-		Integer id = s.stack.get(s.stack.size() - 1);
-
-		s.makeSpace(">> CALL: " + id + ": Field.getNeighbours()");
-
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id
-				+ ": Field.getNeighbours(): Map<Dir, Field>");
-		s.depth--;
-
+		
 		return null;
 	}
 
 	/**
-	 * Egy mezõ felvétele az aktuális mezõ szomszédjának.
+	 * Egy mezï¿½ felvï¿½tele az aktuï¿½lis mezï¿½ szomszï¿½djï¿½nak.
 	 * 
 	 * @param Dir
-	 *            az aktuális mezõhöz visznyított iránya
+	 *            az aktuï¿½lis mezï¿½hï¿½z visznyï¿½tott irï¿½nya
 	 * @param Field
-	 *            az a mezõ amit felveszünk szomszédnak
+	 *            az a mezï¿½ amit felveszï¿½nk szomszï¿½dnak
 	 */
 	public void addNeighbour(Dir dir, Field field) {
 		Singleton s = Singleton.Instance();
 
-		Integer id = s.stack.get(s.stack.size() - 1);
-
-		s.makeSpace(">> CALL: " + id + ": Field.addNeighbour(" + dir
-				+ ": Dir, " + s.fields.indexOf(field) + ": Field" + ")");
-		s.depth--;
-
-		s.makeSpace("<< RETURN: " + id + ": Field.addNeighbour(" + dir
-				+ ": Dir, " + s.fields.indexOf(field) + ": Field" + ")");
-		s.depth--;
+	
 	}
 
 	/**
-	 * A mezõn lévõ szagok lekérdezése, ez lehet étel és hangyaszag.
+	 * A mezï¿½n lï¿½vï¿½ szagok lekï¿½rdezï¿½se, ez lehet ï¿½tel ï¿½s hangyaszag.
 	 * 
 	 */
 	public List<Smell> getSmells() {
 		Singleton s = Singleton.Instance();
-		Integer id = s.stack.get(s.stack.size() - 1);
-
-		s.makeSpace(">> CALL: " + id + ": Field.getSmells()");
-
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": Field.getSmells(): List<Smell>");
-		s.depth--;
+	
 
 		return null;
 	}
 
 	/**
-	 * Egy szag felvétele a mezõre, ez lehet étel vagy hangyaszag.
+	 * Egy szag felvï¿½tele a mezï¿½re, ez lehet ï¿½tel vagy hangyaszag.
 	 * 
 	 * @param Smell
-	 *            a mezõre felveendõ szag
+	 *            a mezï¿½re felveendï¿½ szag
 	 */
 	public void addSmell(Smell smell) {
 		Singleton s = Singleton.Instance();
-		Integer id = s.stack.get(s.stack.size() - 1);
-
-		s.makeSpace(">> CALL: " + id + ": Field.addSmell("
-				+ s.smells.indexOf(smell) + ": Smell)");
-
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": Field.addSmell("
-				+ s.smells.indexOf(smell) + ": Smell)");
-		s.depth--;
+		
 	}
 
 	/**
-	 * Szag eltávolítása mezõrõl.
+	 * Szag eltï¿½volï¿½tï¿½sa mezï¿½rï¿½l.
 	 * 
 	 * @param Smell
-	 *            az eltávolítandó szag
+	 *            az eltï¿½volï¿½tandï¿½ szag
 	 * @return
 	 */
 	public void removeSmell(Smell smell) {
 		Singleton s = Singleton.Instance();
-		Integer id = s.stack.get(s.stack.size() - 1);
-
-		s.makeSpace(">> CALL: " + id + ": Field.removeSmell("
-				+ s.smells.indexOf(smell) + ": Smell)");
-
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": Field.removeSmell("
-				+ s.smells.indexOf(smell) + ": Smell)");
-		s.depth--;
 	}
 
 	/**
-	 * Hangyaszag eltüntetése a mezõrõl.
+	 * Hangyaszag eltï¿½ntetï¿½se a mezï¿½rï¿½l.
 	 * 
 	 * @param Smell
-	 *            az eltüntetendõ szag
+	 *            az eltï¿½ntetendï¿½ szag
 	 */
 	public void removeAntSmells() {
 		Singleton s = Singleton.Instance();
-		Integer id = s.stack.get(s.stack.size() - 1);
-
-		s.makeSpace(">> CALL: " + id + ": Field.removeAntSmells()");
-
-		s.stack.add(1);
-		SingletonContainer sc = s.singletonContainer.get(0).getInstance();
-		s.singletonContainer.get(0).decreaseAntSmellSpray(5);
-		s.stack.remove(s.stack.size() - 1);
-
-		//Szag eltüntetése
-		s.stack.add(3);
-		AntSmell antSmell = s.antSmells.get(2);
+		
+		SingletonContainer sc = new SingletonContainer().getInstance();
+		sc.decreaseAntSmellSpray(5);
+	
+		//Szag eltï¿½ntetï¿½se
+		AntSmell antSmell = new AntSmell();
 		antSmell.removeMyself();
-		s.stack.remove(s.stack.size() - 1);
-
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": Field.removeAntSmells()");
-		s.depth--;
+	
 	}
 
 	/**
-	 * Ha egy mezõre kattintunk az egérrel, ez az esemény hívódik meg, ennek
-	 * hatására egy hangyaszagírtó-spray elem kerül a mezõre.
+	 * Ha egy mezï¿½re kattintunk az egï¿½rrel, ez az esemï¿½ny hï¿½vï¿½dik meg, ennek
+	 * hatï¿½sï¿½ra egy hangyaszagï¿½rtï¿½-spray elem kerï¿½l a mezï¿½re.
 	 * 
 	 */
 	public void onClick() {
 		Singleton s = Singleton.Instance();
-		Integer id = s.stack.get(s.stack.size() - 1);
-
-		s.makeSpace(">> CALL: " + id + ": Field.onClick()");
-
-		s.stack.add(1);
-		SingletonContainer sc = s.singletonContainer.get(0).getInstance();
-		s.singletonContainer.get(0).getVolatiles();
-		s.stack.remove(s.stack.size() - 1);
-
-		s.stack.add(id);
-		Field field = s.fields.get(id - 1);
-		Spray spray = (Spray) s.items.get(16);
+		
+		SingletonContainer sc = new SingletonContainer().getInstance();
+		
+		Field field = new Field();
+		Spray spray = new Spray();
 		field.addItem(spray);
-		s.stack.remove(s.stack.size() - 1);
-
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": Field.onClick()");
-		s.depth--;
+		
+	}
+	
+	public String getId(){
+		return id;
 	}
 
 }

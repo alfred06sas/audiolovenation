@@ -1,86 +1,76 @@
 package item;
 
-import program.Singleton;
+import java.util.HashMap;
+
 import land.Field;
 import movable.Ant;
 import movable.Echidna;
+import program.Singleton;
 
 /**
  * 
  * @author audiolovenation
  * 
- *         A pálya egyes mezõin megtalálható objektumok (hangya, hangyászsün,
- *         hangyalesõ, akadály, spray, étel, boly).
+ *         A pï¿½lya egyes mezï¿½in megtalï¿½lhatï¿½ objektumok (hangya, hangyï¿½szsï¿½n,
+ *         hangyalesï¿½, akadï¿½ly, spray, ï¿½tel, boly).
  */
 public class Item {
+
+	private String id;
 
 	private Field actualField;
 
 	/**
-	 * Hangyával való ütközés.
+	 * Hangyï¿½val valï¿½ ï¿½tkï¿½zï¿½s.
 	 * 
 	 * @param Ant
-	 *            a hangya ami ütközik a bollyal
+	 *            a hangya ami ï¿½tkï¿½zik a bollyal
 	 * @param b
-	 *            van-e étel a hangyánál vagy nincs
+	 *            van-e ï¿½tel a hangyï¿½nï¿½l vagy nincs
 	 */
 	public void collisionWithAnt(Ant ant, boolean b) {
 		Singleton s = Singleton.Instance();
-		Integer id = s.stack.get(s.stack.size() - 1);
-
-		s.makeSpace(">> CALL: " + id + ": Item.collisionWithAnt("
-				+ s.ants.indexOf(ant) + ": Ant" + b + ": boolean)");
-
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": Item.collisionWithAnt("
-				+ s.ants.indexOf(ant) + ": Ant" + b + ": boolean)");
-		s.depth--;
+		
 	}
 
 	/**
-	 * Item beállítása egy mezõhöz.
+	 * Item beï¿½llï¿½tï¿½sa egy mezï¿½hï¿½z.
 	 * 
 	 * @param Field
-	 *            a mezõ, amihez beállítjuk az ételszagot.
+	 *            a mezï¿½, amihez beï¿½llï¿½tjuk az ï¿½telszagot.
 	 */
 	public void setActualField(Field field) {
 
 		Singleton s = Singleton.Instance();
-		Integer id = s.stack.get(s.stack.size() - 1);
-
-		s.makeSpace(">> CALL: " + id + ": Item.setActualField("
-				+ s.fields.indexOf(field) + ": Field)");
-
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": Item.setActualField("
-				+ s.fields.indexOf(field) + ": Field)");
-		s.depth--;
+		
 	}
 
 	/**
-	 * Hangyászsünnel való ütközés.
+	 * Hangyï¿½szsï¿½nnel valï¿½ ï¿½tkï¿½zï¿½s.
 	 * 
 	 * @param Echidna
-	 *            a hangyászsün ami ütközik a bollyal
+	 *            a hangyï¿½szsï¿½n ami ï¿½tkï¿½zik a bollyal
 	 */
 	public void collisionWithEchidna(Echidna echidna) {
 		Singleton s = Singleton.Instance();
-		Integer id = s.stack.get(s.stack.size() - 1);
-
-		s.makeSpace(">> CALL: " + id + ": Item.collisionWithEchidna()");
-
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": Item.collisionWithEchidna()");
-		s.depth--;
+		
 	}
 
 	/**
-	 * Spray-vel való ütközés.
+	 * Spray-vel valï¿½ ï¿½tkï¿½zï¿½s.
 	 * 
 	 * @param strength
-	 *            a spray erõssége
+	 *            a spray erï¿½ssï¿½ge
 	 */
 	public void collisionWithSpray(Integer strength) {
 	}
 
+	public String getId() {
+		return id;
+	}
+	
+	public HashMap<String, String> getStates()
+	{
+		return null;
+	}
 }

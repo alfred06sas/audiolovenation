@@ -9,59 +9,40 @@ import movable.Echidna;
  * 
  * @author audiolovenation
  * 
- *         A létrejött hangyák kiindulási pontja (boly), ahonnan a hangyák
- *         indulnak ételt szerezni. Ha egy hangya talált ételt, akkor ezt ide
- *         próbálja visszajuttatni. û Ha sikerül, a hangya vissza megy a bolyba(inaktív állapotba kerül).
+ *         A lï¿½trejï¿½tt hangyï¿½k kiindulï¿½si pontja (boly), ahonnan a hangyï¿½k
+ *         indulnak ï¿½telt szerezni. Ha egy hangya talï¿½lt ï¿½telt, akkor ezt ide
+ *         prï¿½bï¿½lja visszajuttatni. ï¿½ Ha sikerï¿½l, a hangya vissza megy a bolyba(inaktï¿½v ï¿½llapotba kerï¿½l).
  */
 public class Hill extends Item {
 
 	/**
-	 * Hangyával való ütközés.
+	 * Hangyï¿½val valï¿½ ï¿½tkï¿½zï¿½s.
 	 * 
 	 * @param Ant
-	 *            a hangya ami ütközik a bollyal
+	 *            a hangya ami ï¿½tkï¿½zik a bollyal
 	 * @param b
-	 *            ütközés elõtt: false, ütközés után: true
+	 *            ï¿½tkï¿½zï¿½s elï¿½tt: false, ï¿½tkï¿½zï¿½s utï¿½n: true
 	 */
 	@Override
 	public void collisionWithAnt(Ant ant, boolean b) {
 		Singleton s = Singleton.Instance();
 
-		Integer id = s.stack.get(s.stack.size() - 1);
-
-		s.makeSpace(">> CALL: " + id + ": Ant.collisionWithAnt("
-				+ s.ants.indexOf(ant) + ": Ant, " + String.valueOf(b) + ")");
-
-		s.stack.add(6);
-		Ant ant1 = s.ants.get(5);
-		//A hangyabolyba visszaérõ hangya inaktív állapotba kerül
+		Ant ant1 = new Ant();
+		//A hangyabolyba visszaï¿½rï¿½ hangya inaktï¿½v ï¿½llapotba kerï¿½l
 		ant1.rest();
-		s.stack.remove(s.stack.size() - 1);
-
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": Ant.collisionWithAnt("
-				+ s.ants.indexOf(ant) + ": Ant, " + String.valueOf(b) + ")");
-		s.depth--;
+		
 	}
 
 	/**
-	 * Hangyászsünnel való ütközés.
+	 * Hangyï¿½szsï¿½nnel valï¿½ ï¿½tkï¿½zï¿½s.
 	 * 
 	 * @param Echidna
-	 *            a hangyászsün ami ütközik a bollyal
+	 *            a hangyï¿½szsï¿½n ami ï¿½tkï¿½zik a bollyal
 	 */
 	@Override
 	public void collisionWithEchidna(Echidna echidna) {
 		Singleton s = Singleton.Instance();
 
-		Integer id = s.stack.get(s.stack.size() - 1);
-
-		s.makeSpace(">> CALL: " + id + ": Hill.collisionWithEchidna("
-				+ s.echidnas.indexOf(echidna) + ": Echidna)");
-
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": Hill.collisionWithEchidna("
-				+ s.echidnas.indexOf(echidna) + ": Echidna)");
-		s.depth--;
+		
 	}
 }
