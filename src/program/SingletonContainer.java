@@ -2,12 +2,11 @@ package program;
 
 import item.Volatile;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import land.Land;
 import movable.Movable;
-import smell.AntSmell;
-import smell.Smell;
 
 /**
  * 
@@ -29,15 +28,17 @@ public class SingletonContainer {
 	private static SingletonContainer instance;
 	private Integer antKillerSpray;
 	private Integer antSmellSpray;
+	private int numberOfRound;
 
-//	public SingletonContainer(){
-//		Land container = new Land();
-//		List<Movable> movables = new ArrayList<Movable>();
-//		List<Volatile> volatiles = new ArrayList<Volatile>();
-//		SingletonContainer instance = null;
-//		Integer antKillerSpray = 0;
-//		Integer antSmellSpray = 0;
-//	}
+	public SingletonContainer(){
+		Land container = new Land();
+		List<Movable> movables = new ArrayList<Movable>();
+		List<Volatile> volatiles = new ArrayList<Volatile>();
+		SingletonContainer instance = null;
+		Integer antKillerSpray = 0;
+		Integer antSmellSpray = 0;
+		numberOfRound = 0;
+	}
 	/**
 	 * 
 	 * Az illekony elemek hozzaadasa az oket taroa listaba.
@@ -136,4 +137,11 @@ public class SingletonContainer {
 		antSmellSpray-=strength;		
 	}
 
+	public int getNumberOfRound(){
+		return numberOfRound;
+	}
+	public void increaseOfRoundNumber() {
+		numberOfRound++;
+		
+	}
 }

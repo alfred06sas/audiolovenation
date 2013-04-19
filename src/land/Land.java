@@ -1,7 +1,7 @@
 package land;
 
 import item.Item;
-import item.Spray;
+import item.Volatile;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -11,8 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import movable.Ant;
-import movable.Echidna;
+import movable.Movable;
 import program.Singleton;
 import program.SingletonContainer;
 
@@ -92,22 +91,27 @@ public class Land {
 	 * 
 	 */
 	public void move() {
-		Singleton s = Singleton.Instance();
-
-		SingletonContainer sc = new SingletonContainer().getInstance();
-
-		sc.getMovables();
+		SingletonContainer sc = SingletonContainer.getInstance();
+		List<Movable> movables = new ArrayList<Movable>();
+		List<Volatile> volatiles = new ArrayList<Volatile>();
 
 		// Hangya leptetese
-		Ant ant = new Ant();
-		ant.step();
+		movables = sc.getMovables();
+		try{
+			for (Movable movable :movables)
+					movable.step();
+		}catch(NullPointerException e){
+			System.out.println("Ures Movable lista.");
+		}
 
-		// Hangyaszsun leptetese
-		Echidna echinda = new Echidna();
-		echinda.step();
-		sc.getVolatiles();
-		Spray spray = new Spray();
-		spray.decrease();
+		// Illekonyok csokkentese
+		volatiles = sc.getVolatiles();
+		try{
+			for (Volatile volatile_ :volatiles)
+				volatile_.decrease();
+		}catch(NullPointerException e){
+			System.out.println("Ures Volatile lista.");
+		}
 	}
 
 	/**
@@ -173,6 +177,7 @@ public class Land {
 	}
 
 	public void loadTestCase(String inputFileName, String outputFileName) throws FileNotFoundException {
+		Singleton s = Singleton.Instance();
 		BufferedReader br = new BufferedReader(new FileReader(inputFileName));
 		try {
 			while (true) {
@@ -205,7 +210,9 @@ public class Land {
 					System.out.println(line);
 				} else if (sline[0].equals("step_round")
 						&& sline[1].equals("-rn") && sline.length == 3) {
-					System.out.println(line);
+					System.out.println(line);					
+					s.printNextRound();
+					move();
 				} else {
 					System.err.println("Undefined command: " + line);
 					return;
