@@ -3,7 +3,9 @@ package movable;
 import item.Item;
 
 import java.util.HashMap;
+import java.util.Map;
 
+import land.Dir;
 import land.Field;
 import program.Singleton;
 
@@ -33,6 +35,10 @@ public class Echidna extends Item implements Movable {
 	 * Ehseg merteke. Ha 0, akkor inaktiv allapotba kerul meghatarozott idore.
 	 */
 	private Integer hunger;
+	/**
+	 * Hangyaszsun iranya.
+	 */
+	private Dir dir;
 
 	/**
 	 * Aktualis mezo beallitasa.
@@ -42,8 +48,7 @@ public class Echidna extends Item implements Movable {
 	 */
 	@Override
 	public void setActualField(Field field) {
-		Singleton s = Singleton.Instance();
-
+		super.setActualField(field);
 		
 	}
 
@@ -51,7 +56,7 @@ public class Echidna extends Item implements Movable {
 	 * Ehseg (hunger attributum) csokkentese meghatarozott ertekkel.
 	 */
 	public void decreaseHunger() {
-		Singleton s = Singleton.Instance();
+		hunger--;
 
 		
 	}
@@ -61,7 +66,7 @@ public class Echidna extends Item implements Movable {
 	 */
 	@Override
 	public void setAlive() {
-
+		isActive=true;
 	}
 
 	/**
@@ -72,8 +77,7 @@ public class Echidna extends Item implements Movable {
 	 */
 	@Override
 	public void collisionWithEchidna(Echidna echidna) {
-		Singleton s = Singleton.Instance();
-
+		
 		
 	}
 
@@ -82,26 +86,23 @@ public class Echidna extends Item implements Movable {
 	 */
 	@Override
 	public void step() {
-		Singleton s = Singleton.Instance();
 
 		
 		Echidna echidna = new Echidna();
 
 		/* A szomszedok lekerdezese */
-		Field prevField = new Field();
-		prevField.getNeighbours();
+		Field prevField = getActualField();
+		Map<Dir, Field> map = prevField.getNeighbours();
 	
 		/* A hangyaszsun torese a mezorol */
 		prevField.removeItem(echidna);
 	
 		/* Hangyaszsun atlep a kovetkezo mezore */
-		Field nextField = new Field();
+		Field nextField = map.get(dir);
 		nextField.addItem(echidna);
 		nextField.getItems();
 		
-		/* Az ott levo elemekkel valo utkozes */
-		Echidna echidna2 = new Echidna();
-		echidna2.collisionWithEchidna(echidna);
+		collisionWithEchidna(echidna);
 		
 	}
 
