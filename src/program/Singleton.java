@@ -11,6 +11,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.xml.validation.SchemaFactoryLoader;
+
 import land.Field;
 import land.Land;
 import item.Spray;
@@ -38,6 +40,7 @@ public class Singleton {
 	
 
 	public static Singleton Instance() {
+		SingletonContainer sc = SingletonContainer.getInstance();
 		if (instance == null){
 			instance = new Singleton();
 			types=new HashMap<String,  String>();
@@ -110,8 +113,10 @@ public class Singleton {
 	 *   KOR LEPTETESE kovetkezo a formaja:
 	 *   -------- X. ROUND --------
 	 */
-	void printNextRound(){
-		System.out.println("-------- X. ROUND --------");
+	public void printNextRound(){
+		SingletonContainer sc = SingletonContainer.getInstance();
+		sc.increaseOfRoundNumber();
+		System.out.println("-------- " + sc.getNumberOfRound() + " . ROUND --------");
 	}
 
 	/*
