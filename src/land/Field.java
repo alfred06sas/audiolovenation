@@ -3,11 +3,11 @@ package land;
 import item.Item;
 import item.Spray;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import program.Singleton;
 import program.SingletonContainer;
 import smell.AntSmell;
 import smell.Smell;
@@ -31,6 +31,8 @@ public class Field {
 	public Field(){
 		id=new String();
 		neighbours=new HashMap<Dir, Field>();
+		items = new ArrayList<Item>();
+		smells = new ArrayList<Smell>();
 	}
 	
 	public Field(String s){

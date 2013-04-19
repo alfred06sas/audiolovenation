@@ -16,4 +16,6 @@ import program.Singleton;
  */
 public class Blockage extends Item {
 
+	public Blockage(){
+	}
 }

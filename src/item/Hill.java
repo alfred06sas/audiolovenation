@@ -15,6 +15,9 @@ import movable.Echidna;
  */
 public class Hill extends Item {
 
+	public Hill(){		
+	}
+	
 	/**
 	 * Hangyaval valo utkozes.
 	 * 

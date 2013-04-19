@@ -19,7 +19,12 @@ public class Item {
 	private String id;
 
 	private Field actualField;
-
+	
+	public Item(){
+		id = new String();
+		actualField = new Field();
+	}
+	
 	/**
 	 * Hangyaval valo utkozes.
 	 * 

@@ -20,6 +20,9 @@ import smell.FoodSmell;
  */
 public class Food extends Item {
 
+	public Food(){
+	}
+	
 	/** 0. eleme az actualis FoodSmell
 	 *  1..6ig a kornyezo mezok FoodSmellje
 	 * 

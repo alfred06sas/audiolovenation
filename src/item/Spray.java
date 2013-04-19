@@ -16,13 +16,17 @@ import program.Singleton;
  */
 public class Spray extends Item implements Volatile {
 
-	private Integer strength;
+	private int strength;
 
+	public Spray(){
+		strength = 0;
+	}
+	
 	/**
 	 * Spray erossegenek a csokkentese
 	 * 
 	 */
-	@Override
+		@Override
 	public void decrease() {
 		--strength;
 	}

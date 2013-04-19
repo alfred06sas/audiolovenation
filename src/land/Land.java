@@ -35,6 +35,8 @@ public class Land {
 
 	public Land(){
 		 fields=new ArrayList<Field>();
+		 columnNumber = 10;
+		 rowNumber = 10;
 	}
 	
 

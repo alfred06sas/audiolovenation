@@ -31,7 +31,7 @@ public class Tentacle {
 //	
 //	private AntSmell antSmell;
 	
-	Tentacle(Ant ant){
+	public Tentacle(Ant ant){
 		this.ant=ant;
 		possibleFields=new HashMap<Dir, Field>();
 //		foodSmell=new FoodSmell();

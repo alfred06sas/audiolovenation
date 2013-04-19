@@ -13,6 +13,10 @@ import program.Singleton;
  *         elpusztul. A hangyaszsunnel nem foglalkozik.
  */
 public class Antlion extends Item {
+
+	public Antlion(){
+	}
+	
 	/**
 	 * Hangyaval valo utkozes. Ha ehes megeszi a hangyat.
 	 * 

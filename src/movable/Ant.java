@@ -40,7 +40,7 @@ public class Ant extends Item implements Movable {
 	/**
 	 * Inaktiv allapotban a maradek varakozasi korok.
 	 */
-	private Integer wait;
+	private int wait;
 	/**
 	 * Van-e a hangyanal etel.
 	 */
@@ -49,12 +49,22 @@ public class Ant extends Item implements Movable {
 	 * Eletero, amelyet a spray, a hangyaleso es a hangyaszsun modosithat. Ha 0,
 	 * akkor a hangya atlep inaktiv allapotba es a kor vegen meghal.
 	 */
-	private Integer HP;
+	private int HP;
 	/**
 	 * A tovabbhaladasi irany. Default: UP.
 	 */
 	private Dir dir;
 
+	public Ant(){
+		HP = 10;
+		tentacle = new Tentacle(this);
+		isKilled = false;
+		isActive = false;
+		wait = 10;
+		haveFood = false;
+		dir = Dir.RIGHT_BOTTOM;
+	}
+	
 	/**
 	 * Aktualis mezo beallitasa.
 	 * 
