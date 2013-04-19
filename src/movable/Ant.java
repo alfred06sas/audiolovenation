@@ -133,8 +133,10 @@ public class Ant extends Item implements Movable {
 	 */
 	public void setDir(Dir dir) {
 		Singleton s = Singleton.Instance();
-
+	}
 	
+	public Dir getDir(){
+		return dir;
 	}
 
 	/**
