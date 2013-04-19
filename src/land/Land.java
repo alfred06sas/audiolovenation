@@ -166,7 +166,7 @@ public class Land {
 		// palya felepitese
 		buildLand(row,column);
 		// elemek palyara helyezese
-		putItems();
+//		putItems(); Egyelore kezzel adjuk hozza az Itemeket
 		// leptetes
 		move();
 	}
