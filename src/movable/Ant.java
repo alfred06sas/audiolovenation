@@ -24,7 +24,6 @@ import smell.Smell;
  * @author audiolovenation
  * 
  */
-// all a faszom mint  a gerely
 public class Ant extends Item implements Movable {
 	/**
 	 * Cs�p objektum. Ez v�gzi a tov�bbhalad�si ir�nyok be�ll�t�s�t.
