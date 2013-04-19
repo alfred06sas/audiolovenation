@@ -6,6 +6,7 @@ import java.util.List;
 
 import land.Land;
 import movable.Movable;
+import smell.AntSmell;
 import smell.Smell;
 
 /**
@@ -23,11 +24,11 @@ import smell.Smell;
 public class SingletonContainer {
 
 	private Land container;
-	private List<Movable> movable;
+	private List<Movable> movables;
 	private List<Volatile> volatiles;
 	private static SingletonContainer instance;
 	private Integer antKillerSpray;
-	private Integer antSnellSpray;
+	private Integer antSmellSpray;
 
 	/**
 	 * 
@@ -37,9 +38,7 @@ public class SingletonContainer {
 	 *            a hozzaadanda elem
 	 */
 	public void addVolatile(Volatile volatile_) {
-		Singleton s = Singleton.Instance();
-
-	
+		volatiles.add(volatile_);
 	}
 
 	/**
@@ -50,9 +49,7 @@ public class SingletonContainer {
 	 *            a hozzaadando elem
 	 */
 	public void addMovable(Movable movable) {
-		Singleton s = Singleton.Instance();
-
-		
+		movables.add(movable);
 	}
 
 	/**
@@ -62,10 +59,9 @@ public class SingletonContainer {
 	 * @return a SingletonContainerre mutato referencia
 	 */
 	public static SingletonContainer getInstance() {
-		Singleton s = Singleton.Instance();
-
-	
-		return new SingletonContainer();
+		if (instance == null)
+			instance = new SingletonContainer();
+		return instance;
 	}
 
 	/**
@@ -75,11 +71,7 @@ public class SingletonContainer {
 	 * @return
 	 */
 	public List<Movable> getMovables() {
-		Singleton s = Singleton.Instance();
-
-	
-
-		return null;
+		return movables;
 	}
 
 	/**
@@ -89,10 +81,7 @@ public class SingletonContainer {
 	 * @return
 	 */
 	public List<Volatile> getVolatiles() {
-		Singleton s = Singleton.Instance();
-
-
-		return null;
+		return volatiles;
 	}
 
 	/**
@@ -103,6 +92,7 @@ public class SingletonContainer {
 	 *            a kitorlendo elem
 	 */
 	public void removeVolatile(Volatile volatile_) {
+		volatiles.remove(volatile_);
 	}
 
 	/**
@@ -113,9 +103,7 @@ public class SingletonContainer {
 	 *            a kiterlendo elem
 	 */
 	public void removeMovable(Movable movable) {
-		Singleton s = Singleton.Instance();
-
-		
+		movables.remove(movable);
 	}
 
 	/**
@@ -126,9 +114,7 @@ public class SingletonContainer {
 	 *            a csokkentes merteke
 	 */
 	public void decreaseAntKillerSpray(Integer strength) {
-		Singleton s = Singleton.Instance();
-
-		
+		antKillerSpray-=strength;
 	}
 
 	/**
@@ -139,9 +125,7 @@ public class SingletonContainer {
 	 *            a csokkentes merteke
 	 */
 	public void decreaseAntSmellSpray(Integer strength) {
-		Singleton s = Singleton.Instance();
-
-		
+		antSmellSpray-=strength;		
 	}
 
 }
