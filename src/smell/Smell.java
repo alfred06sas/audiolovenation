@@ -48,7 +48,7 @@ public class Smell {
 	 * Szag eltavolitasa.
 	 * 
 	 */
-	public void removeMyself() {
+	public void removeMyself(Field field) {
 	}
 
 	/**

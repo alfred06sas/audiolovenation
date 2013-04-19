@@ -33,6 +33,11 @@ public class Field {
 		neighbours=new HashMap<Dir, Field>();
 	}
 	
+	public Field(String s){
+		id=s;
+		neighbours=new HashMap<Dir, Field>();
+	}
+	
 	/**
 	 * Egy elem hozzarendelese a mezohoz
 	 * 
@@ -40,10 +45,8 @@ public class Field {
 	 *            azon elem amelyet el akarunk helyezni a mezon
 	 */
 	public void addItem(Item item) {
-		Singleton s = Singleton.Instance();
-		
-		item.setActualField(new Field());
-
+		items.add(item);
+		item.setActualField(this);
 	}
 
 	/**
@@ -52,10 +55,7 @@ public class Field {
 	 * @return
 	 */
 	public List<Item> getItems() {
-		Singleton s = Singleton.Instance();
-
-		
-		return null;
+		return items;
 	}
 
 	/**
@@ -65,9 +65,7 @@ public class Field {
 	 * @return
 	 */
 	public void removeItem(Item item) {
-		Singleton s = Singleton.Instance();
-
-		
+		items.remove(item);
 	}
 
 	/**
@@ -76,10 +74,6 @@ public class Field {
 	 * @return
 	 */
 	public Map<Dir, Field> getNeighbours() {
-
-		Singleton s = Singleton.Instance();
-
-		
 		return neighbours;
 	}
 
@@ -92,8 +86,6 @@ public class Field {
 	 *            az a mezo, amit felveszunk szomszednak
 	 */
 	public void addNeighbour(Dir dir, Field field) {
-		Singleton s = Singleton.Instance();
-		
 		neighbours.put(dir, field);
 	}
 
@@ -102,10 +94,7 @@ public class Field {
 	 * 
 	 */
 	public List<Smell> getSmells() {
-		Singleton s = Singleton.Instance();
-	
-
-		return null;
+		return smells;
 	}
 
 	/**
@@ -115,8 +104,7 @@ public class Field {
 	 *            a mezore felveendo szag
 	 */
 	public void addSmell(Smell smell) {
-		Singleton s = Singleton.Instance();
-		
+		smells.add(smell);
 	}
 
 	/**
@@ -127,7 +115,7 @@ public class Field {
 	 * @return
 	 */
 	public void removeSmell(Smell smell) {
-		Singleton s = Singleton.Instance();
+		smells.remove(smell);
 	}
 
 	/**
@@ -137,14 +125,16 @@ public class Field {
 	 *            az eltuntetendo szag
 	 */
 	public void removeAntSmells() {
-		Singleton s = Singleton.Instance();
-		
 		SingletonContainer sc = new SingletonContainer().getInstance();
 		sc.decreaseAntSmellSpray(5);
 	
-		//Szag eltuntetese
-		AntSmell antSmell = new AntSmell();
-		antSmell.removeMyself();
+		//Szag eltuntetese, ha nem hangyaszag nem csinalunk semmit
+		for(Smell s: smells)
+			try{
+				AntSmell antSmell=(AntSmell)s;
+				antSmell.removeMyself(this);
+			}
+			catch (ClassCastException e){}
 	
 	}
 
@@ -153,16 +143,9 @@ public class Field {
 	 * hatasara egy hangyaszagirto-spray elem kerul a mezore.
 	 * 
 	 */
-	public void onClick() {
-		Singleton s = Singleton.Instance();
-		
-		SingletonContainer sc = new SingletonContainer().getInstance();
-		
-		Field field = new Field();
-		Spray spray = new Spray();
+	public void onClick(Field field, Spray spray) {
 		field.addItem(spray);
-		
-	}
+		}
 	
 	public void setId(String s){
 		id=s;

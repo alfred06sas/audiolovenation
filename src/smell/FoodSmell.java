@@ -18,14 +18,8 @@ public class FoodSmell extends Smell {
 	 * 
 	 */
 	@Override
-	public void removeMyself() {
-		Singleton s = Singleton.Instance();
-
-		
-		Field field = new Field();
-
-		field.removeSmell(new FoodSmell());
-
+	public void removeMyself(Field field) {
+		field.removeSmell(this);
 	}
 
 	/**

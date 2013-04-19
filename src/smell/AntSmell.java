@@ -1,9 +1,10 @@
 package smell;
 
-import land.Field;
-import program.Singleton;
 import item.Tentacle;
 import item.Volatile;
+import land.Field;
+import program.Singleton;
+import program.SingletonContainer;
 
 /**
  * 
@@ -20,12 +21,10 @@ public class AntSmell extends Smell implements Volatile {
 	 * 
 	 */
 	@Override
-	public void removeMyself() {
-		Singleton s = Singleton.Instance();
-
-		Field field = new Field();
-
-		field.removeSmell(new Smell());
+	public void removeMyself(Field field) {
+		SingletonContainer sc=SingletonContainer.getInstance();
+		sc.removeVolatile(this);
+		field.removeSmell(this);
 
 		
 	}
