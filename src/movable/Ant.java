@@ -221,7 +221,7 @@ public class Ant extends Item implements Movable {
 		 */
 		
 		/* Ha van olyan mezo, ahol nincs akadaly. */
-		if (possibleNeig != null) {
+		if (possibleNeig.isEmpty()) {
 			AntSmell antSmell=new AntSmell();
 			antSmell.setActualField(getActualField());
 			
