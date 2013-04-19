@@ -66,7 +66,7 @@ public class Main {
 					}
 
 					File file = new File(outputFileName);
-					if (file.exists()) {
+					if (file.exists()){
 						System.out
 								.println("\nOutput file already exists! Try again!");
 						break;

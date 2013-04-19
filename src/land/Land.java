@@ -189,7 +189,7 @@ public class Land {
 					buildLand(Integer.parseInt(sline[2]),Integer.parseInt(sline[4]));
 				} else if (sline[0].equals("put_item") && sline[1].equals("-t")
 						&& sline[3].equals("-iid") && sline[5].equals("-fid")
-						&& sline.length == 7) {
+						&& sline.length == 7){
 					System.out.println(line);
 				} else if (sline[0].equals("put_smell")
 						&& sline[1].equals("-t") && sline[3].equals("-sid")
