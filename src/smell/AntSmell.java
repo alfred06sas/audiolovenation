@@ -35,8 +35,6 @@ public class AntSmell extends Smell implements Volatile {
 	 */
 	@Override
 	public void decrease() {
-		Singleton s = Singleton.Instance();
-
 	}
 
 	/**
@@ -44,10 +42,7 @@ public class AntSmell extends Smell implements Volatile {
 	 * 
 	 */
 	@Override
-	public void decreaseSmell() {
-		Singleton s = Singleton.Instance();
-
-	
+	public void decreaseSmell(int s) {	
 	}
 
 	/**
@@ -59,9 +54,9 @@ public class AntSmell extends Smell implements Volatile {
 	 */
 	@Override
 	public void smellIt(Tentacle tentacle) {
-		Singleton s = Singleton.Instance();
-
-		tentacle.increaseAntSmell(14);
+//		Singleton s = Singleton.Instance();
+//
+//		tentacle.increaseAntSmell(14);
 		
 	}
 }

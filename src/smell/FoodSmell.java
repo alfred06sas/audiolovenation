@@ -27,10 +27,7 @@ public class FoodSmell extends Smell {
 	 * 
 	 */
 	@Override
-	public void decreaseSmell() {
-		Singleton s = Singleton.Instance();
-
-	
+	public void decreaseSmell(int s) {
 	}
 
 	/**
@@ -42,10 +39,10 @@ public class FoodSmell extends Smell {
 	 */
 	@Override
 	public void smellIt(Tentacle tentacle) {
-		Singleton s = Singleton.Instance();
-
-		
-		tentacle.increaseFoodSmell(4);
-		
+//		Singleton s = Singleton.Instance();
+//
+//		
+//		tentacle.increaseFoodSmell(4);
+//		
 	}
 }

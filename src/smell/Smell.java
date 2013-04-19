@@ -16,12 +16,22 @@ public class Smell {
 	private Field actualField;
 	private Integer strength;
 
+	
+	public void setStrength(int s){
+		strength=s;
+	}
+	
+	public int getStrength(){
+		return strength;
+	}
+	
 	/**
 	 * 
 	 * Szag csokkentese.
 	 * 
 	 */
-	public void decreaseSmell() {
+	public void decreaseSmell(int s) {
+		strength-=s;
 	}
 
 	/**
@@ -29,7 +39,8 @@ public class Smell {
 	 * Szag növelése.
 	 * 
 	 */
-	public void IncreaseSmell() {
+	public void IncreaseSmell(int s) {
+		strength+=s;
 	}
 
 	/**

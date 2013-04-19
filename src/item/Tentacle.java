@@ -9,9 +9,9 @@ import java.util.TreeMap;
 import land.Dir;
 import land.Field;
 import movable.Ant;
-import program.Singleton;
 import smell.AntSmell;
 import smell.FoodSmell;
+import smell.Smell;
 import blockage.Blockage;
 
 /**
@@ -27,8 +27,15 @@ public class Tentacle {
 	
 	private Ant ant;
 	
+//	private FoodSmell foodSmell;
+//	
+//	private AntSmell antSmell;
+	
 	Tentacle(Ant ant){
 		this.ant=ant;
+		possibleFields=new HashMap<Dir, Field>();
+//		foodSmell=new FoodSmell();
+//		antSmell=new AntSmell();
 	}
 	/**
 	 * Azon szomszedokat keressuk, amelyekre lephetunk a hangyaval
@@ -96,29 +103,25 @@ public class Tentacle {
 		}
 	}
 
-	/**
-	 * Eteltelszag novelese
-	 * 
-	 * @param strength
-	 *            a noveles merteke
-	 */
-	public void increaseFoodSmell(Integer strength) {
-		Singleton s = Singleton.Instance();
-
-		
-	}
-
-	/**
-	 * Hangyaszag novelese
-	 * 
-	 * @param strength
-	 *            a noveles merteke
-	 */
-	public void increaseAntSmell(Integer strength) {
-		Singleton s = Singleton.Instance();
-
-		
-	}
+//	/**
+//	 * Eteltelszag novelese
+//	 * 
+//	 * @param strength
+//	 *            a noveles merteke
+//	 */
+//	public void increaseFoodSmell(Integer strength) {
+//		foodSmell.IncreaseSmell(strength);
+//	}
+//
+//	/**
+//	 * Hangyaszag novelese
+//	 * 
+//	 * @param strength
+//	 *            a noveles merteke
+//	 */
+//	public void increaseAntSmell(Integer strength) {
+//		antSmell.IncreaseSmell(strength);
+//	}
 
 	/**
 	 * "Tapogatas"
@@ -127,22 +130,25 @@ public class Tentacle {
 	 *            van-e a hangyanal etel
 	 */
 	public Map<Dir, Field> scan(boolean haveFood) {
-		Singleton s = Singleton.Instance();
-
+		Dir dir=ant.getDir();
 		
-		Field field = null;
-		field.getSmells();
-
-		//Hangyaszag lekerese
-		AntSmell antSmell = null;
-		Tentacle tentacle = null;
-		antSmell.smellIt(tentacle);
+		Smell maxsmell=new Smell();
+		for (Dir key : possibleFields.keySet()) {
+			Smell mysmell=new Smell();
+			List<Smell> smells=possibleFields.get(key).getSmells();
+			for (Smell smell:smells){
+				mysmell.setStrength(mysmell.getStrength()+smell.getStrength());
+			}
+			if (maxsmell.getStrength()< mysmell.getStrength()) {
+				maxsmell=mysmell;
+				dir=key;
+			}
+		}
 		
-		//Etelszag lekerese
-		FoodSmell foodSmell = null;
-		foodSmell.smellIt(tentacle);
+		Map<Dir, Field> nextmap=new HashMap<Dir, Field>();
+		nextmap.put(dir, possibleFields.get(dir));
 
-		return new TreeMap<Dir, Field>();
+		return nextmap;
 	}
 
 }
