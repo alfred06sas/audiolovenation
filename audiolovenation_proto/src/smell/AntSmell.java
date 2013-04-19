@@ -9,14 +9,14 @@ import item.Volatile;
  * 
  * @author audiolovenation
  * 
- *         A hangyaszag tulajdons�gait val�s�tja meg. A hangya ezt hagyja maga
- *         ut�n. Id�vel elillan.
+ *         A hangyaszag tulajdonsagait valositja meg. A hangya ezt hagyja maga
+ *         utan. Idovel elillan.
  * 
  */
 public class AntSmell extends Smell implements Volatile {
 
 	/**
-	 * Szag elt�vol�t�sa.
+	 * Szag eltavolitasa.
 	 * 
 	 */
 	@Override
@@ -31,7 +31,7 @@ public class AntSmell extends Smell implements Volatile {
 	}
 
 	/**
-	 * Szag cs�kkent�se.
+	 * Szag csokkentese.
 	 * 
 	 */
 	@Override
@@ -41,7 +41,7 @@ public class AntSmell extends Smell implements Volatile {
 	}
 
 	/**
-	 * Szag cs�kkent�se.
+	 * Szag csokkentese.
 	 * 
 	 */
 	@Override
@@ -52,10 +52,10 @@ public class AntSmell extends Smell implements Volatile {
 	}
 
 	/**
-	 * A cs�pnak adja meg a hangyaszag er�ss�g�t.
+	 * A csapnak adja meg a hangyaszag erosseget.
 	 * 
 	 * @param tentacle
-	 *            a cs�p, aminak a szag er�ss�g�t �t kell adni
+	 *            a csap, aminek a szag erosseget et kell adni
 	 * 
 	 */
 	@Override

@@ -7,8 +7,8 @@ import land.Field;
  * 
  * @author audiolovenation
  * 
- *         Különbözõ szagok megvalósítására használjuk (hangyaszag, ételszag
- *         vagy hangyaölõ spray). Ezeket mezõkhöz rendeljük hozzá .
+ *         Kulonbozo szagok megvalositasara hasznaljuk (hangyaszag, etelszag
+ *         vagy hangyaolo spray). Ezeket mezokhoz rendeljuk hozza.
  * 
  */
 public class Smell {
@@ -18,7 +18,7 @@ public class Smell {
 
 	/**
 	 * 
-	 * Szag csökkentése.
+	 * Szag csokkentese.
 	 * 
 	 */
 	public void decreaseSmell() {
@@ -34,10 +34,10 @@ public class Smell {
 
 	/**
 	 * 
-	 * Egy szag beállítása egy mezõre.
+	 * Egy szag beallitasa egy mezore.
 	 * 
 	 * @param field
-	 *            a mezõ, ahova be kell álíltani
+	 *            a mezo, ahova be kell aliltani
 	 * 
 	 */
 	public void setActualField(Field field) {
@@ -45,17 +45,17 @@ public class Smell {
 
 	/**
 	 * 
-	 * Szag eltávolítása.
+	 * Szag eltavolitasa.
 	 * 
 	 */
 	public void removeMyself() {
 	}
 
 	/**
-	 * A csápnak adja meg a szag erõsségét.
+	 * A csapnak adja meg a szag erosseget.
 	 * 
 	 * @param tentacle
-	 *            a csáp, aminak a szag erõsségét át kell adni
+	 *            a csap, aminak a szag erosseget at kell adni
 	 * 
 	 */
 	public void smellIt(Tentacle tentacle) {
@@ -63,7 +63,7 @@ public class Smell {
 
 	/**
 	 * 
-	 * Hangyaszag-semlegesítõ spray használata.
+	 * Hangyaszag-semlegesito spray hasznalata.
 	 * 
 	 */
 	public void antSmellSpray() {
