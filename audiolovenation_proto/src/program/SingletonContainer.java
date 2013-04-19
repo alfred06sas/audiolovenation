@@ -97,7 +97,7 @@ public class SingletonContainer {
 
 	/**
 	 * 
-	 * Egy ill�kony elem kit�rl�se az azokat t�rol� list�b�l.
+	 * Egy illekony elem kitorlese az azokat tarolo listabol.
 	 * 
 	 * @param Volatile
 	 *            a kit�rlend� elem
