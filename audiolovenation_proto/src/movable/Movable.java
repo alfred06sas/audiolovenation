@@ -2,9 +2,9 @@ package movable;
 
 /**
  * 
- * A mozgásra képes elemek közös tulajdonságai vannak itt eltárolva. Az ezt
- * megvalósító elemek képesek mozogni a mezõk között, és érzékelni az
- * ütközéseket.
+ * A mozgasra kepes elemek kozos tulajdonsagai vannak itt eltarolva. Az ezt
+ * megvalosito elemek kepesek mozogni a mezok kozott, és erzekelni az
+ * utkozeseket.
  * 
  * @author audiolovenation
  * 
@@ -12,12 +12,12 @@ package movable;
 public interface Movable {
 
 	/**
-	 * Léptetés.
+	 * Leptetes.
 	 */
 	void step();
 
 	/**
-	 * Életre keltés (wait == 0)
+	 * Eletre keltes (wait == 0)
 	 */
 	void setAlive();
 

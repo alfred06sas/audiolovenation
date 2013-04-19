@@ -22,23 +22,23 @@ import program.Singleton;
 public class Echidna extends Item implements Movable {
 
 	/**
-	 * Aktï¿½v/inaktï¿½v ï¿½llapot jelzï¿½se
+	 * Aktiv/inakiv allapot jelzese
 	 */
 	private boolean isActive = false;
 	/**
-	 * Inaktï¿½v ï¿½llapotbï¿½l hï¿½tramaradï¿½ kï¿½rï¿½k szï¿½ma
+	 * Inaktiv allapotbol hatramarado ido
 	 */
 	private Integer wait;
 	/**
-	 * ï¿½hsï¿½g mï¿½rtï¿½ke. Ha 0, akkor inaktï¿½v ï¿½llapotba kerï¿½l meghatï¿½rozott kï¿½rre.
+	 * Ehseg merteke. Ha 0, akkor inaktiv allapotba kerul meghatarozott idore.
 	 */
 	private Integer hunger;
 
 	/**
-	 * Aktuï¿½lis mezï¿½ beï¿½llï¿½tï¿½sa.
+	 * Aktualis mezo beallitasa.
 	 * 
 	 * @param field
-	 *            a beï¿½llï¿½tandï¿½ mezï¿½
+	 *            a beallatando mezo
 	 */
 	@Override
 	public void setActualField(Field field) {
@@ -48,7 +48,7 @@ public class Echidna extends Item implements Movable {
 	}
 
 	/**
-	 * ï¿½hsï¿½g (hunger attribï¿½tum) csï¿½kkentï¿½se meghatï¿½rozott ï¿½rtï¿½kkel.
+	 * Ehseg (hunger attributum) csokkentese meghatarozott ertekkel.
 	 */
 	public void decreaseHunger() {
 		Singleton s = Singleton.Instance();
@@ -57,7 +57,7 @@ public class Echidna extends Item implements Movable {
 	}
 
 	/**
-	 * ï¿½letre keltï¿½s (wait == 0)
+	 * Eletre keltes (wait == 0)
 	 */
 	@Override
 	public void setAlive() {
@@ -65,10 +65,10 @@ public class Echidna extends Item implements Movable {
 	}
 
 	/**
-	 * - Hangyï¿½szsï¿½nel valï¿½ ï¿½tkï¿½zï¿½s. Nem tï¿½rtï¿½nik semmmi.
+	 * - Hangyaszsunel valo utkozes. Nem tortenik semmmi.
 	 * 
 	 * @param echidna
-	 *            referencia a hangyï¿½szsï¿½nre, amivel ï¿½tkï¿½zik
+	 *            referencia a hangyaszsunre, amivel utkozik
 	 */
 	@Override
 	public void collisionWithEchidna(Echidna echidna) {
@@ -78,7 +78,7 @@ public class Echidna extends Item implements Movable {
 	}
 
 	/**
-	 * A hangyï¿½szsï¿½n lï¿½ptetï¿½se.
+	 * A hangyaszsun leptetese.
 	 */
 	@Override
 	public void step() {
@@ -87,42 +87,42 @@ public class Echidna extends Item implements Movable {
 		
 		Echidna echidna = new Echidna();
 
-		/* A szomszï¿½dok lekï¿½rdezï¿½se */
+		/* A szomszedok lekerdezese */
 		Field prevField = new Field();
 		prevField.getNeighbours();
 	
-		/* A hangyï¿½szsï¿½n tï¿½rlï¿½se a mezï¿½rï¿½l */
+		/* A hangyaszsun torese a mezorol */
 		prevField.removeItem(echidna);
 	
-		/* Hangyï¿½szsï¿½n ï¿½tlï¿½p a kï¿½vezkezï¿½ mezï¿½re */
+		/* Hangyaszsun atlep a kovetkezo mezore */
 		Field nextField = new Field();
 		nextField.addItem(echidna);
 		nextField.getItems();
 		
-		/* Az ott levï¿½ elemekkel valï¿½ ï¿½tkï¿½zï¿½s */
+		/* Az ott levo elemekkel valo utkozes */
 		Echidna echidna2 = new Echidna();
 		echidna2.collisionWithEchidna(echidna);
 		
 	}
 
 	/**
-	 * Hangyï¿½val valï¿½ ï¿½tkï¿½zï¿½s. A hangya megï¿½lï¿½se. Lï¿½pï¿½s elï¿½tt nem csinï¿½l semmit.
+	 * Hangyaval valo utkozes. A hangya megolese. Lepes elott nem csinal semmit.
 	 * 
 	 * @param ant
-	 *            a hangya referenciï¿½ja. amivel ï¿½tkï¿½zï¿½tt
+	 *            a hangya referenciaja, amivel utkozott
 	 * @param b
-	 *            ï¿½tkï¿½zï¿½s elï¿½tt: false, ï¿½tkï¿½zï¿½s utï¿½n: true -
+	 *            utkozes elott: false, utkozes utan: true -
 	 */
 	@Override
 	public void collisionWithAnt(Ant ant, boolean b) {
 		Singleton s = Singleton.Instance();
 
-		/* Lï¿½pï¿½s utï¿½n */
+		/* Lepïes utan */
 		if (b == true) {
-			/* Hangya megï¿½lï¿½se */
+			/* Hangya megolese */
 			ant.kill();
 		
-			/* ï¿½hsï¿½g csï¿½kkentï¿½se */
+			/* Ehseg csokkentese */
 			Echidna echidna = new Echidna();
 			echidna.decreaseHunger();
 		}
@@ -144,4 +144,3 @@ public class Echidna extends Item implements Movable {
 		
 		return states;
 	}
-}
