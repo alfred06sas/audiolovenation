@@ -3,6 +3,10 @@ package land;
 import item.Item;
 import item.Spray;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.List;
 
 import movable.Ant;
@@ -14,102 +18,64 @@ import program.SingletonContainer;
  * 
  * @author audiolovenation
  * 
- *         Az egész játék alapja, mezõkbõl épül fel. Feladata a program
- *         inicializálása és a lépések megvalósítása. A pályát felépíti,
- *         létrehoz meghatározott számú hangyát, hangyászsünt, hangyalesõt,
- *         akadályt, bolyt. A hangyákat és a hangyászsünöket egyelõre nem
- *         jelenít meg (inaktív állapotba állítja).
+ *         Az egï¿½sz jï¿½tï¿½k alapja, mezï¿½kbï¿½l ï¿½pï¿½l fel. Feladata a program
+ *         inicializï¿½lï¿½sa ï¿½s a lï¿½pï¿½sek megvalï¿½sï¿½tï¿½sa. A pï¿½lyï¿½t felï¿½pï¿½ti,
+ *         lï¿½trehoz meghatï¿½rozott szï¿½mï¿½ hangyï¿½t, hangyï¿½szsï¿½nt, hangyalesï¿½t,
+ *         akadï¿½lyt, bolyt. A hangyï¿½kat ï¿½s a hangyï¿½szsï¿½nï¿½ket egyelï¿½re nem
+ *         jelenï¿½t meg (inaktï¿½v ï¿½llapotba ï¿½llï¿½tja).
  */
 public class Land {
 
 	private List<Field> fields;
 
 	/**
-	 * A pálya összeállítása.
+	 * A pï¿½lya ï¿½sszeï¿½llï¿½tï¿½sa.
 	 * 
 	 */
 	public void loadLand() {
 		Singleton s = Singleton.Instance();
 
-		Integer id = s.stack.get(s.stack.size() - 1);
-
-		s.makeSpace(">> CALL: " + id + ": Land.loadLand()");
-
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": Land.loadLand()");
-		s.depth--;
-
 	}
 
 	/**
-	 * Elemek elhelyezése a mezõkön. Ezek az elemek lehetnek akadályok, hangyák,
-	 * szagok, hangyászsün és hangyalesõ.
+	 * Elemek elhelyezï¿½se a mezï¿½kï¿½n. Ezek az elemek lehetnek akadï¿½lyok, hangyï¿½k,
+	 * szagok, hangyï¿½szsï¿½n ï¿½s hangyalesï¿½.
 	 * 
 	 */
 	public void putItems() {
 		Singleton s = Singleton.Instance();
 
-		Integer id = s.stack.get(s.stack.size() - 1);
+		Item item = new Item();
 
-		s.makeSpace(">> CALL: " + id + ": Land.putItems()");
-
-		Item item = s.items.get(15);
-
-		s.stack.add(6);
-		Field field = s.fields.get(5);
+		Field field = new Field();
 
 		field.addItem(item);
 
-		s.stack.remove(s.stack.size() - 1);
-
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": Land.putItems()");
-		s.depth--;
 	}
 
 	/**
-	 * A Land készteti mozgásra minden körben az arra képes elemeket. A move
-	 * hatására meghívódik mind a hangyában mind a hangyászsünben a step()
-	 * függvény, ami a lépést valósítja meg.
+	 * A Land kï¿½szteti mozgï¿½sra minden kï¿½rben az arra kï¿½pes elemeket. A move
+	 * hatï¿½sï¿½ra meghï¿½vï¿½dik mind a hangyï¿½ban mind a hangyï¿½szsï¿½nben a step()
+	 * fï¿½ggvï¿½ny, ami a lï¿½pï¿½st valï¿½sï¿½tja meg.
 	 * 
 	 */
 	public void move() {
 		Singleton s = Singleton.Instance();
 
-		Integer id = s.stack.get(s.stack.size() - 1);
-
-		s.makeSpace(">> CALL: " + id + ": Land.move()");
-
-		s.stack.add(1);
-		SingletonContainer sc = s.singletonContainer.get(0).getInstance();
+		SingletonContainer sc = new SingletonContainer().getInstance();
 
 		sc.getMovables();
-		s.stack.remove(s.stack.size() - 1);
 
-		//Hangya léptetése
-		s.stack.add(2);
-		Ant ant = (Ant) s.items.get(1);
+		// Hangya lï¿½ptetï¿½se
+		Ant ant = new Ant();
 		ant.step();
-		s.stack.remove(s.stack.size() - 1);
 
-		//Hangyászsün léptetése
-		s.stack.add(6);
-		Echidna echinda = (Echidna) s.items.get(5);
+		// Hangyï¿½szsï¿½n lï¿½ptetï¿½se
+		Echidna echinda = new Echidna();
 		echinda.step();
-		s.stack.remove(s.stack.size() - 1);
-
-		s.stack.add(1);
 		sc.getVolatiles();
-		s.stack.remove(s.stack.size() - 1);
-
-		s.stack.add(2);
-		Spray spray = s.sprays.get(1);
+		Spray spray = new Spray();
 		spray.decrease();
-		s.stack.remove(s.stack.size() - 1);
-
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": Land.move()");
-		s.depth--;
 	}
 
 	/**
@@ -119,18 +85,9 @@ public class Land {
 	public void buildLand() {
 		Singleton s = Singleton.Instance();
 
-		Integer id = s.stack.get(s.stack.size() - 1);
+		// Field.addNeighbour hï¿½vï¿½sok
+		new Field().addNeighbour(Dir.DOWN, new Field());
 
-		s.makeSpace(">> CALL: " + id + ": Land.buildLand()");
-
-		// Field.addNeighbour hívások
-		s.stack.add(3);
-		s.fields.get(2).addNeighbour(Dir.DOWN, s.fields.get(8));
-		s.stack.remove(s.stack.size() - 1);
-
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": Land.buildLand()");
-		s.depth--;
 	}
 
 	/**
@@ -140,22 +97,56 @@ public class Land {
 	public void init() {
 		Singleton s = Singleton.Instance();
 
-		Integer id = s.stack.get(s.stack.size() - 1);
-
-		s.makeSpace(">> CALL: " + id + ": Land.init()");
-
-		// palya betöltése
+		// palya betï¿½ltï¿½se
 		loadLand();
-		// palya felépítése
+		// palya felï¿½pï¿½tï¿½se
 		buildLand();
 		// elemek palyara helyezese
 		putItems();
 		// leptetes
 		move();
-
-		s.depth--;
-		s.makeSpace("<< RETURN: " + id + ": Land.init()");
-		s.depth--;
 	}
 
+	public void loadTestCase(String inputFileName, String outputFileName) throws FileNotFoundException {
+		BufferedReader br = new BufferedReader(new FileReader(inputFileName));
+
+		try {
+			while (true) {
+				String line = br.readLine();
+				if (line == null)
+					break;
+				String[] sline = line.split(" ");
+
+				if (sline[0].equals("create_land") && sline[1].equals("-r")
+						&& sline[3].equals("-c") && sline.length == 5) {
+					System.out.println(line);
+				} else if (sline[0].equals("put_item") && sline[1].equals("-t")
+						&& sline[3].equals("-iid") && sline[5].equals("-fid")
+						&& sline.length == 7) {
+					System.out.println(line);
+				} else if (sline[0].equals("put_smell")
+						&& sline[1].equals("-t") && sline[3].equals("-sid")
+						&& sline[5].equals("-s") && sline[7].equals("-fid")
+						&& sline.length == 9) {
+					System.out.println(line);
+				} else if (sline[0].equals("set") && sline[1].equals("-t")
+						&& sline[3].equals("-mid") && sline[5].equals("-d") && sline[7].equals("-s")
+						&& sline.length == 9) {
+					System.out.println(line);
+				} else if (sline[0].equals("use_spray")
+						&& sline[1].equals("-t") && sline[3].equals("-fid")
+						&& sline.length == 5) {
+					System.out.println(line);
+				} else if (sline[0].equals("step_round")
+						&& sline[1].equals("-rn") && sline.length == 3) {
+					System.out.println(line);
+				} else {
+					System.err.println("Undefined command: " + line);
+					return;
+				}
+			}
+		} catch (IOException e) {
+
+		}
+	}
 }
