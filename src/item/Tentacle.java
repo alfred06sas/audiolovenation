@@ -13,18 +13,18 @@ import smell.FoodSmell;
  * 
  * @author audiolovenation
  * 
- *         A hangya cs�p tulajdons�gait val�s�tja meg. A szomsz�dos mez�k
- *         szagnyomai alapj�n eld�nti, hogy a hangya merre l�pjen.
+ *         A hangya csap tulajdonsagait valositja meg. A szomszedos mezok
+ *         szagnyomai alapjan eldonti, hogy a hangya merre lepjen.
  */
 public class Tentacle {
 
 	private Map<Dir, Field> possibleFields;
 
 	/**
-	 * Azon szomsz�dokat keress�k, amelyekre l�phet�nk a hangy�val
+	 * Azon szomszedokat keressuk, amelyekre lephetunk a hangyaval
 	 * 
 	 * @param Map
-	 *            az aktu�lis mez� �sszes szomsz�dja
+	 *            az aktualis mezo osszes szomszedja
 	 */
 	public void setPossibleNeighbours(Map<Dir, Field> neighbours) {
 		Singleton s = Singleton.Instance();
@@ -33,10 +33,10 @@ public class Tentacle {
 	}
 
 	/**
-	 * Azon szomsz�dok kiv�tele a lehets�gesek k�z�l, amelyeken akad�ly van
+	 * Azon szomszedok kivetele a lehetsegesek kozul, amelyeken akadaly van
 	 * 
 	 * @param Field
-	 *            a vizsg�lt szomsz�dos mez�
+	 *            a vizsgalt szomszedos mezo
 	 */
 	public void removePossibleNeighbour(Field neighbour) {
 		Singleton s = Singleton.Instance();
@@ -45,10 +45,10 @@ public class Tentacle {
 	}
 
 	/**
-	 * �teltelszag n�vel�se
+	 * Eteltelszag novelese
 	 * 
 	 * @param strength
-	 *            a n�vel�s m�rt�ke
+	 *            a noveles merteke
 	 */
 	public void increaseFoodSmell(Integer strength) {
 		Singleton s = Singleton.Instance();
@@ -57,10 +57,10 @@ public class Tentacle {
 	}
 
 	/**
-	 * Hangyaszag n�vel�se
+	 * Hangyaszag novelese
 	 * 
 	 * @param strength
-	 *            a n�vel�s m�rt�ke
+	 *            a noveles merteke
 	 */
 	public void increaseAntSmell(Integer strength) {
 		Singleton s = Singleton.Instance();
@@ -69,10 +69,10 @@ public class Tentacle {
 	}
 
 	/**
-	 * "Tapogat�s"
+	 * "Tapogatas"
 	 * 
 	 * @param haveFood
-	 *            van-e a hangy�n�l �tel
+	 *            van-e a hangyanal etel
 	 */
 	public Map<Dir, Field> scan(boolean haveFood) {
 		Singleton s = Singleton.Instance();
@@ -81,12 +81,12 @@ public class Tentacle {
 		Field field = null;
 		field.getSmells();
 
-		//Hangyaszag lekérése
+		//Hangyaszag lekerese
 		AntSmell antSmell = null;
 		Tentacle tentacle = null;
 		antSmell.smellIt(tentacle);
 		
-		//Ételszag lekérése
+		//Etelszag lekerese
 		FoodSmell foodSmell = null;
 		foodSmell.smellIt(tentacle);
 

@@ -27,8 +27,8 @@ import blockage.Puddle;
  * 
  * @author audiolovenation
  * 
- *         Mindent eltárolunk listákban, hogy a teszteléskor hozzájuk tudjunk
- *         férni.
+ *         Mindent eltarolunk listakban, hogy a teszteleskor hozzajuk tudjunk
+ *         ferni.
  * 
  */
 public class Singleton {
@@ -42,7 +42,7 @@ public class Singleton {
 			instance = new Singleton();
 			types=new HashMap<String,  String>();
 			
-			// típusok inicializálása, HashMap az id-k kezdõbetûire
+			// tipusok inicializalasa, HashMap az id-k kezdobeture
 			types.put("a", "Ant");
 			types.put("f", "Food");
 			types.put("s", "Spray");
@@ -57,11 +57,11 @@ public class Singleton {
 	void init(){
 		
 	}
-	// Az elemek egybõl létrehozásuk után meghívják ezt a metódust
-	// hozzáadva ezzel Id-ját és állapotait a az osztályhoz
+	// Az elemek egybol letrehozasuk utan meghivjak ezt a metodust
+	// hozzaadva ezzel Id-jet es allapotait a az osztalyhoz
 	void addItem(Item i){
-		if(states.get(i.getId())==null){			// TODO Elemeknek Id és fieldnek
-			printError("Id duplikáció!");
+		if(states.get(i.getId())==null){			// TODO Elemeknek Id es fieldnek
+			printError("Id duplikÃ¡ciÃ³!");
 		}
 		else{
 			states.put(i.getId(), i.getStates());			// TODO getId, getStates elemeknek
@@ -69,17 +69,17 @@ public class Singleton {
 	}
 	
 	/*
-	 *   Az ütközések kiirására szolgáló metódus a kimenet a következõ formában jelenik meg:
-	 *   <1. ELEM TÍPUS (ID)> TO <2. ELEM TÍPUS (ID)> ON FIELD(<ID>)
-	 *						[<1. ELEM TÍPUS(ID)> DIR CHANGED: 	FROM <IRÁNY X> TO <IRÁNY Y>]
-	 *						[<1. ELEM TÍPUS(ID)> STATE CHANGED: FROM <ÁLLAPOT X> TO <ÁLLAPOT Y>]
-   	 * 						[<2. ELEM TÍPUS(ID)> DIR CHANGED:	FROM <IRÁNY X> TO <IRÁNY Y>]
-	 *						[<2. ELEM TÍPUS(ID)> STATE CHANGED: FROM <ÁLLAPOT X> TO <ÁLLAPOT Y>],
+	 *   Az utkozesek kiirasara szolgalo metodus a kimenet a kovetkezo foraban jelenik meg:
+	 *   <1. ELEM TIPUS (ID)> TO <2. ELEM TIPUS (ID)> ON FIELD(<ID>)
+	 *						[<1. ELEM TIPUS(ID)> DIR CHANGED: 	FROM <IRANY X> TO <IRANY Y>]
+	 *						[<1. ELEM TIPUS(ID)> STATE CHANGED: FROM <ALLAPOT X> TO <ALLAPOT Y>]
+   	 * 						[<2. ELEM TIPUS(ID)> DIR CHANGED:	FROM <IRANY X> TO <IRANY Y>]
+	 *						[<2. ELEM TIPUS(ID)> STATE CHANGED: FROM <ALLAPOT X> TO <ALLAPOT Y>],
      *
 	 */
 	
 	void printCollosion(Item what, Item with, Field field){
-		// két típus kiválasztása a types HashMap-bõl
+		// ket típus kivalasztasa a types HashMap-bol
 		String whatType = types.get(what.getId().charAt(0));
 		String withType = types.get(with.getId().charAt(0));
 		HashMap<String, String> oldStateItemWhat = states.get(what.getId());
@@ -88,7 +88,7 @@ public class Singleton {
 		HashMap<String, String> newStateItemWith = with.getStates();
 		
 		
-		// A kiírás része
+		// A kiiras része
 		System.out.println(whatType+" ("+what.getId()+ ") TO "+withType+" ("+with.getId()+") ON FIELD ("+ field.getId()+")");
 		for (String key : oldStateItemWhat.keySet()) {
 		    if(!oldStateItemWhat.get(key).equals(newStateItemWhat.get(key))){
@@ -107,7 +107,7 @@ public class Singleton {
 	}
 	
 	/* 
-	 *   KÖR LÉPTETÉSE következõ a formája:
+	 *   KOR LEPTETESE kovetkezo a formaja:
 	 *   -------- X. ROUND --------
 	 */
 	void printNextRound(){
@@ -115,8 +115,8 @@ public class Singleton {
 	}
 
 	/*
-	 *  IRÁNY-, ÁLLAPOTVÁLTOZTATÁS a következõ formában:
-	 *  [<1. ELEM TÍPUS(ID)> DIR CHANGED: 	FROM <IRÁNY X> TO <IRÁNY Y>]
+	 *  IRANY-, ALLAPOTVALTOZTATAS a kovetkezo formaban:
+	 *  [<1. ELEM TIPUS(ID)> DIR CHANGED: 	FROM <IRANY X> TO <IRANY Y>]
 	 */
 	void printDirChanged(Item what){
 		String whatType = types.get(what.getId().charAt(0));
@@ -124,7 +124,7 @@ public class Singleton {
 		HashMap<String, String> newStateItemWhat = what.getStates();
 		
 		if(oldStateItemWhat.get("DIR")==null){
-			printError("Az elemnek nincs iránya, így nem változhatott!");
+			printError("Az elemnek nincs iranya, igy nem valtozhatott!");
 		}
 		else{
 			if(!oldStateItemWhat.get("DIR").equals(newStateItemWhat.get("DIR"))){
@@ -137,8 +137,8 @@ public class Singleton {
 	}
 	
 	/*
-	 * ÁTLÉPÉS SZOMSZÉDOS MEZÕRE következõ a formája:
-	 * [<ELEM TÍPUS (ID)> STEPPED FROM <1. FIELD (ID)> TO <2. FIELD(<ID>)>]
+	 * ATLEPES SZOMSZEDOS MEZORE kovetkezo a formaja:
+	 * [<ELEM TIPUS (ID)> STEPPED FROM <1. FIELD (ID)> TO <2. FIELD(<ID>)>]
 	 */
 	void printStep(Item what, Field from, Field to){
 		String whatType = types.get(what.getId().charAt(0));
@@ -146,7 +146,7 @@ public class Singleton {
 	}
 	
 	/*
-	 * HANGYASZAG CSÖKKENÉS következõ a formája:
+	 * HANGYASZAG CSOKKENES kovetkezo a formaja:
 	 * ANT SMELL DECREASED FROM <X> TO <Y> ON FIELD (<ID>)
 	 */
 	void printAntSmellDecreased(int from, int to, Field field){
@@ -154,15 +154,15 @@ public class Singleton {
 	}
 	
 	/*
-	 * ÉTELSZAG ELTÛNÉSE következõ a formája:
+	 * ETELSZAG ELTUNESE kovetkezo a foraja:
 	 * FOOD SMELL DISAPPEARED ON FIELD (<ID>)
 	 */
 	void printFoodSmellDisappeard(Field field){
 		System.out.println("FOOD SMELL DISAPPEARED ON FIELD ("+field.getId()+")");
 	}
 	
-	/* A paraméterül kapott stringet irja a kimenetre, hiba kiírásra használjuk
-	 * ez magunknak visszajelzés így ez magyar
+	/* A paramaterben kapott stringet irja a kimenetre, hiba kiirasra hasznaljuk
+	 * ez magunknak visszajelzes így ez magyar
 	 */
 	void printError(String s){
 		System.out.println("Hiba: "+s);

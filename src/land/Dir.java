@@ -4,8 +4,8 @@ package land;
  * 
  * @author audiolovenation
  * 
- *         Egy enumerácio, amivel a mezõk egymáshoz való viszonyait kezeljük.
- *         Fent, lent, jobb fent, bal fent, jobb lent, bal lent, lent értékekkel
+ *         Egy enumeracio, amivel a mezok egymashoz valo viszonyait kezeljuk.
+ *         Fent, lent, jobb fent, bal fent, jobb lent, bal lent, lent ertekekkel
  *         rendelkezik.
  */
 public enum Dir {

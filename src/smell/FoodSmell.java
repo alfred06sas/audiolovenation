@@ -8,13 +8,13 @@ import program.Singleton;
  * 
  * @author audiolovenation
  * 
- *         Az ï¿½tel szag tulajdonsï¿½gait valï¿½sï¿½tja meg.
+ *         Az etel szag tulajdonsagait valositja meg.
  * 
  */
 public class FoodSmell extends Smell {
 
 	/**
-	 * Szag eltï¿½volï¿½tï¿½sa.
+	 * Szag eltavolítasa.
 	 * 
 	 */
 	@Override
@@ -29,7 +29,7 @@ public class FoodSmell extends Smell {
 	}
 
 	/**
-	 * Szag csï¿½kkentï¿½se.
+	 * Szag csokkentese.
 	 * 
 	 */
 	@Override
@@ -40,10 +40,10 @@ public class FoodSmell extends Smell {
 	}
 
 	/**
-	 * A csï¿½pnak adja meg a ï¿½tel szagï¿½nak erï¿½ssï¿½gï¿½t.
+	 * A csapnak adja meg a etel szaganak erosseget.
 	 * 
 	 * @param tentacle
-	 *            a csï¿½p, aminak a szag erï¿½ssï¿½gï¿½t ï¿½t kell adni
+	 *            a csap, aminek a szag erosseget at kell adni
 	 * 
 	 */
 	@Override

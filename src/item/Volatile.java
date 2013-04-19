@@ -6,8 +6,8 @@ import program.Singleton;
  * 
  * @author audiolovenation
  * 
- *         A hangyaszag és a spray valósítja meg. Minden körben kezeli a mezõkre
- *         fújt anyagokat, illetve a hangyák által hagyott nyomokat.
+ *         A hangyaszag és a spray valositja meg. Minden korben kezeli a mezokre
+ *         fujt anyagokat, illetve a hangyak altal hagyott nyomokat.
  */
 public interface Volatile {
 

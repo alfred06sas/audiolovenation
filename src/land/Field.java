@@ -14,9 +14,9 @@ import smell.Smell;
  * 
  * @author audiolovenation
  * 
- *         A p�lya mez�kb�l �p�l fel, melyeken elemek (hangya, hangy�szs�n,
- *         hangyales�, akad�ly, spray, �tel, boly) �s szagok helyezkednek el.
- *         Ismeri a szomsz�dait, �s azok ir�ny�t.
+ *         A palya mezokbol epul fel, melyeken elemek (hangya, hangyaszsun,
+ *         hangyaleso, akadaly, spray, etel, boly) es szagok helyezkednek el.
+ *         Ismeri a szomszedait, es azok iranyat.
  * 
  */
 public class Field {
@@ -27,10 +27,10 @@ public class Field {
 	private List<Smell> smells;
 
 	/**
-	 * Egy elem hozz�rendell�se a mez�h�z
+	 * Egy elem hozzarendelese a mezohoz
 	 * 
 	 * @param Item
-	 *            azon elem amelyet el akarunk helyezni a mez�n
+	 *            azon elem amelyet el akarunk helyezni a mezon
 	 */
 	public void addItem(Item item) {
 		Singleton s = Singleton.Instance();
@@ -40,7 +40,7 @@ public class Field {
 	}
 
 	/**
-	 * A mez�n l�v� elemek lek�rdez�s�re szolg�l.
+	 * A mezon levo elemek lekerdezesere szolgal.
 	 * 
 	 * @return
 	 */
@@ -52,7 +52,7 @@ public class Field {
 	}
 
 	/**
-	 * Egy elem elt�ntet�se a mez�r�l.
+	 * Egy elem eltuntetese a mezorol.
 	 * 
 	 * @param Item
 	 * @return
@@ -64,7 +64,7 @@ public class Field {
 	}
 
 	/**
-	 * A mez� szomsz�dainak a legk�rdez�se
+	 * A mezo szomszedainak lekerdezese
 	 * 
 	 * @return
 	 */
@@ -77,12 +77,12 @@ public class Field {
 	}
 
 	/**
-	 * Egy mez� felv�tele az aktu�lis mez� szomsz�dj�nak.
+	 * Egy mezo felvetele az aktualis mezo szomszedjanak.
 	 * 
 	 * @param Dir
-	 *            az aktu�lis mez�h�z viszny�tott ir�nya
+	 *            az aktualis mezohoz viszonyitott aranya
 	 * @param Field
-	 *            az a mez� amit felvesz�nk szomsz�dnak
+	 *            az a mezo, amit felveszunk szomszednak
 	 */
 	public void addNeighbour(Dir dir, Field field) {
 		Singleton s = Singleton.Instance();
@@ -91,7 +91,7 @@ public class Field {
 	}
 
 	/**
-	 * A mez�n l�v� szagok lek�rdez�se, ez lehet �tel �s hangyaszag.
+	 * A mezon levo szagok lekerdezese, ez lehet etel, es hangyaszag.
 	 * 
 	 */
 	public List<Smell> getSmells() {
@@ -102,10 +102,10 @@ public class Field {
 	}
 
 	/**
-	 * Egy szag felv�tele a mez�re, ez lehet �tel vagy hangyaszag.
+	 * Egy szag felvetele a mezore, ez lehet etel, vagy hangyaszag.
 	 * 
 	 * @param Smell
-	 *            a mez�re felveend� szag
+	 *            a mezore felveendo szag
 	 */
 	public void addSmell(Smell smell) {
 		Singleton s = Singleton.Instance();
@@ -113,10 +113,10 @@ public class Field {
 	}
 
 	/**
-	 * Szag elt�vol�t�sa mez�r�l.
+	 * Szag eltavolitasa mezorol.
 	 * 
 	 * @param Smell
-	 *            az elt�vol�tand� szag
+	 *            az eltavolitando szag
 	 * @return
 	 */
 	public void removeSmell(Smell smell) {
@@ -124,10 +124,10 @@ public class Field {
 	}
 
 	/**
-	 * Hangyaszag elt�ntet�se a mez�r�l.
+	 * Hangyaszag eltuntetese a mezorol.
 	 * 
 	 * @param Smell
-	 *            az elt�ntetend� szag
+	 *            az eltuntetendo szag
 	 */
 	public void removeAntSmells() {
 		Singleton s = Singleton.Instance();
@@ -135,15 +135,15 @@ public class Field {
 		SingletonContainer sc = new SingletonContainer().getInstance();
 		sc.decreaseAntSmellSpray(5);
 	
-		//Szag elt�ntet�se
+		//Szag eltuntetese
 		AntSmell antSmell = new AntSmell();
 		antSmell.removeMyself();
 	
 	}
 
 	/**
-	 * Ha egy mez�re kattintunk az eg�rrel, ez az esem�ny h�v�dik meg, ennek
-	 * hat�s�ra egy hangyaszag�rt�-spray elem ker�l a mez�re.
+	 * Ha egy mezore kattintunk az egerrel, ez az esemeny hivodik meg, ennek
+	 * hatasara egy hangyaszagirto-spray elem kerul a mezore.
 	 * 
 	 */
 	public void onClick() {

@@ -13,12 +13,12 @@ import smell.Smell;
  * @author audiolovenation
  * 
  *         A getIstance() metodusa ugyan azt az objektumot adja vissza. A
- *         Volatile ï¿½s a Movable interfï¿½szeket megvalï¿½sï¿½tï¿½ osztï¿½lyok tï¿½rolï¿½sï¿½ra.
- *         A pï¿½lya vï¿½gzi a lï¿½ptetï¿½st ï¿½s az illï¿½kony anyagok csï¿½kkentï¿½sï¿½t is.
- *         Erre a megoldï¿½sra azï¿½rt volt szï¿½ksï¿½g, hogy a pï¿½lya szï¿½mï¿½ra elï¿½rhetï¿½ek
- *         legyenek ezek a listï¿½k, ugyanakkor mind a Volatile ï¿½s a Movable is
- *         hozzï¿½ tudjon adni elemeket a sajï¿½t listï¿½jï¿½hoz. ï¿½gy nem kellett
- *         mindenki szï¿½mï¿½ra lï¿½thatï¿½vï¿½ tenni az egï¿½sz pï¿½lyï¿½t (Land osztï¿½ly).
+ *         Volatile es a Movable interfeszeket megvalosito osztalyok tarolasara.
+ *         A palya vegzi a leptetest es az illekony anyagok csokkenteset is.
+ *         Erre a megoldasra azert volt szukseg, hogy a palya szamara elerhetoek
+ *         legyenek ezek a listak, ugyanakkor mind a Volatile es a Movable is
+ *         hozzïa tudjon adni elemeket a sajat listajahoz. Igy nem kellett
+ *         mindenki szamara lathatova tenni az egesz palyat (Land osztaly).
  */
 public class SingletonContainer {
 
@@ -31,10 +31,10 @@ public class SingletonContainer {
 
 	/**
 	 * 
-	 * Az illï¿½kony elemek hozzï¿½adï¿½sa az ï¿½ket tï¿½rolï¿½ listï¿½ba.
+	 * Az illekony elemek hozzaadasa az oket taroa listaba.
 	 * 
 	 * @param Volatile
-	 *            a hozzï¿½adandï¿½ elem
+	 *            a hozzaadanda elem
 	 */
 	public void addVolatile(Volatile volatile_) {
 		Singleton s = Singleton.Instance();
@@ -44,10 +44,10 @@ public class SingletonContainer {
 
 	/**
 	 * 
-	 * Az mozgï¿½ elemek hozzï¿½adï¿½sa az ï¿½ket tï¿½rolï¿½ listï¿½ba.
+	 * Az mozgo elemek hozzaadasa az oket tarolo listaba.
 	 * 
 	 * @param Movable
-	 *            a hozzï¿½adandï¿½ elem
+	 *            a hozzaadando elem
 	 */
 	public void addMovable(Movable movable) {
 		Singleton s = Singleton.Instance();
@@ -57,9 +57,9 @@ public class SingletonContainer {
 
 	/**
 	 * 
-	 * A SingletonContainer referenciï¿½jï¿½nak lekï¿½rï¿½se.
+	 * A SingletonContainer referenciajunak lekerdezese.
 	 * 
-	 * @return a SingletonContainerre mutatï¿½ referencia
+	 * @return a SingletonContainerre mutato referencia
 	 */
 	public static SingletonContainer getInstance() {
 		Singleton s = Singleton.Instance();
@@ -70,7 +70,7 @@ public class SingletonContainer {
 
 	/**
 	 * 
-	 * Mozgï¿½sra kï¿½pes elemek lekï¿½rdezï¿½se.
+	 * Mozgasra kepes elemek lekerdezese.
 	 * 
 	 * @return
 	 */
@@ -84,7 +84,7 @@ public class SingletonContainer {
 
 	/**
 	 * 
-	 * Illï¿½ï¿½kony elemek lekï¿½rdezï¿½se.
+	 * Illekony elemek lekerdezese.
 	 * 
 	 * @return
 	 */
@@ -97,20 +97,20 @@ public class SingletonContainer {
 
 	/**
 	 * 
-	 * Egy illï¿½kony elem kitï¿½rlï¿½se az azokat tï¿½rolï¿½ listï¿½bï¿½l.
+	 * Egy illekony elem kitorlese az azokat tarolo listabol.
 	 * 
 	 * @param Volatile
-	 *            a kitï¿½rlendï¿½ elem
+	 *            a kitorlendo elem
 	 */
 	public void removeVolatile(Volatile volatile_) {
 	}
 
 	/**
 	 * 
-	 * Egy mozgï¿½ elem kitï¿½rlï¿½se az azokat tï¿½rolï¿½ listï¿½bï¿½l.
+	 * Egy mozgo elem kitorlese az azokat tarola listabol.
 	 * 
 	 * @param Movable
-	 *            a kitï¿½rlendï¿½ elem
+	 *            a kiterlendo elem
 	 */
 	public void removeMovable(Movable movable) {
 		Singleton s = Singleton.Instance();
@@ -120,10 +120,10 @@ public class SingletonContainer {
 
 	/**
 	 * 
-	 * A hangyaï¿½rtï¿½-spray erejï¿½nek csï¿½kkentsï¿½se.
+	 * A hangyairo-spray erejenek csokkentese.
 	 * 
 	 * @param Integer
-	 *            a csï¿½kkentï¿½s mrï¿½tï¿½ke
+	 *            a csokkentes merteke
 	 */
 	public void decreaseAntKillerSpray(Integer strength) {
 		Singleton s = Singleton.Instance();
@@ -133,10 +133,10 @@ public class SingletonContainer {
 
 	/**
 	 * 
-	 * A hangyaszagï¿½rtï¿½-spray erejï¿½nek csï¿½kkentsï¿½se.
+	 * A hangyaszagirto-spray erejenek csokkentese.
 	 * 
 	 * @param Integer
-	 *            a csï¿½kkentï¿½s mrï¿½tï¿½ke
+	 *            a csokkentes merteke
 	 */
 	public void decreaseAntSmellSpray(Integer strength) {
 		Singleton s = Singleton.Instance();

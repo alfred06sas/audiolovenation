@@ -9,24 +9,24 @@ import program.Singleton;
  * 
  * @author audiolovenation
  * 
- *         Az erre az elemre lï¿½pï¿½ hangya detektï¿½lja, hogy mivel talï¿½lkozott, ï¿½s
- *         elpusztul. A hangyï¿½szsï¿½nnel nem foglalkozik.
+ *         Az erre az elemre lepo hangya detektalja, hogy mivel talalkozott, es
+ *         elpusztul. A hangyaszsunnel nem foglalkozik.
  */
 public class Antlion extends Item {
 	/**
-	 * Hangyï¿½val valï¿½ ï¿½tkï¿½zï¿½s. Ha ï¿½hes megeszi a hangyï¿½t.
+	 * Hangyaval valo utkozes. Ha ehes megeszi a hangyat.
 	 * 
 	 * 
 	 * @param ant
-	 *            a hangya referenciï¿½ja. amivel ï¿½tkï¿½zï¿½tt
+	 *            a hangya referenciaja. amivel utkozott
 	 * @param b
-	 *            lï¿½pï¿½s elï¿½tt: false, lï¿½pï¿½s utï¿½n: true
+	 *            lepes elott: false, lepes utan: true
 	 */
 	@Override
 	public void collisionWithAnt(Ant ant, boolean b) {
 		Singleton s = Singleton.Instance();
 
-		// ha mï¿½r lï¿½pett a hangya
+		// ha mar lepett a hangya
 		if (b == true) {
 			
 			ant.kill();
@@ -35,10 +35,10 @@ public class Antlion extends Item {
 	}
 
 	/**
-	 * Hangyï¿½szsï¿½nnel valï¿½ ï¿½tkï¿½zï¿½s. Nem csinï¿½l semmit, csak visszatï¿½r.
+	 * Hangyaszsunnel valu utkozes. Nem csinïal semmit, csak visszater.
 	 * 
 	 * @param echidna
-	 *            az a hangyï¿½szsï¿½n. amivel ï¿½tkï¿½zï¿½tt
+	 *            az a hangyaszsun. amivel utkozott
 	 */
 	@Override
 	public void collisionWithEchidna(Echidna echidna) {
@@ -47,10 +47,10 @@ public class Antlion extends Item {
 	}
 
 	/**
-	 * Hangyï¿½szsï¿½nnel valï¿½ ï¿½tkï¿½zï¿½s. Nem csinï¿½l semmit, csak visszatï¿½r.
+	 * Hangyaszsunnel valu utkozes. Nem csinïal semmit, csak visszater.
 	 * 
 	 * @param strength
-	 *            a Spray erï¿½ssï¿½ge
+	 *            a Spray erossege
 	 */
 	@Override
 	public void collisionWithSpray(Integer strength) {

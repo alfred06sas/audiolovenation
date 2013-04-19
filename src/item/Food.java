@@ -13,16 +13,16 @@ import smell.Smell;
  * 
  * @author audiolovenation
  * 
- *         Az egyes mez�k�n l�v� �teleket t�rolja. Ezeket szeretn�k a hangy�k a
- *         bolyba juttatni. Van egy szag tulajdons�ga, ami a k�rnyez� mez�kre is
- *         hat. Ez a hangy�k mozg�s�t befoly�solja.
+ *         Az egyes mezokon levo eteleket tarolja. Ezeket szeretnek a hangyak a
+ *         bolyba juttatni. Van egy szag tulajdonsaga, ami a kornyezo mezokre is
+ *         hat. Ez a hangyak mozgasat befolyasolja.
  */
 public class Food extends Item {
 
 	private List<FoodSmell> foodSmells;
 
 	/**
-	 * Az �tel szag�nak elt�ntet�se egy mez�r�l.
+	 * Az etel szaganak eltuntetese egy mezorol.
 	 */
 	public void deleteSmell() {
 		Singleton s = Singleton.Instance();
@@ -32,20 +32,20 @@ public class Food extends Item {
 	}
 
 	/**
-	 * �telszag hozz�ad�sa egy mez�h�z.
+	 * Etelszag hozzaadasa egy mezohoz.
 	 * 
 	 * @param FoodSmell
-	 *            a mez�h�z hozz�adand� �telszag
+	 *            a mezohoz hozzaadando etelszag
 	 */
 	public void addFoodSmell(FoodSmell foodSmell) {
 		Singleton s = Singleton.Instance();
 	}
 
 	/**
-	 * �telszag be�ll�t�sa egy mez�h�z.
+	 * Etelszag beallitasa egy mezohoz.
 	 * 
 	 * @param Field
-	 *            a mez�, amihez be�ll�tjuk az �telszagot.
+	 *            a mezo, amihez beallitjuk az etelszagot.
 	 */
 	public void setActualField(Field field) {
 
@@ -61,10 +61,10 @@ public class Food extends Item {
 	}
 
 	/**
-	 * Hangy�szs�nnel val� �tk�z�s. Nem csin�l semmit, csak visszat�r.
+	 * Hangyaszsunnel valo utkozes. Nem csinal semmit, csak visszater.
 	 * 
 	 * @param Echidna
-	 *            a hangy�szs�n amivel �tk�zik
+	 *            a hangyaszsun amivel utkozik
 	 */
 	@Override
 	public void collisionWithEchidna(Echidna echidna) {
@@ -72,21 +72,21 @@ public class Food extends Item {
 	}
 
 	/**
-	 * Hangy�val val� �tk�z�s. Nem csin�l semmit, csak visszat�r.
+	 * Hangyaszsunnel valo utkozes. Nem csinal semmit, csak visszater.
 	 * 
 	 * @param Ant
-	 *            a hangya amivel �tk�zik
+	 *            a hangya amivel utkozik
 	 * @param b
-	 *            l�p�s el�tt: false, l�p�s ut�n: true
+	 *            lepes elott: false, lepes utan: true
 	 */
 	@Override
 	public void collisionWithAnt(Ant ant, boolean b) {
 		Singleton s = Singleton.Instance();
 
-		// Ha a hangya oylan mez�re l�pett ahol �tel van akkor felveszi
+		// Ha a hangya oylan mezore lepett ahol etel van akkor felveszi
 		if (b == true) {
 			ant.pickUpFood();
-			// �telszag kit�rl�se a mez�r�l, ahonnan elviszi a hagnya az �telt
+			// Etelszag kitorlese a mezorol, ahonnan elviszi a hagnya az etelt
 			deleteSmell();
 		}
 	}

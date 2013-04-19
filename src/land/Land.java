@@ -17,18 +17,19 @@ import program.SingletonContainer;
  * 
  * @author audiolovenation
  * 
- *         Az eg�sz j�t�k alapja, mez�kb�l �p�l fel. Feladata a program
- *         inicializ�l�sa �s a l�p�sek megval�s�t�sa. A p�ly�t fel�p�ti,
- *         l�trehoz meghat�rozott sz�m� hangy�t, hangy�szs�nt, hangyales�t,
- *         akad�lyt, bolyt. A hangy�kat �s a hangy�szs�n�ket egyel�re nem
- *         jelen�t meg (inakt�v �llapotba �ll�tja).
+ *         Az egesz jatek alapja, mezokbol epul fel. Feladata a program
+ *         inicializalasa es a lepesek megvalositasa. A palyat felepiti,
+ *         letrehoz meghatarozott szamu hangyat, hangyaszsunt, hangyalesot,
+ *         akadalyt, bolyt. A hangyakat es a hangyaszsunoket egyelore nem jeleniti 
+ *         meg (inaktiv allapotba allitja).
+ *         
  */
 public class Land {
 
 	private List<Field> fields;
 
 	/**
-	 * A p�lya �ssze�ll�t�sa.
+	 * A palya osszeallitasa.
 	 * 
 	 */
 	public void loadLand() {
@@ -37,8 +38,8 @@ public class Land {
 	}
 
 	/**
-	 * Elemek elhelyez�se a mez�k�n. Ezek az elemek lehetnek akad�lyok, hangy�k,
-	 * szagok, hangy�szs�n �s hangyales�.
+	 * Elemek elhelyezese a mezokon. Ezek az elemek lehetnek akadalyok, hangyak,
+	 * szagok, hangyaszsunok es hangyalesok.
 	 * 
 	 */
 	public void putItems() {
@@ -53,9 +54,9 @@ public class Land {
 	}
 
 	/**
-	 * A Land k�szteti mozg�sra minden k�rben az arra k�pes elemeket. A move
-	 * hat�s�ra megh�v�dik mind a hangy�ban mind a hangy�szs�nben a step()
-	 * f�ggv�ny, ami a l�p�st val�s�tja meg.
+	 * A Land keszteti mozgasra minden korben az arra kepes elemeket. A move
+	 * hatasara meghivodik mind a hangyaban mind a hangyaszsunben a step()
+	 * fuggveny, ami a lepest valositja meg.
 	 * 
 	 */
 	public void move() {
@@ -65,11 +66,11 @@ public class Land {
 
 		sc.getMovables();
 
-		// Hangya l�ptet�se
+		// Hangya leptetese
 		Ant ant = new Ant();
 		ant.step();
 
-		// Hangy�szs�n l�ptet�se
+		// Hangyaszsun leptetese
 		Echidna echinda = new Echidna();
 		echinda.step();
 		sc.getVolatiles();
@@ -84,7 +85,7 @@ public class Land {
 	public void buildLand() {
 		Singleton s = Singleton.Instance();
 
-		// Field.addNeighbour h�v�sok
+		// Field.addNeighbour hivasok
 		new Field().addNeighbour(Dir.DOWN, new Field());
 
 	}
@@ -96,9 +97,9 @@ public class Land {
 	public void init() {
 		Singleton s = Singleton.Instance();
 
-		// palya bet�lt�se
+		// palya betoltese
 		loadLand();
-		// palya fel�p�t�se
+		// palya felepitese
 		buildLand();
 		// elemek palyara helyezese
 		putItems();
