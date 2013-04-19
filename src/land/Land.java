@@ -75,15 +75,8 @@ public class Land {
 	 * szagok, hangyaszsunok es hangyalesok.
 	 * 
 	 */
-	public void putItems() {
-		Singleton s = Singleton.Instance();
-
-		Item item = new Item();
-
-		Field field = new Field();
-
+	public void putItems(Field field, Item item) {
 		field.addItem(item);
-
 	}
 
 	/**
