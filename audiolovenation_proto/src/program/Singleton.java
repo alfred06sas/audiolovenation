@@ -70,11 +70,11 @@ public class Singleton {
 	
 	/*
 	 *   Az utkozesek kiirasara szolgalo metodus a kimenet a kovetkezo foraban jelenik meg:
-	 *   <1. ELEM TÍPUS (ID)> TO <2. ELEM TÍPUS (ID)> ON FIELD(<ID>)
-	 *						[<1. ELEM TÍPUS(ID)> DIR CHANGED: 	FROM <IRANY X> TO <IRANY Y>]
-	 *						[<1. ELEM TÍPUS(ID)> STATE CHANGED: FROM <ALLAPOT X> TO <ALLAPOT Y>]
-   	 * 						[<2. ELEM TÍPUS(ID)> DIR CHANGED:	FROM <IRANY X> TO <IRANY Y>]
-	 *						[<2. ELEM TÍPUS(ID)> STATE CHANGED: FROM <ALLAPOT X> TO <ALLAPOT Y>],
+	 *   <1. ELEM TIPUS (ID)> TO <2. ELEM TIPUS (ID)> ON FIELD(<ID>)
+	 *						[<1. ELEM TIPUS(ID)> DIR CHANGED: 	FROM <IRANY X> TO <IRANY Y>]
+	 *						[<1. ELEM TIPUS(ID)> STATE CHANGED: FROM <ALLAPOT X> TO <ALLAPOT Y>]
+   	 * 						[<2. ELEM TIPUS(ID)> DIR CHANGED:	FROM <IRANY X> TO <IRANY Y>]
+	 *						[<2. ELEM TIPUS(ID)> STATE CHANGED: FROM <ALLAPOT X> TO <ALLAPOT Y>],
      *
 	 */
 	
@@ -138,7 +138,7 @@ public class Singleton {
 	
 	/*
 	 * ATLEPES SZOMSZEDOS MEZORE kovetkezo a formaja:
-	 * [<ELEM TÍPUS (ID)> STEPPED FROM <1. FIELD (ID)> TO <2. FIELD(<ID>)>]
+	 * [<ELEM TIPUS (ID)> STEPPED FROM <1. FIELD (ID)> TO <2. FIELD(<ID>)>]
 	 */
 	void printStep(Item what, Field from, Field to){
 		String whatType = types.get(what.getId().charAt(0));
