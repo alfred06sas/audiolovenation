@@ -66,11 +66,11 @@ public class Land {
 
 		sc.getMovables();
 
-		// Hangya l�ptet�se
+		// Hangya leptetese
 		Ant ant = new Ant();
 		ant.step();
 
-		// Hangy�szs�n l�ptet�se
+		// Hangyaszsun leptetese
 		Echidna echinda = new Echidna();
 		echinda.step();
 		sc.getVolatiles();
@@ -85,7 +85,7 @@ public class Land {
 	public void buildLand() {
 		Singleton s = Singleton.Instance();
 
-		// Field.addNeighbour h�v�sok
+		// Field.addNeighbour hivasok
 		new Field().addNeighbour(Dir.DOWN, new Field());
 
 	}
@@ -97,9 +97,9 @@ public class Land {
 	public void init() {
 		Singleton s = Singleton.Instance();
 
-		// palya bet�lt�se
+		// palya betoltese
 		loadLand();
-		// palya fel�p�t�se
+		// palya felepitese
 		buildLand();
 		// elemek palyara helyezese
 		putItems();

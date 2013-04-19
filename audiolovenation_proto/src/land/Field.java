@@ -135,7 +135,7 @@ public class Field {
 		SingletonContainer sc = new SingletonContainer().getInstance();
 		sc.decreaseAntSmellSpray(5);
 	
-		//Szag elt�ntet�se
+		//Szag eltuntetese
 		AntSmell antSmell = new AntSmell();
 		antSmell.removeMyself();
 	
