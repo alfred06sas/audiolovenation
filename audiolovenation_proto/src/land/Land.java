@@ -17,18 +17,19 @@ import program.SingletonContainer;
  * 
  * @author audiolovenation
  * 
- *         Az eg�sz j�t�k alapja, mez�kb�l �p�l fel. Feladata a program
- *         inicializ�l�sa �s a l�p�sek megval�s�t�sa. A p�ly�t fel�p�ti,
- *         l�trehoz meghat�rozott sz�m� hangy�t, hangy�szs�nt, hangyales�t,
- *         akad�lyt, bolyt. A hangy�kat �s a hangy�szs�n�ket egyel�re nem
- *         jelen�t meg (inakt�v �llapotba �ll�tja).
+ *         Az egesz jatek alapja, mezokbol epul fel. Feladata a program
+ *         inicializalasa es a lepesek megvalositasa. A palyat felepiti,
+ *         letrehoz meghatarozott szamu hangyat, hangyaszsunt, hangyalesot,
+ *         akadalyt, bolyt. A hangyakat es a hangyaszsunoket egyelore nem jeleniti 
+ *         meg (inaktiv allapotba allitja).
+ *         
  */
 public class Land {
 
 	private List<Field> fields;
 
 	/**
-	 * A p�lya �ssze�ll�t�sa.
+	 * A palya osszeallitasa.
 	 * 
 	 */
 	public void loadLand() {
@@ -37,8 +38,8 @@ public class Land {
 	}
 
 	/**
-	 * Elemek elhelyez�se a mez�k�n. Ezek az elemek lehetnek akad�lyok, hangy�k,
-	 * szagok, hangy�szs�n �s hangyales�.
+	 * Elemek elhelyezese a mezokon. Ezek az elemek lehetnek akadalyok, hangyak,
+	 * szagok, hangyaszsunok es hangyalesok.
 	 * 
 	 */
 	public void putItems() {
@@ -53,9 +54,9 @@ public class Land {
 	}
 
 	/**
-	 * A Land k�szteti mozg�sra minden k�rben az arra k�pes elemeket. A move
-	 * hat�s�ra megh�v�dik mind a hangy�ban mind a hangy�szs�nben a step()
-	 * f�ggv�ny, ami a l�p�st val�s�tja meg.
+	 * A Land keszteti mozgasra minden korben az arra kepes elemeket. A move
+	 * hatasara meghivodik mind a hangyaban mind a hangyaszsunben a step()
+	 * fuggveny, ami a lepest valositja meg.
 	 * 
 	 */
 	public void move() {
