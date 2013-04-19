@@ -100,7 +100,7 @@ public class SingletonContainer {
 	 * Egy illekony elem kitorlese az azokat tarolo listabol.
 	 * 
 	 * @param Volatile
-	 *            a kit�rlend� elem
+	 *            a kitorlendo elem
 	 */
 	public void removeVolatile(Volatile volatile_) {
 	}
