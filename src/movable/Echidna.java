@@ -144,3 +144,4 @@ public class Echidna extends Item implements Movable {
 		
 		return states;
 	}
+}

@@ -13,7 +13,7 @@ import java.util.List;
 
 import land.Field;
 import land.Land;
-import land.Spray;
+import item.Spray;
 import movable.Ant;
 import movable.Echidna;
 import smell.AntSmell;
