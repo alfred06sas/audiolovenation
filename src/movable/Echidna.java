@@ -40,7 +40,7 @@ public class Echidna extends Item implements Movable {
 	 */
 	private Dir dir;
 
-	private Echidna(){
+	public Echidna(){
 		isActive = false;
 		wait = 50;
 		hunger = 10;

@@ -167,7 +167,7 @@ public class Ant extends Item implements Movable {
 		prevField.getNeighbours();
 	
 		/* A lehetseges szomszedok beallitasa. */
-		Tentacle tentacle = new Tentacle();
+		Tentacle tentacle = new Tentacle(this);
 		Map<Dir, Field> map = new TreeMap<Dir, Field>();
 		map.put(Dir.DOWN, prevField);
 		tentacle.setPossibleNeighbours(map);
@@ -290,8 +290,8 @@ public class Ant extends Item implements Movable {
 	public void canNotGo(Field field) {
 		Singleton s = Singleton.Instance();
 	/* A parameterkent megadott mezo kivetele a lehetseges mezok listajabol. */
-		Tentacle tentacle = new Tentacle();
-		tentacle.removePossibleNeighbour(field);
+		Tentacle tentacle = new Tentacle(this);
+		tentacle.removePossibleNeighbour();
 		
 	}
 	
