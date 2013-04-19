@@ -16,6 +16,9 @@ import program.SingletonContainer;
  */
 public class AntSmell extends Smell implements Volatile {
 
+	public Antsmell(){
+	}
+	
 	/**
 	 * Szag eltavolitasa.
 	 * 

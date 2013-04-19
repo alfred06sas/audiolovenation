@@ -26,17 +26,17 @@ public class SingletonContainer {
 	private List<Movable> movables;
 	private List<Volatile> volatiles;
 	private static SingletonContainer instance;
-	private Integer antKillerSpray;
-	private Integer antSmellSpray;
+	private int antKillerSpray;
+	private int antSmellSpray;
 	private int numberOfRound;
 
 	public SingletonContainer(){
-		Land container = new Land();
-		List<Movable> movables = new ArrayList<Movable>();
-		List<Volatile> volatiles = new ArrayList<Volatile>();
-		SingletonContainer instance = null;
-		Integer antKillerSpray = 0;
-		Integer antSmellSpray = 0;
+		container = new Land();
+		movables = new ArrayList<Movable>();
+		volatiles = new ArrayList<Volatile>();
+		instance = null;
+		antKillerSpray = 10;
+		antSmellSpray = 10;
 		numberOfRound = 0;
 	}
 	/**

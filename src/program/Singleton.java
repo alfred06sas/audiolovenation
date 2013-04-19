@@ -39,6 +39,11 @@ public class Singleton {
 	private static HashMap<String,  String> types;
 	
 
+	public Singleton(){
+		states = new HashMap<String, HashMap<String, String>>();
+		types = new HashMap<String,  String>();
+	}
+	
 	public static Singleton Instance() {
 		SingletonContainer sc = SingletonContainer.getInstance();
 		if (instance == null){

@@ -13,6 +13,9 @@ import program.Singleton;
  */
 public class FoodSmell extends Smell {
 
+	public FoodSmell(){
+	}
+	
 	/**
 	 * Szag eltavolítasa.
 	 * 

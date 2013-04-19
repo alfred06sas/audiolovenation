@@ -14,8 +14,12 @@ import land.Field;
 public class Smell {
 
 	private Field actualField;
-	private Integer strength;
+	private int strength;
 
+	public Smell(){
+		actualField = new Field();
+		strength = 10;
+	}
 	
 	public void setStrength(int s){
 		strength=s;

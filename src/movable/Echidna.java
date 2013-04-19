@@ -30,16 +30,23 @@ public class Echidna extends Item implements Movable {
 	/**
 	 * Inaktiv allapotbol hatramarado ido
 	 */
-	private Integer wait;
+	private int wait;
 	/**
 	 * Ehseg merteke. Ha 0, akkor inaktiv allapotba kerul meghatarozott idore.
 	 */
-	private Integer hunger;
+	private int hunger;
 	/**
 	 * Hangyaszsun iranya.
 	 */
 	private Dir dir;
 
+	private Echidna(){
+		isActive = false;
+		wait = 50;
+		hunger = 10;
+		dir = Dir.LEFT_TOP;
+	}
+	
 	/**
 	 * Aktualis mezo beallitasa.
 	 * 
