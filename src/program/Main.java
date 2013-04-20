@@ -73,7 +73,7 @@ public class Main {
 					}
 
 					try {
-						land.loadTestCase(inputFileName, outputFileName);
+						s.loadTestCase(inputFileName, outputFileName);
 					} catch (FileNotFoundException e) {
 						System.out.println("No such a file! Try again!");
 						break;
