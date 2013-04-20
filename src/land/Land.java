@@ -147,7 +147,7 @@ public class Land {
 					Map<Dir, Field> neighbours=fields.get(k*columnNumber+j).getNeighbours();
 					
 					
-					System.out.println(fields.get(k*columnNumber+j).getId()+": "+neighbours.toString());
+					//System.out.println(fields.get(k*columnNumber+j).getId()+": "+neighbours.toString());
 				}
 			}
 		}
@@ -171,5 +171,13 @@ public class Land {
 		move();
 	}
 
-	
+	public Field getField(String id){
+		for (Field field: fields){
+			if (field != null)
+				if (field.getId().equals(id))
+					return field;
+		}
+		System.out.println("Nincs ilyen id-ju Field.");
+		return null;
+	}
 }

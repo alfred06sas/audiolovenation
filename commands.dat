@@ -1,1 +1,1 @@
-step_round -rn 1
+create_land -r 4 -c 4

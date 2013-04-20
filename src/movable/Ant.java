@@ -57,7 +57,6 @@ public class Ant extends Item implements Movable {
 	 */
 	private Dir dir;
 	
-
 	public Ant(){
 		HP = 10;
 		tentacle = new Tentacle(this);

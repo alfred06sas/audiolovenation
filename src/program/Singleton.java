@@ -4,28 +4,17 @@ import item.Antlion;
 import item.Food;
 import item.Hill;
 import item.Item;
-import item.Tentacle;
+import item.Spray;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-
-import javax.xml.validation.SchemaFactoryLoader;
 
 import land.Field;
-import land.Land;
-import item.Spray;
 import movable.Ant;
 import movable.Echidna;
-import smell.AntSmell;
-import smell.FoodSmell;
-import smell.Smell;
-import blockage.Blockage;
 import blockage.Gravel;
 import blockage.Puddle;
 
@@ -55,13 +44,13 @@ public class Singleton {
 			types=new HashMap<String,  String>();
 			
 			// tipusok inicializalasa, HashMap az id-k kezdobeture
-			types.put("a", "Ant");
-			types.put("f", "Food");
-			types.put("s", "Spray");
-			types.put("e", "Echidna");
-			types.put("l", "Antlion");
-			types.put("p", "Puddle");
-			types.put("g", "Gravel");
+//			types.put("a", "Ant");
+//			types.put("f", "Food");
+//			types.put("s", "Spray");
+//			types.put("e", "Echidna");
+//			types.put("l", "Antlion");
+//			types.put("p", "Puddle");
+//			types.put("g", "Gravel");
 		}
 		return instance;
 	}
@@ -169,6 +158,58 @@ public class Singleton {
 				} else if (sline[0].equals("put_item") && sline[1].equals("-t")
 						&& sline[3].equals("-iid") && sline[5].equals("-fid")
 						&& sline.length == 7) {
+					switch(Integer.parseInt(sline[2])){
+						case 1:
+							Ant ant = new Ant();
+							sc.addMovable(ant);
+							types.put(sline[4], "Ant");
+							addItem(ant);
+							sc.getContainer().putItems(sc.getContainer().getField(sline[6]), ant);
+							break;
+						case 2:
+							Echidna echidna= new Echidna();
+							sc.addMovable(echidna);
+							types.put(sline[4], "Echidna");
+							addItem(echidna);
+							sc.getContainer().putItems(sc.getContainer().getField(sline[6]), echidna);
+							break;
+						case 3:
+							Antlion antlion = new Antlion();
+							types.put(sline[4], "Antlion");
+							addItem(antlion);
+							sc.getContainer().putItems(sc.getContainer().getField(sline[6]), antlion);
+							break;
+						case 4:
+							Puddle puddle = new Puddle();
+							types.put(sline[4], "Puddle");
+							addItem(puddle);
+							sc.getContainer().putItems(sc.getContainer().getField(sline[6]), puddle);
+							break;
+						case 5:
+							Gravel gravel = new Gravel();
+							types.put(sline[4], "Gravel");
+							addItem(gravel);
+							sc.getContainer().putItems(sc.getContainer().getField(sline[6]), gravel);
+							break;
+						case 6:
+							Hill hill = new Hill();
+							types.put(sline[4], "Hill");
+							addItem(hill);
+							sc.getContainer().putItems(sc.getContainer().getField(sline[6]), hill);
+							break;
+						case 7:
+							Spray spray = new Spray();
+							types.put(sline[4], "Spray");
+							addItem(spray);
+							sc.getContainer().putItems(sc.getContainer().getField(sline[6]), spray);
+							break;
+						case 8:
+							Food food = new Food();
+							types.put(sline[4], "Food");
+							addItem(food);
+							sc.getContainer().putItems(sc.getContainer().getField(sline[6]), food);
+							break;
+					}
 					System.out.println(line);
 				} else if (sline[0].equals("put_smell")
 						&& sline[1].equals("-t") && sline[3].equals("-sid")
