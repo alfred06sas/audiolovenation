@@ -1,9 +1,13 @@
 package blockage;
 
+import item.Item;
+
+import java.util.Map;
+
+import land.Dir;
 import land.Field;
 import movable.Ant;
 import movable.Echidna;
-import program.Singleton;
 
 /**
  * 
@@ -30,14 +34,9 @@ public class Gravel extends Blockage {
 	 */
 	@Override
 	public void collisionWithAnt(Ant ant, boolean b) {
-		Singleton s = Singleton.Instance();
-
-		if (b == false) {
-			
-			Field field = new Field();
-			ant.canNotGo(field);
-			
-		}
+//		if (b == false) {
+//			ant.canNotGo(getActualField());
+//		}
 
 	}
 
@@ -49,8 +48,40 @@ public class Gravel extends Blockage {
 	 */
 	@Override
 	public void collisionWithEchidna(Echidna echidna) {
-		Singleton s = Singleton.Instance();
-
+		boolean ketto=false;
+		boolean harom=false;
+		
+		Dir dir=echidna.getDir();
+		Map<Dir, Field> neig=getActualField().getNeighbours();
+		
+		Gravel gravleKetto=null;
+		
+		for (Item item : neig.get(dir).getItems()){
+			try{
+				gravleKetto = (Gravel) item;
+				ketto = true;
+			}
+			catch (ClassCastException e){}
+		}
+		
+		for (Item item : neig.get(dir).getNeighbours().get(dir).getItems()){
+			try{
+				Gravel gravle = (Gravel) item;
+				harom = true;
+			}
+			catch (ClassCastException e){}
+		}
+		if (!((ketto)&&(harom))){
+			getActualField().removeItem(this);
+			setActualField(neig.get(dir));
+			getActualField().addItem(this);
+		}
+		
+		if ((ketto)&&(!harom)){
+			gravleKetto.getActualField().removeItem(this);
+			gravleKetto.setActualField(neig.get(dir));
+			gravleKetto.getActualField().addItem(this);
+		}
 		
 	}
 

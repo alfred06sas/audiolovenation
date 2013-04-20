@@ -202,7 +202,7 @@ public class Ant extends Item implements Movable {
 			for (Item item:items){
 				try{
 					Blockage block=(Blockage)item;
-					tentacle.removePossibleNeighbour(possibleNeig.get(key));
+					canNotGo(possibleNeig.get(key));
 				}
 				catch(ClassCastException e){}
 			}

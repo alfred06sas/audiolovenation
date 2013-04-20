@@ -3,6 +3,7 @@ package movable;
 import item.Item;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import land.Dir;
@@ -39,7 +40,15 @@ public class Echidna extends Item implements Movable {
 	 * Hangyaszsun iranya.
 	 */
 	private Dir dir;
-
+	
+	public void setDir(Dir d){
+		dir=d;
+	}
+	
+	public Dir getDir(){
+		return dir;
+	}
+	
 	public Echidna(){
 		isActive = false;
 		wait = 50;
@@ -84,8 +93,6 @@ public class Echidna extends Item implements Movable {
 	 */
 	@Override
 	public void collisionWithEchidna(Echidna echidna) {
-		
-		
 	}
 
 	/**
@@ -94,22 +101,20 @@ public class Echidna extends Item implements Movable {
 	@Override
 	public void step() {
 
-		
-		Echidna echidna = new Echidna();
-
 		/* A szomszedok lekerdezese */
 		Field prevField = getActualField();
 		Map<Dir, Field> map = prevField.getNeighbours();
 	
 		/* A hangyaszsun torese a mezorol */
-		prevField.removeItem(echidna);
+		prevField.removeItem(this);
 	
 		/* Hangyaszsun atlep a kovetkezo mezore */
 		Field nextField = map.get(dir);
-		nextField.addItem(echidna);
-		nextField.getItems();
+		nextField.addItem(this);
+		List<Item> items = nextField.getItems();
 		
-		collisionWithEchidna(echidna);
+		for (Item item : items)
+			item.collisionWithEchidna(this);
 		
 	}
 
