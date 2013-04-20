@@ -6,6 +6,10 @@ import item.Hill;
 import item.Item;
 import item.Tentacle;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -145,6 +149,55 @@ public class Singleton {
 		}
 		
 	}
+	
+	
+	public void loadTestCase(String inputFileName, String outputFileName) throws FileNotFoundException {
+		SingletonContainer sc = SingletonContainer.getInstance();
+		BufferedReader br = new BufferedReader(new FileReader(inputFileName));
+		try {
+			while (true) {
+				String line = br.readLine();
+				if (line == null)
+					break;
+				String[] sline = line.split(" ");
+
+				if (sline[0].equals("create_land") && sline[1].equals("-r")
+						&& sline[3].equals("-c") && sline.length == 5) {
+					System.out.println(line);
+					sc.getContainer().loadLand(Integer.parseInt(sline[2]),Integer.parseInt(sline[4]));
+					sc.getContainer().buildLand(Integer.parseInt(sline[2]),Integer.parseInt(sline[4]));
+				} else if (sline[0].equals("put_item") && sline[1].equals("-t")
+						&& sline[3].equals("-iid") && sline[5].equals("-fid")
+						&& sline.length == 7) {
+					System.out.println(line);
+				} else if (sline[0].equals("put_smell")
+						&& sline[1].equals("-t") && sline[3].equals("-sid")
+						&& sline[5].equals("-s") && sline[7].equals("-fid")
+						&& sline.length == 9) {
+					System.out.println(line);
+				} else if (sline[0].equals("set") && sline[1].equals("-t")
+						&& sline[3].equals("-mid") && sline[5].equals("-d") && sline[7].equals("-s")
+						&& sline.length == 9) {
+					System.out.println(line);
+				} else if (sline[0].equals("use_spray")
+						&& sline[1].equals("-t") && sline[3].equals("-fid")
+						&& sline.length == 5) {
+					System.out.println(line);
+				} else if (sline[0].equals("step_round")
+						&& sline[1].equals("-rn") && sline.length == 3) {
+					System.out.println(line);					
+					printNextRound();
+					sc.getContainer().move();
+				} else {
+					System.err.println("Undefined command: " + line);
+					return;
+				}
+			}
+		} catch (IOException e) {
+
+		}
+	}
+	
 	
 	/*
 	 * ATLEPES SZOMSZEDOS MEZORE kovetkezo a formaja:

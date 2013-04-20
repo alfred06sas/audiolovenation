@@ -144,4 +144,7 @@ public class SingletonContainer {
 		numberOfRound++;
 		
 	}
+	public Land getContainer() {
+		return container;
+	}
 }
