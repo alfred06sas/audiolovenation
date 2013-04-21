@@ -12,7 +12,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 
+import land.Dir;
 import land.Field;
+import land.Land;
 import movable.Ant;
 import movable.Echidna;
 import blockage.Gravel;
@@ -30,7 +32,6 @@ public class Singleton {
 	private HashMap<String, HashMap<String, String>> states;
 	private static Singleton instance = null;
 	private static HashMap<String,  String> types;
-	
 
 	public Singleton(){
 		states = new HashMap<String, HashMap<String, String>>();
@@ -80,7 +81,7 @@ public class Singleton {
 	 */
 	
 	void printCollosion(Item what, Item with, Field field){
-		// ket típus kivalasztasa a types HashMap-bol
+		// ket tï¿½pus kivalasztasa a types HashMap-bol
 		String whatType = types.get(what.getId().charAt(0));
 		String withType = types.get(with.getId().charAt(0));
 		HashMap<String, String> oldStateItemWhat = states.get(what.getId());
@@ -89,7 +90,7 @@ public class Singleton {
 		HashMap<String, String> newStateItemWith = with.getStates();
 		
 		
-		// A kiiras része
+		// A kiiras rï¿½sze
 		System.out.println(whatType+" ("+what.getId()+ ") TO "+withType+" ("+with.getId()+") ON FIELD ("+ field.getId()+")");
 		for (String key : oldStateItemWhat.keySet()) {
 		    if(!oldStateItemWhat.get(key).equals(newStateItemWhat.get(key))){
@@ -140,106 +141,6 @@ public class Singleton {
 	}
 	
 	
-	public void loadTestCase(String inputFileName, String outputFileName) throws FileNotFoundException {
-		SingletonContainer sc = SingletonContainer.getInstance();
-		BufferedReader br = new BufferedReader(new FileReader(inputFileName));
-		try {
-			while (true) {
-				String line = br.readLine();
-				if (line == null)
-					break;
-				String[] sline = line.split(" ");
-
-				if (sline[0].equals("create_land") && sline[1].equals("-r")
-						&& sline[3].equals("-c") && sline.length == 5) {
-					System.out.println(line);
-					sc.getContainer().loadLand(Integer.parseInt(sline[2]),Integer.parseInt(sline[4]));
-					sc.getContainer().buildLand(Integer.parseInt(sline[2]),Integer.parseInt(sline[4]));
-				} else if (sline[0].equals("put_item") && sline[1].equals("-t")
-						&& sline[3].equals("-iid") && sline[5].equals("-fid")
-						&& sline.length == 7) {
-					switch(Integer.parseInt(sline[2])){
-						case 1:
-							Ant ant = new Ant();
-							sc.addMovable(ant);
-							types.put(sline[4], "Ant");
-							addItem(ant);
-							sc.getContainer().putItems(sc.getContainer().getField(sline[6]), ant);
-							break;
-						case 2:
-							Echidna echidna= new Echidna();
-							sc.addMovable(echidna);
-							types.put(sline[4], "Echidna");
-							addItem(echidna);
-							sc.getContainer().putItems(sc.getContainer().getField(sline[6]), echidna);
-							break;
-						case 3:
-							Antlion antlion = new Antlion();
-							types.put(sline[4], "Antlion");
-							addItem(antlion);
-							sc.getContainer().putItems(sc.getContainer().getField(sline[6]), antlion);
-							break;
-						case 4:
-							Puddle puddle = new Puddle();
-							types.put(sline[4], "Puddle");
-							addItem(puddle);
-							sc.getContainer().putItems(sc.getContainer().getField(sline[6]), puddle);
-							break;
-						case 5:
-							Gravel gravel = new Gravel();
-							types.put(sline[4], "Gravel");
-							addItem(gravel);
-							sc.getContainer().putItems(sc.getContainer().getField(sline[6]), gravel);
-							break;
-						case 6:
-							Hill hill = new Hill();
-							types.put(sline[4], "Hill");
-							addItem(hill);
-							sc.getContainer().putItems(sc.getContainer().getField(sline[6]), hill);
-							break;
-						case 7:
-							Spray spray = new Spray();
-							types.put(sline[4], "Spray");
-							addItem(spray);
-							sc.getContainer().putItems(sc.getContainer().getField(sline[6]), spray);
-							break;
-						case 8:
-							Food food = new Food();
-							types.put(sline[4], "Food");
-							addItem(food);
-							sc.getContainer().putItems(sc.getContainer().getField(sline[6]), food);
-							break;
-					}
-					System.out.println(line);
-				} else if (sline[0].equals("put_smell")
-						&& sline[1].equals("-t") && sline[3].equals("-sid")
-						&& sline[5].equals("-s") && sline[7].equals("-fid")
-						&& sline.length == 9) {
-					System.out.println(line);
-				} else if (sline[0].equals("set") && sline[1].equals("-t")
-						&& sline[3].equals("-mid") && sline[5].equals("-d") && sline[7].equals("-s")
-						&& sline.length == 9) {
-					System.out.println(line);
-				} else if (sline[0].equals("use_spray")
-						&& sline[1].equals("-t") && sline[3].equals("-fid")
-						&& sline.length == 5) {
-					System.out.println(line);
-				} else if (sline[0].equals("step_round")
-						&& sline[1].equals("-rn") && sline.length == 3) {
-					System.out.println(line);					
-					printNextRound();
-					sc.getContainer().move();
-				} else {
-					System.err.println("Undefined command: " + line);
-					return;
-				}
-			}
-		} catch (IOException e) {
-
-		}
-	}
-	
-	
 	/*
 	 * ATLEPES SZOMSZEDOS MEZORE kovetkezo a formaja:
 	 * [<ELEM TIPUS (ID)> STEPPED FROM <1. FIELD (ID)> TO <2. FIELD(<ID>)>]
@@ -266,7 +167,7 @@ public class Singleton {
 	}
 	
 	/* A paramaterben kapott stringet irja a kimenetre, hiba kiirasra hasznaljuk
-	 * ez magunknak visszajelzes így ez magyar
+	 * ez magunknak visszajelzes ï¿½gy ez magyar
 	 */
 	void printError(String s){
 		System.out.println("Hiba: "+s);
