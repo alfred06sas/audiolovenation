@@ -110,52 +110,50 @@ public class Main {
 						}
 						if (nr == null)
 							break;
-						inputFile = new File("commands\\preDefinedTestCases\\"+inputFileName);
 						switch (nr) {
 						case 1:
-							sl.loadTestCase(inputFile, "output1.dat");
+							sl.loadTestCase(new File("commands\\preDefinedTestCases\\input1.dat"), "output1.dat");
 							break;
 						case 2:
-							sl.loadTestCase(inputFile, "output2.dat");
+							sl.loadTestCase(new File("commands\\preDefinedTestCases\\input2.dat"), "output2.dat");
 							break;
 						case 3:
-							sl.loadTestCase(inputFile, "output3.dat");
+							sl.loadTestCase(new File("commands\\preDefinedTestCases\\input3.dat"), "output3.dat");
 							break;
 						case 4:
-							sl.loadTestCase(inputFile, "output4.dat");
+							sl.loadTestCase(new File("commands\\preDefinedTestCases\\input4.dat"), "output4.dat");
 							break;
 						case 5:
-							sl.loadTestCase(inputFile, "output5.dat");
+							sl.loadTestCase(new File("commands\\preDefinedTestCases\\input5.dat"), "output5.dat");
 							break;
 						case 6:
-							sl.loadTestCase(inputFile, "output6.dat");
+							sl.loadTestCase(new File("commands\\preDefinedTestCases\\input6.dat"), "output6.dat");
 							break;
 						case 7:
-							sl.loadTestCase(inputFile, "output7.dat");
+							sl.loadTestCase(new File("commands\\preDefinedTestCases\\input7.dat"), "output7.dat");
 							break;
 						case 8:
-							sl.loadTestCase(inputFile, "output8.dat");
+							sl.loadTestCase(new File("commands\\preDefinedTestCases\\input8.dat"), "output8.dat");
 							break;
 						case 9:
-							sl.loadTestCase(inputFile, "output9.dat");
+							sl.loadTestCase(new File("commands\\preDefinedTestCases\\input9.dat"), "output9.dat");
 							break;
 						case 10:
-							sl.loadTestCase(inputFile, "output10.dat");
+							sl.loadTestCase(new File("commands\\preDefinedTestCases\\input10.dat"), "output10.dat");
 							break;
 						case 11:
-							sl.loadTestCase(inputFile, "output11.dat");
+							sl.loadTestCase(new File("commands\\preDefinedTestCases\\input11.dat"), "output11.dat");
 							break;
 						case 12:
-							sl.loadTestCase(inputFile, "output12.dat");
+							sl.loadTestCase(new File("commands\\preDefinedTestCases\\input12.dat"), "output12.dat");
 							break;
 						case 13:
-							sl.loadTestCase(inputFile, "output13.dat");
+							sl.loadTestCase(new File("commands\\preDefinedTestCases\\input13.dat"), "output13.dat");
 							break;
 						case 14:
-							sl.loadTestCase(inputFile, "output14.dat");
+							sl.loadTestCase(new File("commands\\preDefinedTestCases\\input14.dat"), "output14.dat");
 							break;
 						case 15:
-							sl.loadTestCase(inputFile, "output15.dat");
 							break;
 						default:
 							/** Hibas bemenet lekezelese */

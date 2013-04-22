@@ -1,6 +1,6 @@
-create_land -c 6 -r 4
-put_item -t ant -iid 1  -fid 2_2
-set –t ant -mid 1 –d right_bottom -s dont_have_food
+create_land -r 6 -c 4
+put_item -t ant -iid 1 -fid 2_2
+set -t ant -mid 1 -d right_bottom -s dont_have_food
 put_item -t spray -iid 2 -fid 4_4
 put_item -t spray -iid 3 -fid 5_5
 put_item -t spray -iid 4 -fid 6_4

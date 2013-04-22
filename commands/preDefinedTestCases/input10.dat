@@ -1,6 +1,6 @@
-create_land -c 4 -r 4
+create_land -r 4 -c 4
 put_item -t ant -iid 2 -fid 4_2
-set –t ant -mid 2 –d right_top -s dont_have_food
-put item -t echidna -iid 1 -fid 3_3
-set –t echidna -mid 1 –d up -s hungry
-step_round –rn 1
+set -t ant -mid 2 -d right_top -s dont_have_food
+put_item -t echidna -iid 1 -fid 3_3
+set -t echidna -mid 1 -d up -s hungry
+step_round -rn 1
