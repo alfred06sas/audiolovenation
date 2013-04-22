@@ -15,7 +15,7 @@ import land.Field;
  * 
  */
 public class Singleton {
-	private HashMap<String, HashMap<String, String>> states;
+	private static HashMap<String, HashMap<String, String>> states;
 	private static Singleton instance = null;
 	private static HashMap<String,  String> types;
 	private static int roundNumber;
@@ -29,6 +29,7 @@ public class Singleton {
 		SingletonContainer sc = SingletonContainer.getInstance();
 		if (instance == null){
 			instance = new Singleton();
+			states = new HashMap<String, HashMap<String, String>>();
 			types=new HashMap<String,  String>();
 			roundNumber=0;
 			
@@ -55,7 +56,7 @@ public class Singleton {
 		}
 		else{
 			states.put(i.getId(), i.getStates());			// TODO getId, getStates elemeknek
-			System.out.println(i.getId()+" "+i.getStates());
+			printComment("a hozzaadando objektum id-ja es allapotai: "i.getId()+" "+i.getStates()+" // Singleton.addItem()");
 		}
 	}
 	
@@ -161,5 +162,9 @@ public class Singleton {
 	 */
 	void printError(String s){
 		System.out.println("Hiba: "+s);
+	}
+	
+	void printComment(String s){
+		System.out.println("komment: "+s);
 	}
 }

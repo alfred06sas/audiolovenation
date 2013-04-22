@@ -47,7 +47,6 @@ public class Land {
 	 * 
 	 */
 	public void loadLand(int row, int column) {
-		System.out.println(row+" "+column);
 		if (!(((row % 2 == 0) && (column % 2 == 0)) || ((row % 2 == 1) && (column % 2 == 1)))){
 			System.out.println("Hiba: az oszlop és sorszám legyen ugyanolyan paritású!");
 			System.exit(0);
@@ -158,15 +157,13 @@ public class Land {
 	}
 
 	public Field getField(String id){
-		System.out.println("getField-ben");
-		System.out.println("ami kell:"+id);
 		for (Field field: fields){
 			System.out.println("ami van: "+ field.getId());
 			if (field != null)
 				if (field.getId().equals(id))
 					return field;
 		}
-		System.out.println("Nincs ilyen id-ju Field.");
+		System.out.println("Hiba: Nincs ilyen id-ju Field. // Land.getField()");
 		return null;
 	}
 }
