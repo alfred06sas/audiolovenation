@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import javax.sound.midi.SysexMessage;
+
 import movable.Movable;
 import program.Singleton;
 import program.SingletonContainer;
@@ -45,30 +47,22 @@ public class Land {
 	 * 
 	 */
 	public void loadLand(int row, int column) {
-		Singleton s = Singleton.Instance();
-		
+		System.out.println(row+" "+column);
+		if (!(((row % 2 == 0) && (column % 2 == 0)) || ((row % 2 == 1) && (column % 2 == 1)))){
+			System.out.println("Hiba: az oszlop és sorszám legyen ugyanolyan paritású!");
+			System.exit(0);
+		}
 		rowNumber = row;
 		columnNumber = column;		
 		
-		for(int k=0;k<rowNumber;k++){
-			for (int j=0;j<columnNumber;j++){
-				fields.add(new Field());
-				if (((k % 2 == 0) && (j % 2 == 0)) || ((k % 2 == 1) && (j % 2 == 1)))
-					try{
-						
-						try{
-							fields.get(k*columnNumber+j).setId(k+"_"+j);
-						}
-						catch(IndexOutOfBoundsException e){
-							System.out.println(fields.size()+": "+k+": "+j);
-						}
-					}
-					catch(NullPointerException e){
-					System.out.println(k+" "+j);
-				}
+		
+		for(int k=1;k<=rowNumber;k++){
+			for (int j=1;j<=columnNumber;j++){
+				fields.add(new Field(k+"_"+j));
 			}
 		}
 	}
+	
 
 	/**
 	 * Elemek elhelyezese a mezokon. Ezek az elemek lehetnek akadalyok, hangyak,
@@ -172,7 +166,10 @@ public class Land {
 	}
 
 	public Field getField(String id){
+		System.out.println("getField-ben");
+		System.out.println("ami kell:"+id);
 		for (Field field: fields){
+			System.out.println("ami van: "+ field.getId());
 			if (field != null)
 				if (field.getId().equals(id))
 					return field;

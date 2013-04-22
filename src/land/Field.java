@@ -38,6 +38,8 @@ public class Field {
 	public Field(String s){
 		id=s;
 		neighbours=new HashMap<Dir, Field>();
+		items = new ArrayList<Item>();
+		smells = new ArrayList<Smell>();
 	}
 	
 	/**

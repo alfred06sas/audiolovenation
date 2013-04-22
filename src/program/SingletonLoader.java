@@ -44,7 +44,7 @@ public class SingletonLoader {
 				if (line == null)
 					break;
 				String[] sline = line.split(" ");
-
+System.out.println(sline[1]);
 				if (sline[0].equals("create_land") && sline[1].equals("-r")
 						&& sline[3].equals("-c") && sline.length == 5) {
 					land.loadLand(Integer.parseInt(sline[2]),
