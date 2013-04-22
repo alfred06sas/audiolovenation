@@ -136,6 +136,7 @@ public class SingletonLoader {
 					return;
 				}
 			}
+			br.close();
 		} catch (IOException e) {
 
 		}

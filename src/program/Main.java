@@ -20,7 +20,23 @@ public class Main {
 	public static void main(String[] args) {
 
 		SingletonLoader sl = SingletonLoader.Instance();
-		String[] testNames = new String[] { "test", "exit" };
+		String[] testNames = new String[15];
+		
+		testNames[0] = "Tracking ant's smell";
+		testNames[1] = "Tracking food's smell";
+		testNames[2] = "Moving ant on an empty land";
+		testNames[3] = "Ant's collision with an echidna";
+		testNames[4] = "Ant's collision with an antlion";
+		testNames[5] = "Ant's collision with a puddle or gravel";
+		testNames[6] = "Ant's collision with food, afterwards with a hill";
+		testNames[7] = "Spraying a field with ant killer spray";
+		testNames[8] = "Ant killer spray's collision with an ant";
+		testNames[9] = "Echidna's collision with an ant";
+		testNames[10] = "Echidna's collision with a gravel";
+		testNames[11] = "Echidna's collision with two gravels";
+		testNames[12] = "Echidna's collision with three gravels";
+		testNames[13] = "Using ant smell neutralizer spray";
+		testNames[14] = "EXIT";
 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -31,6 +47,7 @@ public class Main {
 				Integer nr = null;
 				File inputFile = null;
 				String inputFileName = null;
+				String outputFileName = null;
 
 				try {
 					nr = Integer.valueOf(br.readLine());
@@ -56,7 +73,6 @@ public class Main {
 
 					//System.out.println();
 					System.out.print("Output file: ");
-					String outputFileName = null;
 					try {
 						outputFileName = br.readLine();
 					} catch (Exception e) {
@@ -97,7 +113,7 @@ public class Main {
 						inputFile = new File("commands\\preDefinedTestCases\\"+inputFileName);
 						switch (nr) {
 						case 1:
-
+							sl.loadTestCase(inputFile, "output.dat");
 							break;
 						case 2:
 							break loop;
