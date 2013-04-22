@@ -143,10 +143,12 @@ public class Tentacle {
 		}
 		for (Dir key : possibleFields.keySet()) {
 			smells=possibleFields.get(key).getSmells();
+			
 			foodSmell=0;
 			antSmell=0;
 			for (Smell smell:smells){
 				smell.smellIt(this);
+				System.out.println("comment: smellek: "+key+" :"+smell.getStrength());
 			}
 			if (haveFood==true){
 				foodSmell=0;

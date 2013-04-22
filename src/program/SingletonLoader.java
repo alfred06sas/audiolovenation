@@ -178,9 +178,9 @@ public class SingletonLoader {
 			return;
 		}
 
-		Field field = new Field(field_id);
-		field.addSmell(smell);
-		smell.setActualField(field);
+		land.getField(field_id).addSmell(smell);
+		smell.setActualField(land.getField(field_id));
+		smell.setStrength(Integer.valueOf(strength));
 	}
 
 	private void set(String type, String movable_id, String dir, String state) {

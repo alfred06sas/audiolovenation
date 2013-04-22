@@ -38,6 +38,6 @@ public class FoodSmell extends Smell {
 	 */
 	@Override
 	public void smellIt(Tentacle tentacle) {		
-		tentacle.increaseFoodSmell(4);		
+		tentacle.increaseFoodSmell(strength);		
 	}
 }
