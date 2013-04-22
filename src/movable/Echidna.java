@@ -173,8 +173,7 @@ public class Echidna extends Item implements Movable {
 			ant.kill();
 
 			/* Ehseg csokkentese */
-			Echidna echidna = new Echidna();
-			echidna.decreaseHunger();
+			this.decreaseHunger();
 		}
 
 	}
