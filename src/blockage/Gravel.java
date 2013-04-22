@@ -38,12 +38,6 @@ public class Gravel extends Blockage {
 	 *            lepes elott: false, lepes utan: true
 	 */
 	@Override
-	public void collisionWithAnt(Ant ant, boolean b) {
-//		if (b == false) {
-//			ant.canNotGo(getActualField());
-//		}
-
-	}
 
 	/**
 	 * Hangyaszsunnel valo utkozes. Nem csinal semmit, csak visszater.

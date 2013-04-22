@@ -45,6 +45,7 @@ public class Tentacle {
 	 */
 	public void setPossibleNeighbours(Map<Dir, Field> neighbours) {
 		Map<Dir, Field> neg=ant.getActualField().getNeighbours();
+		/*
 		Dir dir=ant.getDir();
 		switch(dir){
 			case UP:
@@ -78,6 +79,7 @@ public class Tentacle {
 				possibleFields.put(Dir.LEFT_BOTTOM, neg.get(Dir.LEFT_BOTTOM));
 				break;
 		}
+		*/
 	}
 
 	public Map<Dir, Field> getPossibleNeighbours(){

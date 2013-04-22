@@ -33,17 +33,7 @@ public class Puddle extends Blockage {
 	 * @param b
 	 *            lepes elott: false, lepes utan: true
 	 */
-	@Override
-	public void collisionWithAnt(Ant ant, boolean b) {
-		Singleton s = Singleton.Instance();
 
-		if (b == false) {
-			
-			Field field = new Field();
-			ant.canNotGo(field);
-		}
-
-	}
 
 	/**
 	 * Hangyaszsunnel valo utkozes. Nem csinal semmit, csak visszater.

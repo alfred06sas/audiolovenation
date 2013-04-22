@@ -199,7 +199,10 @@ public class Ant extends Item implements Movable {
 	
 		/* A lehetseges szomszedok beallitasa. */
 		Map<Dir, Field> possibleNeig = new HashMap<Dir, Field>();
-		tentacle.setPossibleNeighbours(neg);
+		possibleNeig.put(dir, neg.get(dir));
+		possibleNeig.put(dir.fromInteger((dir.getValue()+1)%6), neg.get(dir.fromInteger((dir.getValue()+1)%6)));
+		possibleNeig.put(dir.fromInteger((dir.getValue()-1)%6), neg.get(dir.fromInteger((dir.getValue()-1)%6)));
+		tentacle.setPossibleNeighbours(possibleNeig);
 		possibleNeig=tentacle.getPossibleNeighbours();
 	
 		/* A lehetseges szomszedok item-einek egy ciklusban valo lekerdezese. */
@@ -210,11 +213,7 @@ public class Ant extends Item implements Movable {
 		for (Dir key : possibleNeig.keySet()) {
 		List<Item> items = possibleNeig.get(key).getItems();
 			for (Item item:items){
-				try{
-					Blockage block=(Blockage)item;
-					canNotGo(possibleNeig.get(key));
-				}
-				catch(ClassCastException e){}
+				item.collisionWithAnt(this, false);
 			}
 		}
 		//Most mar csak az van bent, ahova tenyleg lepni tudunk
