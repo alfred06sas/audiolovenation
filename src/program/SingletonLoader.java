@@ -178,7 +178,7 @@ public class SingletonLoader {
 	}
 
 	private void set(String type, String movable_id, String dir, String state) {
-		List<Movable> movables = null;
+		List<Movable> movables = sc.getMovables();
 		if (type.equals("ant")) {
 			Ant ant = null;
 			loop: for (Movable m : movables) {
@@ -230,7 +230,7 @@ public class SingletonLoader {
 			Echidna echidna = null;
 			loop: for (Movable m : movables) {
 				Item i = (Item) m;
-				if (i.getId().equals(movable_id)) {
+				if (i.getId().equals("e"+movable_id)) {
 					echidna = (Echidna) m;
 					break loop;
 				}

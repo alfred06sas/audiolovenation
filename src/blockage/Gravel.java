@@ -2,7 +2,10 @@ package blockage;
 
 import item.Item;
 
+import java.util.List;
 import java.util.Map;
+
+import smell.Smell;
 
 import land.Dir;
 import land.Field;
@@ -35,7 +38,13 @@ public class Gravel extends Blockage implements Movable {
 	 */
 	@Override
 	public int collisionWithEchidna(Echidna echidna, boolean b, Dir dir) {
-		Map<Dir, Field> neighbours = getActualField().getNeighbours();
+		Map<Dir, Field> neighbours = actualField.getNeighbours();
+		
+		System.out.println(b);
+		System.out.println("actual field: "+actualField.getId());
+		for (Dir key : neighbours.keySet()) {
+			System.out.println(neighbours.get(key).getId());
+		}
 		Integer gravelNr = 0;
 
 		for (Item item : neighbours.get(dir).getItems()) {

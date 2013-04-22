@@ -81,26 +81,18 @@ public class Land {
 	 */
 	public void move() {
 		SingletonContainer sc = SingletonContainer.getInstance();
-		List<Movable> movables = new ArrayList<Movable>();
-		List<Volatile> volatiles = new ArrayList<Volatile>();
-
-		// Hangya leptetese
-		movables = sc.getMovables();
-		try{
-			for (Movable movable :movables)
-					movable.step();
-		}catch(NullPointerException e){
-			System.out.println("Ures Movable lista.");
-		}
-
-		// Illekonyok csokkentese
-		volatiles = sc.getVolatiles();
-		try{
-			for (Volatile volatile_ :volatiles)
-				volatile_.decrease();
-		}catch(NullPointerException e){
-			System.out.println("Ures Volatile lista.");
-		}
+		List<Movable> movables = sc.getMovables();
+		
+		// Movable-k leptetese
+		for (Movable movable :movables)
+			movable.step();
+		
+		List<Volatile> volatiles = sc.getVolatiles();
+		
+		// Illekony anyagok csokkentese
+		for (Volatile volatile_ :volatiles)
+			volatile_.decrease();
+		
 	}
 
 	/**

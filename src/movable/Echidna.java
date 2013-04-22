@@ -41,32 +41,31 @@ public class Echidna extends Item implements Movable {
 	 */
 	private Dir dir;
 	private boolean isHunger;
-	
-	public void setDir(Dir d){
-		dir=d;
+
+	public void setDir(Dir d) {
+		dir = d;
 	}
-	
-	public Dir getDir(){
+
+	public Dir getDir() {
 		return dir;
 	}
-	
-	public Echidna(){
+
+	public Echidna() {
 		isActive = false;
 		wait = 50;
 		hunger = 10;
 		dir = Dir.LEFT_TOP;
 	}
-	
-	public Echidna(String ID){
+
+	public Echidna(String ID) {
 		super(ID);
-		id="e"+ID;
+		id = "e" + ID;
 		isActive = false;
 		wait = 50;
 		hunger = 10;
 		dir = Dir.LEFT_TOP;
 	}
-	
-	
+
 	/**
 	 * Aktualis mezo beallitasa.
 	 * 
@@ -76,7 +75,7 @@ public class Echidna extends Item implements Movable {
 	@Override
 	public void setActualField(Field field) {
 		super.setActualField(field);
-		
+
 	}
 
 	/**
@@ -85,7 +84,6 @@ public class Echidna extends Item implements Movable {
 	public void decreaseHunger() {
 		hunger--;
 
-		
 	}
 
 	/**
@@ -93,7 +91,7 @@ public class Echidna extends Item implements Movable {
 	 */
 	@Override
 	public void setAlive() {
-		isActive=true;
+		isActive = true;
 	}
 
 	/**
@@ -101,45 +99,43 @@ public class Echidna extends Item implements Movable {
 	 */
 	@Override
 	public void step() {
-		int i=0;
-		
+		int gravelNr = 0;
+
 		/* A szomszedok lekerdezese */
 		Field prevField = getActualField();
 		Map<Dir, Field> map = prevField.getNeighbours();
-	
+
 		Field nextField = map.get(dir);
 		List<Item> items = nextField.getItems();
-		
-		for (Item item : items){
-			int temp=item.collisionWithEchidna(this, false, dir);
-			if (temp>i)
-				i=temp;
+
+		for (Item item : items) {
+			gravelNr = item.collisionWithEchidna(this, false, dir);
 		}
-		
-		if (i<=2)
+
+		if (gravelNr > 2)
 			ReverseDir();
-		/* A hangyaszsun torese a mezorol */
-		else{
+		/* A hangyaszsun torlese a mezorol */
+		else {
 			prevField.removeItem(this);
-		
+
 			/* Hangyaszsun atlep a kovetkezo mezore */
 			nextField.addItem(this);
 			for (Item item : items)
 				item.collisionWithEchidna(this, true, dir);
 		}
-		
+
 	}
 
 	public void ReverseDir() {
-		switch (dir){
+		switch (dir) {
 		case UP:
-			dir = Dir.DOWN;			
+			dir = Dir.DOWN;
 			break;
 		case DOWN:
-			dir = Dir.UP;	
+			dir = Dir.UP;
 			break;
 		case RIGHT_TOP:
-			dir = Dir.LEFT_BOTTOM;			
+			dir = Dir.LEFT_BOTTOM;
 			break;
 		case RIGHT_BOTTOM:
 			dir = Dir.LEFT_TOP;
@@ -169,18 +165,18 @@ public class Echidna extends Item implements Movable {
 		if (b == true) {
 			/* Hangya megolese */
 			ant.kill();
-		
+
 			/* Ehseg csokkentese */
 			Echidna echidna = new Echidna();
 			echidna.decreaseHunger();
 		}
-	
+
 	}
-	
+
 	@Override
 	public HashMap<String, String> getStates() {
 		HashMap<String, String> states = new HashMap<String, String>();
-		
+
 		if (wait > 0)
 			states.put("STATE", "WAIT");
 		else {
@@ -189,15 +185,15 @@ public class Echidna extends Item implements Movable {
 			else
 				states.put("STATE", "NOT_HUNGRY");
 		}
-		
+
 		return states;
 	}
 
 	public void setWait(int i) {
-		wait=i;
+		wait = i;
 	}
 
 	public void setHungry(boolean b) {
-		isHunger=b;
+		isHunger = b;
 	}
 }
