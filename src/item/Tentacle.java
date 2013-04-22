@@ -34,8 +34,6 @@ public class Tentacle {
 	public Tentacle(Ant ant){
 		this.ant=ant;
 		possibleFields=new HashMap<Dir, Field>();
-		foodSmell=new FoodSmell();
-		antSmell=new AntSmell();
 	}
 	/**
 	 * Azon szomszedokat keressuk, amelyekre lephetunk a hangyaval
@@ -127,6 +125,7 @@ public class Tentacle {
 	 *            van-e a hangyanal etel
 	 */
 	public Map<Dir, Field> scan(boolean haveFood) {
+		Map<Dir, Field> choice = new HashMap<Dir, Field>();
 		int prev=-1;
 		for (Dir key : possibleFields.keySet()) {
 			List<Smell> smells=possibleFields.get(key).getSmells();
@@ -136,14 +135,16 @@ public class Tentacle {
 				smell.smellIt(this);
 			}
 			if (haveFood==true){
-				
+				foodSmell=0;
+			}
+			if(foodSmell+antSmell>prev){
+				choice.clear();
+				choice.put(key, possibleFields.get(key));
+				prev=foodSmell+antSmell;
 			}
 		}
-		
-		Map<Dir, Field> nextmap=new HashMap<Dir, Field>();
-		nextmap.put(dir, possibleFields.get(dir));
 
-		return nextmap;
+		return choice;
 	}
 
 }

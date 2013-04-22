@@ -217,12 +217,8 @@ public class Ant extends Item implements Movable {
 		}
 		//Most mar csak az van bent, ahova tenyleg lepni tudunk
 		
-		
-		
 		tentacle.scan(haveFood);
-		
-		
-		
+	
 		
 		Field nextField=new Field();
 		possibleNeig=tentacle.getPossibleNeighbours();
