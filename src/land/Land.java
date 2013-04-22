@@ -158,7 +158,6 @@ public class Land {
 
 	public Field getField(String id){
 		for (Field field: fields){
-			System.out.println("ami van: "+ field.getId());
 			if (field != null)
 				if (field.getId().equals(id))
 					return field;
