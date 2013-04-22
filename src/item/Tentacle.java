@@ -27,15 +27,15 @@ public class Tentacle {
 	
 	private Ant ant;
 	
-//	private FoodSmell foodSmell;
+	private int foodSmell;
 //	
-//	private AntSmell antSmell;
+	private int antSmell;
 	
 	public Tentacle(Ant ant){
 		this.ant=ant;
 		possibleFields=new HashMap<Dir, Field>();
-//		foodSmell=new FoodSmell();
-//		antSmell=new AntSmell();
+		foodSmell=new FoodSmell();
+		antSmell=new AntSmell();
 	}
 	/**
 	 * Azon szomszedokat keressuk, amelyekre lephetunk a hangyaval
@@ -100,25 +100,25 @@ public class Tentacle {
 		
 	}
 
-//	/**
-//	 * Eteltelszag novelese
-//	 * 
-//	 * @param strength
-//	 *            a noveles merteke
-//	 */
-//	public void increaseFoodSmell(Integer strength) {
-//		foodSmell.IncreaseSmell(strength);
-//	}
-//
-//	/**
-//	 * Hangyaszag novelese
-//	 * 
-//	 * @param strength
-//	 *            a noveles merteke
-//	 */
-//	public void increaseAntSmell(Integer strength) {
-//		antSmell.IncreaseSmell(strength);
-//	}
+	/**
+	 * Eteltelszag novelese
+	 * 
+	 * @param strength
+	 *            a noveles merteke
+	 */
+	public void increaseFoodSmell(Integer strength) {
+		foodSmell+=strength;
+	}
+
+	/**
+	 * Hangyaszag novelese
+	 * 
+	 * @param strength
+	 *            a noveles merteke
+	 */
+	public void increaseAntSmell(Integer strength) {
+		antSmell+=strength;
+	}
 
 	/**
 	 * "Tapogatas"
@@ -127,18 +127,16 @@ public class Tentacle {
 	 *            van-e a hangyanal etel
 	 */
 	public Map<Dir, Field> scan(boolean haveFood) {
-		Dir dir=ant.getDir();
-		
-		Smell maxsmell=new Smell();
+		int prev=-1;
 		for (Dir key : possibleFields.keySet()) {
-			Smell mysmell=new Smell();
 			List<Smell> smells=possibleFields.get(key).getSmells();
+			foodSmell=0;
+			antSmell=0;
 			for (Smell smell:smells){
-				mysmell.setStrength(mysmell.getStrength()+smell.getStrength());
+				smell.smellIt(this);
 			}
-			if (maxsmell.getStrength()< mysmell.getStrength()) {
-				maxsmell=mysmell;
-				dir=key;
+			if (haveFood==true){
+				
 			}
 		}
 		

@@ -14,7 +14,7 @@ import land.Field;
 public class Smell {
 
 	private Field actualField;
-	private int strength;
+	protected int strength;
 
 	public Smell(){
 		actualField = new Field();

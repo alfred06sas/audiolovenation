@@ -38,14 +38,8 @@ public class AntSmell extends Smell implements Volatile {
 	 */
 	@Override
 	public void decrease() {
-	}
-
-	/**
-	 * Szag csokkentese.
-	 * 
-	 */
-	@Override
-	public void decreaseSmell(int s) {	
+		strength--;
+		
 	}
 
 	/**
@@ -57,9 +51,8 @@ public class AntSmell extends Smell implements Volatile {
 	 */
 	@Override
 	public void smellIt(Tentacle tentacle) {
-//		Singleton s = Singleton.Instance();
-//
-//		tentacle.increaseAntSmell(14);
+
+		tentacle.increaseAntSmell(strength);
 		
 	}
 }

@@ -15,6 +15,9 @@ public class FoodSmell extends Smell {
 
 	public FoodSmell(){
 	}
+	public FoodSmell(int i){
+		strength=i;
+	}
 	
 	/**
 	 * Szag eltavolítasa.
@@ -25,13 +28,6 @@ public class FoodSmell extends Smell {
 		field.removeSmell(this);
 	}
 
-	/**
-	 * Szag csokkentese.
-	 * 
-	 */
-	@Override
-	public void decreaseSmell(int s) {
-	}
 
 	/**
 	 * A csapnak adja meg a etel szaganak erosseget.
@@ -41,11 +37,7 @@ public class FoodSmell extends Smell {
 	 * 
 	 */
 	@Override
-	public void smellIt(Tentacle tentacle) {
-//		Singleton s = Singleton.Instance();
-//
-//		
-//		tentacle.increaseFoodSmell(4);
-//		
+	public void smellIt(Tentacle tentacle) {		
+		tentacle.increaseFoodSmell(4);		
 	}
 }
