@@ -50,12 +50,16 @@ public class SingletonLoader {
 					break;
 				String[] sline = line.split(" ");
 				System.out.println(sline[1]);
+				
+				// a palya letrehozasa
 				if (sline[0].equals("create_land") && sline[1].equals("-r")
 						&& sline[3].equals("-c") && sline.length == 5) {
 					String row = sline[2];
 					String column = sline[4];
 
 					createLand(row, column);
+					
+				// item elhelyezese a palyan
 				} else if (sline[0].equals("put_item") && sline[1].equals("-t")
 						&& sline[3].equals("-iid") && sline[5].equals("-fid")
 						&& sline.length == 7) {
@@ -65,6 +69,7 @@ public class SingletonLoader {
 
 					putItem(t, iid, fid);
 
+				// szag elhelyezese a palyan
 				} else if (sline[0].equals("put_smell")
 						&& sline[1].equals("-t") && sline[3].equals("-sid")
 						&& sline[5].equals("-s") && sline[7].equals("-fid")
@@ -75,7 +80,8 @@ public class SingletonLoader {
 					String field_id = sline[8];
 
 					putSmell(type, smell_id, strength, field_id);
-
+				
+				// A hangya/hangyasz kulonbozo allapotainak beallitasa
 				} else if (sline[0].equals("set") && sline[1].equals("-t")
 						&& sline[3].equals("-mid") && sline[5].equals("-d")
 						&& sline[7].equals("-s") && sline.length == 9) {
@@ -85,14 +91,19 @@ public class SingletonLoader {
 					String state = sline[8];
 
 					set(type, movable_id, dir, state);
+				
+				// spray hasznalata
 				} else if (sline[0].equals("use_spray")
 						&& sline[1].equals("-t") && sline[3].equals("-fid")
 						&& sline.length == 5) {
-					System.out.println(line);
+				
+				// kor leptetese	
 				} else if (sline[0].equals("step_round")
 						&& sline[1].equals("-rn") && sline.length == 3) {
-					s.printNextRound();
 					land.move();
+					s.printNextRound();
+				
+				// a parancsot nem sikerult ertelmezni
 				} else {
 					System.err.println("Undefined command: " + line);
 					return;
