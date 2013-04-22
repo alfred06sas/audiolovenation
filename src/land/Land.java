@@ -8,6 +8,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -33,10 +34,10 @@ public class Land {
 	int columnNumber;
 	int rowNumber;
 
-	private List<Field> fields=new ArrayList<Field>();
+	private HashMap<String, Field> fields=new HashMap<String, Field>();
 
 	public Land(){
-		 fields=new ArrayList<Field>();
+		 fields=new HashMap<String, Field>();
 		 columnNumber = 10;
 		 rowNumber = 10;
 	}
@@ -55,11 +56,14 @@ public class Land {
 		columnNumber = column;		
 		
 		
-		for(int k=1;k<=rowNumber;k++){
-			for (int j=1;j<=columnNumber;j++){
-				fields.add(new Field(k+"_"+j));
+		for(int k=0;k<rowNumber;k++){
+			for (int j=0;j<columnNumber;j++){
+				if(((k % 2 == 0) && (j % 2 == 0)) || ((k % 2 == 1) && (j % 2 == 1))){
+					fields.put(k+"_"+j,new Field(k+"_"+j));
+				}
 			}
 		}
+		System.out.println(fields.toString());
 	}
 	
 
@@ -98,17 +102,36 @@ public class Land {
 	 * 
 	 * @return
 	 */
-	public void buildLand(int row, int column) {
+	public void buildLand() {
 		Singleton s = Singleton.Instance();
-		// Field.addNeighbour hivasok
-
-		rowNumber = row;
-		columnNumber = column;		
-		
-		new Field().addNeighbour(Dir.DOWN, new Field());
+		// Field.addNeighbour hivasok		
 		
 		for(int k=0;k<rowNumber;k++){
 			for (int j=0;j<columnNumber;j++){
+				if(((k % 2 == 0) && (j % 2 == 0)) || ((k % 2 == 1) && (j % 2 == 1))){
+					//UP
+					fields.get(k+"_"+j).addNeighbour(Dir.DOWN, fields.get(((rowNumber+k+2)%rowNumber)+"_"+j));
+					//UP
+					fields.get(k+"_"+j).addNeighbour(Dir.UP, fields.get(((rowNumber+k-2)%rowNumber)+"_"+j));
+					//RIGHT_BOTTOM
+					fields.get(k+"_"+j).addNeighbour(Dir.RIGHT_BOTTOM, fields.get(((rowNumber+k+1)%rowNumber)+"_"+((columnNumber+j+1)%columnNumber)));
+					//LEFT_TOP
+					fields.get(k+"_"+j).addNeighbour(Dir.LEFT_TOP, fields.get(((rowNumber+k-1)%rowNumber)+"_"+((columnNumber+j-1)%columnNumber)));
+					//RIGHT_TOP
+					fields.get(k+"_"+j).addNeighbour(Dir.RIGHT_TOP, fields.get(((rowNumber+k-1)%rowNumber)+"_"+((columnNumber+j+1)%columnNumber)));
+					//LEFT_BOTTOM
+					fields.get(k+"_"+j).addNeighbour(Dir.LEFT_BOTTOM, fields.get(((rowNumber+k+1)%rowNumber)+"_"+((columnNumber+j-1)%columnNumber)));				
+				}
+			}
+		}
+		
+		for (String key : fields.keySet()){
+			System.out.println("comment: palya:"+fields.get(key).getId()+" :"+fields.get(key).getNeighbours()+" // Land.buildLand()");
+		}
+	}
+		/*
+		for(int k=1;k<=rowNumber;k++){
+			for (int j=1;j<=columnNumber;j++){
 				if (((k % 2 == 0) && (j % 2 == 0)) || ((k % 2 == 1) && (j % 2 == 1))){
 					
 					//UP neighbour
@@ -136,8 +159,8 @@ public class Land {
 				}
 			}
 		}
-		
-	}
+		*/
+	
 
 	/**
 	 * 
@@ -149,7 +172,7 @@ public class Land {
 		// palya betoltese
 		loadLand(row,column);
 		// palya felepitese
-		buildLand(row,column);
+		buildLand();
 		// elemek palyara helyezese
 //		putItems(); Egyelore kezzel adjuk hozza az Itemeket
 		// leptetes
@@ -157,12 +180,6 @@ public class Land {
 	}
 
 	public Field getField(String id){
-		for (Field field: fields){
-			if (field != null)
-				if (field.getId().equals(id))
-					return field;
-		}
-		System.out.println("Hiba: Nincs ilyen id-ju Field. // Land.getField()");
-		return null;
+		return fields.get(id);
 	}
 }

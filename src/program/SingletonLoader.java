@@ -124,7 +124,7 @@ public class SingletonLoader {
 		s.clear();
 		sc.clear();
 		land.loadLand(Integer.parseInt(r), Integer.parseInt(c));
-		land.buildLand(Integer.parseInt(r), Integer.parseInt(c));
+		land.buildLand();
 	}
 
 	public void putItem(String t, String iid, String fid) {

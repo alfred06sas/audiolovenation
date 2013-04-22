@@ -183,7 +183,7 @@ public class Ant extends Item implements Movable {
 	@Override
 	public void step() {
 		Singleton s = Singleton.Instance();
-
+		Field oldField=actualField;
 		
 		/* A szomszedok lekerdezese. */
 		Map<Dir, Field> neg=getActualField().getNeighbours();
@@ -235,6 +235,8 @@ public class Ant extends Item implements Movable {
 		List<Item> items=actualField.getItems();
 		for (Item item : items)
 			item.collisionWithAnt(this, true);
+		
+		s.printStep(this,oldField,actualField);
 
 	}
 

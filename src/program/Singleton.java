@@ -51,7 +51,7 @@ public class Singleton {
 	// Az elemek egybol letrehozasuk utan meghivjak ezt a metodust
 	// hozzaadva ezzel Id-jet es allapotait a az osztalyhoz
 	void addItem(Item i){
-		if(states.get(i.getId())!=null){			// TODO Elemeknek Id es fieldnek
+		if(states.containsKey(i.getId())==true){			// TODO Elemeknek Id es fieldnek
 			printError("Id duplikacio!");
 		}
 		else{
@@ -75,7 +75,7 @@ public class Singleton {
      *
 	 */
 	
-	void printCollosion(Item what, Item with, Field field){
+	public void printCollision(Item what, Item with, Field field){
 		// ket t�pus kivalasztasa a types HashMap-bol
 		System.out.println(what.getId().charAt(0));
 		String whatType = types.get(String.valueOf(what.getId().charAt(0)));
@@ -119,7 +119,7 @@ public class Singleton {
 	 *  [<1. ELEM TIPUS(ID)> DIR CHANGED: 	FROM <IRANY X> TO <IRANY Y>]
 	 */
 	void printDirChanged(Item what){
-		String whatType = types.get(what.getId().charAt(0));
+		String whatType = types.get(String.valueOf(what.getId().charAt(0)));
 		HashMap<String, String> oldStateItemWhat = states.get(what.getId());
 		HashMap<String, String> newStateItemWhat = what.getStates();
 		
@@ -141,8 +141,8 @@ public class Singleton {
 	 * ATLEPES SZOMSZEDOS MEZORE kovetkezo a formaja:
 	 * [<ELEM TIPUS (ID)> STEPPED FROM <1. FIELD (ID)> TO <2. FIELD(<ID>)>]
 	 */
-	void printStep(Item what, Field from, Field to){
-		String whatType = types.get(what.getId().charAt(0));
+	public void printStep(Item what, Field from, Field to){
+		String whatType = types.get(String.valueOf(what.getId().charAt(0)));
 		System.out.println(whatType+" ("+what.getId().substring(1)+") "+" STEPPED FROM FIELD ("+ from.getId()+") TO FIELD ("+to.getId()+")");
 	}
 	

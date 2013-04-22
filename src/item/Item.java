@@ -2,6 +2,8 @@ package item;
 
 import java.util.HashMap;
 
+import program.Singleton;
+
 import land.Dir;
 import land.Field;
 import movable.Ant;
@@ -40,6 +42,8 @@ public class Item {
 	 *            van-e etel a hangyanal vagy nincs
 	 */
 	public void collisionWithAnt(Ant ant, boolean b) {
+		Singleton s = Singleton.Instance();
+		s.printCollision(ant, this, actualField);
 	}
 
 	/**
