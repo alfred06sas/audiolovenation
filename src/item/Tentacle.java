@@ -42,7 +42,8 @@ public class Tentacle {
 	 *            az aktualis mezo osszes szomszedja
 	 */
 	public void setPossibleNeighbours(Map<Dir, Field> neighbours) {
-		Map<Dir, Field> neg=ant.getActualField().getNeighbours();
+		possibleFields=neighbours;
+		System.out.println("comment: setfüggben: "+possibleFields);
 		/*
 		Dir dir=ant.getDir();
 		switch(dir){
@@ -127,7 +128,9 @@ public class Tentacle {
 	public Map<Dir, Field> scan(boolean haveFood) {
 		Map<Dir, Field> choice = new HashMap<Dir, Field>();
 		int prev=-1;
+		System.out.println("comment: possFields scanben"+possibleFields+" // scan()");
 		for (Dir key : possibleFields.keySet()) {
+			System.out.println("ssssssss1");
 			List<Smell> smells=possibleFields.get(key).getSmells();
 			foodSmell=0;
 			antSmell=0;
@@ -138,12 +141,13 @@ public class Tentacle {
 				foodSmell=0;
 			}
 			if(foodSmell+antSmell>prev){
+				System.out.println("asdgfasgf");
 				choice.clear();
 				choice.put(key, possibleFields.get(key));
 				prev=foodSmell+antSmell;
 			}
 		}
-
+		System.out.println("comment: choice: "+choice+" // scan()");
 		return choice;
 	}
 
