@@ -22,6 +22,11 @@ public class Gravel extends Blockage {
 	public Gravel(){
 	}
 	
+	public Gravel(String ID){
+		super(ID);
+		id="g"+ID;
+	}
+	
 	/**
 	 * Hangyaval valo utkozes. Lepes utan (b == true) nem csinal semmit, mivel
 	 * ez az eset nem lehetseges: a hangya nem lephet akadalyra. Lepes elott (b

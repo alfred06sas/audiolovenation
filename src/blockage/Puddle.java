@@ -18,6 +18,11 @@ public class Puddle extends Blockage {
 	public Puddle(){
 	}
 	
+	public Puddle(String ID){
+		super(ID);
+		id="p"+ID;
+	}
+	
 	/**
 	 * Hangyaval valo utkozes. Lepes utan (b == true) nem csinal semmit, mivel
 	 * ez az eset nem lehetseges: a hangya nem lephet akadalyra. Lepes elott (b

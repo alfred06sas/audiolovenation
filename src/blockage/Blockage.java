@@ -18,4 +18,9 @@ public class Blockage extends Item {
 
 	public Blockage(){
 	}
+	
+	public Blockage(String ID){
+		super(ID);
+		id="b"+ID;
+	}
 }
