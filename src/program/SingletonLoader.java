@@ -183,7 +183,7 @@ public class SingletonLoader {
 			Ant ant = null;
 			loop: for (Movable m : movables) {
 				Item i = (Item) m;
-				if (i.getId().equals(movable_id)) {
+				if (i.getId().equals("a"+movable_id)) {
 					ant = (Ant) m;
 					break loop;
 				}
