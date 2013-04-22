@@ -194,6 +194,7 @@ public class Echidna extends Item implements Movable {
 	}
 
 	public void setHungry(boolean b) {
+		wait = 0;
 		isHunger = b;
 	}
 }

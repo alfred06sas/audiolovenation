@@ -81,6 +81,11 @@ public class Land {
 	public void move() {
 		SingletonContainer sc = SingletonContainer.getInstance();
 		List<Movable> movables = sc.getMovables();
+		System.out.println(movables.size());
+		for (Movable key : movables) {
+			Item i = (Item)key;
+			System.out.println(i.getId());
+		}
 		
 		// Movable-k leptetese
 		for (Movable movable :movables)

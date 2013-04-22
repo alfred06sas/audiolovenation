@@ -231,7 +231,7 @@ public class SingletonLoader {
 				System.out.println("Incorrect state at command: " + line);
 				return;
 			}
-
+			s.setState(ant);
 		} else if (type.equals("echidna")) {
 			Echidna echidna = null;
 			loop: for (Movable m : movables) {
@@ -277,6 +277,7 @@ public class SingletonLoader {
 				System.out.println("Incorrect state at command: " + line);
 				return;
 			}
+			s.setState(echidna);
 		} else {
 			System.out
 					.println("Only echidna and ant types are allowed at command: "

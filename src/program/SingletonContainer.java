@@ -22,26 +22,17 @@ import movable.Movable;
  */
 public class SingletonContainer {
 
-	private List<Movable> movables;
-	private List<Volatile> volatiles;
+	private static List<Movable> movables;
+	private static List<Volatile> volatiles;
 	private static SingletonContainer instance;
-	private int antKillerSpray;
-	private int antSmellSpray;
-	private int numberOfRound;
+	private static int antKillerSpray;
+	private static int antSmellSpray;
+	private static int numberOfRound;
 
-	public SingletonContainer(){
-		movables = new ArrayList<Movable>();
-		volatiles = new ArrayList<Volatile>();
+	void clear() {
 		instance = null;
-		antKillerSpray = 10;
-		antSmellSpray = 10;
-		numberOfRound = 0;
 	}
-	
-	void clear(){
-		instance = null;		
-	}
-	
+
 	/**
 	 * 
 	 * Az illekony elemek hozzaadasa az oket taroa listaba.
@@ -71,8 +62,16 @@ public class SingletonContainer {
 	 * @return a SingletonContainerre mutato referencia
 	 */
 	public static SingletonContainer getInstance() {
-		if (instance == null)
+		if (instance == null) {
+			movables = new ArrayList<Movable>();
+			volatiles = new ArrayList<Volatile>();
+			instance = null;
+			antKillerSpray = 10;
+			antSmellSpray = 10;
+			numberOfRound = 0;
+
 			instance = new SingletonContainer();
+		}
 		return instance;
 	}
 
@@ -126,7 +125,7 @@ public class SingletonContainer {
 	 *            a csokkentes merteke
 	 */
 	public void decreaseAntKillerSpray(Integer strength) {
-		antKillerSpray-=strength;
+		antKillerSpray -= strength;
 	}
 
 	/**
@@ -137,6 +136,6 @@ public class SingletonContainer {
 	 *            a csokkentes merteke
 	 */
 	public void decreaseAntSmellSpray(Integer strength) {
-		antSmellSpray-=strength;		
+		antSmellSpray -= strength;
 	}
 }

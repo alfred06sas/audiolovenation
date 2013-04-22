@@ -42,7 +42,6 @@ public class Gravel extends Blockage implements Movable {
 		Map<Dir, Field> neighbours = actualField.getNeighbours();
 		List<Item> items = neighbours.get(dir).getItems();
 		
-
 		for (Item item : items) {
 			gravelNr += item.collisionWithGravel(this, b, dir);
 		}
