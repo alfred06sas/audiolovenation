@@ -1,6 +1,6 @@
 create_land -c 6 -r 4
 put_item -t ant -iid 1 -fid 6_2
-set –t ant -mid 1 –d 1 -s 3
+set –t ant -mid 1 –d up -s dont_have_food
 put_item -t food -iid 2 -fid 4_2
 put_item -t hill -iid 3 -fid 2_2
 step_round -rn 2

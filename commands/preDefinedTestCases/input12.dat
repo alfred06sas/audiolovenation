@@ -1,6 +1,6 @@
 create_land -c 8 -r 4
 put_item -t echidna -iid 1 -fid 2_2
-set –t echidna -mid 1 –d 2 -s 2
+set –t echidna -mid 1 –d down -s hungry
 put item -t gravel -iid 2 -fid 4_2
 put item -t gravel -iid 3 -fid 6_2
 step_round –rn 1

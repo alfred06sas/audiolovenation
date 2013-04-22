@@ -1,4 +1,4 @@
 create_land -c 4 -r 4
 put_item -t ant -iid 1  -fid 2_2
-set –t ant -mid 1 –d 2 -s 3
+set –t ant -mid 1 –d down -s dont_have_food
 use_spray -t ant_killer -fid 2_2
