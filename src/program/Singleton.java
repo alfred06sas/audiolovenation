@@ -56,7 +56,7 @@ public class Singleton {
 		}
 		else{
 			states.put(i.getId(), i.getStates());			// TODO getId, getStates elemeknek
-			printComment("a hozzaadando objektum id-ja es allapotai: "i.getId()+" "+i.getStates()+" // Singleton.addItem()");
+			printComment("a hozzaadando objektum id-ja es allapotai: "+i.getId()+" "+i.getStates()+" // Singleton.addItem()");
 		}
 	}
 	
