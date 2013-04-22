@@ -102,13 +102,12 @@ public class Echidna extends Item implements Movable {
 		int gravelNr = 0;
 
 		/* A szomszedok lekerdezese */
-		Field prevField = actualField; System.out.println(actualField.getId());
-		Map<Dir, Field> neighbours = prevField.getNeighbours();
+		Map<Dir, Field> neighbours = actualField.getNeighbours();
 
 		Field nextField = neighbours.get(dir);
-		List<Item> items = nextField.getItems();
+		List<Item> nextFieldItems = nextField.getItems();
 
-		for (Item item : items) {
+		for (Item item : nextFieldItems) {
 			gravelNr = item.collisionWithEchidna(this, false, dir);
 		}
 
@@ -116,12 +115,14 @@ public class Echidna extends Item implements Movable {
 			ReverseDir();
 		/* A hangyaszsun torlese a mezorol */
 		else {
-			prevField.removeItem(this);
+			actualField.removeItem(this);
 
 			/* Hangyaszsun atlep a kovetkezo mezore */
 			nextField.addItem(this);
-			for (Item item : items)
-				item.collisionWithEchidna(this, true, dir);
+			setActualField(nextField);
+			for (Item item : nextFieldItems) {
+				item.collisionWithEchidna(this, true, dir); 
+			}
 		}
 		System.out.println(actualField.getId());
 	}
