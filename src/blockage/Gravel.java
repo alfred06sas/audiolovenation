@@ -38,16 +38,12 @@ public class Gravel extends Blockage implements Movable {
 	 */
 	@Override
 	public int collisionWithEchidna(Echidna echidna, boolean b, Dir dir) {
+		int gravelNr = 0;
 		Map<Dir, Field> neighbours = actualField.getNeighbours();
+		List<Item> items = neighbours.get(dir).getItems();
 		
-		System.out.println(b);
-		System.out.println("actual field: "+actualField.getId());
-		for (Dir key : neighbours.keySet()) {
-			System.out.println(neighbours.get(key).getId());
-		}
-		Integer gravelNr = 0;
 
-		for (Item item : neighbours.get(dir).getItems()) {
+		for (Item item : items) {
 			gravelNr += item.collisionWithGravel(this, b, dir);
 		}
 		
@@ -60,10 +56,11 @@ public class Gravel extends Blockage implements Movable {
 
 	@Override
 	public int collisionWithGravel(Gravel gravel, boolean b, Dir dir) {
-		Map<Dir, Field> neighbours = getActualField().getNeighbours();
 		int gravelNr = 0;
+		Map<Dir, Field> neighbours = getActualField().getNeighbours();
+		List<Item> items = neighbours.get(dir).getItems();
 
-		for (Item item : neighbours.get(dir).getItems()) {
+		for (Item item : items) {
 			gravelNr += item.collisionWithGravel(this, b, dir);
 		}
 

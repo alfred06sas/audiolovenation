@@ -116,6 +116,9 @@ public class SingletonLoader {
 	}
 
 	public void createLand(String r, String c) {
+		land = new Land();
+		s.clear();
+		sc.clear();
 		land.loadLand(Integer.parseInt(r), Integer.parseInt(c));
 		land.buildLand(Integer.parseInt(r), Integer.parseInt(c));
 	}
