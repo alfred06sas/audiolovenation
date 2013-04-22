@@ -127,19 +127,22 @@ public class Tentacle {
 	public Map<Dir, Field> scan(boolean haveFood) {
 		Map<Dir, Field> choice = new HashMap<Dir, Field>();
 		int prev=-1;
-		List<Smell> smells=possibleFields.get(ant.getDir()).getSmells();
-		foodSmell=0;
-		antSmell=0;
-		for (Smell smell:smells){
-			smell.smellIt(this);
-		}
-		if (haveFood==true){
+		List<Smell> smells;
+		if (possibleFields.get(ant.getDir())!=null){
+			smells=possibleFields.get(ant.getDir()).getSmells();
 			foodSmell=0;
-		}
-		if(foodSmell+antSmell>prev){
-			choice.clear();
-			choice.put(ant.getDir(), possibleFields.get(ant.getDir()));
-			prev=foodSmell+antSmell;
+			antSmell=0;
+			for (Smell smell:smells){
+				smell.smellIt(this);
+			}
+			if (haveFood==true){
+				foodSmell=0;
+			}
+			if(foodSmell+antSmell>prev){
+				choice.clear();
+				choice.put(ant.getDir(), possibleFields.get(ant.getDir()));
+				prev=foodSmell+antSmell;
+			}
 		}
 		for (Dir key : possibleFields.keySet()) {
 			smells=possibleFields.get(key).getSmells();
@@ -148,7 +151,7 @@ public class Tentacle {
 			antSmell=0;
 			for (Smell smell:smells){
 				smell.smellIt(this);
-				System.out.println("comment: smellek: "+key+" :"+smell.getStrength());
+//				System.out.println("comment: smellek: "+key+" :"+smell.getStrength());
 			}
 			if (haveFood==true){
 				foodSmell=0;

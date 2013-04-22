@@ -63,7 +63,7 @@ public class Land {
 				}
 			}
 		}
-		System.out.println(fields.toString());
+//		System.out.println(fields.toString());
 	}
 	
 
@@ -125,9 +125,9 @@ public class Land {
 			}
 		}
 		
-		for (String key : fields.keySet()){
-			System.out.println("comment: palya:"+fields.get(key).getId()+" :"+fields.get(key).getNeighbours()+" // Land.buildLand()");
-		}
+//		for (String key : fields.keySet()){
+//			System.out.println("comment: palya:"+fields.get(key).getId()+" :"+fields.get(key).getNeighbours()+" // Land.buildLand()");
+//		}
 	}
 		/*
 		for(int k=1;k<=rowNumber;k++){
