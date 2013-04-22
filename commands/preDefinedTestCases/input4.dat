@@ -1,0 +1,6 @@
+create_land -c 4 -r 4
+put item -t echidna -iid 1 -fid 3_3
+set –t echidna -mid 1 –d 1 -s 2
+put_item -t ant -iid 2 -fid 4_2
+set –t ant -mid 2 –d 3 -s 3
+step_round –rn 1
