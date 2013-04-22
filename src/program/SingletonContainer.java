@@ -37,6 +37,11 @@ public class SingletonContainer {
 		antSmellSpray = 10;
 		numberOfRound = 0;
 	}
+	
+	void clear(){
+		instance = null;		
+	}
+	
 	/**
 	 * 
 	 * Az illekony elemek hozzaadasa az oket taroa listaba.

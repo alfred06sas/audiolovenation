@@ -44,8 +44,8 @@ public class Singleton {
 		return instance;
 	}
 
-	void init(){
-		
+	void clear(){
+		instance = null;		
 	}
 	// Az elemek egybol letrehozasuk utan meghivjak ezt a metodust
 	// hozzaadva ezzel Id-jet es allapotait a az osztalyhoz
