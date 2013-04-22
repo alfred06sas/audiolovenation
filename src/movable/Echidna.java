@@ -102,10 +102,10 @@ public class Echidna extends Item implements Movable {
 		int gravelNr = 0;
 
 		/* A szomszedok lekerdezese */
-		Field prevField = getActualField();
-		Map<Dir, Field> map = prevField.getNeighbours();
+		Field prevField = actualField; System.out.println(actualField.getId());
+		Map<Dir, Field> neighbours = prevField.getNeighbours();
 
-		Field nextField = map.get(dir);
+		Field nextField = neighbours.get(dir);
 		List<Item> items = nextField.getItems();
 
 		for (Item item : items) {
@@ -123,7 +123,7 @@ public class Echidna extends Item implements Movable {
 			for (Item item : items)
 				item.collisionWithEchidna(this, true, dir);
 		}
-
+		System.out.println(actualField.getId());
 	}
 
 	public void ReverseDir() {

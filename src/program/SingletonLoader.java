@@ -49,7 +49,6 @@ public class SingletonLoader {
 				if (line == null)
 					break;
 				String[] sline = line.split(" ");
-				System.out.println(sline[1]);
 				
 				// a palya letrehozasa
 				if (sline[0].equals("create_land") && sline[1].equals("-r")
@@ -100,8 +99,12 @@ public class SingletonLoader {
 				// kor leptetese	
 				} else if (sline[0].equals("step_round")
 						&& sline[1].equals("-rn") && sline.length == 3) {
-					land.move();
-					s.printNextRound();
+					
+					int round = Integer.valueOf(sline[2]);
+					for (int i = 0; i < round; i++) {
+						land.move();
+						s.printNextRound();
+					}
 				
 				// a parancsot nem sikerult ertelmezni
 				} else {
