@@ -6,8 +6,8 @@ import java.util.Map;
 
 import land.Dir;
 import land.Field;
-import movable.Ant;
 import movable.Echidna;
+import movable.Movable;
 
 /**
  * 
@@ -17,14 +17,14 @@ import movable.Echidna;
  * @author audiolovenation
  * 
  */
-public class Gravel extends Blockage {
+public class Gravel extends Blockage implements Movable {
 
-	public Gravel(){
+	public Gravel() {
 	}
-	
-	public Gravel(String ID){
+
+	public Gravel(String ID) {
 		super(ID);
-		id="g"+ID;
+		id = "g" + ID;
 	}
 
 	/**
@@ -34,41 +34,52 @@ public class Gravel extends Blockage {
 	 *            az a hangyaszsun. amivel utkozott
 	 */
 	@Override
-	public void collisionWithEchidna(Echidna echidna, boolean b, Dir dir) {
-		boolean ketto=false;
-		boolean harom=false;
-		
-		Map<Dir, Field> neig=getActualField().getNeighbours();
-		
-		Gravel gravleKetto=null;
-		
-		for (Item item : neig.get(dir).getItems()){
-			try{
-				gravleKetto = (Gravel) item;
-				ketto = true;
-			}
-			catch (ClassCastException e){}
+	public Integer collisionWithEchidna(Echidna echidna, boolean b, Dir dir) {
+		Map<Dir, Field> neighbours = getActualField().getNeighbours();
+		Integer gravelNr = 0;
+
+		for (Item item : neighbours.get(dir).getItems()) {
+			gravelNr += item.collisionWithGravel(this, b, dir);
 		}
 		
-		for (Item item : neig.get(dir).getNeighbours().get(dir).getItems()){
-			try{
-				Gravel gravle = (Gravel) item;
-				harom = true;
-			}
-			catch (ClassCastException e){}
-		}
-		if (!((ketto)&&(harom))){
-			getActualField().removeItem(this);
-			setActualField(neig.get(dir));
-			getActualField().addItem(this);
+		if (b == true) {
+			return 0;
 		}
 		
-		if ((ketto)&&(!harom)){
-			gravleKetto.getActualField().removeItem(this);
-			gravleKetto.setActualField(neig.get(dir));
-			gravleKetto.getActualField().addItem(this);
+		return gravelNr;
+	}
+
+	@Override
+	public Integer collisionWithGravel(Gravel gravel, boolean b, Dir dir) {
+		Map<Dir, Field> neighbours = getActualField().getNeighbours();
+		Integer gravelNr = 0;
+
+		for (Item item : neighbours.get(dir).getItems()) {
+			gravelNr += item.collisionWithGravel(this, b, dir);
+		}
+
+		if (b == true) {
+			actualField.removeItem(this);
+			Field nextField = neighbours.get(dir);
+			setActualField(nextField);
+			nextField.addItem(this);
+			
+			return 0;
 		}
 		
+		return gravelNr;
+	}
+
+	@Override
+	public void step() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void setAlive() {
+		// TODO Auto-generated method stub
+
 	}
 
 }

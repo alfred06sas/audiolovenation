@@ -6,6 +6,7 @@ import land.Dir;
 import land.Field;
 import movable.Ant;
 import movable.Echidna;
+import blockage.Gravel;
 
 /**
  * 
@@ -18,7 +19,7 @@ public class Item {
 
 	protected String id;
 
-	private Field actualField;
+	protected Field actualField;
 	
 	public Item(){
 		id = new String();
@@ -62,7 +63,8 @@ public class Item {
 		return actualField;
 	}
 	
-	public void collisionWithEchidna(Echidna echidna, boolean b, Dir dir) {
+	public Integer collisionWithEchidna(Echidna echidna, boolean b, Dir dir) {
+		return 0;
 	}
 
 	/**
@@ -72,6 +74,10 @@ public class Item {
 	 *            a spray erossege
 	 */
 	public void collisionWithSpray(Integer strength) {
+	}
+	
+	public Integer collisionWithGravel(Gravel gravel, boolean b, Dir dir) {
+		return 0;
 	}
 
 	public String getId() {

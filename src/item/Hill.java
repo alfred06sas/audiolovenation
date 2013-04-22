@@ -2,7 +2,7 @@ package item;
 
 import land.Dir;
 import movable.Ant;
-import movable.Echidna;
+import blockage.Gravel;
 
 /**
  * 
@@ -10,18 +10,19 @@ import movable.Echidna;
  * 
  *         A letrejott hangyak kiindulasi pontja (boly), ahonnan a hangyak
  *         indulnak etelt szerezni. Ha egy hangya talalt etelt, akkor ezt ide
- *         probalja visszajuttatni. Ha sikerul, a hangya vissza megy a bolyba(inaktiv allapotba kerul).
+ *         probalja visszajuttatni. Ha sikerul, a hangya vissza megy a
+ *         bolyba(inaktiv allapotba kerul).
  */
 public class Hill extends Item {
 
-	public Hill(){		
+	public Hill() {
 	}
-	
-	public Hill(String ID){
+
+	public Hill(String ID) {
 		super(ID);
-		id="h"+ID;
+		id = "h" + ID;
 	}
-	
+
 	/**
 	 * Hangyaval valo utkozes.
 	 * 
@@ -32,8 +33,13 @@ public class Hill extends Item {
 	 */
 	@Override
 	public void collisionWithAnt(Ant ant, boolean b) {
-		//A hangyabolyba visszaero hangya inaktiv allapotba kerul
+		// A hangyabolyba visszaero hangya inaktiv allapotba kerul
 		ant.rest();
-		
+
+	}
+
+	@Override
+	public Integer collisionWithGravel(Gravel gravel, boolean b, Dir dir) {
+		return 3;
 	}
 }
