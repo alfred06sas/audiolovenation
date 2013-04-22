@@ -113,10 +113,50 @@ public class Main {
 						inputFile = new File("commands\\preDefinedTestCases\\"+inputFileName);
 						switch (nr) {
 						case 1:
-							sl.loadTestCase(inputFile, "output.dat");
+							sl.loadTestCase(inputFile, "output1.dat");
 							break;
 						case 2:
-							break loop;
+							sl.loadTestCase(inputFile, "output2.dat");
+							break;
+						case 3:
+							sl.loadTestCase(inputFile, "output3.dat");
+							break;
+						case 4:
+							sl.loadTestCase(inputFile, "output4.dat");
+							break;
+						case 5:
+							sl.loadTestCase(inputFile, "output5.dat");
+							break;
+						case 6:
+							sl.loadTestCase(inputFile, "output6.dat");
+							break;
+						case 7:
+							sl.loadTestCase(inputFile, "output7.dat");
+							break;
+						case 8:
+							sl.loadTestCase(inputFile, "output8.dat");
+							break;
+						case 9:
+							sl.loadTestCase(inputFile, "output9.dat");
+							break;
+						case 10:
+							sl.loadTestCase(inputFile, "output10.dat");
+							break;
+						case 11:
+							sl.loadTestCase(inputFile, "output11.dat");
+							break;
+						case 12:
+							sl.loadTestCase(inputFile, "output12.dat");
+							break;
+						case 13:
+							sl.loadTestCase(inputFile, "output13.dat");
+							break;
+						case 14:
+							sl.loadTestCase(inputFile, "output14.dat");
+							break;
+						case 15:
+							sl.loadTestCase(inputFile, "output15.dat");
+							break;
 						default:
 							/** Hibas bemenet lekezelese */
 							System.out.println("Hibas kod!");
