@@ -334,9 +334,11 @@ public class Ant extends Item implements Movable {
 
 	public void setHaveFood(boolean b) {
 		haveFood=b;
+		wait = 0;
 	}
 
 	public void setKilled(boolean b) {
 		isKilled=b;
+		wait = 0;
 	}
 }
