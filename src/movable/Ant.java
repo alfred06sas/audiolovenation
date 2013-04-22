@@ -4,6 +4,7 @@ import item.Food;
 import item.Item;
 import item.Tentacle;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -202,11 +203,12 @@ public class Ant extends Item implements Movable {
 		 */
 //		System.out.println("comment: possibleNeighs: "+possibleNeig+" // Ant.step()");
 		Map<Dir, Field> next = new HashMap<Dir, Field>();
+		List<Item> items = new ArrayList<Item>();
 		for (Dir key : possibleNeig.keySet()) {
-		List<Item> items = possibleNeig.get(key).getItems();
-			for (Item item:items){
-				item.collisionWithAnt(this, false);
-			}
+			items.addAll(possibleNeig.get(key).getItems());
+		}
+		for (Item item:items){
+			item.collisionWithAnt(this, false);
 		}
 		//Most mar csak az van bent, ahova tenyleg lepni tudunk		
 		next.clear();
@@ -223,6 +225,7 @@ public class Ant extends Item implements Movable {
 			}
 			else{
 				for (Dir key : next.keySet()){
+					dir=key;
 					setActualField(next.get(key));
 					actualField.addItem(this);
 				}
@@ -231,13 +234,15 @@ public class Ant extends Item implements Movable {
 		}
 		else{
 			reverseDir();
+			s.printDirChanged(this);
 		}
 		
-		List<Item> items=actualField.getItems();
+		items=actualField.getItems();
 		for (Item item : items)
 			item.collisionWithAnt(this, true);
 		
 		s.printStep(this,oldField,actualField);
+		s.printDirChanged(this);
 
 	}
 
@@ -309,6 +314,7 @@ public class Ant extends Item implements Movable {
 	 */
 	public void canNotGo(Field field) {
 	/* A parameterkent megadott mezo kivetele a lehetseges mezok listajabol. */
+		
 		tentacle.removePossibleNeighbour(field);
 	}
 	
