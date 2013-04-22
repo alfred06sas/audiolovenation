@@ -17,12 +17,11 @@ import movable.Movable;
  *         A palya vegzi a leptetest es az illekony anyagok csokkenteset is.
  *         Erre a megoldasra azert volt szukseg, hogy a palya szamara elerhetoek
  *         legyenek ezek a listak, ugyanakkor mind a Volatile es a Movable is
- *         hozzïa tudjon adni elemeket a sajat listajahoz. Igy nem kellett
+ *         hozzï¿½a tudjon adni elemeket a sajat listajahoz. Igy nem kellett
  *         mindenki szamara lathatova tenni az egesz palyat (Land osztaly).
  */
 public class SingletonContainer {
 
-	private Land container;
 	private List<Movable> movables;
 	private List<Volatile> volatiles;
 	private static SingletonContainer instance;
@@ -31,7 +30,6 @@ public class SingletonContainer {
 	private int numberOfRound;
 
 	public SingletonContainer(){
-		container = new Land();
 		movables = new ArrayList<Movable>();
 		volatiles = new ArrayList<Volatile>();
 		instance = null;
@@ -135,16 +133,5 @@ public class SingletonContainer {
 	 */
 	public void decreaseAntSmellSpray(Integer strength) {
 		antSmellSpray-=strength;		
-	}
-
-	public int getNumberOfRound(){
-		return numberOfRound;
-	}
-	public void increaseOfRoundNumber() {
-		numberOfRound++;
-		
-	}
-	public Land getContainer() {
-		return container;
 	}
 }

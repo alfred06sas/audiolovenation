@@ -1,24 +1,10 @@
 package program;
 
-import item.Antlion;
-import item.Food;
-import item.Hill;
 import item.Item;
-import item.Spray;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.HashMap;
 
-import land.Dir;
 import land.Field;
-import land.Land;
-import movable.Ant;
-import movable.Echidna;
-import blockage.Gravel;
-import blockage.Puddle;
 
 /**
  * 
