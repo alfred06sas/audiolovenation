@@ -56,7 +56,7 @@ public class SingletonLoader {
 						&& sline.length == 7) {
 					String t = sline[2];
 					String iid = sline[4];
-					String fid = sline[6];
+					String fid = sline[6]; 
 
 					if (t.equals("ant")) {
 						Ant ant = new Ant(iid);
