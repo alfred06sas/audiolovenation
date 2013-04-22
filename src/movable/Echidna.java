@@ -99,6 +99,7 @@ public class Echidna extends Item implements Movable {
 	 */
 	@Override
 	public void step() {
+		Singleton s = Singleton.Instance();
 		int gravelNr = 0;
 
 		/* A szomszedok lekerdezese */
@@ -111,20 +112,25 @@ public class Echidna extends Item implements Movable {
 			gravelNr = item.collisionWithEchidna(this, false, dir);
 		}
 
-		if (gravelNr > 2)
+		if (gravelNr > 2) {
 			ReverseDir();
+			s.printDirChanged(this);
+		}
+
 		/* A hangyaszsun torlese a mezorol */
 		else {
 			actualField.removeItem(this);
 
 			/* Hangyaszsun atlep a kovetkezo mezore */
+			s.printStep(this, actualField, nextField);
+
 			nextField.addItem(this);
 			setActualField(nextField);
+
 			for (Item item : nextFieldItems) {
-				item.collisionWithEchidna(this, true, dir); 
+				item.collisionWithEchidna(this, true, dir);
 			}
 		}
-		System.out.println(actualField.getId());
 	}
 
 	public void ReverseDir() {
@@ -186,6 +192,7 @@ public class Echidna extends Item implements Movable {
 			else
 				states.put("STATE", "NOT_HUNGRY");
 		}
+		states.put("DIR", dir.toString());
 
 		return states;
 	}

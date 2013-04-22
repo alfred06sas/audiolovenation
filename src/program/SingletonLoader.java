@@ -102,9 +102,8 @@ public class SingletonLoader {
 					
 					int round = Integer.valueOf(sline[2]);
 					for (int i = 0; i < round; i++) {
-						System.out.println("comment: step_round feldolgozasa. körök száma:"+round+" // SingletonLoader.LoadTestCase()");
-						land.move();
 						s.printNextRound();
+						land.move();
 					}
 				
 				// a parancsot nem sikerult ertelmezni
