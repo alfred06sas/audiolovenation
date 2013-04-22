@@ -2,10 +2,10 @@ package item;
 
 import java.util.HashMap;
 
+import land.Dir;
 import land.Field;
 import movable.Ant;
 import movable.Echidna;
-import program.Singleton;
 
 /**
  * 
@@ -62,7 +62,7 @@ public class Item {
 		return actualField;
 	}
 	
-	public void collisionWithEchidna(Echidna echidna) {
+	public void collisionWithEchidna(Echidna echidna, boolean b, Dir dir) {
 	}
 
 	/**

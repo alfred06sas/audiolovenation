@@ -26,18 +26,6 @@ public class Gravel extends Blockage {
 		super(ID);
 		id="g"+ID;
 	}
-	
-	/**
-	 * Hangyaval valo utkozes. Lepes utan (b == true) nem csinal semmit, mivel
-	 * ez az eset nem lehetseges: a hangya nem lephet akadalyra. Lepes elott (b
-	 * == false) jelzi a hangyanak h az ot tartalmazo mezore nem lephet.
-	 * 
-	 * @param ant
-	 *            a hangya referenciája. amivel utkozott
-	 * @param b
-	 *            lepes elott: false, lepes utan: true
-	 */
-	@Override
 
 	/**
 	 * Hangyaszsunnel valo utkozes. Nem csinal semmit, csak visszater.
@@ -46,11 +34,10 @@ public class Gravel extends Blockage {
 	 *            az a hangyaszsun. amivel utkozott
 	 */
 	@Override
-	public void collisionWithEchidna(Echidna echidna) {
+	public void collisionWithEchidna(Echidna echidna, boolean b, Dir dir) {
 		boolean ketto=false;
 		boolean harom=false;
 		
-		Dir dir=echidna.getDir();
 		Map<Dir, Field> neig=getActualField().getNeighbours();
 		
 		Gravel gravleKetto=null;

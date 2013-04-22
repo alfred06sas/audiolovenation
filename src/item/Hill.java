@@ -1,6 +1,5 @@
 package item;
 
-import program.Singleton;
 import land.Dir;
 import movable.Ant;
 import movable.Echidna;
@@ -36,15 +35,5 @@ public class Hill extends Item {
 		//A hangyabolyba visszaero hangya inaktiv allapotba kerul
 		ant.rest();
 		
-	}
-
-	/**
-	 * Hangyaszsunnel valo utkozes.
-	 * 
-	 * @param Echidna
-	 *            a hangyaszun ami utkozik a bollyal
-	 */
-	@Override
-	public void collisionWithEchidna(Echidna echidna) {
 	}
 }

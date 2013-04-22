@@ -67,16 +67,6 @@ public class Food extends Item {
 	/**
 	 * Hangyaszsunnel valo utkozes. Nem csinal semmit, csak visszater.
 	 * 
-	 * @param Echidna
-	 *            a hangyaszsun amivel utkozik
-	 */
-	@Override
-	public void collisionWithEchidna(Echidna echidna) {
-	}
-
-	/**
-	 * Hangyaszsunnel valo utkozes. Nem csinal semmit, csak visszater.
-	 * 
 	 * @param Ant
 	 *            a hangya amivel utkozik
 	 * @param b

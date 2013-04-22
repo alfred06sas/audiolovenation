@@ -1,10 +1,8 @@
 package item;
 
-import item.Item;
-import item.Volatile;
+import land.Dir;
 import movable.Ant;
 import movable.Echidna;
-import program.Singleton;
 
 /**
  * 
@@ -52,24 +50,4 @@ public class Spray extends Item implements Volatile {
 			ant.looseHP(5);
 		}
 	}
-
-	/**
-	 * Hangyaszsunnel valo utkozes. Nem csinil semmit, csak visszater.
-	 * 
-	 * @param Echidna
-	 *            a hangyaszsun amivel utkozik
-	 */
-	@Override
-	public void collisionWithEchidna(Echidna echidna) {
-	}
-
-	/**
-	 * Spray-vel valo utkozes. Nem csinal semmit, csak visszater.
-	 * 
-	 * @param strength
-	 *            erosseg
-	 */
-	public void collisionWithSpray(Integer strength) {
-	}
-
 }

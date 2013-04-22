@@ -1,9 +1,8 @@
 package item;
 
-import land.Field;
+import land.Dir;
 import movable.Ant;
 import movable.Echidna;
-import program.Singleton;
 
 /**
  * 
@@ -35,25 +34,5 @@ public class Antlion extends Item {
 		if (b == true) {
 			ant.kill();
 		}
-	}
-
-	/**
-	 * Hangyaszsunnel valu utkozes. Nem csinïal semmit, csak visszater.
-	 * 
-	 * @param echidna
-	 *            az a hangyaszsun. amivel utkozott
-	 */
-	@Override
-	public void collisionWithEchidna(Echidna echidna) {
-	}
-
-	/**
-	 * Hangyaszsunnel valu utkozes. Nem csinïal semmit, csak visszater.
-	 * 
-	 * @param strength
-	 *            a Spray erossege
-	 */
-	@Override
-	public void collisionWithSpray(Integer strength) {
 	}
 }

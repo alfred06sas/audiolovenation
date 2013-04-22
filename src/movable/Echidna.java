@@ -96,16 +96,6 @@ public class Echidna extends Item implements Movable {
 	}
 
 	/**
-	 * - Hangyaszsunel valo utkozes. Nem tortenik semmmi.
-	 * 
-	 * @param echidna
-	 *            referencia a hangyaszsunre, amivel utkozik
-	 */
-	@Override
-	public void collisionWithEchidna(Echidna echidna) {
-	}
-
-	/**
 	 * A hangyaszsun leptetese.
 	 */
 	@Override
@@ -124,7 +114,7 @@ public class Echidna extends Item implements Movable {
 		List<Item> items = nextField.getItems();
 		
 		for (Item item : items)
-			item.collisionWithEchidna(this);
+			item.collisionWithEchidna(this, false, dir);
 		
 	}
 
@@ -140,7 +130,7 @@ public class Echidna extends Item implements Movable {
 	public void collisionWithAnt(Ant ant, boolean b) {
 		Singleton s = Singleton.Instance();
 
-		/* Lepïes utan */
+		/* Lepï¿½es utan */
 		if (b == true) {
 			/* Hangya megolese */
 			ant.kill();
