@@ -111,12 +111,11 @@ public class Echidna extends Item implements Movable {
 		for (Item item : nextFieldItems) {
 			gravelNr = item.collisionWithEchidna(this, false, dir);
 		}
-
+		
 		if (gravelNr > 2) {
 			ReverseDir();
 			s.printDirChanged(this);
 		}
-
 		/* A hangyaszsun torlese a mezorol */
 		else {
 			actualField.removeItem(this);

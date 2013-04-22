@@ -103,6 +103,8 @@ public class Singleton {
 							+ what.getId().substring(1) + ") " + key
 							+ " CHANGED:    FROM " + oldStateItemWhat.get(key)
 							+ " TO " + newStateItemWhat.get(key));
+					states.remove(what.getId());
+					states.put(what.getId(),newStateItemWhat);
 				}
 			}
 		}
@@ -114,6 +116,8 @@ public class Singleton {
 							+ with.getId().substring(1) + ") " + key
 							+ " CHANGED:    FROM " + oldStateItemWith.get(key)
 							+ " TO " + newStateItemWith.get(key));
+					states.remove(with.getId());
+					states.put(with.getId(),newStateItemWith);
 				}
 			}
 		}
@@ -145,6 +149,8 @@ public class Singleton {
 						+ ") " + " DIR CHANGED:    FROM "
 						+ oldStateItemWhat.get("DIR") + " TO "
 						+ newStateItemWhat.get("DIR"));
+				states.remove(what.getId());
+				states.put(what.getId(),newStateItemWhat);
 			}
 		}
 
