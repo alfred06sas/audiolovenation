@@ -6,8 +6,6 @@ import java.util.Map;
 import land.Dir;
 import land.Field;
 import movable.Ant;
-import movable.Echidna;
-import program.Singleton;
 import smell.FoodSmell;
 
 /**
@@ -20,14 +18,16 @@ import smell.FoodSmell;
  */
 public class Food extends Item {
 
-	public Food(){
+	public Food() {
 	}
-	public Food(String ID){
+
+	public Food(String ID) {
 		super(ID);
-		id="f"+ID;
+		id = "f" + ID;
 	}
-	/** 0. eleme az actualis FoodSmell
-	 *  1..6ig a kornyezo mezok FoodSmellje
+
+	/**
+	 * 0. eleme az actualis FoodSmell 1..6ig a kornyezo mezok FoodSmellje
 	 * 
 	 */
 	private List<FoodSmell> foodSmells;
@@ -36,7 +36,7 @@ public class Food extends Item {
 	 * Az etel szaganak eltuntetese egy mezorol.
 	 */
 	public void deleteSmell() {
-		for(FoodSmell f :foodSmells)
+		for (FoodSmell f : foodSmells)
 			f.removeMyself(getActualField());
 	}
 
@@ -47,11 +47,12 @@ public class Food extends Item {
 	 *            a mezohoz hozzaadando etelszag
 	 */
 	public void addFoodSmell(FoodSmell foodSmell) {
-		getActualField().addSmell(foodSmells.get(0));
-		Map<Dir, Field> neg=getActualField().getNeighbours();
-		for (int i=1;i<=6;i++){
-			neg.get(i).addSmell(foodSmells.get(i));
+		getActualField().addSmell(new FoodSmell(5));
+		Map<Dir, Field> neighbours = getActualField().getNeighbours();
+		for (int i = 1; i < neighbours.size(); i++) {
+			neighbours.get(i).addSmell(new FoodSmell(2));
 		}
+		foodSmells.add(foodSmell);
 	}
 
 	/**
@@ -74,7 +75,7 @@ public class Food extends Item {
 	 */
 	@Override
 	public void collisionWithAnt(Ant ant, boolean b) {
-			// Ha a hangya oylan mezore lepett ahol etel van akkor felveszi
+		// Ha a hangya oylan mezore lepett ahol etel van akkor felveszi
 		if (b == true) {
 			ant.pickUpFood();
 			// Etelszag kitorlese a mezorol, ahonnan elviszi a hagnya az etelt
