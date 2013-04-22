@@ -50,9 +50,9 @@ public class Gravel extends Blockage implements Movable {
 	}
 
 	@Override
-	public Integer collisionWithGravel(Gravel gravel, boolean b, Dir dir) {
+	public int collisionWithGravel(Gravel gravel, boolean b, Dir dir) {
 		Map<Dir, Field> neighbours = getActualField().getNeighbours();
-		Integer gravelNr = 0;
+		int gravelNr = 0;
 
 		for (Item item : neighbours.get(dir).getItems()) {
 			gravelNr += item.collisionWithGravel(this, b, dir);

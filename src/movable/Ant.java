@@ -13,7 +13,7 @@ import land.Field;
 import program.Singleton;
 import program.SingletonContainer;
 import smell.AntSmell;
-import blockage.Blockage;
+import blockage.Gravel;
 
 /**
  * 
@@ -157,12 +157,14 @@ public class Ant extends Item implements Movable {
 	 */
 	public void kill() {
 		
+		getActualField().removeItem(this);
+		
 		/* Hangya torlese a SingletonContainer movables listajabol */
 		SingletonContainer sc = new SingletonContainer().getInstance();
 		sc.removeMovable(this);
 		
 		/* Hangya torlese az ot tartalmazo mezorol */
-		getActualField().removeItem(this);
+		
 		isKilled=true;
 		
 	}
@@ -311,6 +313,14 @@ public class Ant extends Item implements Movable {
 		/* A hangya looseHP metodusanak meghivasa. */
 		looseHP(6);
 	}
+	
+	@Override
+	public int collisionWithGravel(Gravel g, boolean b, Dir d) {
+		g.collisionWithAnt(this, true);
+		kill();
+		
+		return HP;
+	}
 
 	/**
 	 * Akadallyal valo utkozes eseten az akadaly ezzel a metodussal jelzi a
@@ -344,5 +354,17 @@ public class Ant extends Item implements Movable {
 		
 		states.put("DIR", dir.toString());
 		return states;
+	}
+
+	public void setWait(int i) {
+		wait=i;
+	}
+
+	public void setHaveFood(boolean b) {
+		haveFood=b;
+	}
+
+	public void setKilled(boolean b) {
+		isKilled=b;
 	}
 }

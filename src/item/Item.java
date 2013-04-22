@@ -76,7 +76,7 @@ public class Item {
 	public void collisionWithSpray(Integer strength) {
 	}
 	
-	public Integer collisionWithGravel(Gravel gravel, boolean b, Dir dir) {
+	public int collisionWithGravel(Gravel gravel, boolean b, Dir dir) {
 		return 0;
 	}
 
@@ -88,4 +88,5 @@ public class Item {
 	{
 		return null;
 	}
+
 }
