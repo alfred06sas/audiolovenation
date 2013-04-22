@@ -22,6 +22,11 @@ public class Spray extends Item implements Volatile {
 		strength = 0;
 	}
 	
+	public Spray(String ID){
+		super(ID);
+		strength = 0;
+	}
+	
 	/**
 	 * Spray erossegenek a csokkentese
 	 * 

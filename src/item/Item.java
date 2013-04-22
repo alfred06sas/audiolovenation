@@ -16,12 +16,17 @@ import program.Singleton;
  */
 public class Item {
 
-	private String id;
+	protected String id;
 
 	private Field actualField;
 	
 	public Item(){
 		id = new String();
+		actualField = new Field();
+	}
+	
+	public Item(String ID){
+		id = ID;
 		actualField = new Field();
 	}
 	

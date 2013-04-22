@@ -3,7 +3,6 @@ package movable;
 import item.Food;
 import item.Item;
 import item.Tentacle;
-import item.Volatile;
 
 import java.util.HashMap;
 import java.util.List;
@@ -14,7 +13,6 @@ import land.Field;
 import program.Singleton;
 import program.SingletonContainer;
 import smell.AntSmell;
-import smell.Smell;
 import blockage.Blockage;
 
 /**
@@ -58,6 +56,18 @@ public class Ant extends Item implements Movable {
 	private Dir dir;
 	
 	public Ant(){
+		HP = 10;
+		tentacle = new Tentacle(this);
+		isKilled = false;
+		isActive = false;
+		wait = 10;
+		haveFood = false;
+		dir = Dir.RIGHT_BOTTOM;
+	}
+	
+	public Ant(String ID){
+		super(ID);
+		id="a"+ID;
 		HP = 10;
 		tentacle = new Tentacle(this);
 		isKilled = false;
@@ -121,22 +131,22 @@ public class Ant extends Item implements Movable {
 	public void reverseDir() {
 		switch (dir){
 		case UP:
-			dir = Dir.RIGHT_TOP;
+			dir = Dir.DOWN;			
 			break;
 		case DOWN:
-			dir = Dir.LEFT_BOTTOM;
+			dir = Dir.UP;	
 			break;
 		case RIGHT_TOP:
-			dir = Dir.RIGHT_BOTTOM;
+			dir = Dir.LEFT_BOTTOM;			
 			break;
 		case RIGHT_BOTTOM:
-			dir = Dir.DOWN;
+			dir = Dir.LEFT_TOP;
 			break;
 		case LEFT_TOP:
-			dir = Dir.UP;
+			dir = Dir.RIGHT_BOTTOM;
 			break;
 		case LEFT_BOTTOM:
-			dir = Dir.LEFT_TOP;
+			dir = Dir.RIGHT_TOP;
 			break;
 		}
 	}
@@ -153,6 +163,7 @@ public class Ant extends Item implements Movable {
 		
 		/* Hangya torlese az ot tartalmazo mezorol */
 		getActualField().removeItem(this);
+		isKilled=true;
 		
 	}
 
@@ -329,6 +340,7 @@ public class Ant extends Item implements Movable {
 				states.put("STATE", "DONT_HAVE_FOOD");
 		}
 		
+		states.put("DIR", dir.toString());
 		return states;
 	}
 }

@@ -45,13 +45,13 @@ public class Singleton {
 			types=new HashMap<String,  String>();
 			
 			// tipusok inicializalasa, HashMap az id-k kezdobeture
-//			types.put("a", "Ant");
-//			types.put("f", "Food");
-//			types.put("s", "Spray");
-//			types.put("e", "Echidna");
-//			types.put("l", "Antlion");
-//			types.put("p", "Puddle");
-//			types.put("g", "Gravel");
+			types.put("a", "Ant");
+			types.put("f", "Food");
+			types.put("s", "Spray");
+			types.put("e", "Echidna");
+			types.put("l", "Antlion");
+			types.put("p", "Puddle");
+			types.put("g", "Gravel");
 		}
 		return instance;
 	}
@@ -62,11 +62,12 @@ public class Singleton {
 	// Az elemek egybol letrehozasuk utan meghivjak ezt a metodust
 	// hozzaadva ezzel Id-jet es allapotait a az osztalyhoz
 	void addItem(Item i){
-		if(states.get(i.getId())==null){			// TODO Elemeknek Id es fieldnek
+		if(states.get(i.getId())!=null){			// TODO Elemeknek Id es fieldnek
 			printError("Id duplikacio!");
 		}
 		else{
 			states.put(i.getId(), i.getStates());			// TODO getId, getStates elemeknek
+			System.out.println(i.getId()+" "+i.getStates());
 		}
 	}
 	
@@ -82,8 +83,10 @@ public class Singleton {
 	
 	void printCollosion(Item what, Item with, Field field){
 		// ket t�pus kivalasztasa a types HashMap-bol
-		String whatType = types.get(what.getId().charAt(0));
-		String withType = types.get(with.getId().charAt(0));
+		System.out.println(what.getId().charAt(0));
+		String whatType = types.get(String.valueOf(what.getId().charAt(0)));
+		String withType = types.get(String.valueOf(with.getId().charAt(0)));
+		System.out.println(types.get("a"));
 		HashMap<String, String> oldStateItemWhat = states.get(what.getId());
 		HashMap<String, String> newStateItemWhat = what.getStates();
 		HashMap<String, String> oldStateItemWith = states.get(with.getId());
@@ -91,17 +94,17 @@ public class Singleton {
 		
 		
 		// A kiiras r�sze
-		System.out.println(whatType+" ("+what.getId()+ ") TO "+withType+" ("+with.getId()+") ON FIELD ("+ field.getId()+")");
+		System.out.println(whatType+" ("+what.getId().substring(1)+ ") TO "+withType+" ("+with.getId().substring(1)+") ON FIELD ("+ field.getId()+")");
 		for (String key : oldStateItemWhat.keySet()) {
 		    if(!oldStateItemWhat.get(key).equals(newStateItemWhat.get(key))){
-		    	System.out.println("                   "+whatType+" ("+what.getId()+") "+
+		    	System.out.println("                   "+whatType+" ("+what.getId().substring(1)+") "+
 		    						key+" CHANGED:    FROM "+oldStateItemWhat.get(key)+
 		    						" TO "+newStateItemWhat.get(key));
 		    }
 		}
 		for (String key : oldStateItemWith.keySet()) {
 		    if(!oldStateItemWith.get(key).equals(newStateItemWith.get(key))){
-		    	System.out.println("                   "+withType+" ("+with.getId()+") "+
+		    	System.out.println("                   "+withType+" ("+with.getId().substring(1)+") "+
 		    						key+" CHANGED:    FROM "+oldStateItemWith.get(key)+
 		    						" TO "+newStateItemWith.get(key));
 		    }
@@ -132,7 +135,7 @@ public class Singleton {
 		}
 		else{
 			if(!oldStateItemWhat.get("DIR").equals(newStateItemWhat.get("DIR"))){
-		    	System.out.println(whatType+" ("+what.getId()+") "+
+		    	System.out.println(whatType+" ("+what.getId().substring(1)+") "+
 		    						" DIR CHANGED:    FROM "+oldStateItemWhat.get("DIR")+
 		    						" TO "+newStateItemWhat.get("DIR"));
 		    }
@@ -147,7 +150,7 @@ public class Singleton {
 	 */
 	void printStep(Item what, Field from, Field to){
 		String whatType = types.get(what.getId().charAt(0));
-		System.out.println(whatType+" ("+what.getId()+") "+" STEPPED FROM FIELD ("+ from.getId()+") TO FIELD ("+to.getId()+")");
+		System.out.println(whatType+" ("+what.getId().substring(1)+") "+" STEPPED FROM FIELD ("+ from.getId()+") TO FIELD ("+to.getId()+")");
 	}
 	
 	/*

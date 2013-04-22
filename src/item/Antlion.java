@@ -16,7 +16,9 @@ public class Antlion extends Item {
 
 	public Antlion(){
 	}
-	
+	public Antlion(String ID){
+		super(ID);
+	}
 	/**
 	 * Hangyaval valo utkozes. Ha ehes megeszi a hangyat.
 	 * 

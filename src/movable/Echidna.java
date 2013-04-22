@@ -56,6 +56,15 @@ public class Echidna extends Item implements Movable {
 		dir = Dir.LEFT_TOP;
 	}
 	
+	public Echidna(String ID){
+		super(ID);
+		isActive = false;
+		wait = 50;
+		hunger = 10;
+		dir = Dir.LEFT_TOP;
+	}
+	
+	
 	/**
 	 * Aktualis mezo beallitasa.
 	 * 

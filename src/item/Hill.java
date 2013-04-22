@@ -18,6 +18,10 @@ public class Hill extends Item {
 	public Hill(){		
 	}
 	
+	public Hill(String ID){
+		super(ID);
+	}
+	
 	/**
 	 * Hangyaval valo utkozes.
 	 * 
