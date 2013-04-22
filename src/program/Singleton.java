@@ -59,6 +59,11 @@ public class Singleton {
 			printComment("a hozzaadando objektum id-ja es allapotai: "+i.getId()+" "+i.getStates()+" // Singleton.addItem()");
 		}
 	}
+	void setState(Item i){
+		states.remove(i.getId());
+		states.put(i.getId(), i.getStates());
+		printComment("a modositott objektum id-ja es allapotai: "+i.getId()+" "+i.getStates()+" // Singleton.setStates()");
+	}
 	
 	/*
 	 *   Az utkozesek kiirasara szolgalo metodus a kimenet a kovetkezo foraban jelenik meg:
