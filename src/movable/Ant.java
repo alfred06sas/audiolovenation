@@ -191,9 +191,8 @@ public class Ant extends Item implements Movable {
 		/* A lehetseges szomszedok beallitasa. */
 		Map<Dir, Field> possibleNeig = new HashMap<Dir, Field>();
 		possibleNeig.put(dir, neg.get(dir));
-		possibleNeig.put(dir.fromInteger((dir.getValue()+1)%6), neg.get(dir.fromInteger((dir.getValue()+1)%6)));
-		possibleNeig.put(dir.fromInteger((dir.getValue()-1)%6), neg.get(dir.fromInteger((dir.getValue()-1)%6)));
-		System.out.println("comment: possNeigh: "+possibleNeig+" // Ant.step()");
+		possibleNeig.put(Dir.fromInteger((dir.getValue()+1+6)%6), neg.get(Dir.fromInteger((dir.getValue()+1+6)%6)));
+		possibleNeig.put(Dir.fromInteger((dir.getValue()+6-1)%6), neg.get(Dir.fromInteger((dir.getValue()+6-1)%6)));
 		tentacle.setPossibleNeighbours(possibleNeig);
 	
 		/* A lehetseges szomszedok item-einek egy ciklusban valo lekerdezese. */
@@ -201,31 +200,31 @@ public class Ant extends Item implements Movable {
 		 * Az elemekkel valo utkoztetes meg lepes elott, hogy kideruljon, hol
 		 * talalhato akadaly.
 		 */
+//		System.out.println("comment: possibleNeighs: "+possibleNeig+" // Ant.step()");
+		Map<Dir, Field> next = new HashMap<Dir, Field>();
 		for (Dir key : possibleNeig.keySet()) {
 		List<Item> items = possibleNeig.get(key).getItems();
 			for (Item item:items){
 				item.collisionWithAnt(this, false);
 			}
 		}
-		//Most mar csak az van bent, ahova tenyleg lepni tudunk
-		
-		possibleNeig.clear();
-		possibleNeig = tentacle.scan(haveFood);
+		//Most mar csak az van bent, ahova tenyleg lepni tudunk		
+		next.clear();
+		next = tentacle.scan(haveFood);
 	
-		if (possibleNeig!=null){
+		if (next!=null){
 			AntSmell as = new AntSmell();
 			actualField.addSmell(as);
 			SingletonContainer sc = SingletonContainer.getInstance();
 			sc.addVolatile(as);
 			actualField.removeItem(this);
-			if (possibleNeig.size()>1){
+			if (next.size()>1){
 				System.out.println("Hiba: Nem csak egy lehetséges irány maradt!");
 			}
 			else{
-				for (Dir key : possibleNeig.keySet()){
-					setActualField(possibleNeig.get(key));
+				for (Dir key : next.keySet()){
+					setActualField(next.get(key));
 					actualField.addItem(this);
-					System.out.println("comment: mezõ változtatás // Ant.step()");
 				}
 			}
 			

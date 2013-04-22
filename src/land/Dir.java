@@ -9,7 +9,7 @@ package land;
  *         rendelkezik.
  */
 public enum Dir {
-	UP(1), DOWN(4), RIGHT_TOP(2), LEFT_TOP(6), RIGHT_BOTTOM(3), LEFT_BOTTOM(5);
+	UP(0), DOWN(3), RIGHT_TOP(1), LEFT_TOP(5), RIGHT_BOTTOM(2), LEFT_BOTTOM(4);
 	private int value;
 
     private Dir(int value) {
@@ -22,17 +22,17 @@ public enum Dir {
     
     public static Dir fromInteger(int x) {
         switch(x) {
-        case 1:
+        case 0:
             return UP;
-        case 2:
+        case 1:
             return RIGHT_TOP;
-        case 3:
+        case 2:
             return RIGHT_BOTTOM;
-        case 4:
+        case 3:
             return DOWN;
-        case 5:
+        case 4:
             return LEFT_BOTTOM;
-        case 6:
+        case 5:
             return LEFT_TOP;
             
         }
