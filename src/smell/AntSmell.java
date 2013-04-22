@@ -17,6 +17,7 @@ import program.SingletonContainer;
 public class AntSmell extends Smell implements Volatile {
 
 	public AntSmell(){
+		strength=5;
 	}
 	
 	/**

@@ -76,17 +76,6 @@ public class Ant extends Item implements Movable {
 		haveFood = false;
 		dir = Dir.RIGHT_BOTTOM;
 	}
-	
-	/**
-	 * Aktualis mezo beallitasa.
-	 * 
-	 * @param field
-	 *            a beallitando mezo
-	 */
-	@Override
-	public void setActualField(Field field) {
-		super.setActualField(field);
-	}
 
 	/**
 	 * Eletero lecsokkentese a megadott ertekkel.
@@ -128,7 +117,7 @@ public class Ant extends Item implements Movable {
 	/**
 	 * A hangya iranyanak megforditasa.
 	 */
-	public void ReverseDir() {
+	public void reverseDir() {
 		switch (dir){
 		case UP:
 			dir = Dir.DOWN;			
@@ -219,48 +208,31 @@ public class Ant extends Item implements Movable {
 		}
 		//Most mar csak az van bent, ahova tenyleg lepni tudunk
 		
-		tentacle.scan(haveFood);
+		possibleNeig.clear();
+		possibleNeig = tentacle.scan(haveFood);
 	
-		
-		Field nextField=new Field();
-		possibleNeig=tentacle.getPossibleNeighbours();
-		for (Dir key : possibleNeig.keySet()){
-			if (key == dir)
-				nextField=possibleNeig.get(key);
-			nextField=possibleNeig.get(key);
+		if (possibleNeig!=null){
+			AntSmell as = new AntSmell();
+			actualField.addSmell(as);
+			SingletonContainer sc = SingletonContainer.getInstance();
+			sc.addVolatile(as);
+			actualField.removeItem(this);
+			if (possibleNeig.size()>1){
+				System.out.println("Hiba: Nem csak egy lehetséges irány maradt!");
+			}
+			else{
+				for (Dir key : possibleNeig.keySet()){
+					setActualField(possibleNeig.get(key));
+					actualField.addItem(this);
+				}
+			}
+			
 		}
-			
-		/*
-		 * A csap scan metodusanak meghivasa, amely kivalasztja a kovetkezo mezot.
-		 */
-		
-		/* Ha van olyan mezo, ahol nincs akadaly. */
-		if (possibleNeig.isEmpty()) {
-			AntSmell antSmell=new AntSmell();
-			antSmell.setActualField(getActualField());
-			
-			/* Hangyaszag hagyasa az elozo mezon. */
-			getActualField().addSmell(antSmell);
-			
-			/* Hangyaszag hozzaadasa a SingletonContainer volatiles listajahoz. */
-			SingletonContainer sc = new SingletonContainer().getInstance();
-			sc.addVolatile(antSmell);
-			
-			/* Elozo mezorol eltavolitja sajat magat. */
-			getActualField().removeItem(this);
-		
-			/* Kovetkezo mezo beallitasa. */
-			setActualField(nextField);
-		
-			/* Kovetkezo mezobe valo beregisztralas. */
-			nextField.addItem(this);
-			/* Ha nem tud sehova se menni. */
-		} else {
-			/* Irany megforditasa. */
-			this.ReverseDir();
+		else{
+			reverseDir();
 		}
-		/* Lepes utani utkoztetes. */
-		List<Item> items=getActualField().getItems();
+		
+		List<Item> items=actualField.getItems();
 		for (Item item : items)
 			item.collisionWithAnt(this, true);
 

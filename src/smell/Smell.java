@@ -16,9 +16,7 @@ public class Smell {
 	private Field actualField;
 	protected int strength;
 
-	public Smell(){
-		actualField = new Field();
-		strength = 10;
+	public Smell(){		
 	}
 	
 	public void setStrength(int s){
