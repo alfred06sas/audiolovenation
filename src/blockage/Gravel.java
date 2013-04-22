@@ -34,7 +34,7 @@ public class Gravel extends Blockage implements Movable {
 	 *            az a hangyaszsun. amivel utkozott
 	 */
 	@Override
-	public Integer collisionWithEchidna(Echidna echidna, boolean b, Dir dir) {
+	public int collisionWithEchidna(Echidna echidna, boolean b, Dir dir) {
 		Map<Dir, Field> neighbours = getActualField().getNeighbours();
 		Integer gravelNr = 0;
 

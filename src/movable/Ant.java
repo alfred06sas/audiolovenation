@@ -128,7 +128,7 @@ public class Ant extends Item implements Movable {
 	/**
 	 * A hangya iranyanak megforditasa.
 	 */
-	public void reverseDir() {
+	public void ReverseDir() {
 		switch (dir){
 		case UP:
 			dir = Dir.DOWN;			
@@ -257,7 +257,7 @@ public class Ant extends Item implements Movable {
 			/* Ha nem tud sehova se menni. */
 		} else {
 			/* Irany megforditasa. */
-			this.reverseDir();
+			this.ReverseDir();
 		}
 		/* Lepes utani utkoztetes. */
 		List<Item> items=getActualField().getItems();
@@ -293,13 +293,13 @@ public class Ant extends Item implements Movable {
 	 *            referencia a hangyaszsunre, amivel utkozik
 	 */
 	@Override
-	public void collisionWithEchidna(Echidna echidna) {
+	public int collisionWithEchidna(Echidna echidna, boolean b, Dir dir) {
 		/*
 		 * A hangya szol a hangyaszsunnek, hogy hangyaval utkozott, amely ennek
 		 * hatasara megoli.
 		 */
 		echidna.collisionWithAnt(this, true);
-		
+		return 0;
 	}
 
 	/**

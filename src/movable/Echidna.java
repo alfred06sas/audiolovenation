@@ -40,6 +40,7 @@ public class Echidna extends Item implements Movable {
 	 * Hangyaszsun iranya.
 	 */
 	private Dir dir;
+	private boolean isHunger;
 	
 	public void setDir(Dir d){
 		dir=d;
@@ -100,22 +101,56 @@ public class Echidna extends Item implements Movable {
 	 */
 	@Override
 	public void step() {
-
+		int i=0;
+		
 		/* A szomszedok lekerdezese */
 		Field prevField = getActualField();
 		Map<Dir, Field> map = prevField.getNeighbours();
 	
-		/* A hangyaszsun torese a mezorol */
-		prevField.removeItem(this);
-	
-		/* Hangyaszsun atlep a kovetkezo mezore */
 		Field nextField = map.get(dir);
-		nextField.addItem(this);
 		List<Item> items = nextField.getItems();
 		
-		for (Item item : items)
-			item.collisionWithEchidna(this, false, dir);
+		for (Item item : items){
+			int temp=item.collisionWithEchidna(this, false, dir);
+			if (temp>i)
+				i=temp;
+		}
 		
+		if (i<=2)
+			ReverseDir();
+		/* A hangyaszsun torese a mezorol */
+		else{
+			prevField.removeItem(this);
+		
+			/* Hangyaszsun atlep a kovetkezo mezore */
+			nextField.addItem(this);
+			for (Item item : items)
+				item.collisionWithEchidna(this, true, dir);
+		}
+		
+	}
+
+	public void ReverseDir() {
+		switch (dir){
+		case UP:
+			dir = Dir.DOWN;			
+			break;
+		case DOWN:
+			dir = Dir.UP;	
+			break;
+		case RIGHT_TOP:
+			dir = Dir.LEFT_BOTTOM;			
+			break;
+		case RIGHT_BOTTOM:
+			dir = Dir.LEFT_TOP;
+			break;
+		case LEFT_TOP:
+			dir = Dir.RIGHT_BOTTOM;
+			break;
+		case LEFT_BOTTOM:
+			dir = Dir.RIGHT_TOP;
+			break;
+		}
 	}
 
 	/**
@@ -156,5 +191,13 @@ public class Echidna extends Item implements Movable {
 		}
 		
 		return states;
+	}
+
+	public void setWait(int i) {
+		wait=i;
+	}
+
+	public void setHungry(boolean b) {
+		isHunger=b;
 	}
 }

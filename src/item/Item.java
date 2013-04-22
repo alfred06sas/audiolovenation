@@ -63,7 +63,7 @@ public class Item {
 		return actualField;
 	}
 	
-	public Integer collisionWithEchidna(Echidna echidna, boolean b, Dir dir) {
+	public int collisionWithEchidna(Echidna echidna, boolean b, Dir dir) {
 		return 0;
 	}
 

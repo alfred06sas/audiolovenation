@@ -39,7 +39,7 @@ public class Hill extends Item {
 	}
 
 	@Override
-	public Integer collisionWithGravel(Gravel gravel, boolean b, Dir dir) {
+	public int collisionWithGravel(Gravel gravel, boolean b, Dir dir) {
 		return 3;
 	}
 }
