@@ -6,6 +6,7 @@ import item.Hill;
 import item.Spray;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -31,12 +32,12 @@ public class SingletonLoader {
 		return instance;
 	}
 
-	public void loadTestCase(String inputFileName, String outputFileName)
+	public void loadTestCase(File inputFile, String outputFileName)
 			throws FileNotFoundException {
 		SingletonContainer sc = SingletonContainer.getInstance();
 		Singleton s = Singleton.Instance();
 		Land land = new Land();
-		BufferedReader br = new BufferedReader(new FileReader(inputFileName));
+		BufferedReader br = new BufferedReader(new FileReader(inputFile));
 		try {
 			while (true) {
 				String line = br.readLine();

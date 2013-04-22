@@ -29,6 +29,8 @@ public class Main {
 				System.out
 						.println("Type 1 if you want to load commands from file, or type 2 if you want to load predefined test cases!");
 				Integer nr = null;
+				File inputFile = null;
+				String inputFileName = null;
 
 				try {
 					nr = Integer.valueOf(br.readLine());
@@ -44,7 +46,6 @@ public class Main {
 				switch (nr) {
 				case 1:
 					System.out.print("Input file: ");
-					String inputFileName = null;
 
 					try {
 						inputFileName = br.readLine();
@@ -69,9 +70,9 @@ public class Main {
 								.println("\nOutput file already exists! Try again!");
 						break;
 					}
-
+					inputFile = new File("commands\\customTestCases\\"+inputFileName);
 					try {
-						sl.loadTestCase(inputFileName, outputFileName);
+						sl.loadTestCase(inputFile, outputFileName);
 					} catch (FileNotFoundException e) {
 						System.out.println("No such a file! Try again!");
 						break;
@@ -93,7 +94,7 @@ public class Main {
 						}
 						if (nr == null)
 							break;
-
+						inputFile = new File("commands\\preDefinedTestCases\\"+inputFileName);
 						switch (nr) {
 						case 1:
 
