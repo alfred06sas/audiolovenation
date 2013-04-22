@@ -25,11 +25,11 @@ public class Blockage extends Item {
 	}
 	
 	public void collisionWithAnt(Ant ant, boolean b) {
-		Singleton s = Singleton.Instance();
 
 		if (b == false) {
 			
 			Field field = new Field();
 			ant.canNotGo(field);
 		}
+	}
 }

@@ -203,7 +203,6 @@ public class Ant extends Item implements Movable {
 		possibleNeig.put(dir.fromInteger((dir.getValue()+1)%6), neg.get(dir.fromInteger((dir.getValue()+1)%6)));
 		possibleNeig.put(dir.fromInteger((dir.getValue()-1)%6), neg.get(dir.fromInteger((dir.getValue()-1)%6)));
 		tentacle.setPossibleNeighbours(possibleNeig);
-		possibleNeig=tentacle.getPossibleNeighbours();
 	
 		/* A lehetseges szomszedok item-einek egy ciklusban valo lekerdezese. */
 		/*
@@ -217,6 +216,14 @@ public class Ant extends Item implements Movable {
 			}
 		}
 		//Most mar csak az van bent, ahova tenyleg lepni tudunk
+		
+		
+		
+		tentacle.scan(haveFood);
+		
+		
+		
+		
 		Field nextField=new Field();
 		possibleNeig=tentacle.getPossibleNeighbours();
 		for (Dir key : possibleNeig.keySet()){

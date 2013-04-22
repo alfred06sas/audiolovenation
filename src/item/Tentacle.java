@@ -93,8 +93,6 @@ public class Tentacle {
 	 *            a vizsgalt szomszedos mezo
 	 */
 	public void removePossibleNeighbour(Field field) {
-		List<Dir> dirs=new ArrayList<Dir>();
-
 		for (Dir key : possibleFields.keySet()){
 			if (possibleFields.get(key).equals(field))
 				possibleFields.remove(key);
