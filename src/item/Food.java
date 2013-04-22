@@ -24,6 +24,7 @@ public class Food extends Item {
 	}
 	public Food(String ID){
 		super(ID);
+		id="f"+ID;
 	}
 	/** 0. eleme az actualis FoodSmell
 	 *  1..6ig a kornyezo mezok FoodSmellje

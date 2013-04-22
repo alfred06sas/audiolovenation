@@ -24,6 +24,7 @@ public class Spray extends Item implements Volatile {
 	
 	public Spray(String ID){
 		super(ID);
+		id="s"+ID;
 		strength = 0;
 	}
 	

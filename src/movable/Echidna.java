@@ -58,6 +58,7 @@ public class Echidna extends Item implements Movable {
 	
 	public Echidna(String ID){
 		super(ID);
+		id="e"+ID;
 		isActive = false;
 		wait = 50;
 		hunger = 10;

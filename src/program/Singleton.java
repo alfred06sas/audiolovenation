@@ -32,6 +32,7 @@ public class Singleton {
 	private HashMap<String, HashMap<String, String>> states;
 	private static Singleton instance = null;
 	private static HashMap<String,  String> types;
+	private static int roundNumber;
 
 	public Singleton(){
 		states = new HashMap<String, HashMap<String, String>>();
@@ -43,6 +44,7 @@ public class Singleton {
 		if (instance == null){
 			instance = new Singleton();
 			types=new HashMap<String,  String>();
+			roundNumber=0;
 			
 			// tipusok inicializalasa, HashMap az id-k kezdobeture
 			types.put("a", "Ant");
@@ -116,9 +118,8 @@ public class Singleton {
 	 *   -------- X. ROUND --------
 	 */
 	public void printNextRound(){
-		SingletonContainer sc = SingletonContainer.getInstance();
-		sc.increaseOfRoundNumber();
-		System.out.println("-------- " + sc.getNumberOfRound() + " . ROUND --------");
+		roundNumber++;
+		System.out.println("-------- " + roundNumber + " . ROUND --------");
 	}
 
 	/*

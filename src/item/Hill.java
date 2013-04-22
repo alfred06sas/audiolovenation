@@ -20,6 +20,7 @@ public class Hill extends Item {
 	
 	public Hill(String ID){
 		super(ID);
+		id="h"+ID;
 	}
 	
 	/**
