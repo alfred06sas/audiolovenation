@@ -24,6 +24,10 @@ public class Food extends Item {
 	public Food() {
 	}
 
+	/**
+	 * konstruktor, inicializál
+	 * @param ID az elem id-ja
+	 */
 	public Food(String ID) {
 		super(ID);
 		id = "f" + ID;
@@ -32,6 +36,7 @@ public class Food extends Item {
 
 	/**
 	 * 0. eleme az actualis FoodSmell 1..6ig a kornyezo mezok FoodSmellje
+	 * segitsegevel tudjuk eltavolitani a food osszes illatat, ha felveszi egy hangya
 	 * 
 	 */
 	private List<FoodSmell> foodSmells;
@@ -46,25 +51,10 @@ public class Food extends Item {
 	}
 
 	/**
-	 * Etelszag hozzaadasa a mezohoz, es szomszedaihoz.
-	 * 
-	 * @param FoodSmell
-	 *            a mezohoz hozzaadando etelszag
-	 */
-/*	public void addFoodSmell(FoodSmell foodSmell) {
-		getActualField().addSmell(new FoodSmell(5));
-		Map<Dir, Field> neighbours = getActualField().getNeighbours();
-		for (int i = 1; i < neighbours.size(); i++) {
-			neighbours.get(i).addSmell(new FoodSmell(2));
-		}
-		foodSmells.add(foodSmell);
-	} */
-
-	/**
-	 * Etelszag beallitasa egy adott mezore.
+	 * Etelszag beallitasa egy adott mezore es a szomszedaira
 	 * 
 	 * @param Field
-	 *            a mezo, amihez beallitjuk az etelszagot.
+	 *            a mezo, amin elhelyezkedik az etel
 	 */
 	public void setActualField(Field field) {
 		super.setActualField(field);
@@ -89,7 +79,7 @@ public class Food extends Item {
 	 * @param Ant
 	 *            a hangya amivel utkozik
 	 * @param b
-	 *            lepes elott: false, lepes utan: true
+	 *            lepes elott: false, lepes kozben: true
 	 */
 	@Override
 	public void collisionWithAnt(Ant ant, boolean b) {

@@ -18,8 +18,8 @@ import blockage.Gravel;
 
 /**
  * 
- * A hangya feladata mezorol mezore lepni. Mozgasa iranyat az etel, es mas hangyak altal
- * hagyott szagnyom befolyasolja. Vegul, ha etelhez er, vissza
+ * A hangya feladata mezorol mezore lepni. Mozgasa iranyat az etel, es mas
+ * hangyak altal hagyott szagnyom befolyasolja. Vegul, ha etelhez er, vissza
  * kell azt vinnie a bolyba.
  * 
  * @author audiolovenation
@@ -55,8 +55,11 @@ public class Ant extends Item implements Movable {
 	 * A tovabbhaladasi irany. Default: UP.
 	 */
 	private Dir dir;
-	
-	public Ant(){
+
+	/**
+	 * Kondtruktor, inicializalja a hangya allapotait
+	 */
+	public Ant() {
 		HP = 10;
 		tentacle = new Tentacle(this);
 		isKilled = false;
@@ -65,10 +68,16 @@ public class Ant extends Item implements Movable {
 		haveFood = false;
 		dir = Dir.RIGHT_BOTTOM;
 	}
-	
-	public Ant(String ID){
+
+	/**
+	 * Kondtruktor, inicializalja a hangya allapotait
+	 * 
+	 * @param ID
+	 *            a hangya id-ja
+	 */
+	public Ant(String ID) {
 		super(ID);
-		id="a"+ID;
+		id = "a" + ID;
 		HP = 10;
 		tentacle = new Tentacle(this);
 		isKilled = false;
@@ -85,8 +94,8 @@ public class Ant extends Item implements Movable {
 	 *            a csokkentes merteke
 	 */
 	public void looseHP(Integer hp) {
-		HP-=hp;
-		if (HP<=1){
+		HP -= hp;
+		if (HP <= 1) {
 			kill();
 		}
 	}
@@ -95,7 +104,7 @@ public class Ant extends Item implements Movable {
 	 * A hangya etelt vesz fel. Allapotat atallitja (haveFood = true).
 	 */
 	public void pickUpFood() {
-		haveFood=true;
+		haveFood = true;
 	}
 
 	/**
@@ -113,15 +122,15 @@ public class Ant extends Item implements Movable {
 	 * A hangya iranyanak megforditasa.
 	 */
 	public void reverseDir() {
-		switch (dir){
+		switch (dir) {
 		case UP:
-			dir = Dir.DOWN;			
+			dir = Dir.DOWN;
 			break;
 		case DOWN:
-			dir = Dir.UP;	
+			dir = Dir.UP;
 			break;
 		case RIGHT_TOP:
-			dir = Dir.LEFT_BOTTOM;			
+			dir = Dir.LEFT_BOTTOM;
 			break;
 		case RIGHT_BOTTOM:
 			dir = Dir.LEFT_TOP;
@@ -140,17 +149,17 @@ public class Ant extends Item implements Movable {
 	 * movables listabol is.
 	 */
 	public void kill() {
-		
+
 		getActualField().removeItem(this);
-		
+
 		/* Hangya torlese a SingletonContainer movables listajabol */
 		SingletonContainer sc = SingletonContainer.getInstance();
 		sc.removeMovable(this);
-		
+
 		/* Hangya torlese az ot tartalmazo mezorol */
-		
-		isKilled=true;
-		
+
+		isKilled = true;
+
 	}
 
 	/**
@@ -160,10 +169,10 @@ public class Ant extends Item implements Movable {
 	 *            a beallitando haladasi irany
 	 */
 	public void setDir(Dir dir) {
-		this.dir=dir;
+		this.dir = dir;
 	}
-	
-	public Dir getDir(){
+
+	public Dir getDir() {
 		return dir;
 	}
 
@@ -178,66 +187,68 @@ public class Ant extends Item implements Movable {
 	@Override
 	public void step() {
 		Singleton s = Singleton.Instance();
-		Field oldField=actualField;
-		
+		Field oldField = actualField;
+
 		/* A szomszedok lekerdezese. */
-		Map<Dir, Field> neg=getActualField().getNeighbours();
-	
+		Map<Dir, Field> neg = getActualField().getNeighbours();
+
 		/* A lehetseges szomszedok beallitasa. */
 		Map<Dir, Field> possibleNeig = new HashMap<Dir, Field>();
 		possibleNeig.put(dir, neg.get(dir));
-		possibleNeig.put(Dir.fromInteger((dir.getValue()+1+6)%6), neg.get(Dir.fromInteger((dir.getValue()+1+6)%6)));
-		possibleNeig.put(Dir.fromInteger((dir.getValue()+6-1)%6), neg.get(Dir.fromInteger((dir.getValue()+6-1)%6)));
+		possibleNeig.put(Dir.fromInteger((dir.getValue() + 1 + 6) % 6),
+				neg.get(Dir.fromInteger((dir.getValue() + 1 + 6) % 6)));
+		possibleNeig.put(Dir.fromInteger((dir.getValue() + 6 - 1) % 6),
+				neg.get(Dir.fromInteger((dir.getValue() + 6 - 1) % 6)));
 		tentacle.setPossibleNeighbours(possibleNeig);
-	
-		/* A lehetseges szomszedok item-einek egy ciklusban valo lekerdezese. */
+
 		/*
 		 * Az elemekkel valo utkoztetes meg lepes elott, hogy kideruljon, hol
 		 * talalhato akadaly.
 		 */
-//		System.out.println("comment: possibleNeighs: "+possibleNeig+" // Ant.step()");
 		Map<Dir, Field> next = new HashMap<Dir, Field>();
 		List<Item> items = new ArrayList<Item>();
 		for (Dir key : possibleNeig.keySet()) {
 			items.addAll(possibleNeig.get(key).getItems());
 		}
-		for (Item item:items){
+		for (Item item : items) {
 			item.collisionWithAnt(this, false);
 		}
-		//Most mar csak az van bent, ahova tenyleg lepni tudunk		
+		// Most mar csak az van bent, ahova tenyleg lepni tudunk
 		next.clear();
 		next = tentacle.scan(haveFood);
-	
-		if (next!=null){
+
+		// ha van lehetseges kovetkezo mezo odalep
+		if (next != null) {
 			AntSmell as = new AntSmell();
 			actualField.addSmell(as);
 			as.setActualField(actualField);
 			SingletonContainer sc = SingletonContainer.getInstance();
 			sc.addVolatile(as);
 			actualField.removeItem(this);
-			if (next.size()>1){
-				System.out.println("Hiba: Nem csak egy lehetséges irány maradt!");
-			}
-			else{
-				for (Dir key : next.keySet()){
-					dir=key;
+			if (next.size() > 1) {
+				System.out
+						.println("Hiba: Nem csak egy lehetséges irány maradt!");
+			} else {
+				for (Dir key : next.keySet()) {
+					dir = key;
 					setActualField(next.get(key));
 					actualField.addItem(this);
-					s.printStep(this,oldField,actualField);
+					s.printStep(this, oldField, actualField);
 				}
 			}
-			
+
 		}
-		else{
+		// ha nincsen megforditja az iranyat
+		else {
 			reverseDir();
 			s.printDirChanged(this);
 		}
-		
-		items=actualField.getItems();
+		// ezutan utkozik az uj mezo elemeivel, ezesetben mar true-val, tehat
+		// rendes utkozes
+		items = actualField.getItems();
 		for (Item item : items)
 			item.collisionWithAnt(this, true);
-		
-		
+
 		s.printDirChanged(this);
 
 	}
@@ -247,7 +258,7 @@ public class Ant extends Item implements Movable {
 	 */
 	@Override
 	public void setAlive() {
-		isActive=true;
+		isActive = true;
 	}
 
 	/**
@@ -289,12 +300,12 @@ public class Ant extends Item implements Movable {
 		/* A hangya looseHP metodusanak meghivasa. */
 		looseHP(strength);
 	}
-	
+
 	@Override
 	public int collisionWithGravel(Gravel g, boolean b, Dir d) {
 		g.collisionWithAnt(this, true);
 		kill();
-		
+
 		return HP;
 	}
 
@@ -309,41 +320,64 @@ public class Ant extends Item implements Movable {
 	 *            az a mezo, ahova nem lephet a hangya
 	 */
 	public void canNotGo(Field field) {
-	/* A parameterkent megadott mezo kivetele a lehetseges mezok listajabol. */
-		
+		/* A parameterkent megadott mezo kivetele a lehetseges mezok listajabol. */
+
 		tentacle.removePossibleNeighbour(field);
 	}
-	
+
+	/**
+	 * A hangya �llapotait adja vissza, a kiir�shoz van ra szukseg
+	 * 
+	 * @return allapotok Map-je
+	 */
 	@Override
 	public HashMap<String, String> getStates() {
 		HashMap<String, String> states = new HashMap<String, String>();
-		
+
 		if (isKilled)
 			states.put("STATE", "KILLED");
 		else if (wait > 0)
 			states.put("STATE", "WAIT");
 		else {
-			if (haveFood==true)
+			if (haveFood == true)
 				states.put("STATE", "HAVE_FOOD");
 			else
 				states.put("STATE", "DONT_HAVE_FOOD");
 		}
-		
+
 		states.put("DIR", dir.toString());
 		return states;
 	}
 
+	/**
+	 * varakozasra allitja az allapotot
+	 * 
+	 * @param i
+	 *            lepesszam
+	 */
 	public void setWait(int i) {
-		wait=i;
+		wait = i;
 	}
 
+	/**
+	 * Have_food-ra allitja az allapotot ha b igaz
+	 * 
+	 * @param b
+	 *            van e kaja
+	 */
 	public void setHaveFood(boolean b) {
-		haveFood=b;
+		haveFood = b;
 		wait = 0;
 	}
 
+	/**
+	 * meghaltra allitja az allapotot ha b igaz
+	 * 
+	 * @param b
+	 *            meghalt e
+	 */
 	public void setKilled(boolean b) {
-		isKilled=b;
+		isKilled = b;
 		wait = 0;
 	}
 }

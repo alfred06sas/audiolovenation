@@ -8,33 +8,46 @@ import movable.Echidna;
  * 
  * @author audiolovenation
  * 
- *         A hangya meg�l�s�re szolg�l� sprayt val�s�tja meg. Haszn�latakor a
- *         haszn�lt mez�n �s annak a szomsz�djain (itt m�r kisebb m�rt�kben hat
- *         csak) hat.
+ *         A hangya megolesere szolgalo sprayt valositja meg. Hasznalatakor a
+ *         hasznalt mezon hat.
  */
 public class Spray extends Item implements Volatile {
 
 	private int strength;
 
-	public Spray(){
+	/**
+	 * konstruktor, inicializalasra
+	 */
+	public Spray() {
 		strength = 10;
 	}
-	
-	public Spray(String ID){
+
+	/**
+	 * konstruktor
+	 * 
+	 * @param ID
+	 *            id-ja
+	 */
+	public Spray(String ID) {
 		super(ID);
-		id="s"+ID;
+		id = "s" + ID;
 		strength = 10;
 	}
-	
-	public int getStrength(){
+
+	/**
+	 * a spray hatoerejet adja vissza
+	 * 
+	 * @return hatoero
+	 */
+	public int getStrength() {
 		return strength;
 	}
-	
+
 	/**
 	 * Spray erossegenek a csokkentese
 	 * 
 	 */
-		@Override
+	@Override
 	public void decrease() {
 		--strength;
 	}
@@ -50,7 +63,7 @@ public class Spray extends Item implements Volatile {
 	@Override
 	public void collisionWithAnt(Ant ant, boolean b) {
 		if (b == true) {
-			//Hangya eleterejenek csokkentese
+			// Hangya eleterejenek csokkentese
 			ant.looseHP(strength);
 		}
 	}

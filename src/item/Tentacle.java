@@ -24,82 +24,54 @@ import blockage.Blockage;
 public class Tentacle {
 
 	private Map<Dir, Field> possibleFields;
-	
+
 	private Ant ant;
-	
+
 	private int foodSmell;
-//	
+
 	private int antSmell;
-	
-	public Tentacle(Ant ant){
-		this.ant=ant;
-		possibleFields=new HashMap<Dir, Field>();
+
+	public Tentacle(Ant ant) {
+		this.ant = ant;
+		possibleFields = new HashMap<Dir, Field>();
 	}
+
 	/**
 	 * Azon szomszedokat keressuk, amelyekre lephetunk a hangyaval
 	 * 
 	 * @param Map
-	 *            az aktualis mezo osszes szomszedja
+	 *            az iranyba eso harom szomszed
 	 */
 	public void setPossibleNeighbours(Map<Dir, Field> neighbours) {
-		possibleFields=neighbours;
-		/*
-		Dir dir=ant.getDir();
-		switch(dir){
-			case UP:
-				possibleFields.put(Dir.LEFT_TOP, neg.get(Dir.LEFT_TOP));
-				possibleFields.put(Dir.UP, neg.get(Dir.UP));
-				possibleFields.put(Dir.RIGHT_TOP, neg.get(Dir.RIGHT_TOP));
-				break;
-			case DOWN:
-				possibleFields.put(Dir.LEFT_BOTTOM, neg.get(Dir.LEFT_BOTTOM));
-				possibleFields.put(Dir.DOWN, neg.get(Dir.DOWN));
-				possibleFields.put(Dir.RIGHT_BOTTOM, neg.get(Dir.RIGHT_BOTTOM));
-				break;
-			case LEFT_TOP:
-				possibleFields.put(Dir.LEFT_TOP, neg.get(Dir.LEFT_TOP));
-				possibleFields.put(Dir.UP, neg.get(Dir.UP));
-				possibleFields.put(Dir.LEFT_BOTTOM, neg.get(Dir.LEFT_BOTTOM));
-				break;
-			case RIGHT_TOP:
-				possibleFields.put(Dir.RIGHT_TOP, neg.get(Dir.RIGHT_TOP));
-				possibleFields.put(Dir.UP, neg.get(Dir.UP));
-				possibleFields.put(Dir.RIGHT_BOTTOM, neg.get(Dir.RIGHT_BOTTOM));
-				break;
-			case RIGHT_BOTTOM:
-				possibleFields.put(Dir.RIGHT_TOP, neg.get(Dir.RIGHT_TOP));
-				possibleFields.put(Dir.DOWN, neg.get(Dir.DOWN));
-				possibleFields.put(Dir.RIGHT_BOTTOM, neg.get(Dir.RIGHT_BOTTOM));
-				break;
-			case LEFT_BOTTOM:
-				possibleFields.put(Dir.LEFT_TOP, neg.get(Dir.LEFT_TOP));
-				possibleFields.put(Dir.DOWN, neg.get(Dir.DOWN));
-				possibleFields.put(Dir.LEFT_BOTTOM, neg.get(Dir.LEFT_BOTTOM));
-				break;
-		}
-		*/
+		possibleFields = neighbours;
 	}
 
-	public Map<Dir, Field> getPossibleNeighbours(){
+	/**
+	 * visszaadja az aktualisan meg lehetseges szomszedokat
+	 * 
+	 * @return lehetseges szomszedok
+	 */
+	public Map<Dir, Field> getPossibleNeighbours() {
 		return possibleFields;
 	}
-	
+
 	/**
-	 * Azon szomszedok kivetele a lehetsegesek kozul, amelyeken akadaly van
+	 * egy mezo kivetele a lehetsegesek kozul, tipikusan olyan mezo amelyen
+	 * akadaly van
 	 * 
 	 * @param Field
 	 *            a vizsgalt szomszedos mezo
 	 */
 	public void removePossibleNeighbour(Field field) {
 		Dir d = null;
-		for (Dir key : possibleFields.keySet()){
+		for (Dir key : possibleFields.keySet()) {
 			if (possibleFields.get(key).equals(field))
-				d=key;
+				d = key;
 		}
-		if (d!=null){
+		if (d != null) {
 			possibleFields.remove(d);
 		}
-		
+
 	}
 
 	/**
@@ -109,7 +81,7 @@ public class Tentacle {
 	 *            a noveles merteke
 	 */
 	public void increaseFoodSmell(Integer strength) {
-		foodSmell+=strength;
+		foodSmell += strength;
 	}
 
 	/**
@@ -119,7 +91,7 @@ public class Tentacle {
 	 *            a noveles merteke
 	 */
 	public void increaseAntSmell(Integer strength) {
-		antSmell+=strength;
+		antSmell += strength;
 	}
 
 	/**
@@ -130,43 +102,43 @@ public class Tentacle {
 	 */
 	public Map<Dir, Field> scan(boolean haveFood) {
 		Map<Dir, Field> choice = new HashMap<Dir, Field>();
-		int prev=-1;
+		int prev = -1;
 		List<Smell> smells;
-		if (possibleFields.get(ant.getDir())!=null){
-			smells=possibleFields.get(ant.getDir()).getSmells();
-			foodSmell=0;
-			antSmell=0;
-			for (Smell smell:smells){
+		if (possibleFields.get(ant.getDir()) != null) {
+			smells = possibleFields.get(ant.getDir()).getSmells();
+			foodSmell = 0;
+			antSmell = 0;
+			for (Smell smell : smells) {
 				smell.smellIt(this);
 			}
-			if (haveFood==true){
-				foodSmell=0;
+			if (haveFood == true) {
+				foodSmell = 0;
 			}
-			if(foodSmell+antSmell>prev){
+			if (foodSmell + antSmell > prev) {
 				choice.clear();
 				choice.put(ant.getDir(), possibleFields.get(ant.getDir()));
-				prev=foodSmell+antSmell;
+				prev = foodSmell + antSmell;
 			}
 		}
 		for (Dir key : possibleFields.keySet()) {
-			smells=possibleFields.get(key).getSmells();
-			
-			foodSmell=0;
-			antSmell=0;
-			for (Smell smell:smells){
+			smells = possibleFields.get(key).getSmells();
+
+			foodSmell = 0;
+			antSmell = 0;
+			for (Smell smell : smells) {
 				smell.smellIt(this);
-//				System.out.println("comment: smellek: "+key+" :"+smell.getStrength());
+				// System.out.println("comment: smellek: "+key+" :"+smell.getStrength());
 			}
-			if (haveFood==true){
-				foodSmell=0;
+			if (haveFood == true) {
+				foodSmell = 0;
 			}
-			if(foodSmell+antSmell>prev){
+			if (foodSmell + antSmell > prev) {
 				choice.clear();
 				choice.put(key, possibleFields.get(key));
-				prev=foodSmell+antSmell;
+				prev = foodSmell + antSmell;
 			}
 		}
-//		System.out.println("comment: choice: "+choice+" // scan()");
+		// System.out.println("comment: choice: "+choice+" // scan()");
 		return choice;
 	}
 
