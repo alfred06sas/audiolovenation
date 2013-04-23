@@ -1,5 +1,6 @@
 package item;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -18,12 +19,14 @@ import smell.FoodSmell;
  */
 public class Food extends Item {
 
+	private List<FoodSmell> smells;
 	public Food() {
 	}
 
 	public Food(String ID) {
 		super(ID);
 		id = "f" + ID;
+		smells=new ArrayList<FoodSmell>();
 	}
 
 	/**
@@ -36,6 +39,7 @@ public class Food extends Item {
 	 * Az etel szaganak eltuntetese egy mezorol.
 	 */
 	public void deleteSmell() {
+		
 		for (FoodSmell f : foodSmells)
 			f.removeMyself(getActualField());
 	}
@@ -46,14 +50,14 @@ public class Food extends Item {
 	 * @param FoodSmell
 	 *            a mezohoz hozzaadando etelszag
 	 */
-	public void addFoodSmell(FoodSmell foodSmell) {
+/*	public void addFoodSmell(FoodSmell foodSmell) {
 		getActualField().addSmell(new FoodSmell(5));
 		Map<Dir, Field> neighbours = getActualField().getNeighbours();
 		for (int i = 1; i < neighbours.size(); i++) {
 			neighbours.get(i).addSmell(new FoodSmell(2));
 		}
 		foodSmells.add(foodSmell);
-	}
+	} */
 
 	/**
 	 * Etelszag beallitasa egy adott mezore.
@@ -63,6 +67,14 @@ public class Food extends Item {
 	 */
 	public void setActualField(Field field) {
 		super.setActualField(field);
+		FoodSmell fs = new FoodSmell(5);
+		field.addSmell(fs);
+		Map<Dir, Field> neighs = field.getNeighbours();
+	
+		for (Dir key : neighs.keySet()){
+			neighs.get(key).addSmell(new FoodSmell(2));
+		}
+	
 	}
 
 	/**

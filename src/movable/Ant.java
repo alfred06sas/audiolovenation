@@ -93,15 +93,6 @@ public class Ant extends Item implements Movable {
 	 */
 	public void pickUpFood() {
 		haveFood=true;
-		List <Item> items=getActualField().getItems();
-		for (Item item : items){
-			try{
-				Food food = (Food)item;
-				food.deleteSmell();
-				getActualField().removeItem(food);
-			}
-			catch (ClassCastException e){}
-		}
 	}
 
 	/**
