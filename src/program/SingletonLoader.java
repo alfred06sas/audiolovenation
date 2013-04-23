@@ -314,7 +314,7 @@ public class SingletonLoader {
 		if (type.equals("ant_smell"))
 			field.removeAntSmells();
 		else if (type.equals("ant_killer"))
-			field.onClick();
+			field.onClick(spray_id);
 		else {
 			System.out
 					.println("Undefined type at command: "
