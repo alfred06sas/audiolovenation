@@ -311,7 +311,7 @@ public class SingletonLoader {
 					.println("Only echidna and ant types are allowed at command: "
 							+ line);
 			return;
-		}
+		} 
 	}
 
 	private void useSpray(String type, String spray_id, String fid) {
