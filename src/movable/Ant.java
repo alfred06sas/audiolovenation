@@ -86,6 +86,10 @@ public class Ant extends Item implements Movable {
 	 */
 	public void looseHP(Integer hp) {
 		HP-=hp;
+		System.out.println(HP);
+		if (HP<=1){
+			kill();
+		}
 	}
 
 	/**

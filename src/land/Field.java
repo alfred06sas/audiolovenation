@@ -145,11 +145,10 @@ public class Field {
 	 * hatasara egy hangyaszagirto-spray elem kerul a mezore.
 	 * 
 	 */
-	public void onClick() {
+	public void onClick(String s_id) {
 		Singleton s = Singleton.Instance();
-		Spray spray = new Spray();
-		s.addItem(spray);
-		addItem(spray);
+		Spray spray = new Spray(s_id);
+		s.addItem(spray);		
 		SingletonContainer sc = SingletonContainer.getInstance();
 		sc.addVolatile(spray);
 		List<Item> it = getItems();
@@ -157,6 +156,7 @@ public class Field {
 			i.collisionWithSpray(spray.getStrength());
 			s.printCollision(spray, i, this);
 		}
+		addItem(spray);
 	}
 
 	public void setId(String s) {

@@ -51,7 +51,7 @@ public class Spray extends Item implements Volatile {
 	public void collisionWithAnt(Ant ant, boolean b) {
 		if (b == true) {
 			//Hangya eleterejenek csokkentese
-			ant.looseHP(5);
+			ant.looseHP(strength);
 		}
 	}
 }
