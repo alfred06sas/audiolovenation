@@ -131,6 +131,7 @@ public class SingletonLoader {
 				pw.write(result);
 				pw.close();
 			}
+			result = new String();
 			br.close();
 		} catch (IOException e) {
 
