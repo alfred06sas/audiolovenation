@@ -101,15 +101,9 @@ public class SingletonLoader {
 
 					// spray hasznalata
 				} else if (sline[0].equals("use_spray")
-						&& sline[1].equals("-t") && sline[3].equals("-sid") && sline[5].equals("-fid")
-						&& sline.length == 7) {
+						&& sline[1].equals("-t") && sline[3].equals("-fid")
+						&& sline.length == 5) {
 
-					String type = sline[2];
-					String spray_id = sline[4];
-					String fid = sline[6];
-
-					useSpray(type, spray_id, fid);
-					
 					// kor leptetese
 				} else if (sline[0].equals("step_round")
 						&& sline[1].equals("-rn") && sline.length == 3) {
@@ -132,7 +126,6 @@ public class SingletonLoader {
 				pw.write(result);
 				pw.close();
 			}
-			result = new String();
 			br.close();
 		} catch (IOException e) {
 
@@ -174,8 +167,8 @@ public class SingletonLoader {
 			Hill hill = new Hill(iid);
 			s.addItem(hill);
 			land.putItems(land.getField(fid), hill);
-		} else if (t.equals("spray")) {
-			Spray al = new Spray(iid);
+		} else if (t.equals("antlion")) {
+			Antlion al = new Antlion(iid);
 			s.addItem(al);
 			land.putItems(land.getField(fid), al);
 		} else if (t.equals("food")) {
@@ -199,9 +192,8 @@ public class SingletonLoader {
 			return;
 		}
 
-		Field field = land.getField(field_id);
+		Field field = new Field(field_id);
 		field.addSmell(smell);
-		smell.setStrength(Integer.valueOf(strength));
 		smell.setActualField(field);
 	}
 
@@ -303,21 +295,6 @@ public class SingletonLoader {
 		} else {
 			System.out
 					.println("Only echidna and ant types are allowed at command: "
-							+ line);
-			return;
-		}
-	}
-	
-	private void useSpray(String type, String spray_id, String fid) {
-		Field field = land.getField(fid);
-		
-		if (type.equals("ant_smell"))
-			field.removeAntSmells();
-		else if (type.equals("ant_killer"))
-			field.onClick(spray_id);
-		else {
-			System.out
-					.println("Undefined type at command: "
 							+ line);
 			return;
 		}
