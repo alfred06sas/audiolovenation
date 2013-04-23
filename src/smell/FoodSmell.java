@@ -23,9 +23,10 @@ public class FoodSmell extends Smell {
 	 * Szag eltavolítasa.
 	 * 
 	 */
-	@Override
-	public void removeMyself(Field field) {
-		field.removeSmell(this);
+	public void removeMyself() {
+		Singleton s = Singleton.Instance();
+		actualField.removeSmell(this);
+		s.printFoodSmellDisappeard(actualField);
 	}
 
 

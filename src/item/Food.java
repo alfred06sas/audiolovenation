@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import program.Singleton;
+
 import land.Dir;
 import land.Field;
 import movable.Ant;
@@ -19,14 +21,13 @@ import smell.FoodSmell;
  */
 public class Food extends Item {
 
-	private List<FoodSmell> smells;
 	public Food() {
 	}
 
 	public Food(String ID) {
 		super(ID);
 		id = "f" + ID;
-		smells=new ArrayList<FoodSmell>();
+		foodSmells=new ArrayList<FoodSmell>();
 	}
 
 	/**
@@ -41,7 +42,7 @@ public class Food extends Item {
 	public void deleteSmell() {
 		
 		for (FoodSmell f : foodSmells)
-			f.removeMyself(getActualField());
+			f.removeMyself();
 	}
 
 	/**
@@ -69,10 +70,15 @@ public class Food extends Item {
 		super.setActualField(field);
 		FoodSmell fs = new FoodSmell(5);
 		field.addSmell(fs);
+		fs.setActualField(field);
+		foodSmells.add(fs);
 		Map<Dir, Field> neighs = field.getNeighbours();
 	
 		for (Dir key : neighs.keySet()){
-			neighs.get(key).addSmell(new FoodSmell(2));
+			FoodSmell fss = new FoodSmell(2);
+			neighs.get(key).addSmell(fss);
+			fss.setActualField(neighs.get(key));
+			foodSmells.add(fss);
 		}
 	
 	}
@@ -87,11 +93,15 @@ public class Food extends Item {
 	 */
 	@Override
 	public void collisionWithAnt(Ant ant, boolean b) {
+		Singleton s = Singleton.Instance();		
+		
 		// Ha a hangya oylan mezore lepett ahol etel van akkor felveszi
 		if (b == true) {
 			ant.pickUpFood();
+			s.printCollision(ant, this, actualField);
 			// Etelszag kitorlese a mezorol, ahonnan elviszi a hagnya az etelt
 			deleteSmell();
-		}
+			actualField.removeItem(this);			
+		}		
 	}
 }

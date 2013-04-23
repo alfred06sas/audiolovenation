@@ -319,7 +319,7 @@ public class Ant extends Item implements Movable {
 		else if (wait > 0)
 			states.put("STATE", "WAIT");
 		else {
-			if (haveFood)
+			if (haveFood==true)
 				states.put("STATE", "HAVE_FOOD");
 			else
 				states.put("STATE", "DONT_HAVE_FOOD");
