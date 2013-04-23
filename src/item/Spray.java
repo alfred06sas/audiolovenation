@@ -1,8 +1,7 @@
 package item;
 
-import land.Dir;
 import movable.Ant;
-import movable.Echidna;
+
 
 /**
  * 

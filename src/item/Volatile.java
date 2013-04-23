@@ -1,7 +1,5 @@
 package item;
 
-import program.Singleton;
-
 /**
  * 
  * @author audiolovenation

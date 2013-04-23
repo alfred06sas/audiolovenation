@@ -1,9 +1,7 @@
 package item;
 
 import program.Singleton;
-import land.Dir;
 import movable.Ant;
-import movable.Echidna;
 
 /**
  * 

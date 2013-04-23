@@ -32,7 +32,6 @@ public class Singleton {
 	 * @return a peldany
 	 */
 	public static Singleton Instance() {
-		SingletonContainer sc = SingletonContainer.getInstance();
 		if (instance == null) {
 			instance = new Singleton();
 			sl = SingletonLoader.Instance();
@@ -49,6 +48,7 @@ public class Singleton {
 			types.put("p", "Puddle");
 			types.put("g", "Gravel");
 			types.put("h", "Hill");
+			
 		}
 		return instance;
 	}
@@ -67,15 +67,10 @@ public class Singleton {
 	 * @param i a hozzaadando Item
 	 */
 	public void addItem(Item i) {
-		if (states.containsKey(i.getId()) == true) { // TODO Elemeknek Id es
-														// fieldnek
+		if (states.containsKey(i.getId()) == true) {
 			printError("Id duplikacio!");
 		} else {
-			states.put(i.getId(), i.getStates()); // TODO getId, getStates
-													// elemeknek
-													// printComment("a hozzaadando objektum id-ja es allapotai: "
-			// + i.getId() + " " + i.getStates()
-			// + " // Singleton.addItem()");
+			states.put(i.getId(), i.getStates());
 		}
 	}
 
@@ -122,10 +117,10 @@ public class Singleton {
 			for (String key : oldStateItemWhat.keySet()) {
 				if (!oldStateItemWhat.get(key)
 						.equals(newStateItemWhat.get(key))) {
-					System.out.println("                   " + whatType + " ("
-							+ what.getId().substring(1) + ") " + key
-							+ " CHANGED:    FROM " + oldStateItemWhat.get(key)
-							+ " TO " + newStateItemWhat.get(key));
+//					System.out.println("                   " + whatType + " ("
+//							+ what.getId().substring(1) + ") " + key
+//							+ " CHANGED:    FROM " + oldStateItemWhat.get(key)
+//							+ " TO " + newStateItemWhat.get(key));
 
 					sl.concatToResult("                   " + whatType + " ("
 							+ what.getId().substring(1) + ") " + key
@@ -140,10 +135,10 @@ public class Singleton {
 			for (String key : oldStateItemWith.keySet()) {
 				if (!oldStateItemWith.get(key)
 						.equals(newStateItemWith.get(key))) {
-					System.out.println("                   " + withType + " ("
-							+ with.getId().substring(1) + ") " + key
-							+ " CHANGED:    FROM " + oldStateItemWith.get(key)
-							+ " TO " + newStateItemWith.get(key));
+//					System.out.println("                   " + withType + " ("
+//							+ with.getId().substring(1) + ") " + key
+//							+ " CHANGED:    FROM " + oldStateItemWith.get(key)
+//							+ " TO " + newStateItemWith.get(key));
 					sl.concatToResult("                   " + withType + " ("
 							+ with.getId().substring(1) + ") " + key
 							+ " CHANGED:    FROM " + oldStateItemWith.get(key)
@@ -160,7 +155,7 @@ public class Singleton {
 	 */
 	public void printNextRound() {
 		roundNumber++;
-		System.out.println("-------- " + roundNumber + " . ROUND --------");
+//		System.out.println("-------- " + roundNumber + " . ROUND --------");
 		sl.concatToResult("-------- " + roundNumber + " . ROUND --------");
 	}
 
@@ -179,10 +174,10 @@ public class Singleton {
 		} else {
 			if (!oldStateItemWhat.get("DIR")
 					.equals(newStateItemWhat.get("DIR"))) {
-				System.out.println(whatType + " (" + what.getId().substring(1)
-						+ ") " + " DIR CHANGED:    FROM "
-						+ oldStateItemWhat.get("DIR") + " TO "
-						+ newStateItemWhat.get("DIR"));
+//				System.out.println(whatType + " (" + what.getId().substring(1)
+//						+ ") " + " DIR CHANGED:    FROM "
+//						+ oldStateItemWhat.get("DIR") + " TO "
+//						+ newStateItemWhat.get("DIR"));
 				sl.concatToResult(whatType + " (" + what.getId().substring(1)
 						+ ") " + " DIR CHANGED:    FROM "
 						+ oldStateItemWhat.get("DIR") + " TO "
@@ -203,9 +198,9 @@ public class Singleton {
 	 */
 	public void printStep(Item what, Field from, Field to) {
 		String whatType = types.get(String.valueOf(what.getId().charAt(0)));
-		System.out.println(whatType + " (" + what.getId().substring(1) + ")"
-				+ " STEPPED FROM FIELD (" + from.getId() + ") TO FIELD ("
-				+ to.getId() + ")");
+//		System.out.println(whatType + " (" + what.getId().substring(1) + ")"
+//				+ " STEPPED FROM FIELD (" + from.getId() + ") TO FIELD ("
+//				+ to.getId() + ")");
 		sl.concatToResult(whatType + " (" + what.getId().substring(1) + ")"
 				+ " STEPPED FROM FIELD (" + from.getId() + ") TO FIELD ("
 				+ to.getId() + ")");
@@ -220,8 +215,8 @@ public class Singleton {
 	 * @param field hol
 	 */
 	public void printAntSmellDecreased(int from, int to, Field field) {
-		System.out.println("ANT SMELL DECREASED FROM " + from + " TO " + to
-				+ " ON FIELD (" + field.getId() + ")");
+//		System.out.println("ANT SMELL DECREASED FROM " + from + " TO " + to
+//				+ " ON FIELD (" + field.getId() + ")");
 		sl.concatToResult("ANT SMELL DECREASED FROM " + from + " TO " + to
 				+ " ON FIELD (" + field.getId() + ")");
 	}
@@ -233,8 +228,8 @@ public class Singleton {
 	 * @param field hol
 	 */
 	public void printFoodSmellDisappeard(Field field) {
-		System.out.println("FOOD SMELL DISAPPEARED ON FIELD (" + field.getId()
-				+ ")");
+//		System.out.println("FOOD SMELL DISAPPEARED ON FIELD (" + field.getId()
+//				+ ")");
 		sl.concatToResult("FOOD SMELL DISAPPEARED ON FIELD (" + field.getId()
 				+ ")");
 	}

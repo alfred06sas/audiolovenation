@@ -1,6 +1,5 @@
 package movable;
 
-import item.Food;
 import item.Item;
 import item.Tentacle;
 

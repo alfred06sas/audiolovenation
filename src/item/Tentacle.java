@@ -1,18 +1,12 @@
 package item;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
-
 import land.Dir;
 import land.Field;
 import movable.Ant;
-import smell.AntSmell;
-import smell.FoodSmell;
 import smell.Smell;
-import blockage.Blockage;
 
 /**
  * 
