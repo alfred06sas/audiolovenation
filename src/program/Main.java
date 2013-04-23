@@ -164,7 +164,7 @@ public class Main {
 							sl.loadTestCase(new File(predefinedPath
 									+ "input4.dat"), new File(
 									predefinedResultsPath + "output4.dat"));
-							ct.doTheTest("output4.dat", "expoutput4.dat");
+							 ct.doTheTest("output4.dat", "expoutput4.dat");
 							break;
 						case 5:
 							sl.loadTestCase(new File(predefinedPath
