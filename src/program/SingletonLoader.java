@@ -194,6 +194,7 @@ public class SingletonLoader {
 		if (type.equals("antsmell")) {
 			smell = new AntSmell();
 			smell.setId(smell_id);
+			sc.addVolatile((Volatile)smell);
 		} else if (type.equals("foodsmell")) {
 			smell = new FoodSmell();
 			smell.setId(smell_id);
@@ -205,7 +206,7 @@ public class SingletonLoader {
 		Field field = land.getField(field_id);
 		field.addSmell(smell);
 		smell.setActualField(field);
-		sc.addVolatile((Volatile)smell);
+		
 		smell.setStrength(Integer.valueOf(strength));
 		smell.setActualField(field);
 	}

@@ -22,7 +22,7 @@ public class Main {
 	public static void main(String[] args) {
 
 		SingletonLoader sl = SingletonLoader.Instance();
-		String[] testNames = new String[15];
+		String[] testNames = new String[14];
 
 		testNames[0] = "Tracking ant's smell";
 		testNames[1] = "Tracking food's smell";
@@ -102,7 +102,9 @@ public class Main {
 						break;
 					}
 
-					outputFile = new File(outputFileName);
+					outputFile = new File(
+							"commands\\customTestCases\\results\\"
+									+ outputFileName);
 					inputFile = new File("commands\\customTestCases\\"
 							+ inputFileName);
 					// inputFile = new File(path + "customTestCases\\"
@@ -130,9 +132,10 @@ public class Main {
 							continue;
 						}
 
-						//String predefinedPath = path + "preDefinedTestCases\\";
-						//String predefinedResultsPath = path
-						//		+ "preDefinedTestCases\\results\\";
+						// String predefinedPath = path +
+						// "preDefinedTestCases\\";
+						// String predefinedResultsPath = path
+						// + "preDefinedTestCases\\results\\";
 						String predefinedPath = "commands\\preDefinedTestCases\\";
 						String predefinedResultsPath = "commands\\preDefinedTestCases\\results\\";
 
@@ -163,7 +166,7 @@ public class Main {
 							sl.loadTestCase(new File(predefinedPath
 									+ "input4.dat"), new File(
 									predefinedResultsPath + "output4.dat"));
-							 ct.doTheTest("output4.dat", "expoutput4.dat");
+							ct.doTheTest("output4.dat", "expoutput4.dat");
 							break;
 						case 5:
 							sl.loadTestCase(new File(predefinedPath
@@ -220,6 +223,7 @@ public class Main {
 							ct.doTheTest("output13.dat", "expoutput13.dat");
 							break;
 						case 14:
+							System.exit(1);
 							break;
 						default:
 							/** Hibas bemenet lekezelese */

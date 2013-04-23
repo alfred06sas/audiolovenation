@@ -211,11 +211,12 @@ public class Ant extends Item implements Movable {
 		if (next!=null){
 			AntSmell as = new AntSmell();
 			actualField.addSmell(as);
+			as.setActualField(actualField);
 			SingletonContainer sc = SingletonContainer.getInstance();
 			sc.addVolatile(as);
 			actualField.removeItem(this);
 			if (next.size()>1){
-				System.out.println("Hiba: Nem csak egy lehetséges irány maradt!");
+				System.out.println("Hiba: Nem csak egy lehetsÃ©ges irÃ¡ny maradt!");
 			}
 			else{
 				for (Dir key : next.keySet()){
