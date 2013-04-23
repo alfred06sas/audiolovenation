@@ -20,7 +20,7 @@ public class FoodSmell extends Smell {
 	}
 	
 	/**
-	 * Szag eltavolítasa.
+	 * Szag eltavolï¿½tasa.
 	 * 
 	 */
 	public void removeMyself() {
@@ -41,4 +41,5 @@ public class FoodSmell extends Smell {
 	public void smellIt(Tentacle tentacle) {		
 		tentacle.increaseFoodSmell(strength);		
 	}
+	
 }

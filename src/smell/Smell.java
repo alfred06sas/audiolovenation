@@ -15,25 +15,26 @@ public class Smell {
 
 	protected Field actualField;
 	protected int strength;
+	protected String id;
 
-	public Smell(){		
+	public Smell() {
 	}
-	
-	public void setStrength(int s){
-		strength=s;
+
+	public void setStrength(int s) {
+		strength = s;
 	}
-	
-	public int getStrength(){
+
+	public int getStrength() {
 		return strength;
 	}
-	
+
 	/**
 	 * 
 	 * Szag csokkentese.
 	 * 
 	 */
 	public void decreaseSmell(int s) {
-		strength-=s;
+		strength -= s;
 	}
 
 	/**
@@ -42,7 +43,7 @@ public class Smell {
 	 * 
 	 */
 	public void IncreaseSmell(int s) {
-		strength+=s;
+		strength += s;
 	}
 
 	/**
@@ -81,6 +82,10 @@ public class Smell {
 	 * 
 	 */
 	public void antSmellSpray() {
+	}
+
+	public void setId(String smell_id) {
+		id = smell_id;
 	}
 
 }

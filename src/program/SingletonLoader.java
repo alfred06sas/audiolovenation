@@ -5,6 +5,7 @@ import item.Food;
 import item.Hill;
 import item.Item;
 import item.Spray;
+import item.Volatile;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -101,15 +102,15 @@ public class SingletonLoader {
 
 					// spray hasznalata
 				} else if (sline[0].equals("use_spray")
-						&& sline[1].equals("-t") && sline[3].equals("-sid") && sline[5].equals("-fid")
-						&& sline.length == 7) {
+						&& sline[1].equals("-t") && sline[3].equals("-sid")
+						&& sline[5].equals("-fid") && sline.length == 7) {
 
 					String type = sline[2];
 					String spray_id = sline[4];
 					String fid = sline[6];
 
 					useSpray(type, spray_id, fid);
-					
+
 					// kor leptetese
 				} else if (sline[0].equals("step_round")
 						&& sline[1].equals("-rn") && sline.length == 3) {
@@ -126,13 +127,13 @@ public class SingletonLoader {
 					return;
 				}
 			}
-			
+
 			if (result.length() != 0) {
 				pw = new PrintWriter(new FileWriter(outputFile));
 				pw.write(result);
 				pw.close();
 			}
-			result = new String(); 
+			result = new String();
 			br.close();
 		} catch (IOException e) {
 
@@ -187,20 +188,24 @@ public class SingletonLoader {
 
 	public void putSmell(String type, String smell_id, String strength,
 			String field_id) {
+		SingletonContainer sc = SingletonContainer.getInstance();
 		Smell smell = null;
 
-		if (type.equals("antsmell"))
+		if (type.equals("antsmell")) {
 			smell = new AntSmell();
-		else if (type.equals("foodsmell"))
+			smell.setId(smell_id);
+		} else if (type.equals("foodsmell")) {
 			smell = new FoodSmell();
-		else {
+			smell.setId(smell_id);
+		} else {
 			System.out.println("Undefined type: " + type + " at command: "
 					+ line);
 			return;
 		}
-
 		Field field = land.getField(field_id);
 		field.addSmell(smell);
+		smell.setActualField(field);
+		sc.addVolatile((Volatile)smell);
 		smell.setStrength(Integer.valueOf(strength));
 		smell.setActualField(field);
 	}
@@ -307,18 +312,16 @@ public class SingletonLoader {
 			return;
 		}
 	}
-	
+
 	private void useSpray(String type, String spray_id, String fid) {
 		Field field = land.getField(fid);
-		
+
 		if (type.equals("ant_smell"))
 			field.removeAntSmells();
 		else if (type.equals("ant_killer"))
 			field.onClick(spray_id);
 		else {
-			System.out
-					.println("Undefined type at command: "
-							+ line);
+			System.out.println("Undefined type at command: " + line);
 			return;
 		}
 	}
