@@ -224,7 +224,7 @@ public class Main {
 							sl.loadTestCase(new File(predefinedPath
 									+ "input14.dat"), new File(
 									predefinedResultsPath + "output14.dat"));
-							ct.doTheTest("output14.dat", "expoutputoutput14.dat");
+							ct.doTheTest("output14.dat", "expoutput14.dat");
 							break;
 						case 15:
 							break;
