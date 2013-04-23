@@ -185,39 +185,39 @@ public class Main {
 							break;
 						case 8:
 							sl.loadTestCase(new File(predefinedPath
+									+ "input8.dat"), new File(
+									predefinedResultsPath + "output8.dat"));
+							ct.doTheTest("output8.dat", "expoutput8.dat");
+							break;
+						case 9:
+							sl.loadTestCase(new File(predefinedPath
 									+ "input9.dat"), new File(
 									predefinedResultsPath + "output9.dat"));
 							ct.doTheTest("output9.dat", "expoutput9.dat");
 							break;
-						case 9:
+						case 10:
 							sl.loadTestCase(new File(predefinedPath
 									+ "input10.dat"), new File(
 									predefinedResultsPath + "output10.dat"));
 							ct.doTheTest("output10.dat", "expoutput10.dat");
 							break;
-						case 10:
+						case 11:
 							sl.loadTestCase(new File(predefinedPath
 									+ "input11.dat"), new File(
 									predefinedResultsPath + "output11.dat"));
 							ct.doTheTest("output11.dat", "expoutput11.dat");
 							break;
-						case 11:
+						case 12:
 							sl.loadTestCase(new File(predefinedPath
 									+ "input12.dat"), new File(
 									predefinedResultsPath + "output12.dat"));
 							ct.doTheTest("output12.dat", "expoutput12.dat");
 							break;
-						case 12:
+						case 13:
 							sl.loadTestCase(new File(predefinedPath
 									+ "input13.dat"), new File(
 									predefinedResultsPath + "output13.dat"));
 							ct.doTheTest("output13.dat", "expoutput13.dat");
-							break;
-						case 13:
-							sl.loadTestCase(new File(predefinedPath
-									+ "input14.dat"), new File(
-									predefinedResultsPath + "output14.dat"));
-							ct.doTheTest("output14.dat", "expoutput14.dat");
 							break;
 						case 14:
 							break;

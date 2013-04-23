@@ -167,7 +167,7 @@ public class Echidna extends Item implements Movable {
 	public void collisionWithAnt(Ant ant, boolean b) {
 		Singleton s = Singleton.Instance();
 
-		/* Lep�es utan */
+		/* Lepes utan */
 		if (b == true) {
 			/* Hangya megolese */
 			ant.kill();
