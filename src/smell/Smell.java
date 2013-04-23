@@ -38,7 +38,7 @@ public class Smell {
 
 	/**
 	 * 
-	 * Szag növelése.
+	 * Szag nï¿½velï¿½se.
 	 * 
 	 */
 	public void IncreaseSmell(int s) {
@@ -54,6 +54,7 @@ public class Smell {
 	 * 
 	 */
 	public void setActualField(Field field) {
+		actualField = field;
 	}
 
 	/**
@@ -62,6 +63,7 @@ public class Smell {
 	 * 
 	 */
 	public void removeMyself(Field field) {
+		field.removeSmell(this);
 	}
 
 	/**
@@ -80,6 +82,7 @@ public class Smell {
 	 * 
 	 */
 	public void antSmellSpray() {
+		
 	}
 
 }

@@ -28,20 +28,20 @@ public class Field {
 	private Map<Dir, Field> neighbours;
 	private List<Smell> smells;
 
-	public Field(){
-		id=new String();
-		neighbours=new HashMap<Dir, Field>();
+	public Field() {
+		id = new String();
+		neighbours = new HashMap<Dir, Field>();
 		items = new ArrayList<Item>();
 		smells = new ArrayList<Smell>();
 	}
-	
-	public Field(String s){
-		id=s;
-		neighbours=new HashMap<Dir, Field>();
+
+	public Field(String s) {
+		id = s;
+		neighbours = new HashMap<Dir, Field>();
 		items = new ArrayList<Item>();
 		smells = new ArrayList<Smell>();
 	}
-	
+
 	/**
 	 * Egy elem hozzarendelese a mezohoz
 	 * 
@@ -131,15 +131,11 @@ public class Field {
 	public void removeAntSmells() {
 		SingletonContainer sc = new SingletonContainer().getInstance();
 		sc.decreaseAntSmellSpray(5);
-	
-		//Szag eltuntetese, ha nem hangyaszag nem csinalunk semmit
-		for(Smell s: smells)
-			try{
-				AntSmell antSmell=(AntSmell)s;
-				antSmell.removeMyself(this);
-			}
-			catch (ClassCastException e){}
-	
+
+		for (Smell smell : smells) {
+			smell.antSmellSpray();
+		}
+
 	}
 
 	/**
@@ -149,17 +145,17 @@ public class Field {
 	 */
 	public void onClick(Field field, Spray spray) {
 		field.addItem(spray);
-		}
-	
-	public void setId(String s){
-		id=s;
 	}
-	
-	public String getId(){
+
+	public void setId(String s) {
+		id = s;
+	}
+
+	public String getId() {
 		return id;
 	}
-	
-	public String toString(){
+
+	public String toString() {
 		return id;
 	}
 
