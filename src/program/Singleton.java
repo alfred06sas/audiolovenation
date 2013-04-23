@@ -48,13 +48,13 @@ public class Singleton {
 		return instance;
 	}
 
-	void clear() {
+	public void clear() {
 		instance = null;
 	}
 
 	// Az elemek egybol letrehozasuk utan meghivjak ezt a metodust
 	// hozzaadva ezzel Id-jet es allapotait a az osztalyhoz
-	void addItem(Item i) {
+	public void addItem(Item i) {
 		if (states.containsKey(i.getId()) == true) { // TODO Elemeknek Id es
 														// fieldnek
 			printError("Id duplikacio!");
@@ -67,7 +67,7 @@ public class Singleton {
 		}
 	}
 
-	void setState(Item i) {
+	public void setState(Item i) {
 		states.remove(i.getId());
 		states.put(i.getId(), i.getStates());
 //		printComment("a modositott objektum id-ja es allapotai: " + i.getId()

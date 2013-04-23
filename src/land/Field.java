@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+import program.Singleton;
 import program.SingletonContainer;
 import smell.AntSmell;
 import smell.Smell;
@@ -144,8 +145,18 @@ public class Field {
 	 * hatasara egy hangyaszagirto-spray elem kerul a mezore.
 	 * 
 	 */
-	public void onClick(Field field, Spray spray) {
-		field.addItem(spray);
+	public void onClick() {
+		Singleton s = Singleton.Instance();
+		Spray spray = new Spray();
+		s.addItem(spray);
+		addItem(spray);
+		SingletonContainer sc = SingletonContainer.getInstance();
+		sc.addVolatile(spray);
+		List<Item> it = getItems();
+		for (Item i : it){
+			i.collisionWithSpray(spray.getStrength());
+			s.printCollision(spray, i, this);
+		}
 	}
 
 	public void setId(String s) {

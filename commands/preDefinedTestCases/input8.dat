@@ -1,11 +1,5 @@
 create_land -r 6 -c 4
 put_item -t ant -iid 1 -fid 2_2
 set -t ant -mid 1 -d right_bottom -s dont_have_food
-put_item -t spray -iid 2 -fid 4_4
-put_item -t spray -iid 3 -fid 5_5
-put_item -t spray -iid 4 -fid 6_4
-put_item -t spray -iid 5 -fid 5_3
-put_item -t spray -iid 6 -fid 3_3
-put_item -t spray -iid 7 -fid 4_2
-put_item -t spray -iid 8 -fid 5_3
+use_spray -t ant_killer -fid 2_2
 step_round -rn 1
