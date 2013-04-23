@@ -13,7 +13,7 @@ import land.Field;
  */
 public class Smell {
 
-	private Field actualField;
+	protected Field actualField;
 	protected int strength;
 
 	public Smell(){		
@@ -63,7 +63,6 @@ public class Smell {
 	 * 
 	 */
 	public void removeMyself(Field field) {
-		field.removeSmell(this);
 	}
 
 	/**
@@ -82,7 +81,6 @@ public class Smell {
 	 * 
 	 */
 	public void antSmellSpray() {
-		
 	}
 
 }
