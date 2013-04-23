@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import program.SingletonContainer;
 import smell.AntSmell;
@@ -32,14 +33,14 @@ public class Field {
 		id = new String();
 		neighbours = new HashMap<Dir, Field>();
 		items = new ArrayList<Item>();
-		smells = new ArrayList<Smell>();
+		smells = new CopyOnWriteArrayList<Smell>();
 	}
 
 	public Field(String s) {
 		id = s;
 		neighbours = new HashMap<Dir, Field>();
 		items = new ArrayList<Item>();
-		smells = new ArrayList<Smell>();
+		smells = new CopyOnWriteArrayList<Smell>();
 	}
 
 	/**
@@ -131,7 +132,7 @@ public class Field {
 	public void removeAntSmells() {
 		SingletonContainer sc = new SingletonContainer().getInstance();
 		sc.decreaseAntSmellSpray(5);
-
+		
 		for (Smell smell : smells) {
 			smell.antSmellSpray();
 		}

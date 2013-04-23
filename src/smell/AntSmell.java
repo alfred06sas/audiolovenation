@@ -27,8 +27,11 @@ public class AntSmell extends Smell implements Volatile {
 	@Override
 	public void removeMyself(Field field) {
 		SingletonContainer sc=SingletonContainer.getInstance();
+		Singleton s = Singleton.Instance();
 		sc.removeVolatile(this);
 		field.removeSmell(this);
+		
+		s.printAntSmellDecreased(strength, 0, field);
 	}
 
 	/**

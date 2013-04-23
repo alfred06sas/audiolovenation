@@ -104,6 +104,11 @@ public class SingletonLoader {
 						&& sline[1].equals("-t") && sline[3].equals("-fid")
 						&& sline.length == 5) {
 
+					String type = sline[2];
+					String fid = sline[4];
+
+					useSpray(type, fid);
+					
 					// kor leptetese
 				} else if (sline[0].equals("step_round")
 						&& sline[1].equals("-rn") && sline.length == 3) {
@@ -192,8 +197,9 @@ public class SingletonLoader {
 			return;
 		}
 
-		Field field = new Field(field_id);
+		Field field = land.getField(field_id);
 		field.addSmell(smell);
+		smell.setStrength(Integer.valueOf(strength));
 		smell.setActualField(field);
 	}
 
@@ -295,6 +301,21 @@ public class SingletonLoader {
 		} else {
 			System.out
 					.println("Only echidna and ant types are allowed at command: "
+							+ line);
+			return;
+		}
+	}
+	
+	private void useSpray(String type, String fid) {
+		Field field = land.getField(fid);
+		
+		if (type.equals("ant_smell"))
+			field.removeAntSmells();
+		else if (type.equals("ant_killer"))
+			field.onClick(field, new Spray());
+		else {
+			System.out
+					.println("Undefined type at command: "
 							+ line);
 			return;
 		}
