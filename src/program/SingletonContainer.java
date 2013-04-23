@@ -26,7 +26,7 @@ public class SingletonContainer {
 	private static List<Movable> movables;
 	private static List<Volatile> volatiles;
 	private static SingletonContainer instance;
-	private static int antKillerSpray;
+	private static int antKillerSpray; 
 	private static int antSmellSpray;
 	private static int numberOfRound;
 
