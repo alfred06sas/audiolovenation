@@ -107,9 +107,9 @@ public class Singleton {
 		HashMap<String, String> newStateItemWith = with.getStates();
 
 		// A kiiras resze
-		System.out.println(whatType + " (" + what.getId().substring(1)
-				+ ") TO " + withType + " (" + with.getId().substring(1)
-				+ ") ON FIELD (" + field.getId() + ")");
+//		System.out.println(whatType + " (" + what.getId().substring(1)
+//				+ ") TO " + withType + " (" + with.getId().substring(1)
+//				+ ") ON FIELD (" + field.getId() + ")");
 		sl.concatToResult(whatType + " (" + what.getId().substring(1) + ") TO "
 				+ withType + " (" + with.getId().substring(1) + ") ON FIELD ("
 				+ field.getId() + ")");

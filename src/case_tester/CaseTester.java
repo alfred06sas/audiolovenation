@@ -7,54 +7,59 @@ package case_tester;
 
 import java.io.*;
 
-
-
 /**
- *
- * @author 
+ * 
+ * @author
  */
 public class CaseTester {
 
-    /**
-     * @param args the command line arguments
-     */
-    public void doTheTest(String par1, String par2) {
-        try {
-            // referencia-fajl beolvasasa
-            FileReader f1 = new FileReader("commands/preDefinedTestCases/results/" + par1);
-            BufferedReader in1 = new BufferedReader(f1);
+	private String path = null;
 
-            // vizsgalt fajl beolvasasa
-            FileReader f2 = new FileReader("commands/preDefinedTestCases/expOutput/" + par2);
-            BufferedReader in2 = new BufferedReader(f2);
+	/**
+	 * @param args
+	 *            the command line arguments
+	 */
+	public void doTheTest(String par1, String par2) {
+		try {
+			// referencia-fajl beolvasasa
+			FileReader f1 = new FileReader(path
+					+ "preDefinedTestCases\\results\\" + par1);
+			BufferedReader in1 = new BufferedReader(f1);
 
-            // ebben a ket stringben taroljuk ideiglenesen a sorokat
-            String str1, str2;
+			// vizsgalt fajl beolvasasa
+			FileReader f2 = new FileReader(path
+					+ "preDefinedTestCases\\expOutput\\" + par2);
+			BufferedReader in2 = new BufferedReader(f2);
 
-            Boolean megegyezik = true;
-            
-            // referencia-fajl sorait megszamoljuk
-            // az a sor valid, ha igy kezdodik:
-            // <szam> :
-            while ( ((str1 = in1.readLine()) != null) ) {
-            	str2 = in2.readLine();
-            	if(!str1.equals(str2)){
-            		megegyezik = false;
-            	}
-            }
+			// ebben a ket stringben taroljuk ideiglenesen a sorokat
+			String str1, str2;
 
-            if (megegyezik == true)
-                System.out.println("A kimenet megfelel az elvartnak.\n");
-            else
-                System.out.println("A kimenet nem felel meg az elvartnak.\n");
+			Boolean megegyezik = true;
 
-            in1.close();
-            in2.close();
-        }
-        catch (IOException e)
-        {
-            System.out.println(e.toString());
-        }
-    }
+			// referencia-fajl sorait megszamoljuk
+			// az a sor valid, ha igy kezdodik:
+			// <szam> :
+			while (((str1 = in1.readLine()) != null)) {
+				str2 = in2.readLine();
+				if (!str1.equals(str2)) {
+					megegyezik = false;
+				}
+			}
+
+			if (megegyezik == true)
+				System.out.println("Output is correct.\n");
+			else
+				System.out.println("Output is not correct.\n");
+
+			in1.close();
+			in2.close();
+		} catch (IOException e) {
+			System.out.println(e.toString());
+		}
+	}
+
+	public void setPath(String p) {
+		path = p;
+	}
 
 }

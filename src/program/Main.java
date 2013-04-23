@@ -28,7 +28,7 @@ public class Main {
 
 		// SingletonLoader objektum a parancsok kezelesehez
 		SingletonLoader sl = SingletonLoader.Instance();
-		
+
 		// tesztesetek nevei
 		String[] testNames = new String[14];
 
@@ -48,12 +48,13 @@ public class Main {
 		testNames[13] = "EXIT";
 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		
+
 		String path = null;
 		try {
 			while (true) {
 				// a felhasznalo altal keszitett parancsok eleresenek helye
-				// csak egyszer fut le: bekeri az eleresi utat, majd ezzel dolgozik tovabb
+				// csak egyszer fut le: bekeri az eleresi utat, majd ezzel
+				// dolgozik tovabb
 				System.out
 						.println("Type the absolute path of the commands directory (ex C:\\Users\\audiolovenation\\commands\\)!");
 
@@ -63,6 +64,7 @@ public class Main {
 					System.err.println("Error");
 					continue;
 				}
+				
 				break;
 			}
 		} catch (IOException e) {
@@ -72,10 +74,10 @@ public class Main {
 		try {
 			while (true) {
 				// elso kerdesre valasz:
-				//    1 - felhasznalo altal definialt esetek
-				//    2 - elore megirt teszesetek
+				// 1 - felhasznalo altal definialt esetek
+				// 2 - elore megirt teszesetek
 				Integer nr = null;
-				
+
 				// input es output file-ok
 				File inputFile = null;
 				File outputFile = null;
@@ -117,13 +119,15 @@ public class Main {
 						break;
 					}
 
-					outputFile = new File(
-							"commands\\customTestCases\\results\\"
-									+ outputFileName);
-					inputFile = new File("commands\\customTestCases\\"
-							+ inputFileName);
-					// inputFile = new File(path + "customTestCases\\"
+					//outputFile = new File(
+					//		"commands\\customTestCases\\results\\"
+					//				+ outputFileName);
+					// inputFile = new File("commands\\customTestCases\\"
 					// + inputFileName);
+					outputFile = new File(path + "customTestCases\\results\\"
+							+ outputFileName);
+					inputFile = new File(path + "customTestCases\\"
+							+ inputFileName);
 
 					try { // a parancsok ertelmezese a kovetkezo metodusban
 						sl.loadTestCase(inputFile, outputFile);
@@ -133,7 +137,7 @@ public class Main {
 					}
 					break;
 				case 2: // elore definialt tesztesetek
-					// a valaszthato tesztek listajanak kiirasa konzolra 
+					// a valaszthato tesztek listajanak kiirasa konzolra
 					loop: while (true) {
 						for (int i = 0; i < testNames.length; i++) {
 							System.out.println(i + 1 + ". " + testNames[i]);
@@ -148,19 +152,20 @@ public class Main {
 							continue;
 						}
 
-						// String predefinedPath = path +
-						// "preDefinedTestCases\\";
-						// String predefinedResultsPath = path
-						// + "preDefinedTestCases\\results\\";
-						String predefinedPath = "commands\\preDefinedTestCases\\";
-						String predefinedResultsPath = "commands\\preDefinedTestCases\\results\\";
+						String predefinedPath = path + "preDefinedTestCases\\";
+						String predefinedResultsPath = path
+								+ "preDefinedTestCases\\results\\";
+						//String predefinedPath = "commands\\preDefinedTestCases\\";
+						//String predefinedResultsPath = "commands\\preDefinedTestCases\\results\\";
 
 						// ki es bemenet ellenorzesere szolgalo osztaly
 						CaseTester ct = new CaseTester();
 
+						ct.setPath(path);
+						
 						if (nr == null)
 							break;
-						
+
 						switch (nr) {
 						case 1: // Hangyaszag kovetese
 							sl.loadTestCase(new File(predefinedPath

@@ -84,12 +84,12 @@ public class SingletonLoader {
 	 */
 	public void loadTestCase(File inputFile, File outputFile)
 			throws FileNotFoundException {
-		BufferedReader br = null;
+		BufferedReader br = new BufferedReader(new FileReader(inputFile));
 		PrintWriter pw;
 		try {
 			// a bemeneti file-ban kapott parancsokon megy vegig
 			while (true) {
-				br = new BufferedReader(new FileReader(inputFile));
+				
 				line = br.readLine();
 				if (line == null)
 					break;
