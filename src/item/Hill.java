@@ -36,8 +36,10 @@ public class Hill extends Item {
 	public void collisionWithAnt(Ant ant, boolean b) {
 		Singleton s = Singleton.Instance();	
 		// A hangyabolyba visszaero hangya inaktiv allapotba kerul
-		ant.rest();
-		s.printCollision(ant, this, actualField);
+		if(b==true){
+			ant.rest();
+			s.printCollision(ant, this, actualField);
+		}
 	}
 
 	@Override
