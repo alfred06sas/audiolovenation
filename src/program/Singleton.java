@@ -17,6 +17,7 @@ import land.Field;
 public class Singleton {
 	private static HashMap<String, HashMap<String, String>> states;
 	private static Singleton instance = null;
+	private static SingletonLoader sl = null;
 	private static HashMap<String, String> types;
 	private static int roundNumber;
 
@@ -29,6 +30,7 @@ public class Singleton {
 		SingletonContainer sc = SingletonContainer.getInstance();
 		if (instance == null) {
 			instance = new Singleton();
+			sl = SingletonLoader.Instance();
 			states = new HashMap<String, HashMap<String, String>>();
 			types = new HashMap<String, String>();
 			roundNumber = 0;
@@ -58,17 +60,17 @@ public class Singleton {
 		} else {
 			states.put(i.getId(), i.getStates()); // TODO getId, getStates
 													// elemeknek
-//			printComment("a hozzaadando objektum id-ja es allapotai: "
-//					+ i.getId() + " " + i.getStates()
-//					+ " // Singleton.addItem()");
+			printComment("a hozzaadando objektum id-ja es allapotai: "
+					+ i.getId() + " " + i.getStates()
+					+ " // Singleton.addItem()");
 		}
 	}
 
 	void setState(Item i) {
 		states.remove(i.getId());
 		states.put(i.getId(), i.getStates());
-//		printComment("a modositott objektum id-ja es allapotai: " + i.getId()
-//				+ " " + i.getStates() + " // Singleton.setStates()");
+		printComment("a modositott objektum id-ja es allapotai: " + i.getId()
+				+ " " + i.getStates() + " // Singleton.setStates()");
 	}
 
 	/*
@@ -95,11 +97,19 @@ public class Singleton {
 		System.out.println(whatType + " (" + what.getId().substring(1)
 				+ ") TO " + withType + " (" + with.getId().substring(1)
 				+ ") ON FIELD (" + field.getId() + ")");
+		sl.concatToResult(whatType + " (" + what.getId().substring(1)
+				+ ") TO " + withType + " (" + with.getId().substring(1)
+				+ ") ON FIELD (" + field.getId() + ")");
 		if (oldStateItemWhat != null) {
 			for (String key : oldStateItemWhat.keySet()) {
 				if (!oldStateItemWhat.get(key)
 						.equals(newStateItemWhat.get(key))) {
 					System.out.println("                   " + whatType + " ("
+							+ what.getId().substring(1) + ") " + key
+							+ " CHANGED:    FROM " + oldStateItemWhat.get(key)
+							+ " TO " + newStateItemWhat.get(key));
+					
+					sl.concatToResult("                   " + whatType + " ("
 							+ what.getId().substring(1) + ") " + key
 							+ " CHANGED:    FROM " + oldStateItemWhat.get(key)
 							+ " TO " + newStateItemWhat.get(key));
@@ -116,6 +126,10 @@ public class Singleton {
 							+ with.getId().substring(1) + ") " + key
 							+ " CHANGED:    FROM " + oldStateItemWith.get(key)
 							+ " TO " + newStateItemWith.get(key));
+					sl.concatToResult("                   " + withType + " ("
+							+ with.getId().substring(1) + ") " + key
+							+ " CHANGED:    FROM " + oldStateItemWith.get(key)
+							+ " TO " + newStateItemWith.get(key));
 					states.remove(with.getId());
 					states.put(with.getId(),newStateItemWith);
 				}
@@ -129,6 +143,7 @@ public class Singleton {
 	public void printNextRound() {
 		roundNumber++;
 		System.out.println("-------- " + roundNumber + " . ROUND --------");
+		sl.concatToResult("-------- " + roundNumber + " . ROUND --------");
 	}
 
 	/*
@@ -149,6 +164,10 @@ public class Singleton {
 						+ ") " + " DIR CHANGED:    FROM "
 						+ oldStateItemWhat.get("DIR") + " TO "
 						+ newStateItemWhat.get("DIR"));
+				sl.concatToResult(whatType + " (" + what.getId().substring(1)
+						+ ") " + " DIR CHANGED:    FROM "
+						+ oldStateItemWhat.get("DIR") + " TO "
+						+ newStateItemWhat.get("DIR"));
 				states.remove(what.getId());
 				states.put(what.getId(),newStateItemWhat);
 			}
@@ -165,6 +184,9 @@ public class Singleton {
 		System.out.println(whatType + " (" + what.getId().substring(1) + ")"
 				+ " STEPPED FROM FIELD (" + from.getId() + ") TO FIELD ("
 				+ to.getId() + ")");
+		sl.concatToResult(whatType + " (" + what.getId().substring(1) + ")"
+				+ " STEPPED FROM FIELD (" + from.getId() + ") TO FIELD ("
+				+ to.getId() + ")");
 	}
 
 	/*
@@ -174,6 +196,8 @@ public class Singleton {
 	public void printAntSmellDecreased(int from, int to, Field field) {
 		System.out.println("ANT SMELL DECREASED FROM " + from + " TO " + to
 				+ " ON FIELD (" + field.getId() + ")");
+		sl.concatToResult("ANT SMELL DECREASED FROM " + from + " TO " + to
+				+ " ON FIELD (" + field.getId() + ")");
 	}
 
 	/*
@@ -182,6 +206,8 @@ public class Singleton {
 	 */
 	public void printFoodSmellDisappeard(Field field) {
 		System.out.println("FOOD SMELL DISAPPEARED ON FIELD (" + field.getId()
+				+ ")");
+		sl.concatToResult("FOOD SMELL DISAPPEARED ON FIELD (" + field.getId()
 				+ ")");
 	}
 

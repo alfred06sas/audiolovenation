@@ -21,7 +21,7 @@ public class Main {
 
 		SingletonLoader sl = SingletonLoader.Instance();
 		String[] testNames = new String[15];
-		
+
 		testNames[0] = "Tracking ant's smell";
 		testNames[1] = "Tracking food's smell";
 		testNames[2] = "Moving ant on an empty land";
@@ -39,15 +39,36 @@ public class Main {
 		testNames[14] = "EXIT";
 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
+		String path = null;
 		try {
 			while (true) {
 				System.out
-						.println("Type 1 if you want to load commands from file, or type 2 if you want to load predefined test cases!");
+						.println("Type the absolute path of the commands directory (ex C:\\Users\\audiolovenation\\commands\\)!");
+
+				try {
+					path = String.valueOf(br.readLine());
+				} catch (NumberFormatException nfe) {
+					System.err.println("Error");
+					continue;
+				}
+				break;
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			while (true) {
+
 				Integer nr = null;
 				File inputFile = null;
+				File outputFile = null;
+
 				String inputFileName = null;
 				String outputFileName = null;
+
+				System.out
+						.println("Type 1 if you want to load commands from file, or type 2 if you want to load predefined test cases!");
 
 				try {
 					nr = Integer.valueOf(br.readLine());
@@ -56,6 +77,7 @@ public class Main {
 					continue;
 				}
 
+				System.out.println(path);
 				if (nr == null)
 					break;
 				System.out
@@ -71,7 +93,6 @@ public class Main {
 						break;
 					}
 
-					//System.out.println();
 					System.out.print("Output file: ");
 					try {
 						outputFileName = br.readLine();
@@ -80,15 +101,14 @@ public class Main {
 						break;
 					}
 
-					File file = new File(outputFileName);
-					if (file.exists()) {
-						System.out
-								.println("\nOutput file already exists! Try again!");
-						break;
-					}
-					inputFile = new File("commands\\customTestCases\\"+inputFileName);
+					outputFile = new File(outputFileName);
+					inputFile = new File("commands\\customTestCases\\"
+							+ inputFileName);
+					// inputFile = new File(path + "customTestCases\\"
+					// + inputFileName);
+
 					try {
-						sl.loadTestCase(inputFile, outputFileName);
+						sl.loadTestCase(inputFile, outputFile);
 					} catch (FileNotFoundException e) {
 						System.out.println("No such a file! Try again!");
 						break;
@@ -108,50 +128,85 @@ public class Main {
 							System.err.println("Error");
 							continue;
 						}
+
+						//String predefinedPath = path + "preDefinedTestCases\\";
+						//String predefinedResultsPath = path
+						//		+ "preDefinedTestCases\\results\\";
+						String predefinedPath = "commands\\preDefinedTestCases\\";
+						String predefinedResultsPath = "commands\\preDefinedTestCases\\results\\";
+
 						if (nr == null)
 							break;
 						switch (nr) {
 						case 1:
-							sl.loadTestCase(new File("commands\\preDefinedTestCases\\input1.dat"), "output1.dat");
+							sl.loadTestCase(new File(predefinedPath
+									+ "input1.dat"), new File(
+									predefinedResultsPath + "output1.dat"));
 							break;
 						case 2:
-							sl.loadTestCase(new File("commands\\preDefinedTestCases\\input2.dat"), "output2.dat");
+							sl.loadTestCase(new File(predefinedPath
+									+ "input2.dat"), new File(
+									predefinedResultsPath + "output2.dat"));
 							break;
 						case 3:
-							sl.loadTestCase(new File("commands\\preDefinedTestCases\\input3.dat"), "output3.dat");
+							sl.loadTestCase(new File(predefinedPath
+									+ "input3.dat"), new File(
+									predefinedResultsPath + "output3.dat"));
 							break;
 						case 4:
-							sl.loadTestCase(new File("commands\\preDefinedTestCases\\input4.dat"), "output4.dat");
+							sl.loadTestCase(new File(predefinedPath
+									+ "input4.dat"), new File(
+									predefinedResultsPath + "output4.dat"));
 							break;
 						case 5:
-							sl.loadTestCase(new File("commands\\preDefinedTestCases\\input5.dat"), "output5.dat");
+							sl.loadTestCase(new File(predefinedPath
+									+ "input5.dat"), new File(
+									predefinedResultsPath + "output5.dat"));
 							break;
 						case 6:
-							sl.loadTestCase(new File("commands\\preDefinedTestCases\\input6.dat"), "output6.dat");
+							sl.loadTestCase(new File(predefinedPath
+									+ "input6.dat"), new File(
+									predefinedResultsPath + "output6.dat"));
 							break;
 						case 7:
-							sl.loadTestCase(new File("commands\\preDefinedTestCases\\input7.dat"), "output7.dat");
+							sl.loadTestCase(new File(predefinedPath
+									+ "input7.dat"), new File(
+									predefinedResultsPath + "output7.dat"));
 							break;
 						case 8:
-							sl.loadTestCase(new File("commands\\preDefinedTestCases\\input8.dat"), "output8.dat");
+							sl.loadTestCase(new File(predefinedPath
+									+ "input8.dat"), new File(
+									predefinedResultsPath + "output8.dat"));
 							break;
 						case 9:
-							sl.loadTestCase(new File("commands\\preDefinedTestCases\\input9.dat"), "output9.dat");
+							sl.loadTestCase(new File(predefinedPath
+									+ "input9.dat"), new File(
+									predefinedResultsPath + "output9.dat"));
 							break;
 						case 10:
-							sl.loadTestCase(new File("commands\\preDefinedTestCases\\input10.dat"), "output10.dat");
+							sl.loadTestCase(new File(predefinedPath
+									+ "input10.dat"), new File(
+									predefinedResultsPath + "output10.dat"));
 							break;
 						case 11:
-							sl.loadTestCase(new File("commands\\preDefinedTestCases\\input11.dat"), "output11.dat");
+							sl.loadTestCase(new File(predefinedPath
+									+ "input11.dat"), new File(
+									predefinedResultsPath + "output11.dat"));
 							break;
 						case 12:
-							sl.loadTestCase(new File("commands\\preDefinedTestCases\\input12.dat"), "output12.dat");
+							sl.loadTestCase(new File(predefinedPath
+									+ "input12.dat"), new File(
+									predefinedResultsPath + "output12.dat"));
 							break;
 						case 13:
-							sl.loadTestCase(new File("commands\\preDefinedTestCases\\input13.dat"), "output13.dat");
+							sl.loadTestCase(new File(predefinedPath
+									+ "input13.dat"), new File(
+									predefinedResultsPath + "output13.dat"));
 							break;
 						case 14:
-							sl.loadTestCase(new File("commands\\preDefinedTestCases\\input14.dat"), "output14.dat");
+							sl.loadTestCase(new File(predefinedPath
+									+ "input14.dat"), new File(
+									predefinedResultsPath + "output14.dat"));
 							break;
 						case 15:
 							break;
@@ -176,8 +231,8 @@ public class Main {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-//		land.loadLand();
-//		land.buildLand();		
+		// land.loadLand();
+		// land.buildLand();
 	}
 
 }

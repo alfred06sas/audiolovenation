@@ -10,7 +10,9 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import land.Dir;
@@ -30,6 +32,7 @@ public class SingletonLoader {
 	private SingletonContainer sc = SingletonContainer.getInstance();
 	private Singleton s = Singleton.Instance();
 	private String line = null;
+	private String result = new String();
 	private Land land = new Land();
 
 	public static SingletonLoader Instance() {
@@ -40,16 +43,21 @@ public class SingletonLoader {
 		return instance;
 	}
 
-	public void loadTestCase(File inputFile, String outputFileName)
+	public void concatToResult(String r) {
+		this.result += r + "\n";
+	}
+
+	public void loadTestCase(File inputFile, File outputFile)
 			throws FileNotFoundException {
 		BufferedReader br = new BufferedReader(new FileReader(inputFile));
+		PrintWriter pw;
 		try {
 			while (true) {
 				line = br.readLine();
 				if (line == null)
 					break;
 				String[] sline = line.split(" ");
-				
+
 				// a palya letrehozasa
 				if (sline[0].equals("create_land") && sline[1].equals("-r")
 						&& sline[3].equals("-c") && sline.length == 5) {
@@ -57,8 +65,8 @@ public class SingletonLoader {
 					String column = sline[4];
 
 					createLand(row, column);
-					
-				// item elhelyezese a palyan
+
+					// item elhelyezese a palyan
 				} else if (sline[0].equals("put_item") && sline[1].equals("-t")
 						&& sline[3].equals("-iid") && sline[5].equals("-fid")
 						&& sline.length == 7) {
@@ -68,7 +76,7 @@ public class SingletonLoader {
 
 					putItem(t, iid, fid);
 
-				// szag elhelyezese a palyan
+					// szag elhelyezese a palyan
 				} else if (sline[0].equals("put_smell")
 						&& sline[1].equals("-t") && sline[3].equals("-sid")
 						&& sline[5].equals("-s") && sline[7].equals("-fid")
@@ -79,8 +87,8 @@ public class SingletonLoader {
 					String field_id = sline[8];
 
 					putSmell(type, smell_id, strength, field_id);
-				
-				// A hangya/hangyasz kulonbozo allapotainak beallitasa
+
+					// A hangya/hangyasz kulonbozo allapotainak beallitasa
 				} else if (sline[0].equals("set") && sline[1].equals("-t")
 						&& sline[3].equals("-mid") && sline[5].equals("-d")
 						&& sline[7].equals("-s") && sline.length == 9) {
@@ -90,31 +98,37 @@ public class SingletonLoader {
 					String state = sline[8];
 
 					set(type, movable_id, dir, state);
-				
-				// spray hasznalata
+
+					// spray hasznalata
 				} else if (sline[0].equals("use_spray")
 						&& sline[1].equals("-t") && sline[3].equals("-fid")
 						&& sline.length == 5) {
-				
-				// kor leptetese	
+
+					// kor leptetese
 				} else if (sline[0].equals("step_round")
 						&& sline[1].equals("-rn") && sline.length == 3) {
-					
+
 					int round = Integer.valueOf(sline[2]);
 					for (int i = 0; i < round; i++) {
 						s.printNextRound();
 						land.move();
 					}
-				
-				// a parancsot nem sikerult ertelmezni
+
+					// a parancsot nem sikerult ertelmezni
 				} else {
 					System.err.println("Undefined command: " + line);
 					return;
 				}
 			}
+			
+			if (result.length() != 0) {
+				pw = new PrintWriter(new FileWriter(outputFile));
+				pw.write(result);
+				pw.close();
+			}
 			br.close();
 		} catch (IOException e) {
- 
+
 		}
 	}
 
@@ -178,9 +192,9 @@ public class SingletonLoader {
 			return;
 		}
 
-		land.getField(field_id).addSmell(smell);
-		smell.setActualField(land.getField(field_id));
-		smell.setStrength(Integer.valueOf(strength));
+		Field field = new Field(field_id);
+		field.addSmell(smell);
+		smell.setActualField(field);
 	}
 
 	private void set(String type, String movable_id, String dir, String state) {
@@ -189,7 +203,7 @@ public class SingletonLoader {
 			Ant ant = null;
 			loop: for (Movable m : movables) {
 				Item i = (Item) m;
-				if (i.getId().equals("a"+movable_id)) {
+				if (i.getId().equals("a" + movable_id)) {
 					ant = (Ant) m;
 					break loop;
 				}
@@ -236,18 +250,18 @@ public class SingletonLoader {
 			Echidna echidna = null;
 			loop: for (Movable m : movables) {
 				Item i = (Item) m;
-				if (i.getId().equals("e"+movable_id)) {
+				if (i.getId().equals("e" + movable_id)) {
 					echidna = (Echidna) m;
 					break loop;
 				}
 			}
-			
+
 			if (echidna == null) {
 				System.out.println("Echidna(" + movable_id
 						+ ") does not exist at command: " + line);
 				return;
 			}
-			
+
 			// dir beallitasa
 			if (dir.equals("up")) {
 				echidna.setDir(Dir.UP);
