@@ -28,14 +28,32 @@ import smell.Smell;
 import blockage.Gravel;
 import blockage.Puddle;
 
+/**
+ * 
+ * @author audiolovenation
+ * 
+ *         A fajlok beolvasasara és kimeneti fajlbairas celjara letrehozott
+ *         segedosztaly. Ez ertelmezi a parancsokat.
+ * 
+ */
 public class SingletonLoader {
+	// singleton peldany sajat magarol
 	private static SingletonLoader instance = null;
+	// SingletonContainer peldany a volatile/movable stb eleresere
 	private SingletonContainer sc = SingletonContainer.getInstance();
+	// Singleton peldany a kimenet generalasara
 	private Singleton s = Singleton.Instance();
 	private String line = null;
+	// eredmeny string, amit a parancsok lefuttatasa utan kiirun file-ba
 	private String result = new String();
+	// palya peldany
 	private Land land = new Land();
 
+	/**
+	 * Peldany visszakapasa
+	 * 
+	 * @return singleton peldany
+	 */
 	public static SingletonLoader Instance() {
 		SingletonContainer sc = SingletonContainer.getInstance();
 		if (instance == null) {
@@ -44,20 +62,40 @@ public class SingletonLoader {
 		return instance;
 	}
 
+	/**
+	 * Egy parancs eredmenyenek hozzafuzese az eredmenystring-hez
+	 * 
+	 * @param r
+	 *            vegrehajtas eredmenye
+	 */
 	public void concatToResult(String r) {
 		this.result += r + "\n";
 	}
 
+	/**
+	 * Parancsok ertelmezese
+	 * 
+	 * @param inputFile
+	 *            bemeneti file
+	 * @param outputFile
+	 *            kimeneti file
+	 * @throws FileNotFoundException
+	 *             ha a kimeneti file nem letezik
+	 */
 	public void loadTestCase(File inputFile, File outputFile)
 			throws FileNotFoundException {
-		BufferedReader br = new BufferedReader(new FileReader(inputFile));
+		BufferedReader br = null;
 		PrintWriter pw;
 		try {
+			// a bemeneti file-ban kapott parancsokon megy vegig
 			while (true) {
+				br = new BufferedReader(new FileReader(inputFile));
 				line = br.readLine();
 				if (line == null)
 					break;
-				String[] sline = line.split(" ");
+				String[] sline = line.split(" "); // parancsok feldarabolasa
+													// whitespace karakter
+													// szerint
 
 				// a palya letrehozasa
 				if (sline[0].equals("create_land") && sline[1].equals("-r")
@@ -128,18 +166,28 @@ public class SingletonLoader {
 				}
 			}
 
+			// ha a result nem ures, kiirjuk file-ba
 			if (result.length() != 0) {
 				pw = new PrintWriter(new FileWriter(outputFile));
 				pw.write(result);
 				pw.close();
 			}
+			// result tartalmanak torlese
 			result = new String();
 			br.close();
 		} catch (IOException e) {
-
+			e.printStackTrace();
 		}
 	}
 
+	/**
+	 * Palya keszitese
+	 * 
+	 * @param r
+	 *            sorok szama
+	 * @param c
+	 *            oszlopok szama
+	 */
 	public void createLand(String r, String c) {
 		land = new Land();
 		s.clear();
@@ -148,6 +196,16 @@ public class SingletonLoader {
 		land.buildLand();
 	}
 
+	/**
+	 * Elem elhelyezese a palyan
+	 * 
+	 * @param t
+	 *            tipus
+	 * @param iid
+	 *            elem azonositoja
+	 * @param fid
+	 *            field azonositoja
+	 */
 	public void putItem(String t, String iid, String fid) {
 		if (t.equals("ant")) {
 			Ant ant = new Ant(iid);
@@ -186,6 +244,18 @@ public class SingletonLoader {
 		}
 	}
 
+	/**
+	 * Szag elhelyezese a palyan
+	 * 
+	 * @param type
+	 *            szag tipus
+	 * @param smell_id
+	 *            szag id
+	 * @param strength
+	 *            erosseg
+	 * @param field_id
+	 *            field id
+	 */
 	public void putSmell(String type, String smell_id, String strength,
 			String field_id) {
 		SingletonContainer sc = SingletonContainer.getInstance();
@@ -194,7 +264,7 @@ public class SingletonLoader {
 		if (type.equals("antsmell")) {
 			smell = new AntSmell();
 			smell.setId(smell_id);
-			sc.addVolatile((Volatile)smell);
+			sc.addVolatile((Volatile) smell);
 		} else if (type.equals("foodsmell")) {
 			smell = new FoodSmell();
 			smell.setId(smell_id);
@@ -206,15 +276,29 @@ public class SingletonLoader {
 		Field field = land.getField(field_id);
 		field.addSmell(smell);
 		smell.setActualField(field);
-		
+
 		smell.setStrength(Integer.valueOf(strength));
 		smell.setActualField(field);
 	}
 
+	/**
+	 * Hangya/hangyaszsun allapotanak/iranyanak beallitasa
+	 * 
+	 * @param type
+	 *            tipus (ant, echidna)
+	 * @param movable_id
+	 *            azonosito
+	 * @param dir
+	 *            irany
+	 * @param state
+	 *            allapot (hangya és hangyasz eseten kulonbozo)
+	 */
 	private void set(String type, String movable_id, String dir, String state) {
 		List<Movable> movables = sc.getMovables();
+		// hangya tipus eseten
 		if (type.equals("ant")) {
 			Ant ant = null;
+			// a hangya lejerdezese
 			loop: for (Movable m : movables) {
 				Item i = (Item) m;
 				if (i.getId().equals("a" + movable_id)) {
@@ -260,8 +344,10 @@ public class SingletonLoader {
 				return;
 			}
 			s.setState(ant);
+			// hangyasz tipus eseten
 		} else if (type.equals("echidna")) {
 			Echidna echidna = null;
+			// a hangyasz lekerdezese
 			loop: for (Movable m : movables) {
 				Item i = (Item) m;
 				if (i.getId().equals("e" + movable_id)) {
@@ -306,14 +392,24 @@ public class SingletonLoader {
 				return;
 			}
 			s.setState(echidna);
-		} else {
+		} else { // rossz tipus megadasa eseten
 			System.out
 					.println("Only echidna and ant types are allowed at command: "
 							+ line);
 			return;
-		} 
+		}
 	}
 
+	/**
+	 * Spray hasznalata
+	 * 
+	 * @param type
+	 *            spray tipusa (ant_smell, ant_killer)
+	 * @param spray_id
+	 *            spray azonosito
+	 * @param fid
+	 *            field azonosito
+	 */
 	private void useSpray(String type, String spray_id, String fid) {
 		Field field = land.getField(fid);
 
