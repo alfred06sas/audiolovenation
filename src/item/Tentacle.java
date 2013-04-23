@@ -101,25 +101,39 @@ public class Tentacle {
 	 *            van-e a hangyanal etel
 	 */
 	public Map<Dir, Field> scan(boolean haveFood) {
+		// a valasztas uresse inicializalasa
 		Map<Dir, Field> choice = new HashMap<Dir, Field>();
+
+		// prev egy segedvaltozo, segitsegevel osszehasonlitjuk az aktualisan
+		// tapogatott mezot az elozovel
 		int prev = -1;
 		List<Smell> smells;
 		if (possibleFields.get(ant.getDir()) != null) {
+
+			// az elso vizsgalatunk a pont iranyba eso mezo mert ez a
+			// preferaltabb
 			smells = possibleFields.get(ant.getDir()).getSmells();
-			foodSmell = 0;
+			foodSmell = 0; // 0-ra inicializalas
 			antSmell = 0;
 			for (Smell smell : smells) {
-				smell.smellIt(this);
+				smell.smellIt(this); // az egyes smellek megszagolasa, azok
+										// visszahivva a megfelelo szagot
+										// novelik
 			}
 			if (haveFood == true) {
-				foodSmell = 0;
+				foodSmell = 0; // ha van kaja a hangyanal akkor annak illata nem
+								// erdekli
 			}
-			if (foodSmell + antSmell > prev) {
+			if (foodSmell + antSmell > prev) { // ha az elozo valasztasnal
+												// erosebb szagu mezot
+												// talaltunk, valasztasunk
+												// modosul
 				choice.clear();
 				choice.put(ant.getDir(), possibleFields.get(ant.getDir()));
 				prev = foodSmell + antSmell;
 			}
 		}
+		// pont mint fentebb, az osszes mezore
 		for (Dir key : possibleFields.keySet()) {
 			smells = possibleFields.get(key).getSmells();
 
@@ -127,7 +141,6 @@ public class Tentacle {
 			antSmell = 0;
 			for (Smell smell : smells) {
 				smell.smellIt(this);
-				// System.out.println("comment: smellek: "+key+" :"+smell.getStrength());
 			}
 			if (haveFood == true) {
 				foodSmell = 0;
@@ -138,7 +151,7 @@ public class Tentacle {
 				prev = foodSmell + antSmell;
 			}
 		}
-		// System.out.println("comment: choice: "+choice+" // scan()");
+
 		return choice;
 	}
 
