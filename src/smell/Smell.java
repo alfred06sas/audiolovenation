@@ -13,7 +13,7 @@ import land.Field;
  */
 public class Smell {
 
-	private Field actualField;
+	protected Field actualField;
 	protected int strength;
 
 	public Smell(){		
@@ -38,7 +38,7 @@ public class Smell {
 
 	/**
 	 * 
-	 * Szag növelése.
+	 * Szag nï¿½velï¿½se.
 	 * 
 	 */
 	public void IncreaseSmell(int s) {
@@ -54,6 +54,7 @@ public class Smell {
 	 * 
 	 */
 	public void setActualField(Field field) {
+		actualField = field;
 	}
 
 	/**

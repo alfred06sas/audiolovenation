@@ -29,8 +29,6 @@ public class AntSmell extends Smell implements Volatile {
 		SingletonContainer sc=SingletonContainer.getInstance();
 		sc.removeVolatile(this);
 		field.removeSmell(this);
-
-		
 	}
 
 	/**
@@ -54,6 +52,10 @@ public class AntSmell extends Smell implements Volatile {
 	public void smellIt(Tentacle tentacle) {
 
 		tentacle.increaseAntSmell(strength);
-		
+	}
+	
+	@Override
+	public void antSmellSpray() {
+		removeMyself(actualField);
 	}
 }
