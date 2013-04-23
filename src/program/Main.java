@@ -6,6 +6,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import case_tester.CaseTester;
+
 import land.Land;
 
 /**
@@ -142,6 +144,8 @@ public class Main {
 							sl.loadTestCase(new File(predefinedPath
 									+ "input1.dat"), new File(
 									predefinedResultsPath + "output1.dat"));
+							CaseTester ct = new CaseTester();
+							ct.doTheTest("output1.dat", "expoutput1.dat");
 							break;
 						case 2:
 							sl.loadTestCase(new File(predefinedPath
