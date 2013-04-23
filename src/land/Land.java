@@ -93,8 +93,8 @@ public class Land {
 		List<Volatile> volatiles = sc.getVolatiles();
 		
 		// Illekony anyagok csokkentese
-	//	for (Volatile volatile_ :volatiles)
-	//		volatile_.decrease();
+		for (Volatile volatile_ :volatiles)
+			volatile_.decrease();
 		
 	}
 

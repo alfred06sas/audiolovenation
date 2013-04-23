@@ -40,7 +40,8 @@ public class AntSmell extends Smell implements Volatile {
 	 */
 	@Override
 	public void decrease() {
-		strength--;
+		Singleton s = Singleton.Instance();
+		s.printAntSmellDecreased(strength, strength--, actualField);
 		
 	}
 
