@@ -31,14 +31,6 @@ public class CaseTester {
             // ebben a ket stringben taroljuk ideiglenesen a sorokat
             String str1, str2;
 
-            // egy "nagy" stringtombben taroljuk a fajlokat,
-            // nem szep, de mukodik
-            int lines1 = 0;
-            int lines2 = 0;
-
-            String[] file1 = new String[1000];
-            String[] file2 = new String[1000];
-
             Boolean megegyezik = true;
             
             // referencia-fajl sorait megszamoljuk

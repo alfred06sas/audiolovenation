@@ -137,6 +137,8 @@ public class Main {
 						String predefinedPath = "commands\\preDefinedTestCases\\";
 						String predefinedResultsPath = "commands\\preDefinedTestCases\\results\\";
 
+						CaseTester ct = new CaseTester();
+
 						if (nr == null)
 							break;
 						switch (nr) {
@@ -144,7 +146,6 @@ public class Main {
 							sl.loadTestCase(new File(predefinedPath
 									+ "input1.dat"), new File(
 									predefinedResultsPath + "output1.dat"));
-							CaseTester ct = new CaseTester();
 							ct.doTheTest("output1.dat", "expoutput1.dat");
 							break;
 						case 2:
