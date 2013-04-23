@@ -17,13 +17,17 @@ public class Spray extends Item implements Volatile {
 	private int strength;
 
 	public Spray(){
-		strength = 0;
+		strength = 10;
 	}
 	
 	public Spray(String ID){
 		super(ID);
 		id="s"+ID;
 		strength = 0;
+	}
+	
+	public int getStrength(){
+		return strength;
 	}
 	
 	/**

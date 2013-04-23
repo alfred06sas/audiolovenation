@@ -283,7 +283,7 @@ public class Ant extends Item implements Movable {
 	@Override
 	public void collisionWithSpray(Integer strength) {
 		/* A hangya looseHP metodusanak meghivasa. */
-		looseHP(6);
+		looseHP(strength);
 	}
 	
 	@Override

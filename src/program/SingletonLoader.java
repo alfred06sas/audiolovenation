@@ -173,8 +173,8 @@ public class SingletonLoader {
 			Hill hill = new Hill(iid);
 			s.addItem(hill);
 			land.putItems(land.getField(fid), hill);
-		} else if (t.equals("antlion")) {
-			Antlion al = new Antlion(iid);
+		} else if (t.equals("spray")) {
+			Spray al = new Spray(iid);
 			s.addItem(al);
 			land.putItems(land.getField(fid), al);
 		} else if (t.equals("food")) {
@@ -313,7 +313,7 @@ public class SingletonLoader {
 		if (type.equals("ant_smell"))
 			field.removeAntSmells();
 		else if (type.equals("ant_killer"))
-			field.onClick(field, new Spray());
+			field.onClick();
 		else {
 			System.out
 					.println("Undefined type at command: "
