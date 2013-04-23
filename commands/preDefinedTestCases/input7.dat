@@ -1,4 +1,4 @@
-create_land -r 6 -c 4
+create_land -r 8 -c 8
 put_item -t ant -iid 1 -fid 6_2
 set -t ant -mid 1 -d up -s dont_have_food
 put_item -t food -iid 2 -fid 4_2

@@ -43,6 +43,7 @@ public class Singleton {
 			types.put("l", "Antlion");
 			types.put("p", "Puddle");
 			types.put("g", "Gravel");
+			types.put("h", "Hill");
 		}
 		return instance;
 	}
