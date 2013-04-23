@@ -44,9 +44,9 @@ public class CaseTester {
             }
 
             if (megegyezik == true)
-                System.out.println("A ket fajl megegyezik!");
+                System.out.println("A ket fajl megegyezik!\n");
             else
-                System.out.println("A ket fajl nem egyezik meg!");
+                System.out.println("A ket fajl nem egyezik meg!\n");
 
             in1.close();
             in2.close();
