@@ -4,6 +4,7 @@ import item.Volatile;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import land.Land;
 import movable.Movable;
@@ -63,8 +64,8 @@ public class SingletonContainer {
 	 */
 	public static SingletonContainer getInstance() {
 		if (instance == null) {
-			movables = new ArrayList<Movable>();
-			volatiles = new ArrayList<Volatile>();
+			movables = new CopyOnWriteArrayList<Movable>();
+			volatiles = new CopyOnWriteArrayList<Volatile>();
 			instance = null;
 			antKillerSpray = 10;
 			antSmellSpray = 10;

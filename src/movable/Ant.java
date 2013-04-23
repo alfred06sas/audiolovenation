@@ -150,7 +150,7 @@ public class Ant extends Item implements Movable {
 		getActualField().removeItem(this);
 		
 		/* Hangya torlese a SingletonContainer movables listajabol */
-		SingletonContainer sc = new SingletonContainer().getInstance();
+		SingletonContainer sc = SingletonContainer.getInstance();
 		sc.removeMovable(this);
 		
 		/* Hangya torlese az ot tartalmazo mezorol */
@@ -228,6 +228,7 @@ public class Ant extends Item implements Movable {
 					dir=key;
 					setActualField(next.get(key));
 					actualField.addItem(this);
+					s.printStep(this,oldField,actualField);
 				}
 			}
 			
@@ -241,7 +242,7 @@ public class Ant extends Item implements Movable {
 		for (Item item : items)
 			item.collisionWithAnt(this, true);
 		
-		s.printStep(this,oldField,actualField);
+		
 		s.printDirChanged(this);
 
 	}

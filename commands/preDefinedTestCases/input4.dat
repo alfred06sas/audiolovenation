@@ -3,4 +3,4 @@ put_item -t ant -iid 2 -fid 4_2
 put_item -t echidna -iid 1 -fid 3_3
 set -t echidna -mid 1 -d up -s hungry
 set -t ant -mid 2 -d right_top -s dont_have_food
-step_round -rn 1
+step_round -rn 3

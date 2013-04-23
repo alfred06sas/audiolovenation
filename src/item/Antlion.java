@@ -1,5 +1,6 @@
 package item;
 
+import program.Singleton;
 import land.Dir;
 import movable.Ant;
 import movable.Echidna;
@@ -30,9 +31,11 @@ public class Antlion extends Item {
 	 */
 	@Override
 	public void collisionWithAnt(Ant ant, boolean b) {
+		Singleton s = Singleton.Instance();
 		// ha mar lepett a hangya
 		if (b == true) {
 			ant.kill();
+			s.printCollision(ant, this, actualField);
 		}
 	}
 }

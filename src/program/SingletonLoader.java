@@ -168,9 +168,9 @@ public class SingletonLoader {
 			s.addItem(hill);
 			land.putItems(land.getField(fid), hill);
 		} else if (t.equals("antlion")) {
-			Spray spray = new Spray(iid);
-			s.addItem(spray);
-			land.putItems(land.getField(fid), spray);
+			Antlion al = new Antlion(iid);
+			s.addItem(al);
+			land.putItems(land.getField(fid), al);
 		} else if (t.equals("food")) {
 			Food food = new Food(iid);
 			s.addItem(food);

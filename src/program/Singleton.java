@@ -60,17 +60,17 @@ public class Singleton {
 		} else {
 			states.put(i.getId(), i.getStates()); // TODO getId, getStates
 													// elemeknek
-			printComment("a hozzaadando objektum id-ja es allapotai: "
-					+ i.getId() + " " + i.getStates()
-					+ " // Singleton.addItem()");
+//			printComment("a hozzaadando objektum id-ja es allapotai: "
+//					+ i.getId() + " " + i.getStates()
+//					+ " // Singleton.addItem()");
 		}
 	}
 
 	void setState(Item i) {
 		states.remove(i.getId());
 		states.put(i.getId(), i.getStates());
-		printComment("a modositott objektum id-ja es allapotai: " + i.getId()
-				+ " " + i.getStates() + " // Singleton.setStates()");
+//		printComment("a modositott objektum id-ja es allapotai: " + i.getId()
+//				+ " " + i.getStates() + " // Singleton.setStates()");
 	}
 
 	/*

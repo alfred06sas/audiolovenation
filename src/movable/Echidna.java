@@ -174,8 +174,9 @@ public class Echidna extends Item implements Movable {
 
 			/* Ehseg csokkentese */
 			this.decreaseHunger();
+			s.printCollision(ant, this, actualField);
 		}
-		s.printCollision(ant, this, actualField);
+		
 
 	}
 
