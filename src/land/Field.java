@@ -26,21 +26,21 @@ import smell.Smell;
 public class Field {
 
 	private String id;
-	private List<Item> items;
+	private CopyOnWriteArrayList<Item> items;
 	private Map<Dir, Field> neighbours;
 	private List<Smell> smells;
 
 	public Field() {
 		id = new String();
 		neighbours = new HashMap<Dir, Field>();
-		items = new ArrayList<Item>();
+		items = new CopyOnWriteArrayList<Item>();
 		smells = new CopyOnWriteArrayList<Smell>();
 	}
 
 	public Field(String s) {
 		id = s;
 		neighbours = new HashMap<Dir, Field>();
-		items = new ArrayList<Item>();
+		items = new CopyOnWriteArrayList<Item>();
 		smells = new CopyOnWriteArrayList<Smell>();
 	}
 
@@ -60,7 +60,7 @@ public class Field {
 	 * 
 	 * @return
 	 */
-	public List<Item> getItems() {
+	public CopyOnWriteArrayList<Item> getItems() {
 		return items;
 	}
 
@@ -151,7 +151,7 @@ public class Field {
 		s.addItem(spray);		
 		SingletonContainer sc = SingletonContainer.getInstance();
 		sc.addVolatile(spray);
-		List<Item> it = getItems();
+		CopyOnWriteArrayList<Item> it = getItems();
 		for (Item i : it){
 			i.collisionWithSpray(spray.getStrength());
 			s.printCollision(spray, i, this);
