@@ -1,4 +1,4 @@
 create_land -r 8 -c 8
 put_smell -t antsmell -sid 1 -s 10 -fid 2_2
 put_smell -t antsmell -sid 1 -s 10 -fid 2_2
-use_spray -t ant_smell -fid 2_2
+use_spray -t ant_smell -sid 2 -fid 2_2
