@@ -31,7 +31,7 @@ public class Main {
 		testNames[4] = "Ant's collision with an antlion";
 		testNames[5] = "Ant's collision with a puddle or gravel";
 		testNames[6] = "Ant's collision with food, afterwards with a hill";
-		testNames[7] = "Spraying a field with ant killer spray";
+//		testNames[7] = "Spraying a field with ant killer spray";
 		testNames[8] = "Ant killer spray's collision with an ant";
 		testNames[9] = "Echidna's collision with an ant";
 		testNames[10] = "Echidna's collision with a gravel";
@@ -184,12 +184,12 @@ public class Main {
 									predefinedResultsPath + "output7.dat"));
 							ct.doTheTest("output7.dat", "expoutput7.dat");
 							break;
-						case 8:
-							sl.loadTestCase(new File(predefinedPath
-									+ "input8.dat"), new File(
-									predefinedResultsPath + "output8.dat"));
-							ct.doTheTest("output8.dat", "expoutput8.dat");
-							break;
+							//						case 8:
+//							sl.loadTestCase(new File(predefinedPath
+//									+ "input8.dat"), new File(
+//									predefinedResultsPath + "output8.dat"));
+//							ct.doTheTest("output8.dat", "expoutput8.dat");
+							//							break;
 						case 9:
 							sl.loadTestCase(new File(predefinedPath
 									+ "input9.dat"), new File(
