@@ -101,13 +101,14 @@ public class SingletonLoader {
 
 					// spray hasznalata
 				} else if (sline[0].equals("use_spray")
-						&& sline[1].equals("-t") && sline[3].equals("-fid")
-						&& sline.length == 5) {
+						&& sline[1].equals("-t") && sline[3].equals("-sid") && sline[5].equals("-fid")
+						&& sline.length == 7) {
 
 					String type = sline[2];
-					String fid = sline[4];
+					String spray_id = sline[4];
+					String fid = sline[6];
 
-					useSpray(type, fid);
+					useSpray(type, spray_id, fid);
 					
 					// kor leptetese
 				} else if (sline[0].equals("step_round")
@@ -307,7 +308,7 @@ public class SingletonLoader {
 		}
 	}
 	
-	private void useSpray(String type, String fid) {
+	private void useSpray(String type, String spray_id, String fid) {
 		Field field = land.getField(fid);
 		
 		if (type.equals("ant_smell"))
