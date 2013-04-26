@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import program.Singleton;
+import program.SingletonWriter;
 
 import land.Dir;
 import land.Field;
@@ -83,7 +83,7 @@ public class Food extends Item {
 	 */
 	@Override
 	public void collisionWithAnt(Ant ant, boolean b) {
-		Singleton s = Singleton.Instance();		
+		SingletonWriter s = SingletonWriter.Instance();		
 		
 		// Ha a hangya oylan mezore lepett ahol etel van akkor felveszi
 		if (b == true) {

@@ -5,7 +5,7 @@ import item.Item;
 import java.util.List;
 import java.util.Map;
 
-import program.Singleton;
+import program.SingletonWriter;
 
 import smell.Smell;
 
@@ -40,7 +40,7 @@ public class Gravel extends Blockage implements Movable {
 	 */
 	@Override
 	public int collisionWithEchidna(Echidna echidna, boolean b, Dir dir) {
-		Singleton s = Singleton.Instance();
+		SingletonWriter s = SingletonWriter.Instance();
 		int gravelNr = 1;
 		Map<Dir, Field> neighbours = actualField.getNeighbours();
 		Field nextField = neighbours.get(dir);
@@ -75,7 +75,7 @@ public class Gravel extends Blockage implements Movable {
 
 	@Override
 	public int collisionWithGravel(Gravel gravel, boolean b, Dir dir) {
-		Singleton s = Singleton.Instance();
+		SingletonWriter s = SingletonWriter.Instance();
 		int gravelNr = 1;
 		Map<Dir, Field> neighbours = actualField.getNeighbours();
 		Field nextField = neighbours.get(dir);

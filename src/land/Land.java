@@ -15,7 +15,7 @@ import java.util.Map;
 import javax.sound.midi.SysexMessage;
 
 import movable.Movable;
-import program.Singleton;
+import program.SingletonWriter;
 import program.SingletonContainer;
 
 /**
@@ -103,7 +103,7 @@ public class Land {
 	 * @return
 	 */
 	public void buildLand() {
-		Singleton s = Singleton.Instance();
+		SingletonWriter s = SingletonWriter.Instance();
 		// Field.addNeighbour hivasok		
 		
 		for(int k=0;k<rowNumber;k++){
@@ -167,7 +167,7 @@ public class Land {
 	 * @return
 	 */
 	public void init(int row, int column) {
-		Singleton s = Singleton.Instance();
+		SingletonWriter s = SingletonWriter.Instance();
 
 		// palya betoltese
 		loadLand(row,column);

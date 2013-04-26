@@ -2,7 +2,7 @@ package smell;
 
 import item.Tentacle;
 import land.Field;
-import program.Singleton;
+import program.SingletonWriter;
 
 /**
  * 
@@ -24,7 +24,7 @@ public class FoodSmell extends Smell {
 	 * 
 	 */
 	public void removeMyself() {
-		Singleton s = Singleton.Instance();
+		SingletonWriter s = SingletonWriter.Instance();
 		actualField.removeSmell(this);
 		s.printFoodSmellDisappeard(actualField);
 	}

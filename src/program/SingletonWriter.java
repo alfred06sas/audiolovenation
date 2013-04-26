@@ -14,14 +14,14 @@ import land.Field;
  *         ferni.
  * 
  */
-public class Singleton {
+public class SingletonWriter {
 	private static HashMap<String, HashMap<String, String>> states;
-	private static Singleton instance = null;
+	private static SingletonWriter instance = null;
 	private static SingletonLoader sl = null;
 	private static HashMap<String, String> types;
 	private static int roundNumber;
 
-	public Singleton() {
+	public SingletonWriter() {
 		states = new HashMap<String, HashMap<String, String>>();
 		types = new HashMap<String, String>();
 	}
@@ -31,9 +31,9 @@ public class Singleton {
 	 * 
 	 * @return a peldany
 	 */
-	public static Singleton Instance() {
+	public static SingletonWriter Instance() {
 		if (instance == null) {
-			instance = new Singleton();
+			instance = new SingletonWriter();
 			sl = SingletonLoader.Instance();
 			states = new HashMap<String, HashMap<String, String>>();
 			types = new HashMap<String, String>();

@@ -1,6 +1,6 @@
 package item;
 
-import program.Singleton;
+import program.SingletonWriter;
 import movable.Ant;
 
 /**
@@ -29,7 +29,7 @@ public class Antlion extends Item {
 	 */
 	@Override
 	public void collisionWithAnt(Ant ant, boolean b) {
-		Singleton s = Singleton.Instance();
+		SingletonWriter s = SingletonWriter.Instance();
 		// ha mar lepett a hangya
 		if (b == true) {
 			ant.kill();

@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-import program.Singleton;
+import program.SingletonWriter;
 import program.SingletonContainer;
 import smell.AntSmell;
 import smell.Smell;
@@ -146,7 +146,7 @@ public class Field {
 	 * 
 	 */
 	public void onClick(String s_id) {
-		Singleton s = Singleton.Instance();
+		SingletonWriter s = SingletonWriter.Instance();
 		Spray spray = new Spray(s_id);
 		s.addItem(spray);		
 		SingletonContainer sc = SingletonContainer.getInstance();

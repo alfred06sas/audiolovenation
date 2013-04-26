@@ -42,7 +42,7 @@ public class SingletonLoader {
 	// SingletonContainer peldany a volatile/movable stb eleresere
 	private SingletonContainer sc = SingletonContainer.getInstance();
 	// Singleton peldany a kimenet generalasara
-	private Singleton s = Singleton.Instance();
+	private SingletonWriter s = SingletonWriter.Instance();
 	private String line = null;
 	// eredmeny string, amit a parancsok lefuttatasa utan kiirun file-ba
 	private String result = new String();

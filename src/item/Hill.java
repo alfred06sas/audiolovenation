@@ -1,6 +1,6 @@
 package item;
 
-import program.Singleton;
+import program.SingletonWriter;
 import land.Dir;
 import movable.Ant;
 import blockage.Gravel;
@@ -34,7 +34,7 @@ public class Hill extends Item {
 	 */
 	@Override
 	public void collisionWithAnt(Ant ant, boolean b) {
-		Singleton s = Singleton.Instance();	
+		SingletonWriter s = SingletonWriter.Instance();	
 		// A hangyabolyba visszaero hangya inaktiv allapotba kerul
 		if(b==true){
 			ant.rest();

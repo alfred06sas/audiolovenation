@@ -3,7 +3,7 @@ package smell;
 import item.Tentacle;
 import item.Volatile;
 import land.Field;
-import program.Singleton;
+import program.SingletonWriter;
 import program.SingletonContainer;
 
 /**
@@ -27,7 +27,7 @@ public class AntSmell extends Smell implements Volatile {
 	@Override
 	public void removeMyself(Field field) {
 		SingletonContainer sc=SingletonContainer.getInstance();
-		Singleton s = Singleton.Instance();
+		SingletonWriter s = SingletonWriter.Instance();
 		sc.removeVolatile(this);
 		field.removeSmell(this);
 		
@@ -40,7 +40,7 @@ public class AntSmell extends Smell implements Volatile {
 	 */
 	@Override
 	public void decrease() {
-		Singleton s = Singleton.Instance();
+		SingletonWriter s = SingletonWriter.Instance();
 		s.printAntSmellDecreased(strength, --strength, actualField);
 		
 	}

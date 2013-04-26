@@ -10,7 +10,7 @@ import java.util.Map;
 
 import land.Dir;
 import land.Field;
-import program.Singleton;
+import program.SingletonWriter;
 import program.SingletonContainer;
 import smell.AntSmell;
 import blockage.Gravel;
@@ -185,7 +185,7 @@ public class Ant extends Item implements Movable {
 	 */
 	@Override
 	public void step() {
-		Singleton s = Singleton.Instance();
+		SingletonWriter s = SingletonWriter.Instance();
 		Field oldField = actualField;
 
 		/* A szomszedok lekerdezese. */

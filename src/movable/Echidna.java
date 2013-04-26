@@ -8,7 +8,7 @@ import java.util.Map;
 
 import land.Dir;
 import land.Field;
-import program.Singleton;
+import program.SingletonWriter;
 
 /**
  * 
@@ -99,7 +99,7 @@ public class Echidna extends Item implements Movable {
 	 */
 	@Override
 	public void step() {
-		Singleton s = Singleton.Instance();
+		SingletonWriter s = SingletonWriter.Instance();
 		int gravelNr = 0;
 
 		/* A szomszedok lekerdezese */
@@ -165,7 +165,7 @@ public class Echidna extends Item implements Movable {
 	 */
 	@Override
 	public void collisionWithAnt(Ant ant, boolean b) {
-		Singleton s = Singleton.Instance();
+		SingletonWriter s = SingletonWriter.Instance();
 
 		/* Lepes utan */
 		if (b == true) {
