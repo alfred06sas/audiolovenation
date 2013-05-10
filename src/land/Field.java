@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+import paintable.Paintable;
 import program.SingletonWriter;
 import program.SingletonContainer;
 import smell.AntSmell;
@@ -23,7 +24,7 @@ import smell.Smell;
  *         Ismeri a szomszedait, es azok iranyat.
  * 
  */
-public class Field {
+public class Field implements Paintable{
 
 	private String id;
 	private CopyOnWriteArrayList<Item> items;
@@ -169,6 +170,12 @@ public class Field {
 
 	public String toString() {
 		return id;
+	}
+
+	@Override
+	public void setView() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -2,6 +2,7 @@ package item;
 
 import java.util.HashMap;
 
+import paintable.Paintable;
 import program.SingletonWriter;
 
 import land.Dir;
@@ -17,7 +18,7 @@ import blockage.Gravel;
  *         A palya egyes mezoin megtalalhato objektumok (hangya, hangyaszsun,
  *         hangyaleso, akadaly, spray, etel, boly).
  */
-public class Item {
+public class Item implements Paintable{
 
 	protected String id;
 
@@ -91,6 +92,12 @@ public class Item {
 	public HashMap<String, String> getStates()
 	{
 		return null;
+	}
+
+	@Override
+	public void setView() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
