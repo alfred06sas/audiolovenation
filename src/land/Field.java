@@ -2,17 +2,16 @@ package land;
 
 import item.Item;
 import item.Spray;
+import view.FieldView;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import paintable.Paintable;
-import program.SingletonWriter;
 import program.SingletonContainer;
-import smell.AntSmell;
+import program.SingletonWriter;
 import smell.Smell;
 
 /**
@@ -173,9 +172,8 @@ public class Field extends Paintable{
 	}
 
 	@Override
-	public void setView() {
-		// TODO Auto-generated method stub
-		
+	public void notifyView() {
+		(FieldView)paintableView.onDraw();
 	}
 
 }

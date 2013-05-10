@@ -59,31 +59,31 @@ public class Main {
 		exitMenuItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				land.init(6, 6);
+				System.exit(0);
 			}
 		});
 		
 		littleMapMenuItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				land.init(12, 12);
+				land.init(6, 6);
 			}
 		});
 		
 		mediumMapMenuItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				land.init(14, 14);
+				land.init(12, 12);
 			}
 		});
 		
 		bigMapMenuItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				land.init(14, 14);
 			}
 		});
-
+		
 		frame.add(PaintableView.panel);
 		frame.setJMenuBar(menuBar);
 		frame.setSize(600, 600);

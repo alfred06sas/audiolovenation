@@ -6,11 +6,9 @@ import view.PaintableView;
 public class Paintable {
 	public PaintableView paintableView;
 	
-	public Paintable(){
-		paintableView=new PaintableView();
-	}
 
 	public void setView(){
+		paintableView=new PaintableView();
 		paintableView.setPaintable(this);
 	}
 	 

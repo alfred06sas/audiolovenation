@@ -60,6 +60,8 @@ public class Land {
 			for (int j=0;j<columnNumber;j++){
 				if(((k % 2 == 0) && (j % 2 == 0)) || ((k % 2 == 1) && (j % 2 == 1))){
 					fields.put(k+"_"+j,new Field(k+"_"+j));
+					fields.get(k+"_"+j).setView();
+					fields.get(k+"_"+j).notifyView();
 				}
 			}
 		}
@@ -122,8 +124,7 @@ public class Land {
 					fields.get(k+"_"+j).addNeighbour(Dir.RIGHT_TOP, fields.get(((rowNumber+k-1)%rowNumber)+"_"+((columnNumber+j+1)%columnNumber)));
 					//LEFT_BOTTOM
 					fields.get(k+"_"+j).addNeighbour(Dir.LEFT_BOTTOM, fields.get(((rowNumber+k+1)%rowNumber)+"_"+((columnNumber+j-1)%columnNumber)));
-					
-					fields.get(k+"_"+j).notifyView();
+						
 				}
 			}
 		}
@@ -136,7 +137,6 @@ public class Land {
 	 * @return
 	 */
 	public void init(int row, int column) {
-		SingletonWriter s = SingletonWriter.Instance();
 
 		// palya betoltese
 		loadLand(row,column);
