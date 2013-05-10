@@ -7,7 +7,6 @@ import java.util.Map;
 import land.Dir;
 import land.Field;
 import movable.Ant;
-import program.SingletonWriter;
 import smell.FoodSmell;
 import view.FoodView;
 
@@ -53,8 +52,8 @@ public class Food extends Item {
 	 */
 	public void deleteSmell() {
 		
-		for (FoodSmell f : foodSmells)
-			f.removeMyself();
+//		for (FoodSmell f : foodSmells)
+//			f.removeMyself();
 	}
 
 	/**
@@ -90,12 +89,10 @@ public class Food extends Item {
 	 */
 	@Override
 	public void collisionWithAnt(Ant ant, boolean b) {
-		SingletonWriter s = SingletonWriter.Instance();		
 		
 		// Ha a hangya oylan mezore lepett ahol etel van akkor felveszi
 		if (b == true) {
 			ant.pickUpFood();
-			s.printCollision(ant, this, actualField);
 			// Etelszag kitorlese a mezorol, ahonnan elviszi a hagnya az etelt
 			deleteSmell();
 			actualField.removeItem(this);			

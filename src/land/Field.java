@@ -10,7 +10,6 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 import paintable.Paintable;
 import program.SingletonContainer;
-import program.SingletonWriter;
 import smell.Smell;
 import view.FieldView;
 import view.PaintableView;
@@ -158,7 +157,6 @@ public class Field extends Paintable{
 	 * 
 	 */
 	public void onClick(String s_id) {
-		SingletonWriter s = SingletonWriter.Instance();
 		Spray spray = new Spray(s_id);
 		s.addItem(spray);		
 		SingletonContainer sc = SingletonContainer.getInstance();

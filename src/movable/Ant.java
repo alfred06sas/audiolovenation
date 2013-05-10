@@ -11,7 +11,6 @@ import java.util.Map;
 import land.Dir;
 import land.Field;
 import program.SingletonContainer;
-import program.SingletonWriter;
 import smell.AntSmell;
 import view.AntView;
 import view.FoodView;
@@ -193,7 +192,6 @@ public class Ant extends Item implements Movable {
 	 */
 	@Override
 	public void step() {
-		SingletonWriter s = SingletonWriter.Instance();
 		Field oldField = actualField;
 
 		/* A szomszedok lekerdezese. */
@@ -240,7 +238,6 @@ public class Ant extends Item implements Movable {
 					dir = key;
 					setActualField(next.get(key));
 					actualField.addItem(this);
-					s.printStep(this, oldField, actualField);
 				}
 			}
 
@@ -249,7 +246,6 @@ public class Ant extends Item implements Movable {
 		else {
 			reverseDir();
 			notifyView();
-			s.printDirChanged(this);
 		}
 		// ezutan utkozik az uj mezo elemeivel, ezesetben mar true-val, tehat
 		// rendes utkozes
@@ -257,8 +253,7 @@ public class Ant extends Item implements Movable {
 		for (Item item : items)
 			item.collisionWithAnt(this, true);
 
-		s.printDirChanged(this);
-
+		
 	}
 
 	/**

@@ -13,7 +13,6 @@ import movable.Ant;
 import movable.Echidna;
 import movable.Movable;
 import program.SingletonContainer;
-import program.SingletonWriter;
 import blockage.Gravel;
 import blockage.Puddle;
 
@@ -73,7 +72,9 @@ public class Land {
 	 * 
 	 */
 	public void putItems(/* Field field, Item item */) {
-
+		SingletonContainer sc = new SingletonContainer().getInstance();
+		
+		
 		// Antlion(ok) hozzáadása
 		Antlion a = new Antlion();
 		a.setView();
@@ -91,6 +92,7 @@ public class Land {
 
 		// Hangya(k) hozzáadása
 		Ant a1 = new Ant();
+		sc.addMovable(a1);
 		a1.setView();
 		a1.setDir(Dir.UP);
 		fields.get(5 + "_" + 3).addItem(a1);
@@ -197,9 +199,25 @@ public class Land {
 		// palya felepitese
 		buildLand();
 		// elemek palyara helyezese
-		putItems(); 
+		putItems();
 		// leptetes
-		move();
+		Thread thread = new Thread() {
+			@Override
+			public void run() {
+				while (true) {
+					move();
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					System.out.println("Lepes");
+				}
+			}
+		};
+		thread.start();
+
 	}
 
 	public Field getField(String id) {

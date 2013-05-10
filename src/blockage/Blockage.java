@@ -4,7 +4,6 @@ import item.Item;
 import land.Field;
 import movable.Ant;
 import movable.Echidna;
-import program.SingletonWriter;
 
 /**
  * Az egyes mezokon lehetnek akadalyok (tocsa, kavics), az ilyen mezokre a
@@ -25,8 +24,6 @@ public class Blockage extends Item {
 	}
 	
 	public void collisionWithAnt(Ant ant, boolean b) {
-		SingletonWriter s = SingletonWriter.Instance();
-		s.printCollision(ant, this, actualField);
 		if (b == false) {
 			ant.canNotGo(actualField);
 		}

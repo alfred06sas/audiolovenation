@@ -9,7 +9,6 @@ import land.Dir;
 import land.Field;
 import movable.Echidna;
 import movable.Movable;
-import program.SingletonWriter;
 import view.GravelView;
 
 /**
@@ -45,17 +44,11 @@ public class Gravel extends Blockage implements Movable {
 	 */
 	@Override
 	public int collisionWithEchidna(Echidna echidna, boolean b, Dir dir) {
-		SingletonWriter s = SingletonWriter.Instance();
 		int gravelNr = 1;
 		Map<Dir, Field> neighbours = actualField.getNeighbours();
 		Field nextField = neighbours.get(dir);
 		List<Item> nextFieldItems = nextField.getItems();
 
-		if (b == true) {
-			s.printCollision(echidna, this, actualField);
-			s.printStep(this, actualField, nextField);
-			
-		}
 		
 		Item nextGravelRef = null;
 		for (Item item : nextFieldItems) {
@@ -80,17 +73,12 @@ public class Gravel extends Blockage implements Movable {
 
 	@Override
 	public int collisionWithGravel(Gravel gravel, boolean b, Dir dir) {
-		SingletonWriter s = SingletonWriter.Instance();
 		int gravelNr = 1;
 		Map<Dir, Field> neighbours = actualField.getNeighbours();
 		Field nextField = neighbours.get(dir);
 		List<Item> items = nextField.getItems();
 
-		if (b == true) {
-			s.printCollision(gravel, this, actualField);
-			s.printStep(this, actualField, nextField);
-		}
-
+		
 		for (Item item : items) {
 			gravelNr += item.collisionWithGravel(this, b, dir);
 		}

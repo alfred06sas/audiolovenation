@@ -3,7 +3,6 @@ package item;
 import java.util.HashMap;
 
 import paintable.Paintable;
-import program.SingletonWriter;
 
 import land.Dir;
 import land.Field;
@@ -43,8 +42,6 @@ public class Item extends Paintable{
 	 *            van-e etel a hangyanal vagy nincs
 	 */
 	public void collisionWithAnt(Ant ant, boolean b) {
-		SingletonWriter s = SingletonWriter.Instance();
-		s.printCollision(ant, this, actualField);
 	}
 
 	/**

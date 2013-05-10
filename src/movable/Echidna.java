@@ -8,7 +8,6 @@ import java.util.Map;
 
 import land.Dir;
 import land.Field;
-import program.SingletonWriter;
 import view.EchidnaView;
 
 /**
@@ -106,7 +105,6 @@ public class Echidna extends Item implements Movable {
 	 */
 	@Override
 	public void step() {
-		SingletonWriter s = SingletonWriter.Instance();
 		int gravelNr = 0;
 
 		/* A szomszedok lekerdezese */
@@ -122,15 +120,13 @@ public class Echidna extends Item implements Movable {
 		if (gravelNr > 2) {
 			ReverseDir();
 			notifyView();
-			s.printDirChanged(this);
 		}
 		/* A hangyaszsun torlese a mezorol */
 		else {
 			actualField.removeItem(this);
 
 			/* Hangyaszsun atlep a kovetkezo mezore */
-			s.printStep(this, actualField, nextField);
-
+			
 			nextField.addItem(this);
 			setActualField(nextField);
 
@@ -173,8 +169,7 @@ public class Echidna extends Item implements Movable {
 	 */
 	@Override
 	public void collisionWithAnt(Ant ant, boolean b) {
-		SingletonWriter s = SingletonWriter.Instance();
-
+		
 		/* Lepes utan */
 		if (b == true) {
 			/* Hangya megolese */
@@ -182,7 +177,6 @@ public class Echidna extends Item implements Movable {
 
 			/* Ehseg csokkentese */
 			this.decreaseHunger();
-			s.printCollision(ant, this, actualField);
 		}
 		
 

@@ -1,7 +1,6 @@
 package item;
 
 import movable.Ant;
-import program.SingletonWriter;
 import view.AntlionView;
 
 /**
@@ -37,11 +36,9 @@ public class Antlion extends Item {
 	 */
 	@Override
 	public void collisionWithAnt(Ant ant, boolean b) {
-		SingletonWriter s = SingletonWriter.Instance();
 		// ha mar lepett a hangya
 		if (b == true) {
 			ant.kill();
-			s.printCollision(ant, this, actualField);
 		}
 	}
 	
