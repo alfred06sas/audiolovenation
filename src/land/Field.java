@@ -178,10 +178,4 @@ public class Field extends Paintable{
 		
 	}
 
-	@Override
-	public void setPaintableView() {
-		// TODO Auto-generated method stub
-		
-	}
-
 }
