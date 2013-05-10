@@ -11,7 +11,7 @@ public class Paintable {
 	}
 
 	public void setView(){
-		
+		paintableView.setPaintable(this);
 	}
 	 
 	
