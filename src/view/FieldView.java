@@ -29,8 +29,6 @@ public class FieldView extends PaintableView{
 		x = x * 75;
 		y = y * 100;
 		y=(int)y/2;
-		if ((x % 2) != 0)
-			y = y + 50;
 		
 		panel.getGraphics().drawImage(img, x, y, null);
 

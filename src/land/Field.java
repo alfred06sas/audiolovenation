@@ -2,7 +2,6 @@ package land;
 
 import item.Item;
 import item.Spray;
-import view.FieldView;
 
 import java.util.HashMap;
 import java.util.List;
@@ -13,6 +12,8 @@ import paintable.Paintable;
 import program.SingletonContainer;
 import program.SingletonWriter;
 import smell.Smell;
+import view.FieldView;
+import view.PaintableView;
 
 /**
  * 
@@ -29,6 +30,12 @@ public class Field extends Paintable{
 	private CopyOnWriteArrayList<Item> items;
 	private Map<Dir, Field> neighbours;
 	private List<Smell> smells;
+	FieldView fieldView = new FieldView();
+	
+	public void setView(){
+		fieldView=new FieldView();
+		fieldView.setPaintable(this);
+	}
 
 	public Field() {
 		id = new String();
@@ -173,7 +180,7 @@ public class Field extends Paintable{
 
 	@Override
 	public void notifyView() {
-		(FieldView)paintableView.onDraw();
+		fieldView.onDraw();
 	}
 
 }

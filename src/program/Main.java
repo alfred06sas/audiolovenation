@@ -29,7 +29,7 @@ public class Main {
 	public static void main(String[] args) {
 		final Land land = new Land();
 		
-		JFrame frame = new JFrame();
+		final JFrame frame = new JFrame();
 		JMenuBar menuBar = new JMenuBar();
 
 		JMenu gameMenu = new JMenu("Game");
@@ -66,7 +66,9 @@ public class Main {
 		littleMapMenuItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				frame.revalidate();
 				land.init(6, 6);
+				
 			}
 		});
 		
@@ -86,7 +88,7 @@ public class Main {
 		
 		frame.add(PaintableView.panel);
 		frame.setJMenuBar(menuBar);
-		frame.setSize(600, 600);
+		frame.setSize(1000, 700);
 		frame.setTitle("AntGame");
 		frame.setVisible(true);
 	}
