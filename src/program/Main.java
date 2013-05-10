@@ -8,6 +8,8 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+import view.PaintableView;
+
 import land.Land;
 
 /**
@@ -28,7 +30,6 @@ public class Main {
 		final Land land = new Land();
 		
 		JFrame frame = new JFrame();
-		MainPanel panel = new MainPanel();
 		JMenuBar menuBar = new JMenuBar();
 
 		JMenu gameMenu = new JMenu("Game");
@@ -83,7 +84,7 @@ public class Main {
 			}
 		});
 
-		frame.add(panel);
+		frame.add(PaintableView.panel);
 		frame.setJMenuBar(menuBar);
 		frame.setSize(600, 600);
 		frame.setTitle("AntGame");

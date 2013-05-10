@@ -5,8 +5,8 @@ import javax.swing.JPanel;
 import paintable.Paintable;
 
 public class PaintableView{
-	Paintable paintable;
-	static JPanel panel;
+	protected Paintable paintable;
+	public static JPanel panel;
 	
 	public PaintableView(){
 		paintable=new Paintable();
