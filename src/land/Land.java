@@ -109,7 +109,7 @@ public class Land {
 		for(int k=0;k<rowNumber;k++){
 			for (int j=0;j<columnNumber;j++){
 				if(((k % 2 == 0) && (j % 2 == 0)) || ((k % 2 == 1) && (j % 2 == 1))){
-					//UP
+					//DOWN
 					fields.get(k+"_"+j).addNeighbour(Dir.DOWN, fields.get(((rowNumber+k+2)%rowNumber)+"_"+j));
 					//UP
 					fields.get(k+"_"+j).addNeighbour(Dir.UP, fields.get(((rowNumber+k-2)%rowNumber)+"_"+j));
