@@ -4,7 +4,7 @@ import javax.swing.JPanel;
 
 import paintable.Paintable;
 
-public abstract class PaintableView{
+public class PaintableView{
 	Paintable paintable;
 	static JPanel panel;
 	
@@ -13,7 +13,7 @@ public abstract class PaintableView{
 		panel=new JPanel();
 	}
 	
-	public abstract void onDraw();
+	public void onDraw(){}
 	
 	public void setPaintable(Paintable p){
 		paintable=p;
