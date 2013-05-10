@@ -76,51 +76,44 @@ public class Land {
 
 		// Antlion(ok) hozzáadása
 		Antlion a = new Antlion();
-		fields.get(2 + "_" + 2).addItem(a);
 		a.setView();
-		a.notifyView();
+		fields.get(2 + "_" + 2).addItem(a);
 
 		// Boly(ok) hozzáadása
 		Hill h = new Hill();
-		fields.get(2 + "_" + 4).addItem(h);
 		h.setView();
-		h.notifyView();
+		fields.get(2 + "_" + 4).addItem(h);
 
 		// Hangyaszsun(ok) hozzáadása
 		Echidna e = new Echidna();
-		fields.get(1 + "_" + 1).addItem(e);
 		e.setView();
-		e.notifyView();
+		fields.get(1 + "_" + 1).addItem(e);
 
 		// Hangya(k) hozzáadása
 		Ant a1 = new Ant();
-		fields.get(1 + "_" + 3).addItem(a1);
 		a1.setView();
-		a1.notifyView();
+		a1.setDir(Dir.UP);
+		fields.get(5 + "_" + 3).addItem(a1);
 
 		// Kaja(k) hozzáadása
 		Food f = new Food();
-		fields.get(3 + "_" + 3).addItem(f);
 		f.setView();
-		f.notifyView();
+		fields.get(3 + "_" + 3).addItem(f);
 
 		// Pocsolya(k) hozzáadása
 		Puddle p = new Puddle();
-		fields.get(0 + "_" + 0).addItem(p);
 		p.setView();
-		p.notifyView();
+		fields.get(0 + "_" + 0).addItem(p);
 
 		// Kove(k) hozzáadása
 		Gravel g = new Gravel();
-		fields.get(0 + "_" + 2).addItem(g);
 		g.setView();
-		g.notifyView();
+		fields.get(0 + "_" + 2).addItem(g);
 
 		// Sprey(k) hozzáadása
 		Spray s = new Spray();
-		fields.get(2 + "_" + 0).addItem(s);
 		s.setView();
-		s.notifyView();
+		fields.get(2 + "_" + 0).addItem(s);
 
 	}
 

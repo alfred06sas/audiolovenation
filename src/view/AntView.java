@@ -16,28 +16,26 @@ public class AntView extends PaintableView{
 		Ant ant=(Ant)paintable;
 		
 		BufferedImage img = null;
-		try {
-			img = ImageIO.read(new File("images/ant.png"));
-			Dir dir = ant.getDir();
-			
+		try {		
+			Dir dir = ant.getDir();		
 			switch (dir) {
 			case UP:
-				
+				img = ImageIO.read(new File("images/ant_up.png"));
 				break;
 			case DOWN:
-				dir = Dir.UP;
+				img = ImageIO.read(new File("images/ant_down.png"));
 				break;
 			case RIGHT_TOP:
-				dir = Dir.LEFT_BOTTOM;
+				img = ImageIO.read(new File("images/ant_top_right.png"));
 				break;
 			case RIGHT_BOTTOM:
-				dir = Dir.LEFT_TOP;
+				img = ImageIO.read(new File("images/ant_bottom_right.png"));
 				break;
 			case LEFT_TOP:
-				dir = Dir.RIGHT_BOTTOM;
+				img = ImageIO.read(new File("images/ant_top_left.png"));
 				break;
 			case LEFT_BOTTOM:
-				dir = Dir.RIGHT_TOP;
+				img = ImageIO.read(new File("images/ant_bottom_left.png"));
 				break;
 			}
 		} catch (IOException e) {

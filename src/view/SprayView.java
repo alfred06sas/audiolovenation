@@ -16,7 +16,7 @@ public class SprayView extends PaintableView{
 		
 		BufferedImage img = null;
 		try {
-			img = ImageIO.read(new File("images/spray.png"));
+			img = ImageIO.read(new File("images/hatszog_poison.png"));
 		} catch (IOException e) {
 			System.out.println(e);
 		}
