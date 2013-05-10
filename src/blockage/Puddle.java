@@ -1,5 +1,7 @@
 package blockage;
 
+import view.PuddleView;
+
 
 /**
  * 
@@ -11,7 +13,14 @@ package blockage;
  */
 public class Puddle extends Blockage {
 	
+	private PuddleView puddleView;
+
 	public Puddle(){
+	}
+	
+	public void setView(){
+		puddleView = new PuddleView();
+		puddleView.setPaintable(this);
 	}
 	
 	public Puddle(String ID){

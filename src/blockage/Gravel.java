@@ -5,14 +5,12 @@ import item.Item;
 import java.util.List;
 import java.util.Map;
 
-import program.SingletonWriter;
-
-import smell.Smell;
-
 import land.Dir;
 import land.Field;
 import movable.Echidna;
 import movable.Movable;
+import program.SingletonWriter;
+import view.GravelView;
 
 /**
  * 
@@ -24,9 +22,16 @@ import movable.Movable;
  */
 public class Gravel extends Blockage implements Movable {
 
+	private GravelView gravelView;
+
 	public Gravel() {
 	}
 
+	public void setView(){
+		gravelView = new GravelView();
+		gravelView.setPaintable(this);
+	}
+	
 	public Gravel(String ID) {
 		super(ID);
 		id = "g" + ID;

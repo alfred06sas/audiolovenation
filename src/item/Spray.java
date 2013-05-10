@@ -1,6 +1,7 @@
 package item;
 
 import movable.Ant;
+import view.SprayView;
 
 
 /**
@@ -13,6 +14,7 @@ import movable.Ant;
 public class Spray extends Item implements Volatile {
 
 	private int strength;
+	private SprayView sprayView;
 
 	/**
 	 * konstruktor, inicializalasra
@@ -20,7 +22,12 @@ public class Spray extends Item implements Volatile {
 	public Spray() {
 		strength = 10;
 	}
-
+	
+	public void setView(){
+		sprayView = new SprayView();
+		sprayView.setPaintable(this);
+	}
+	
 	/**
 	 * konstruktor
 	 * 

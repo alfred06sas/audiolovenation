@@ -7,6 +7,7 @@ import land.Dir;
 import land.Field;
 import movable.Ant;
 import smell.Smell;
+import view.HillView;
 
 /**
  * 
@@ -29,7 +30,7 @@ public class Tentacle {
 		this.ant = ant;
 		possibleFields = new HashMap<Dir, Field>();
 	}
-
+	
 	/**
 	 * Azon szomszedokat keressuk, amelyekre lephetunk a hangyaval
 	 * 

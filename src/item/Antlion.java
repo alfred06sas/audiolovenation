@@ -1,7 +1,8 @@
 package item;
 
-import program.SingletonWriter;
 import movable.Ant;
+import program.SingletonWriter;
+import view.AntlionView;
 
 /**
  * 
@@ -11,9 +12,16 @@ import movable.Ant;
  *         elpusztul. A hangyaszsunnel nem foglalkozik.
  */
 public class Antlion extends Item {
-
+	AntlionView antlionView;
+	
 	public Antlion(){
 	}
+	
+	public void setView(){
+		antlionView = new AntlionView();
+		antlionView.setPaintable(this);
+	}
+	
 	public Antlion(String ID){
 		super(ID);
 		id="l"+ID;

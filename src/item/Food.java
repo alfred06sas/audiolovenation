@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import program.SingletonWriter;
-
 import land.Dir;
 import land.Field;
 import movable.Ant;
+import program.SingletonWriter;
 import smell.FoodSmell;
+import view.FoodView;
 
 /**
  * 
@@ -21,7 +21,14 @@ import smell.FoodSmell;
  */
 public class Food extends Item {
 
+	FoodView foodView;
+
 	public Food() {
+	}
+	
+	public void setView(){
+		foodView = new FoodView();
+		foodView.setPaintable(this);
 	}
 
 	/**

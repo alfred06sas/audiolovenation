@@ -1,8 +1,9 @@
 package item;
 
-import program.SingletonWriter;
 import land.Dir;
 import movable.Ant;
+import program.SingletonWriter;
+import view.HillView;
 import blockage.Gravel;
 
 /**
@@ -16,9 +17,16 @@ import blockage.Gravel;
  */
 public class Hill extends Item {
 
+	private HillView hillView;
+
 	public Hill() {
 	}
 
+	public void setView(){
+		hillView = new HillView();
+		hillView.setPaintable(this);
+	}
+	
 	public Hill(String ID) {
 		super(ID);
 		id = "h" + ID;
