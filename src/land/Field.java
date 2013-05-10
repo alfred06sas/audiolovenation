@@ -24,7 +24,7 @@ import smell.Smell;
  *         Ismeri a szomszedait, es azok iranyat.
  * 
  */
-public class Field implements Paintable{
+public class Field extends Paintable{
 
 	private String id;
 	private CopyOnWriteArrayList<Item> items;

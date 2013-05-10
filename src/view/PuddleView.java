@@ -1,5 +1,5 @@
 package view;
 
-public class PuddleView {
+public class PuddleView extends PaintableView{
 
 }

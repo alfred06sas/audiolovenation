@@ -1,5 +1,5 @@
 package view;
 
-public class FoodView {
+public class FoodView extends PaintableView{
 
 }

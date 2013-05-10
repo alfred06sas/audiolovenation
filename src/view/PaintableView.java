@@ -1,13 +1,21 @@
 package view;
 
+import javax.swing.JPanel;
+
 import paintable.Paintable;
 
-public class PaintableView {
+public class PaintableView{
 	Paintable paintable;
+	static JPanel panel;
 	
-	void onDraw(){}
+	public PaintableView(){
+		paintable=new Paintable();
+		panel=new JPanel();
+	}
 	
-	void setPaintable(Paintable p){
+	public void onDraw(){}
+	
+	public void setPaintable(Paintable p){
 		paintable=p;
 	}
 

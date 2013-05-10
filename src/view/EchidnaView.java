@@ -1,5 +1,5 @@
 package view;
 
-public class EchidnaView {
+public class EchidnaView extends PaintableView{
 
 }

@@ -1,5 +1,5 @@
 package view;
 
-public class HillView {
+public class HillView extends PaintableView{
 
 }

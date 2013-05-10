@@ -1,5 +1,5 @@
 package view;
 
-public class AntlionView {
+public class AntlionView extends PaintableView{
 
 }

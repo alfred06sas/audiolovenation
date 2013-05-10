@@ -18,7 +18,7 @@ import blockage.Gravel;
  *         A palya egyes mezoin megtalalhato objektumok (hangya, hangyaszsun,
  *         hangyaleso, akadaly, spray, etel, boly).
  */
-public class Item implements Paintable{
+public class Item extends Paintable{
 
 	protected String id;
 

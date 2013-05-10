@@ -1,5 +1,5 @@
 package view;
 
-public class GravelView {
+public class GravelView extends PaintableView{
 
 }

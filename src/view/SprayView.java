@@ -1,5 +1,5 @@
 package view;
 
-public interface SprayView {
+public class SprayView extends PaintableView{
 
 }
