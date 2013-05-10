@@ -28,4 +28,8 @@ public class Puddle extends Blockage {
 		id="p"+ID;
 	}
 
+	public void notifyView(){
+		puddleView.onDraw();
+	}
+	
 }

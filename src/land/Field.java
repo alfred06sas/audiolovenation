@@ -60,6 +60,7 @@ public class Field extends Paintable{
 	public void addItem(Item item) {
 		items.add(item);
 		item.setActualField(this);
+		item.notifyView();
 	}
 
 	/**
@@ -79,6 +80,10 @@ public class Field extends Paintable{
 	 */
 	public void removeItem(Item item) {
 		items.remove(item);
+		notifyView();
+		for (Item i : items){
+			i.notifyView();
+		}
 	}
 
 	/**

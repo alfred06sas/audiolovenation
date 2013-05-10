@@ -44,4 +44,9 @@ public class Antlion extends Item {
 			s.printCollision(ant, this, actualField);
 		}
 	}
+	
+	@Override
+	public void notifyView() {
+		antlionView.onDraw();
+	}
 }

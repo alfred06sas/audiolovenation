@@ -116,5 +116,9 @@ public class Gravel extends Blockage implements Movable {
 		// TODO Auto-generated method stub
 
 	}
+	
+	public void notifyView(){
+		gravelView.onDraw();
+	}
 
 }

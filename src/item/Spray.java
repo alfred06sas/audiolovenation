@@ -73,4 +73,9 @@ public class Spray extends Item implements Volatile {
 			ant.looseHP(strength);
 		}
 	}
+	
+	@Override
+	public void notifyView() {
+		sprayView.onDraw();
+	}
 }

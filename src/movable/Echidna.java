@@ -9,6 +9,7 @@ import java.util.Map;
 import land.Dir;
 import land.Field;
 import program.SingletonWriter;
+import view.EchidnaView;
 
 /**
  * 
@@ -41,6 +42,7 @@ public class Echidna extends Item implements Movable {
 	 */
 	private Dir dir;
 	private boolean isHunger;
+	private EchidnaView echidnaView;
 
 	public void setDir(Dir d) {
 		dir = d;
@@ -57,6 +59,11 @@ public class Echidna extends Item implements Movable {
 		dir = Dir.LEFT_TOP;
 	}
 
+	public void setView(){
+		echidnaView = new EchidnaView();
+		echidnaView.setPaintable(this);
+	}
+	
 	public Echidna(String ID) {
 		super(ID);
 		id = "e" + ID;
@@ -114,6 +121,7 @@ public class Echidna extends Item implements Movable {
 		
 		if (gravelNr > 2) {
 			ReverseDir();
+			notifyView();
 			s.printDirChanged(this);
 		}
 		/* A hangyaszsun torlese a mezorol */
@@ -204,5 +212,10 @@ public class Echidna extends Item implements Movable {
 	public void setHungry(boolean b) {
 		wait = 0;
 		isHunger = b;
+	}
+	
+	@Override
+	public void notifyView() {
+		echidnaView.onDraw();
 	}
 }

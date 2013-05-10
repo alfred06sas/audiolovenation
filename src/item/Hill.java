@@ -54,4 +54,9 @@ public class Hill extends Item {
 	public int collisionWithGravel(Gravel gravel, boolean b, Dir dir) {
 		return 3;
 	}
+	
+	@Override
+	public void notifyView() {
+		hillView.onDraw();
+	}
 }

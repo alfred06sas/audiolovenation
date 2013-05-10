@@ -10,9 +10,11 @@ import java.util.Map;
 
 import land.Dir;
 import land.Field;
-import program.SingletonWriter;
 import program.SingletonContainer;
+import program.SingletonWriter;
 import smell.AntSmell;
+import view.AntView;
+import view.FoodView;
 import blockage.Gravel;
 
 /**
@@ -54,6 +56,7 @@ public class Ant extends Item implements Movable {
 	 * A tovabbhaladasi irany. Default: UP.
 	 */
 	private Dir dir;
+	private AntView antView;
 
 	/**
 	 * Kondtruktor, inicializalja a hangya allapotait
@@ -66,6 +69,11 @@ public class Ant extends Item implements Movable {
 		wait = 10;
 		haveFood = false;
 		dir = Dir.RIGHT_BOTTOM;
+	}
+	
+	public void setView(){
+		antView = new AntView();
+		antView.setPaintable(this);
 	}
 
 	/**
@@ -240,6 +248,7 @@ public class Ant extends Item implements Movable {
 		// ha nincsen megforditja az iranyat
 		else {
 			reverseDir();
+			notifyView();
 			s.printDirChanged(this);
 		}
 		// ezutan utkozik az uj mezo elemeivel, ezesetben mar true-val, tehat
@@ -378,5 +387,10 @@ public class Ant extends Item implements Movable {
 	public void setKilled(boolean b) {
 		isKilled = b;
 		wait = 0;
+	}
+	
+	@Override
+	public void notifyView() {
+		antView.onDraw();
 	}
 }

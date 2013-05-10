@@ -68,14 +68,14 @@ public class Food extends Item {
 		FoodSmell fs = new FoodSmell(5);
 		field.addSmell(fs);
 		fs.setActualField(field);
-		foodSmells.add(fs);
+//		foodSmells.add(fs);
 		Map<Dir, Field> neighs = field.getNeighbours();
 	
 		for (Dir key : neighs.keySet()){
 			FoodSmell fss = new FoodSmell(2);
 			neighs.get(key).addSmell(fss);
 			fss.setActualField(neighs.get(key));
-			foodSmells.add(fss);
+			//foodSmells.add(fss);
 		}
 	
 	}
@@ -100,5 +100,10 @@ public class Food extends Item {
 			deleteSmell();
 			actualField.removeItem(this);			
 		}		
+	}
+	
+	@Override
+	public void notifyView() {
+		foodView.onDraw();
 	}
 }
