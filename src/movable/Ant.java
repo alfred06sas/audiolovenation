@@ -156,7 +156,7 @@ public class Ant extends Item implements Movable {
 	 */
 	public void kill() {
 
-		getActualField().removeItem(this);
+		
 
 		/* Hangya torlese a SingletonContainer movables listajabol */
 		SingletonContainer sc = SingletonContainer.getInstance();
@@ -165,7 +165,7 @@ public class Ant extends Item implements Movable {
 		/* Hangya torlese az ot tartalmazo mezorol */
 
 		isKilled = true;
-
+		getActualField().removeItem(this);
 	}
 
 	/**
@@ -192,8 +192,6 @@ public class Ant extends Item implements Movable {
 	 */
 	@Override
 	public void step() {
-		Field oldField = actualField;
-
 		/* A szomszedok lekerdezese. */
 		Map<Dir, Field> neg = getActualField().getNeighbours();
 
@@ -205,7 +203,7 @@ public class Ant extends Item implements Movable {
 		possibleNeig.put(Dir.fromInteger((dir.getValue() + 6 - 1) % 6),
 				neg.get(Dir.fromInteger((dir.getValue() + 6 - 1) % 6)));
 		tentacle.setPossibleNeighbours(possibleNeig);
-
+		System.out.println(possibleNeig);
 		/*
 		 * Az elemekkel valo utkoztetes meg lepes elott, hogy kideruljon, hol
 		 * talalhato akadaly.
@@ -221,7 +219,9 @@ public class Ant extends Item implements Movable {
 		// Most mar csak az van bent, ahova tenyleg lepni tudunk
 		next.clear();
 		next = tentacle.scan(haveFood);
-
+		
+		System.out.println(next);
+		
 		// ha van lehetseges kovetkezo mezo odalep
 		if (next != null) {
 			AntSmell as = new AntSmell();
@@ -240,6 +240,7 @@ public class Ant extends Item implements Movable {
 					actualField.addItem(this);
 				}
 			}
+			
 
 		}
 		// ha nincsen megforditja az iranyat
@@ -307,9 +308,7 @@ public class Ant extends Item implements Movable {
 	@Override
 	public int collisionWithGravel(Gravel g, boolean b, Dir d) {
 		g.collisionWithAnt(this, true);
-		kill();
-
-		return HP;
+		return 0;
 	}
 
 	/**

@@ -73,49 +73,76 @@ public class Land {
 	 */
 	public void putItems(/* Field field, Item item */) {
 		SingletonContainer sc = new SingletonContainer().getInstance();
-		
-		
-		// Antlion(ok) hozzáadása
-		Antlion a = new Antlion();
-		a.setView();
-		fields.get(2 + "_" + 2).addItem(a);
 
-		// Boly(ok) hozzáadása
-		Hill h = new Hill();
-		h.setView();
-		fields.get(2 + "_" + 4).addItem(h);
+		// // Antlion(ok) hozzáadása
+		// Antlion a = new Antlion();
+		// a.setView();
+		// fields.get(2 + "_" + 2).addItem(a);
+		//
+		// // Boly(ok) hozzáadása
+		// Hill h = new Hill();
+		// h.setView();
+		// fields.get(2 + "_" + 4).addItem(h);
 
 		// Hangyaszsun(ok) hozzáadása
-		Echidna e = new Echidna();
-		e.setView();
-		fields.get(1 + "_" + 1).addItem(e);
+//		Echidna e = new Echidna();
+//		sc.addMovable(e);
+//		e.setView();
+//		fields.get(1 + "_" + 3).addItem(e);
+
+		Echidna e2 = new Echidna();
+		sc.addMovable(e2);
+		e2.setView();
+		fields.get(3 + "_" + 3).addItem(e2);
 
 		// Hangya(k) hozzáadása
 		Ant a1 = new Ant();
 		sc.addMovable(a1);
 		a1.setView();
-		a1.setDir(Dir.UP);
-		fields.get(5 + "_" + 3).addItem(a1);
+		a1.setDir(Dir.RIGHT_BOTTOM);
+		fields.get(5 + "_" + 5).addItem(a1);
 
-		// Kaja(k) hozzáadása
-		Food f = new Food();
-		f.setView();
-		fields.get(3 + "_" + 3).addItem(f);
+		// // Hangya(k) hozzáadása
+		// Ant a2 = new Ant();
+		// sc.addMovable(a2);
+		// a2.setView();
+		// a2.setDir(Dir.DOWN);
+		// fields.get(4 + "_" + 4).addItem(a2);
 
-		// Pocsolya(k) hozzáadása
-		Puddle p = new Puddle();
-		p.setView();
-		fields.get(0 + "_" + 0).addItem(p);
+		 // Kaja(k) hozzáadása
+		 Food f = new Food();
+		 f.setView();
+		 fields.get(7 + "_" + 3).addItem(f);
+		
+		// // Pocsolya(k) hozzáadása
+		// Puddle p = new Puddle();
+		// p.setView();
+		// fields.get(0 + "_" + 0).addItem(p);
 
 		// Kove(k) hozzáadása
 		Gravel g = new Gravel();
 		g.setView();
-		fields.get(0 + "_" + 2).addItem(g);
+		fields.get(1 + "_" + 1).addItem(g);
 
-		// Sprey(k) hozzáadása
-		Spray s = new Spray();
-		s.setView();
-		fields.get(2 + "_" + 0).addItem(s);
+		// Kove(k) hozzáadása
+		Gravel g1 = new Gravel();
+		g1.setView();
+		fields.get(3 + "_" + 3).addItem(g1);
+
+		// Kove(k) hozzáadása
+		Gravel g2 = new Gravel();
+		g2.setView();
+		fields.get(5 + "_" + 5).addItem(g2);
+		//
+		// // Kove(k) hozzáadása
+		// Gravel g1 = new Gravel();
+		// g1.setView();
+		// fields.get(2 + "_" + 4).addItem(g1);
+		//
+		// // Sprey(k) hozzáadása
+		// Spray s = new Spray();
+		// s.setView();
+		// fields.get(2 + "_" + 0).addItem(s);
 
 	}
 
@@ -212,7 +239,6 @@ public class Land {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-					System.out.println("Lepes");
 				}
 			}
 		};

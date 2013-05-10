@@ -7,6 +7,7 @@ import java.util.Map;
 
 import land.Dir;
 import land.Field;
+import movable.Ant;
 import movable.Echidna;
 import movable.Movable;
 import view.GravelView;
@@ -26,11 +27,11 @@ public class Gravel extends Blockage implements Movable {
 	public Gravel() {
 	}
 
-	public void setView(){
+	public void setView() {
 		gravelView = new GravelView();
 		gravelView.setPaintable(this);
 	}
-	
+
 	public Gravel(String ID) {
 		super(ID);
 		id = "g" + ID;
@@ -49,12 +50,11 @@ public class Gravel extends Blockage implements Movable {
 		Field nextField = neighbours.get(dir);
 		List<Item> nextFieldItems = nextField.getItems();
 
-		
 		Item nextGravelRef = null;
 		for (Item item : nextFieldItems) {
 			gravelNr += item.collisionWithGravel(this, b, dir);
 			if (gravelNr == 1 && b == true) {
-				nextGravelRef = item;	
+				nextGravelRef = item;
 			}
 		}
 
@@ -78,7 +78,6 @@ public class Gravel extends Blockage implements Movable {
 		Field nextField = neighbours.get(dir);
 		List<Item> items = nextField.getItems();
 
-		
 		for (Item item : items) {
 			gravelNr += item.collisionWithGravel(this, b, dir);
 		}
@@ -86,11 +85,18 @@ public class Gravel extends Blockage implements Movable {
 		if (b == true) {
 			setActualField(nextField);
 			nextField.addItem(this);
-			
+
 			return 0;
 		}
 
 		return gravelNr;
+	}
+
+	@Override
+	public void collisionWithAnt(Ant ant, boolean b) {
+
+		ant.kill();
+
 	}
 
 	@Override
@@ -104,8 +110,8 @@ public class Gravel extends Blockage implements Movable {
 		// TODO Auto-generated method stub
 
 	}
-	
-	public void notifyView(){
+
+	public void notifyView() {
 		gravelView.onDraw();
 	}
 

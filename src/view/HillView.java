@@ -24,8 +24,8 @@ public class HillView extends PaintableView{
 		String id=hill.getActualField().getId();
 		String[] sa=id.split("_");
 		System.out.println(id);
-		int x=Integer.valueOf(sa[0]);
-		int y=Integer.valueOf(sa[1]);
+		int x=Integer.valueOf(sa[1]);
+		int y=Integer.valueOf(sa[0]);
 		
 		x = x * 75;
 		y = y * 100;

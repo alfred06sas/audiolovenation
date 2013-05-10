@@ -158,13 +158,11 @@ public class Field extends Paintable{
 	 */
 	public void onClick(String s_id) {
 		Spray spray = new Spray(s_id);
-		s.addItem(spray);		
 		SingletonContainer sc = SingletonContainer.getInstance();
 		sc.addVolatile(spray);
 		CopyOnWriteArrayList<Item> it = getItems();
 		for (Item i : it){
 			i.collisionWithSpray(spray.getStrength());
-			s.printCollision(spray, i, this);
 		}
 		addItem(spray);
 	}

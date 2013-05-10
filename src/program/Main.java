@@ -1,16 +1,23 @@
 package program;
 
+import java.awt.BorderLayout;
+import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-
-import view.PaintableView;
+import javax.swing.JPanel;
 
 import land.Land;
+import view.PaintableView;
 
 /**
  * 
@@ -28,66 +35,84 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		final Land land = new Land();
-		
-		JFrame frame = new JFrame();
-		JMenuBar menuBar = new JMenuBar();
 
-		JMenu gameMenu = new JMenu("Game");
-		JMenu newGameMenu = new JMenu("New Game");
-		JMenuItem littleMapMenuItem = new JMenuItem("Little map");
-		JMenuItem mediumMapMenuItem = new JMenuItem("Medium map");
-		JMenuItem bigMapMenuItem = new JMenuItem("Big map");
-		JMenuItem exitMenuItem = new JMenuItem("Exit");
+		final JFrame frame = new JFrame();
+		final JPanel gamePanel = PaintableView.panel;
 
-		JMenu helpMenu = new JMenu("Help");
-		JMenuItem helpMenuItem = new JMenuItem("About Game");
-
-		// elemek hozzaadasa a menuhoz
-		newGameMenu.add(littleMapMenuItem);
-		newGameMenu.add(mediumMapMenuItem);
-		newGameMenu.add(bigMapMenuItem);
-
-		gameMenu.add(newGameMenu);
-		gameMenu.add(exitMenuItem);
-
-		helpMenu.add(helpMenuItem);
-
-		menuBar.add(gameMenu);
-		menuBar.add(helpMenu);
+		JButton exitButton = new JButton("exit");
+		exitButton.setMaximumSize(new Dimension(135, 50));
+		exitButton.setMinimumSize(new Dimension(135, 50));
+		JButton littleMapButton = new JButton("Little map");
+		littleMapButton.setMaximumSize(new Dimension(135, 50));
+		littleMapButton.setMinimumSize(new Dimension(135, 50));
+		JButton mediumMapButton = new JButton("Medium map");
+		mediumMapButton.setMaximumSize(new Dimension(135, 50));
+		mediumMapButton.setMinimumSize(new Dimension(135, 50));
+		JButton bigMapButton = new JButton("Big map");
+		bigMapButton.setMaximumSize(new Dimension(135, 50));
+		bigMapButton.setMinimumSize(new Dimension(135, 50));
 
 		// listenerek beallitasa
-		exitMenuItem.addActionListener(new ActionListener() {
+		exitButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
 			}
 		});
-		
-		littleMapMenuItem.addActionListener(new ActionListener() {
+
+		littleMapButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				land.init(6, 6);
 			}
 		});
-		
-		mediumMapMenuItem.addActionListener(new ActionListener() {
+
+		mediumMapButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+
 				land.init(12, 12);
 			}
 		});
-		
-		bigMapMenuItem.addActionListener(new ActionListener() {
+
+		bigMapButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+
 				land.init(14, 14);
 			}
 		});
-		
-		frame.add(PaintableView.panel);
-		frame.setJMenuBar(menuBar);
-		frame.setSize(600, 600);
+
+		JPanel mainPanel = new JPanel();
+		JPanel controllerPanel = new JPanel();
+
+		controllerPanel.setLayout(new BoxLayout(controllerPanel,
+				BoxLayout.PAGE_AXIS));
+
+		ImageIcon antSmellIcon = new ImageIcon("images/spray_black.png");
+		JButton antSmellButton = new JButton(antSmellIcon);
+		ImageIcon antKillerIcon = new ImageIcon("images/spray_piros.png");
+		JButton antKillerButton = new JButton(antKillerIcon);
+
+		controllerPanel.add(new JLabel("New Game:"));
+		controllerPanel.add(littleMapButton);
+		controllerPanel.add(mediumMapButton);
+		controllerPanel.add(bigMapButton);
+		controllerPanel.add(new JLabel("Ant smell spray:"));
+		controllerPanel.add(antSmellButton);
+		controllerPanel.add(new JLabel("Ant killer spray:"));
+		controllerPanel.add(antKillerButton);
+		controllerPanel.add(exitButton);
+
+		mainPanel.setLayout(new BorderLayout());
+		mainPanel.add(gamePanel, BorderLayout.CENTER);
+		mainPanel.add(controllerPanel, BorderLayout.EAST);
+
+		frame.add(mainPanel);
+		frame.setSize(1000, 700);
 		frame.setTitle("AntGame");
 		frame.setVisible(true);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
+
 }
