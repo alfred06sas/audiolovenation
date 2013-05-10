@@ -2,6 +2,7 @@ package paintable;
 
 import view.PaintableView;
 
+
 public class Paintable {
 	public PaintableView paintableView;
 	
