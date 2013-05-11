@@ -1,22 +1,18 @@
 package program;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
 import land.Land;
+import view.GamePanel;
 import view.PaintableView;
 
 /**
@@ -37,7 +33,8 @@ public class Main {
 		final Land land = new Land();
 
 		final JFrame frame = new JFrame();
-		final JPanel gamePanel = PaintableView.panel;
+		final GamePanel gamePanel = PaintableView.panel;
+		gamePanel.addLand(land);
 
 		JButton exitButton = new JButton("exit");
 		exitButton.setMaximumSize(new Dimension(135, 50));
@@ -85,23 +82,16 @@ public class Main {
 
 		JPanel mainPanel = new JPanel();
 		JPanel controllerPanel = new JPanel();
+		SprayPanel sprayPanel = new SprayPanel();
 
 		controllerPanel.setLayout(new BoxLayout(controllerPanel,
 				BoxLayout.PAGE_AXIS));
-
-		ImageIcon antSmellIcon = new ImageIcon("images/spray_black.png");
-		JButton antSmellButton = new JButton(antSmellIcon);
-		ImageIcon antKillerIcon = new ImageIcon("images/spray_piros.png");
-		JButton antKillerButton = new JButton(antKillerIcon);
 
 		controllerPanel.add(new JLabel("New Game:"));
 		controllerPanel.add(littleMapButton);
 		controllerPanel.add(mediumMapButton);
 		controllerPanel.add(bigMapButton);
-		controllerPanel.add(new JLabel("Ant smell spray:"));
-		controllerPanel.add(antSmellButton);
-		controllerPanel.add(new JLabel("Ant killer spray:"));
-		controllerPanel.add(antKillerButton);
+		controllerPanel.add(sprayPanel);
 		controllerPanel.add(exitButton);
 
 		mainPanel.setLayout(new BorderLayout());

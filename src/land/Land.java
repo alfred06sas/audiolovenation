@@ -47,7 +47,7 @@ public class Land {
 	public void loadLand(int row, int column) {
 		if (!(((row % 2 == 0) && (column % 2 == 0)) || ((row % 2 == 1) && (column % 2 == 1)))) {
 			System.out
-					.println("Hiba: az oszlop √©s sorsz√°m legyen ugyanolyan parit√°s√∫!");
+					.println("Hiba: az oszlop es sorszam legyen ugyanolyan paritasu!");
 			System.exit(0);
 		}
 		rowNumber = row;
@@ -63,7 +63,6 @@ public class Land {
 				}
 			}
 		}
-		// System.out.println(fields.toString());
 	}
 
 	/**
@@ -79,16 +78,16 @@ public class Land {
 		// a.setView();
 		// fields.get(2 + "_" + 2).addItem(a);
 		//
-		// // Boly(ok) hozz·ad·sa
-		// Hill h = new Hill();
-		// h.setView();
-		// fields.get(2 + "_" + 4).addItem(h);
+//		 // Boly(ok) hozz·ad·sa
+//		 Hill h = new Hill();
+//		 h.setView();
+//		 fields.get(7 + "_" + 7).addItem(h);
 
 		// Hangyaszsun(ok) hozz·ad·sa
-//		Echidna e = new Echidna();
-//		sc.addMovable(e);
-//		e.setView();
-//		fields.get(1 + "_" + 3).addItem(e);
+		// Echidna e = new Echidna();
+		// sc.addMovable(e);
+		// e.setView();
+		// fields.get(1 + "_" + 3).addItem(e);
 
 		Echidna e2 = new Echidna();
 		sc.addMovable(e2);
@@ -100,7 +99,7 @@ public class Land {
 		sc.addMovable(a1);
 		a1.setView();
 		a1.setDir(Dir.RIGHT_BOTTOM);
-		fields.get(5 + "_" + 5).addItem(a1);
+		fields.get(3 + "_" + 7).addItem(a1);
 
 		// // Hangya(k) hozz·ad·sa
 		// Ant a2 = new Ant();
@@ -109,15 +108,16 @@ public class Land {
 		// a2.setDir(Dir.DOWN);
 		// fields.get(4 + "_" + 4).addItem(a2);
 
-		 // Kaja(k) hozz·ad·sa
-		 Food f = new Food();
-		 f.setView();
-		 fields.get(7 + "_" + 3).addItem(f);
-		
-		// // Pocsolya(k) hozz·ad·sa
-		// Puddle p = new Puddle();
-		// p.setView();
-		// fields.get(0 + "_" + 0).addItem(p);
+		// Kaja(k) hozz·ad·sa
+
+		Food f = new Food();
+		f.setView();
+		fields.get(7 + "_" + 3).addItem(f);
+
+//		 // Pocsolya(k) hozz·ad·sa
+//		 Puddle p = new Puddle();
+//		 p.setView();
+//		 fields.get(7 + "_" +7).addItem(p);
 
 		// Kove(k) hozz·ad·sa
 		Gravel g = new Gravel();

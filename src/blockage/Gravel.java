@@ -53,13 +53,14 @@ public class Gravel extends Blockage implements Movable {
 		Item nextGravelRef = null;
 		for (Item item : nextFieldItems) {
 			gravelNr += item.collisionWithGravel(this, b, dir);
+			System.out.println(gravelNr);
 			if (gravelNr == 1 && b == true) {
 				nextGravelRef = item;
 			}
 		}
 
 		if (b == true) {
-			if (nextGravelRef != null)
+			if (nextGravelRef != null && nextGravelRef instanceof Gravel)
 				nextField.removeItem(nextGravelRef);
 			actualField.removeItem(this);
 			nextField.addItem(this);
@@ -80,6 +81,7 @@ public class Gravel extends Blockage implements Movable {
 
 		for (Item item : items) {
 			gravelNr += item.collisionWithGravel(this, b, dir);
+			
 		}
 
 		if (b == true) {

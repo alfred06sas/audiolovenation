@@ -25,7 +25,6 @@ public class AntlionView extends PaintableView{
 
 		String id=antlion.getActualField().getId();
 		String[] sa=id.split("_");
-		System.out.println(id);
 		int x=Integer.valueOf(sa[1]);
 		int y=Integer.valueOf(sa[0]);
 		

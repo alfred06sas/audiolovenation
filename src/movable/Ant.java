@@ -203,7 +203,7 @@ public class Ant extends Item implements Movable {
 		possibleNeig.put(Dir.fromInteger((dir.getValue() + 6 - 1) % 6),
 				neg.get(Dir.fromInteger((dir.getValue() + 6 - 1) % 6)));
 		tentacle.setPossibleNeighbours(possibleNeig);
-		System.out.println(possibleNeig);
+		
 		/*
 		 * Az elemekkel valo utkoztetes meg lepes elott, hogy kideruljon, hol
 		 * talalhato akadaly.
@@ -220,7 +220,6 @@ public class Ant extends Item implements Movable {
 		next.clear();
 		next = tentacle.scan(haveFood);
 		
-		System.out.println(next);
 		
 		// ha van lehetseges kovetkezo mezo odalep
 		if (next != null) {
@@ -232,7 +231,7 @@ public class Ant extends Item implements Movable {
 			actualField.removeItem(this);
 			if (next.size() > 1) {
 				System.out
-						.println("Hiba: Nem csak egy lehetséges irány maradt!");
+						.println("Hiba: Nem csak egy lehetseges irany maradt!");
 			} else {
 				for (Dir key : next.keySet()) {
 					dir = key;

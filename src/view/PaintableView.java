@@ -5,9 +5,13 @@ import javax.swing.JPanel;
 import paintable.Paintable;
 
 public class PaintableView{
-	protected Paintable paintable = new Paintable();
-	public static JPanel panel=new JPanel();
+	protected Paintable paintable;
+	public static GamePanel panel=new GamePanel();
 	
+	public PaintableView() {
+		paintable=new Paintable();
+		
+	}
 	
 	public void onDraw(){}
 	

@@ -24,7 +24,6 @@ public class FoodSmell extends Smell {
 	 */
 	public void removeMyself() {
 		actualField.removeSmell(this);
-		s.printFoodSmellDisappeard(actualField);
 	}
 
 
