@@ -7,13 +7,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import land.Dir;
 import land.Field;
 import program.SingletonContainer;
 import smell.AntSmell;
 import view.AntView;
-import view.FoodView;
 import blockage.Gravel;
 
 /**
@@ -65,7 +65,7 @@ public class Ant extends Item implements Movable {
 		tentacle = new Tentacle(this);
 		isKilled = false;
 		isActive = false;
-		wait = 10;
+		wait = new Random().nextInt(20);
 		haveFood = false;
 		dir = Dir.RIGHT_BOTTOM;
 	}
@@ -73,24 +73,6 @@ public class Ant extends Item implements Movable {
 	public void setView(){
 		antView = new AntView();
 		antView.setPaintable(this);
-	}
-
-	/**
-	 * Kondtruktor, inicializalja a hangya allapotait
-	 * 
-	 * @param ID
-	 *            a hangya id-ja
-	 */
-	public Ant(String ID) {
-		super(ID);
-		id = "a" + ID;
-		HP = 10;
-		tentacle = new Tentacle(this);
-		isKilled = false;
-		isActive = false;
-		wait = 10;
-		haveFood = false;
-		dir = Dir.RIGHT_BOTTOM;
 	}
 
 	/**
@@ -111,6 +93,7 @@ public class Ant extends Item implements Movable {
 	 */
 	public void pickUpFood() {
 		haveFood = true;
+		reverseDir();
 	}
 
 	/**
@@ -120,7 +103,7 @@ public class Ant extends Item implements Movable {
 	public void rest() {
 		isKilled = false;
 		isActive = false;
-		wait = 10;
+		wait = new Random().nextInt(20);
 		haveFood = false;
 	}
 
@@ -192,6 +175,11 @@ public class Ant extends Item implements Movable {
 	 */
 	@Override
 	public void step() {
+		if (!isActive) {
+			--wait;
+			if (wait==0) setAlive();
+			return; 
+		}
 		/* A szomszedok lekerdezese. */
 		Map<Dir, Field> neg = getActualField().getNeighbours();
 
@@ -326,29 +314,7 @@ public class Ant extends Item implements Movable {
 		tentacle.removePossibleNeighbour(field);
 	}
 
-	/**
-	 * A hangya állapotait adja vissza, a kiiráshoz van ra szukseg
-	 * 
-	 * @return allapotok Map-je
-	 */
-	@Override
-	public HashMap<String, String> getStates() {
-		HashMap<String, String> states = new HashMap<String, String>();
-
-		if (isKilled)
-			states.put("STATE", "KILLED");
-		else if (wait > 0)
-			states.put("STATE", "WAIT");
-		else {
-			if (haveFood == true)
-				states.put("STATE", "HAVE_FOOD");
-			else
-				states.put("STATE", "DONT_HAVE_FOOD");
-		}
-
-		states.put("DIR", dir.toString());
-		return states;
-	}
+	
 
 	/**
 	 * varakozasra allitja az allapotot
@@ -368,7 +334,6 @@ public class Ant extends Item implements Movable {
 	 */
 	public void setHaveFood(boolean b) {
 		haveFood = b;
-		wait = 0;
 	}
 
 	/**
@@ -379,11 +344,18 @@ public class Ant extends Item implements Movable {
 	 */
 	public void setKilled(boolean b) {
 		isKilled = b;
-		wait = 0;
 	}
 	
 	@Override
 	public void notifyView() {
 		antView.onDraw();
+	}
+
+	public boolean getHaveFood() {
+		return haveFood;
+	}
+
+	public boolean getIsActive() {
+		return isActive;
 	}
 }

@@ -15,6 +15,8 @@ public class AntView extends PaintableView{
 	public void onDraw() {
 		Ant ant=(Ant)paintable;
 		
+		if (!ant.getIsActive()) return;
+			
 		BufferedImage img = null;
 		try {		
 			Dir dir = ant.getDir();		

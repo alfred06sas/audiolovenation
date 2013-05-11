@@ -1,5 +1,6 @@
 package item;
 
+import program.SingletonContainer;
 import movable.Ant;
 import view.SprayView;
 
@@ -55,7 +56,12 @@ public class Spray extends Item implements Volatile {
 	 */
 	@Override
 	public void decrease() {
+		SingletonContainer sc = new SingletonContainer().getInstance();
 		--strength;
+		if (strength==0){
+			actualField.removeItem(this);
+			sc.removeVolatile(this);
+		}
 	}
 
 	/**

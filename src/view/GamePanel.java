@@ -26,48 +26,55 @@ public class GamePanel extends JPanel implements MouseListener {
 	public void mouseClicked(MouseEvent e) {
 		int x, y;
 
-		x = (int) ((e.getX() + 12.5) /75);
-		
-		if (x % 2 == 0){
-			y = e.getY()/100;
-			y*=2;
+		x = (int) ((e.getX() + 12.5) / 75);
+
+		if (x % 2 == 0) {
+			y = e.getY() / 100;
+			y *= 2;
+		} else {
+			y = (e.getY() + 50) / 100;
+			y = (y * 2) - 1;
 		}
-		else{
-			y = (e.getY() + 50)/100;
-			y=(y*2)-1;
-		}
-		
-		Field field = land.getField(String.valueOf(y) + "_" + String.valueOf(x));
-		
-		System.out.println(field.getId());
-		
-		if(SprayPanel.getType() != null && SprayPanel.getType().equals("killer"))
+
+		Field field = land
+				.getField(String.valueOf(y) + "_" + String.valueOf(x));
+
+		if (SprayPanel.getType() != null
+				&& SprayPanel.getType().equals("killer")
+				&& SprayPanel.antKillerCapacity > 0) {
+			SprayPanel.antKillerCapacity--;
 			antKillerSpray(field);
-		else if(SprayPanel.getType() != null && SprayPanel.getType().equals("smell"))
+			SprayPanel.refreshCapacity();
+		} else if (SprayPanel.getType() != null
+				&& SprayPanel.getType().equals("smell")
+				&& SprayPanel.antSmellCapacity > 0) {
+			SprayPanel.antSmellCapacity--;
 			antSmellSpray(field);
+			SprayPanel.refreshCapacity();
+		}
 
 	}
-	
+
 	private void antKillerSpray(Field field) {
 		Spray spray = new Spray();
 		SingletonContainer sc = SingletonContainer.getInstance();
 		sc.addVolatile(spray);
-		
+
 		spray.setView();
 		field.addItem(spray);
-		
+
 		CopyOnWriteArrayList<Item> items = field.getItems();
-		
-		for (Item i: items) {
+
+		for (Item i : items) {
 			i.collisionWithSpray(spray.getStrength());
 		}
-		
+
 	}
-	
+
 	private void antSmellSpray(Field field) {
 
 	}
-	
+
 	public void addLand(Land land) {
 		this.land = land;
 	}

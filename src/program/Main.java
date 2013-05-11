@@ -60,7 +60,7 @@ public class Main {
 		littleMapButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				land.init(6, 6);
+				land.init(8, 10);
 			}
 		});
 
@@ -68,7 +68,7 @@ public class Main {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				land.init(12, 12);
+				land.init(10, 12);
 			}
 		});
 
@@ -76,7 +76,7 @@ public class Main {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				land.init(14, 14);
+				land.init(12, 14);
 			}
 		});
 
@@ -99,10 +99,11 @@ public class Main {
 		mainPanel.add(controllerPanel, BorderLayout.EAST);
 
 		frame.add(mainPanel);
-		frame.setSize(1000, 700);
+		frame.setSize(1250, 700);
 		frame.setTitle("AntGame");
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setResizable(false);
 	}
 
 }

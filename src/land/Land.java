@@ -3,18 +3,19 @@ package land;
 import item.Antlion;
 import item.Food;
 import item.Hill;
-import item.Spray;
 import item.Volatile;
 
+import java.awt.Graphics;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
 
 import movable.Ant;
 import movable.Echidna;
 import movable.Movable;
 import program.SingletonContainer;
+import view.PaintableView;
 import blockage.Gravel;
-import blockage.Puddle;
 
 /**
  * 
@@ -73,15 +74,24 @@ public class Land {
 	public void putItems(/* Field field, Item item */) {
 		SingletonContainer sc = new SingletonContainer().getInstance();
 
-		// // Antlion(ok) hozzáadása
-		// Antlion a = new Antlion();
-		// a.setView();
-		// fields.get(2 + "_" + 2).addItem(a);
-		//
-//		 // Boly(ok) hozzáadása
-//		 Hill h = new Hill();
-//		 h.setView();
-//		 fields.get(7 + "_" + 7).addItem(h);
+		 // Antlion(ok) hozzáadása
+		 Antlion a = new Antlion();
+		 a.setView();
+		 fields.get(7 + "_" + 3).addItem(a);
+
+		// Boly(ok) hozzáadása
+		Hill h = new Hill();
+		h.setView();
+		fields.get(2 + "_" + 2).addItem(h);
+
+		for (int i = 0; i < 10; i++) {
+			// Hangya(k) hozzáadása
+			Ant a1 = new Ant();
+			sc.addMovable(a1);
+			a1.setView();
+			a1.setDir(Dir.fromInteger((new Random()).nextInt(6)));
+			fields.get(2 + "_" + 2).addItem(a1);
+		}
 
 		// Hangyaszsun(ok) hozzáadása
 		// Echidna e = new Echidna();
@@ -92,14 +102,8 @@ public class Land {
 		Echidna e2 = new Echidna();
 		sc.addMovable(e2);
 		e2.setView();
-		fields.get(3 + "_" + 3).addItem(e2);
-
-		// Hangya(k) hozzáadása
-		Ant a1 = new Ant();
-		sc.addMovable(a1);
-		a1.setView();
-		a1.setDir(Dir.RIGHT_BOTTOM);
-		fields.get(3 + "_" + 7).addItem(a1);
+		e2.setDir(Dir.fromInteger((new Random()).nextInt(6)));
+		fields.get(8 + "_" + 8).addItem(e2);
 
 		// // Hangya(k) hozzáadása
 		// Ant a2 = new Ant();
@@ -112,27 +116,27 @@ public class Land {
 
 		Food f = new Food();
 		f.setView();
-		fields.get(7 + "_" + 3).addItem(f);
+		fields.get(0 + "_" + 6).addItem(f);
 
-//		 // Pocsolya(k) hozzáadása
-//		 Puddle p = new Puddle();
-//		 p.setView();
-//		 fields.get(7 + "_" +7).addItem(p);
+		// // Pocsolya(k) hozzáadása
+		// Puddle p = new Puddle();
+		// p.setView();
+		// fields.get(7 + "_" +7).addItem(p);
 
-		// Kove(k) hozzáadása
-		Gravel g = new Gravel();
-		g.setView();
-		fields.get(1 + "_" + 1).addItem(g);
+//		// Kove(k) hozzáadása
+//		Gravel g = new Gravel();
+//		g.setView();
+//		fields.get(1 + "_" + 1).addItem(g);
 
 		// Kove(k) hozzáadása
 		Gravel g1 = new Gravel();
 		g1.setView();
-		fields.get(3 + "_" + 3).addItem(g1);
+		fields.get(7 + "_" + 7).addItem(g1);
 
-		// Kove(k) hozzáadása
-		Gravel g2 = new Gravel();
-		g2.setView();
-		fields.get(5 + "_" + 5).addItem(g2);
+//		// Kove(k) hozzáadása
+//		Gravel g2 = new Gravel();
+//		g2.setView();
+//		fields.get(5 + "_" + 5).addItem(g2);
 		//
 		// // Kove(k) hozzáadása
 		// Gravel g1 = new Gravel();
@@ -155,6 +159,7 @@ public class Land {
 	public void move() {
 		SingletonContainer sc = SingletonContainer.getInstance();
 		List<Movable> movables = sc.getMovables();
+		
 
 		// Movable-k leptetese
 		for (Movable movable : movables)
@@ -214,13 +219,20 @@ public class Land {
 			}
 		}
 	}
-
+	private Thread thread = new Thread();
 	/**
 	 * 
 	 * @return
 	 */
 	public void init(int row, int column) {
-
+		SingletonContainer sc = SingletonContainer.getInstance();
+		sc.getVolatiles().clear();
+		sc.getMovables().clear();
+		fields = new HashMap<String, Field>();
+		if (thread.isAlive())
+			thread.stop();
+		PaintableView.panel.paint(PaintableView.panel.getGraphics());
+		
 		// palya betoltese
 		loadLand(row, column);
 		// palya felepitese
@@ -228,7 +240,7 @@ public class Land {
 		// elemek palyara helyezese
 		putItems();
 		// leptetes
-		Thread thread = new Thread() {
+		thread = new Thread() {
 			@Override
 			public void run() {
 				while (true) {

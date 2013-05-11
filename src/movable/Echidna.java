@@ -5,6 +5,7 @@ import item.Item;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import land.Dir;
 import land.Field;
@@ -53,7 +54,7 @@ public class Echidna extends Item implements Movable {
 
 	public Echidna() {
 		isActive = false;
-		wait = 50;
+		wait = (new Random()).nextInt(40);
 		hunger = 10;
 		dir = Dir.LEFT_TOP;
 	}
@@ -67,8 +68,8 @@ public class Echidna extends Item implements Movable {
 		super(ID);
 		id = "e" + ID;
 		isActive = false;
-		wait = 50;
-		hunger = 10;
+		wait = new Random().nextInt(40);
+		hunger = 2;
 		dir = Dir.LEFT_TOP;
 	}
 
@@ -105,8 +106,16 @@ public class Echidna extends Item implements Movable {
 	 */
 	@Override
 	public void step() {
+		if (!isActive) {
+			--wait;
+			if (wait==0) setAlive();
+			return; 
+		}
 		int gravelNr = 0;
 
+		dir=Dir.fromInteger((new Random()).nextInt(6));
+
+		
 		/* A szomszedok lekerdezese */
 		Map<Dir, Field> neighbours = actualField.getNeighbours();
 

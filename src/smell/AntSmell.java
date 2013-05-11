@@ -16,7 +16,7 @@ import program.SingletonContainer;
 public class AntSmell extends Smell implements Volatile {
 
 	public AntSmell(){
-		strength=5;
+		strength=3;
 	}
 	
 	/**
@@ -37,7 +37,12 @@ public class AntSmell extends Smell implements Volatile {
 	 */
 	@Override
 	public void decrease() {
-		
+		SingletonContainer sc = new SingletonContainer().getInstance();
+		--strength;
+		if (strength==0){
+			removeMyself(actualField);
+			sc.removeVolatile(this);
+		}
 	}
 
 	/**

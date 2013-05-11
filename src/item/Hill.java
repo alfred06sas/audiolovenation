@@ -42,7 +42,7 @@ public class Hill extends Item {
 	@Override
 	public void collisionWithAnt(Ant ant, boolean b) {
 		// A hangyabolyba visszaero hangya inaktiv allapotba kerul
-		if(b==true){
+		if(b==true && ant.getHaveFood()==true){
 			ant.rest();
 		}
 	}

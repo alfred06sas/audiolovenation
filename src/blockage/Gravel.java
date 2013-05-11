@@ -97,7 +97,11 @@ public class Gravel extends Blockage implements Movable {
 	@Override
 	public void collisionWithAnt(Ant ant, boolean b) {
 
-		ant.kill();
+		if (b == false) {
+			ant.canNotGo(actualField);
+		}
+		else
+			ant.kill();
 
 	}
 
