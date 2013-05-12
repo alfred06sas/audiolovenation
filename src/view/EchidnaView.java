@@ -12,7 +12,11 @@ public class EchidnaView extends PaintableView{
 
 	@Override
 	public void onDraw() {
+		
 		Echidna echidna=(Echidna)paintable;
+		
+		if(!echidna.isActive)
+			return;
 		
 		BufferedImage img = null;
 		try {

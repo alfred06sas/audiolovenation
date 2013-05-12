@@ -28,7 +28,7 @@ public class Echidna extends Item implements Movable {
 	/**
 	 * Aktiv/inakiv allapot jelzese
 	 */
-	private boolean isActive = false;
+	public boolean isActive = false;
 	/**
 	 * Inaktiv allapotbol hatramarado ido
 	 */

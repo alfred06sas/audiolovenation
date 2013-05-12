@@ -5,17 +5,21 @@ import item.Food;
 import item.Hill;
 import item.Volatile;
 
-import java.awt.Graphics;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
+import java.util.Set;
 
 import movable.Ant;
 import movable.Echidna;
 import movable.Movable;
 import program.SingletonContainer;
+import program.SprayPanel;
 import view.PaintableView;
 import blockage.Gravel;
+import blockage.Puddle;
 
 /**
  * 
@@ -29,9 +33,9 @@ import blockage.Gravel;
  * 
  */
 public class Land {
-	
-	public static int columnNumber;
-	public static int rowNumber;
+
+	private int columnNumber;
+	private int rowNumber;
 
 	private HashMap<String, Field> fields = new HashMap<String, Field>();
 
@@ -74,80 +78,157 @@ public class Land {
 	public void putItems(/* Field field, Item item */) {
 		SingletonContainer sc = new SingletonContainer().getInstance();
 
-		 // Antlion(ok) hozz�ad�sa
-		 Antlion a = new Antlion();
-		 a.setView();
-		 fields.get(7 + "_" + 3).addItem(a);
+		Set<String> keyset = fields.keySet();
 
-		// Boly(ok) hozz�ad�sa
-		Hill h = new Hill();
-		h.setView();
-		fields.get(2 + "_" + 2).addItem(h);
+		String[] keys = new String[fields.size()];
+		int index = 0;
+		for (Map.Entry<String, Field> mapEntry : fields.entrySet()) {
+			keys[index] = mapEntry.getKey();
+			index++;
+		}
 
-		for (int i = 0; i < 10; i++) {
-			// Hangya(k) hozz�ad�sa
+		ArrayList<Integer> hillPts = new ArrayList<Integer>();
+		int hillNr;
+		if (rowNumber == 8)
+			hillNr = 1;
+		else
+			hillNr = 2;
+		// Boly(ok) hozzaadasa
+		for (int i = 0; i < hillNr; i++) {
+			Hill h = new Hill();
+			h.setView();
+			Integer pt = new Random().nextInt(keys.length);
+			hillPts.add(pt);
+			String[] xy = keys[pt].split("_");
+			fields.get(xy[0] + "_" + xy[1]).addItem(h);
+		}
+
+		ArrayList<Integer> antlionPoints = new ArrayList<Integer>();
+		int antlionNr;
+		if (rowNumber == 8)
+			antlionNr = 1;
+		else if (rowNumber == 10)
+			antlionNr = 2;
+		else
+			antlionNr = 3;
+		// Antlion(ok) hozz�ad�sa
+		int ap = 0;
+		loop: while (ap < antlionNr) {
+			Integer pt = new Random().nextInt(keys.length);
+			if (hillPts.contains(pt))
+				break loop;
+			ap++;
+			Antlion a = new Antlion();
+			a.setView();
+
+			antlionPoints.add(pt);
+			String[] xy = keys[pt].split("_");
+			fields.get(xy[0] + "_" + xy[1]).addItem(a);
+		}
+
+		int antNr;
+		if (rowNumber == 10 || rowNumber == 8)
+			antNr = 10;
+		else
+			antNr = 15;
+
+		for (int i = 0; i < antNr; i++) {
+			// Hangya(k) hozzaadasa
 			Ant a1 = new Ant();
 			sc.addMovable(a1);
 			a1.setView();
 			a1.setDir(Dir.fromInteger((new Random()).nextInt(6)));
-			fields.get(2 + "_" + 2).addItem(a1);
+			fields.get(keys[hillPts.get(0)]).addItem(a1);
+			if (rowNumber >= 10) {
+				Ant a2 = new Ant();
+				sc.addMovable(a2);
+				a2.setView();
+				a2.setDir(Dir.fromInteger((new Random()).nextInt(6)));
+				fields.get(keys[hillPts.get(1)]).addItem(a2);
+			}
 		}
 
-		// Hangyaszsun(ok) hozz�ad�sa
-		// Echidna e = new Echidna();
-		// sc.addMovable(e);
-		// e.setView();
-		// fields.get(1 + "_" + 3).addItem(e);
+		// hangyaszsunok hozzaadasa
+		int echidnaNr;
+		if (rowNumber == 8)
+			echidnaNr = 1;
+		else 
+			echidnaNr = 2;
+		int ep = 0;
+		loop: while (ep < echidnaNr) {
+			Integer pt = new Random().nextInt(keys.length);
+			if (hillPts.contains(pt))
+				break loop;
+			ep++;
+			Echidna e = new Echidna();
+			sc.addMovable(e);
+			e.setView();
+			
+			e.setDir(Dir.fromInteger((new Random()).nextInt(6)));
+			String[] xy = keys[pt].split("_");
+			fields.get(xy[0] + "_" + xy[1]).addItem(e);
+		}
+		
+		// kaja-k hozzaadasa
+		int foodNr;
+		if (rowNumber == 8)
+			foodNr = 4;
+		else if (rowNumber == 10)
+			foodNr = 6;
+		else
+			foodNr = 8;
+		ArrayList<Integer> foodPts = new ArrayList<Integer>();
+		
+		int fp = 0;
+		loop: while (fp < foodNr) {
+			Integer pt = new Random().nextInt(keys.length);
+			if (hillPts.contains(pt) || antlionPoints.contains(pt) || foodPts.contains(pt))
+				break loop;
+			fp++;
+			foodPts.add(pt);
+			Food f = new Food();
+			f.setView();
+			
+			String[] xy = keys[pt].split("_");
+			fields.get(xy[0] + "_" + xy[1]).addItem(f);
+		}
 
-		Echidna e2 = new Echidna();
-		sc.addMovable(e2);
-		e2.setView();
-		e2.setDir(Dir.fromInteger((new Random()).nextInt(6)));
-		fields.get(8 + "_" + 8).addItem(e2);
-
-		// // Hangya(k) hozz�ad�sa
-		// Ant a2 = new Ant();
-		// sc.addMovable(a2);
-		// a2.setView();
-		// a2.setDir(Dir.DOWN);
-		// fields.get(4 + "_" + 4).addItem(a2);
-
-		// Kaja(k) hozz�ad�sa
-
-		Food f = new Food();
-		f.setView();
-		fields.get(0 + "_" + 6).addItem(f);
-
-		// // Pocsolya(k) hozz�ad�sa
-		// Puddle p = new Puddle();
-		// p.setView();
-		// fields.get(7 + "_" +7).addItem(p);
-
-//		// Kove(k) hozz�ad�sa
-//		Gravel g = new Gravel();
-//		g.setView();
-//		fields.get(1 + "_" + 1).addItem(g);
+		// Pocsolya(k) hozzaadasa
+		int pp = 0;
+		loop: while (pp < 1) {
+			Integer pt = new Random().nextInt(keys.length);
+			if (hillPts.contains(pt) || antlionPoints.contains(pt) || foodPts.contains(pt))
+				break loop;
+			pp++;
+			Puddle p = new Puddle();
+			p.setView();
+			
+			String[] xy = keys[pt].split("_");
+			fields.get(xy[0] + "_" + xy[1]).addItem(p);
+		}
 
 		// Kove(k) hozz�ad�sa
-		Gravel g1 = new Gravel();
-		g1.setView();
-		fields.get(7 + "_" + 7).addItem(g1);
-
-//		// Kove(k) hozz�ad�sa
-//		Gravel g2 = new Gravel();
-//		g2.setView();
-//		fields.get(5 + "_" + 5).addItem(g2);
-		//
-		// // Kove(k) hozz�ad�sa
-		// Gravel g1 = new Gravel();
-		// g1.setView();
-		// fields.get(2 + "_" + 4).addItem(g1);
-		//
-		// // Sprey(k) hozz�ad�sa
-		// Spray s = new Spray();
-		// s.setView();
-		// fields.get(2 + "_" + 0).addItem(s);
-
+		
+		int gravelNr;
+		if (rowNumber == 8)
+			gravelNr = 3;
+		else if (rowNumber == 10)
+			gravelNr = 4;
+		else
+			gravelNr = 6;
+		
+		int gp = 0;
+		loop: while (gp < gravelNr) {
+			Integer pt = new Random().nextInt(keys.length);
+			if (hillPts.contains(pt))
+				break loop;
+			gp++;
+			Gravel g = new Gravel();
+			g.setView();
+			
+			String[] xy = keys[pt].split("_");
+			fields.get(xy[0] + "_" + xy[1]).addItem(g);
+		}
 	}
 
 	/**
@@ -159,7 +240,6 @@ public class Land {
 	public void move() {
 		SingletonContainer sc = SingletonContainer.getInstance();
 		List<Movable> movables = sc.getMovables();
-		
 
 		// Movable-k leptetese
 		for (Movable movable : movables)
@@ -219,7 +299,9 @@ public class Land {
 			}
 		}
 	}
+
 	private Thread thread = new Thread();
+
 	/**
 	 * 
 	 * @return
@@ -228,11 +310,14 @@ public class Land {
 		SingletonContainer sc = SingletonContainer.getInstance();
 		sc.getVolatiles().clear();
 		sc.getMovables().clear();
+		SprayPanel.antSmellCapacity = 40;
+		SprayPanel.antKillerCapacity = 20;
+		SprayPanel.refreshCapacity();
 		fields = new HashMap<String, Field>();
 		if (thread.isAlive())
 			thread.stop();
 		PaintableView.panel.paint(PaintableView.panel.getGraphics());
-		
+
 		// palya betoltese
 		loadLand(row, column);
 		// palya felepitese

@@ -12,7 +12,12 @@ public class FieldView extends PaintableView{
 
 	@Override
 	public void onDraw() {
-		Field field=(Field)paintable;
+		Field field;
+		try {
+			field=(Field)paintable;
+		} catch(ClassCastException e){
+			return;
+		}
 		
 		BufferedImage img = null;
 		try {
