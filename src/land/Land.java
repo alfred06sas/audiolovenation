@@ -29,9 +29,9 @@ import blockage.Gravel;
  * 
  */
 public class Land {
-
-	int columnNumber;
-	int rowNumber;
+	
+	public static int columnNumber;
+	public static int rowNumber;
 
 	private HashMap<String, Field> fields = new HashMap<String, Field>();
 
@@ -74,18 +74,18 @@ public class Land {
 	public void putItems(/* Field field, Item item */) {
 		SingletonContainer sc = new SingletonContainer().getInstance();
 
-		 // Antlion(ok) hozzáadása
+		 // Antlion(ok) hozzï¿½adï¿½sa
 		 Antlion a = new Antlion();
 		 a.setView();
 		 fields.get(7 + "_" + 3).addItem(a);
 
-		// Boly(ok) hozzáadása
+		// Boly(ok) hozzï¿½adï¿½sa
 		Hill h = new Hill();
 		h.setView();
 		fields.get(2 + "_" + 2).addItem(h);
 
 		for (int i = 0; i < 10; i++) {
-			// Hangya(k) hozzáadása
+			// Hangya(k) hozzï¿½adï¿½sa
 			Ant a1 = new Ant();
 			sc.addMovable(a1);
 			a1.setView();
@@ -93,7 +93,7 @@ public class Land {
 			fields.get(2 + "_" + 2).addItem(a1);
 		}
 
-		// Hangyaszsun(ok) hozzáadása
+		// Hangyaszsun(ok) hozzï¿½adï¿½sa
 		// Echidna e = new Echidna();
 		// sc.addMovable(e);
 		// e.setView();
@@ -105,45 +105,45 @@ public class Land {
 		e2.setDir(Dir.fromInteger((new Random()).nextInt(6)));
 		fields.get(8 + "_" + 8).addItem(e2);
 
-		// // Hangya(k) hozzáadása
+		// // Hangya(k) hozzï¿½adï¿½sa
 		// Ant a2 = new Ant();
 		// sc.addMovable(a2);
 		// a2.setView();
 		// a2.setDir(Dir.DOWN);
 		// fields.get(4 + "_" + 4).addItem(a2);
 
-		// Kaja(k) hozzáadása
+		// Kaja(k) hozzï¿½adï¿½sa
 
 		Food f = new Food();
 		f.setView();
 		fields.get(0 + "_" + 6).addItem(f);
 
-		// // Pocsolya(k) hozzáadása
+		// // Pocsolya(k) hozzï¿½adï¿½sa
 		// Puddle p = new Puddle();
 		// p.setView();
 		// fields.get(7 + "_" +7).addItem(p);
 
-//		// Kove(k) hozzáadása
+//		// Kove(k) hozzï¿½adï¿½sa
 //		Gravel g = new Gravel();
 //		g.setView();
 //		fields.get(1 + "_" + 1).addItem(g);
 
-		// Kove(k) hozzáadása
+		// Kove(k) hozzï¿½adï¿½sa
 		Gravel g1 = new Gravel();
 		g1.setView();
 		fields.get(7 + "_" + 7).addItem(g1);
 
-//		// Kove(k) hozzáadása
+//		// Kove(k) hozzï¿½adï¿½sa
 //		Gravel g2 = new Gravel();
 //		g2.setView();
 //		fields.get(5 + "_" + 5).addItem(g2);
 		//
-		// // Kove(k) hozzáadása
+		// // Kove(k) hozzï¿½adï¿½sa
 		// Gravel g1 = new Gravel();
 		// g1.setView();
 		// fields.get(2 + "_" + 4).addItem(g1);
 		//
-		// // Sprey(k) hozzáadása
+		// // Sprey(k) hozzï¿½adï¿½sa
 		// Spray s = new Spray();
 		// s.setView();
 		// fields.get(2 + "_" + 0).addItem(s);

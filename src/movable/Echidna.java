@@ -43,6 +43,7 @@ public class Echidna extends Item implements Movable {
 	private Dir dir;
 	private boolean isHunger;
 	private EchidnaView echidnaView;
+	private int stepNr;
 
 	public void setDir(Dir d) {
 		dir = d;
@@ -57,13 +58,14 @@ public class Echidna extends Item implements Movable {
 		wait = (new Random()).nextInt(40);
 		hunger = 10;
 		dir = Dir.LEFT_TOP;
+		stepNr = 0;
 	}
 
-	public void setView(){
+	public void setView() {
 		echidnaView = new EchidnaView();
 		echidnaView.setPaintable(this);
 	}
-	
+
 	public Echidna(String ID) {
 		super(ID);
 		id = "e" + ID;
@@ -108,14 +110,18 @@ public class Echidna extends Item implements Movable {
 	public void step() {
 		if (!isActive) {
 			--wait;
-			if (wait==0) setAlive();
-			return; 
+			if (wait == 0)
+				setAlive();
+			return;
 		}
 		int gravelNr = 0;
 
-		dir=Dir.fromInteger((new Random()).nextInt(6));
+		if (stepNr % 3 == 0) {
+			dir = Dir.fromInteger((new Random()).nextInt(6));
+		}
 
-		
+		stepNr++;
+
 		/* A szomszedok lekerdezese */
 		Map<Dir, Field> neighbours = actualField.getNeighbours();
 
@@ -125,7 +131,7 @@ public class Echidna extends Item implements Movable {
 		for (Item item : nextFieldItems) {
 			gravelNr = item.collisionWithEchidna(this, false, dir);
 		}
-		
+
 		if (gravelNr > 2) {
 			ReverseDir();
 			notifyView();
@@ -135,7 +141,7 @@ public class Echidna extends Item implements Movable {
 			actualField.removeItem(this);
 
 			/* Hangyaszsun atlep a kovetkezo mezore */
-			
+
 			nextField.addItem(this);
 			setActualField(nextField);
 
@@ -178,7 +184,7 @@ public class Echidna extends Item implements Movable {
 	 */
 	@Override
 	public void collisionWithAnt(Ant ant, boolean b) {
-		
+
 		/* Lepes utan */
 		if (b == true) {
 			/* Hangya megolese */
@@ -187,7 +193,6 @@ public class Echidna extends Item implements Movable {
 			/* Ehseg csokkentese */
 			this.decreaseHunger();
 		}
-		
 
 	}
 
@@ -216,7 +221,7 @@ public class Echidna extends Item implements Movable {
 		wait = 0;
 		isHunger = b;
 	}
-	
+
 	@Override
 	public void notifyView() {
 		echidnaView.onDraw();
